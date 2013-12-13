@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>searchanise</id>
+    <version>1.2.1</version>
+    <name>Searchanise (beta)</name>
+    <description>Turns on the Searchanise fast search service</description>
+    <priority>1200</priority>
+    <position>10</position>
+    <status>active</status>
+    <compatibility>
+        <conflicts>age_verification,vendor_data_premoderation</conflicts>
+    </compatibility>
+
+    <settings layout="separate" edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="configuration" layout="separate" outside_of_form="true">
+                <name>Configuration</name>
+                <translations>
+                    <item lang="ru">Настройки</item>
+                </translations>
+                <items>
+                    <item id="template">
+                        <type>permanent_template</type>
+                        <default_value>admin_panel.tpl</default_value>
+                    </item>
+
+                    <item id="api_key">
+                        <type>hidden</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="private_key">
+                        <type>hidden</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="parent_private_key">
+                        <type>hidden</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="import_status">
+                        <type>hidden</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="last_request">
+                        <type>hidden</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="last_resync">
+                        <type>hidden</type>
+                        <default_value></default_value>
+                    </item>
+                    <item id="use_navigation">
+                        <type>hidden</type>
+                        <default_value></default_value>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+
+    <translations>
+        <item for="description" lang="ru">Turns on the Searchanise fast search service</item>
+        <item for="description" lang="ru">Подключение к сервису быстрого поиска Searchanise</item>
+    </translations>
+
+    <language_variables>
+        <item lang="en" id="searchanise">Searchanise</item>
+        <item lang="en" id="text_se_import_status_queued">The product catalog is queued for syncing with Searchanise.</item>
+        <item lang="en" id="text_se_new_engine_store">Searchanise: New search engine for [store] created. Catalog import started.</item>
+        <item lang="en" id="text_se_new_engine_language">Searchanise: New search engine for [language] created. Catalog import started.</item>
+        <item lang="en" id="text_se_import_status_queued_language">Searchanise: Catalog import for [language] started.</item>
+        <item lang="en" id="text_se_seo_settings_notice"><![CDATA[If you have modified any SEO add-on settings, please <a href="[link]">Resync</a> product catalog with Searchanise to update product URLs.]]></item>
+        <item lang="en" id="text_se_connect_error">An error occurred during Searchanise registration. Please try later.</item>
+        <item lang="en" id="text_se_import_status_processing">The product catalog syncing is in progress.</item>
+        <item lang="en" id="text_se_import_status_done">The product catalog was synced successfully with Searchanise.</item>
+        <item lang="en" id="text_se_import_status_none">The product catalog is not synced with Searchanise yet. Please press "Sync" button to start.</item>
+        <item lang="en" id="text_se_data_update">Please note that the data on Searchanise server is updated with a 2-3 minute delay after you make changes in your store.</item>
+        <item lang="en" id="text_se_signup">Click the button below to connect to Searchanise.</item>
+        <item lang="en" id="text_se_just_connected">Congratulations, you've just connected to Searchanise.</item>
+        <item lang="en" id="text_se_connected">You've connected to Searchanise.</item>
+        <item lang="en" id="text_se_database_restore_notice"><![CDATA[You've just restored your data from the database dump file. If this dump contains product data, please <a href="[link]">Resync</a> it with Searchanise.]]></item>
+        <item lang="en" id="text_se_only_root_can_register">Only the root admin has the permission to connect to Searchanise</item>
+        
+        <item lang="en" id="se_relevance">Relevance</item>
+        <item lang="en" id="se_products">Products</item>
+        <item lang="en" id="se_popular_suggestions">Popular suggestions</item>
+        <item lang="en" id="sort_by_relevance_asc">Sort by Relevance</item>
+        <item lang="en" id="se_api_key">API key</item>
+        <item lang="en" id="se_private_key">Private key</item>
+
+        <item lang="en" id="se_did_you_mean">Did you mean</item>
+
+        <item lang="ru" id="text_se_import_status_queued">Каталог товаров добавлен в очередь на синхронизацию в сервисом Searchanise.</item>
+        <item lang="ru" id="text_se_new_engine_store">Searchanise: Новый поисковый движок для магазина [store] создан. Начат импорт каталога.</item>
+        <item lang="ru" id="text_se_new_engine_language">Searchanise: Новый поисковый движок для языка [language] создан. Начат импорт каталога.</item>
+        <item lang="ru" id="text_se_import_status_queued_language">Searchanise: Начат импорт каталога для [language].</item>
+        <item lang="ru" id="text_se_seo_settings_notice"><![CDATA[Если вы изменяли настройки модуля SEO, пожалуйста, запустите <a href="link">синхронизацию</a> каталога товаров с сервисом Searchanise повторно, чтобы обновились URL товаров.]]></item>
+        <item lang="ru" id="text_se_connect_error">Произошла ошибка при регистрации в сервисе Searchanise. Пожалуйста, попробуйте еще раз позже.</item>
+        <item lang="ru" id="text_se_import_status_processing">Идет синхронизация каталога товаров.</item>
+        <item lang="ru" id="text_se_import_status_done">Каталог товаров успешно синхронизирован с сервисом Searchanise.</item>
+        <item lang="ru" id="text_se_import_status_none">Каталог товаров еще не синхронизирован с сервисом Searchanise. Пожалуйста, нажмите "Синхронизировать", чтобы начать.</item>
+        <item lang="ru" id="text_se_data_update">Обратите внимание, что данные на сервере Searchanise обновляются с задержкой в 2-3 минуты после того как изменения внесены в магазин.</item>
+        <item lang="ru" id="text_se_signup">Нажмите на кнопку ниже для того, чтобы подключить магазин к сервису Searchanise.</item>
+        <item lang="ru" id="text_se_just_connected">Поздравляем, вы успешно подключили магазин к сервису Searchanise.</item>
+        <item lang="ru" id="text_se_connected">Магазин подключен к сервису Searchanise.</item>
+        <item lang="ru" id="text_se_database_restore_notice"><![CDATA[Данные были восстановлены из дампа базы данных. Если в дампе содержались данные о товарах, запустите <a href="link">синхронизацию</a> каталога товаров с сервисом Searchanise повторно.]]></item>
+        <item lang="ru" id="text_se_only_root_can_register">Только главный администратор может подключить магазин к сервису Searchanise.</item>
+
+        <item lang="ru" id="se_relevance">Релевантность</item>
+        <item lang="ru" id="se_products">Продукты</item>
+        <item lang="ru" id="se_popular_suggestions">Подсказки</item>
+        <item lang="ru" id="sort_by_relevance_asc">Сортировать по релевантности</item>
+        <item lang="ru" id="se_api_key">API ключ</item>
+        <item lang="ru" id="se_private_key">Приватный api ключ</item>
+
+        <item lang="ru" id="se_did_you_mean">Возможно вы имели в виду</item>
+    </language_variables>
+
+    <queries>
+        <item for="install">
+        CREATE TABLE IF NOT EXISTS `?:se_settings` (
+            `name` varchar(32) NOT NULL default '',
+            `company_id` int(11) NOT NULL DEFAULT '0',
+            `lang_code` char(2) NOT NULL default 'en',
+            `value` varchar(255) NOT NULL default '',
+            PRIMARY KEY  (`name`, `company_id`, `lang_code`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=UTF8
+        </item>
+        <item for="install">
+        CREATE TABLE `?:se_queue` (
+            `queue_id` mediumint NOT NULL auto_increment,
+            `data` text NOT NULL,
+            `action` varchar(32) NOT NULL default '',
+            `company_id` int(11) NOT NULL DEFAULT '0',
+            `lang_code` char(2) NOT NULL default 'en',
+            `started` int(11) NOT NULL DEFAULT '0',
+            `error_count` int NOT NULL default 0,
+            `status` enum('pending', 'processing') default 'pending',
+            PRIMARY KEY  (`queue_id`),
+            KEY (`status`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=UTF8
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:se_queue`</item>
+    </queries>
+</addon>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>age_verification</id>
+    <name>Age verification</name>
+    <description>Toggles age restriction rules for products and categories</description>
+    <version>1.0</version>
+    <priority>2900</priority>
+    <position>0</position>
+    <status>active</status>
+    <translations>
+        <item for="name" lang="fr">Vérification de l'âge</item>
+        <item for="name" lang="da">Aldersverifikation</item>
+        <item for="name" lang="el">Επαλήθευση ηλικίας</item>
+        <item for="name" lang="it">Verifica età</item>
+        <item for="name" lang="ro">Verificare vârstei</item>
+        <item for="name" lang="ru">Ограничение по возрасту</item>
+        <item for="name" lang="sl">Preverjanje starosti</item>
+        <item for="name" lang="zh">年龄核实</item>
+        <item for="description" lang="ru">Позволяет устанавливать возрастное ограничение на товары и категории</item>
+        <item for="description" lang="zh">切换年龄限制规则的产品和分类</item>
+    </translations>
+    <language_variables>
+        <item lang="en" id="age_limit">Age limit</item>
+        <item lang="en" id="years">years</item>
+        <item lang="en" id="age_warning_message">Warning message</item>
+
+        <item lang="bg" id="age_limit">Възрастова граница</item>
+        <item lang="bg" id="years">Години</item>
+        <item lang="bg" id="age_warning_message">Предупредително съобщение</item>
+
+        <item lang="da" id="age_limit">Alders grænse</item>
+        <item lang="da" id="years">År</item>
+        <item lang="da" id="age_warning_message">Advarselsmeddelelse</item>
+
+        <item lang="el" id="age_limit">Όριο ηλικίας</item>
+        <item lang="el" id="years">χρόνια</item>
+        <item lang="el" id="age_warning_message">Προειδοποιητικό μήνυμα</item>
+
+        <item lang="fr" id="age_limit">Limite d'âge</item>
+        <item lang="fr" id="years">ans</item>
+        <item lang="fr" id="age_warning_message">Message d'avertissement</item>
+
+        <item lang="it" id="age_limit">Limite di età</item>
+        <item lang="it" id="years">Anni</item>
+        <item lang="it" id="age_warning_message">Messaggio di avviso</item>
+
+        <item lang="no" id="age_limit">Aldersgrense</item>
+        <item lang="no" id="years">år</item>
+        <item lang="no" id="age_warning_message">Advarsel</item>
+
+        <item lang="ro" id="age_limit">Limită de vârstă</item>
+        <item lang="ro" id="years">ani</item>
+        <item lang="ro" id="age_warning_message">Mesaj de avertizare</item>
+
+        <item lang="ru" id="age_limit">Возрастное ограничение</item>
+        <item lang="ru" id="years">лет</item>
+        <item lang="ru" id="age_warning_message">Предупреждение</item>
+
+        <item lang="sl" id="age_limit">Starostna omejitev</item>
+        <item lang="sl" id="years">leta</item>
+        <item lang="sl" id="age_warning_message">Opozorilno sporočilo</item>
+
+        <item lang="zh" id="age_limit">年龄显示</item>
+        <item lang="zh" id="years">岁</item>
+        <item lang="zh" id="age_warning_message">警告消息</item>
+    </language_variables>
+</addon>

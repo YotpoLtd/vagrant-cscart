@@ -1,0 +1,479 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>polls</id>
+    <name>Polls</name>
+    <description>Adds a possibility to add customized polls to the site</description>
+    <version>1.0</version>
+    <priority>2600</priority>
+    <position>0</position>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="fr">Sondages</item>
+        <item for="name" lang="da">Afstemninger</item>
+        <item for="name" lang="el">Δημοσκοπήσεις</item>
+        <item for="name" lang="it">Sondaggi</item>
+        <item for="name" lang="nl">Enquêtes</item>
+        <item for="name" lang="ro">Sondaje</item>
+        <item for="name" lang="ru">Опросы и голосования</item>
+        <item for="name" lang="sl">Ankete</item>
+        <item for="name" lang="zh">投票</item>
+        <item for="description" lang="ru">Позволяет создавать настраиваемые опросы и голосования</item>
+        <item for="description" lang="zh">可以在网站中添加自定义的投票</item>
+    </translations>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="polls_votes_on_page">
+                        <name>Votes on page</name>
+                        <type>input</type>
+                        <default_value>20</default_value>
+                        <translations>
+                            <item lang="da">Stemmer på side</item>
+                            <item lang="el">Ψηφοφορίες στην σελίδα</item>
+                            <item lang="ro">Voturi pe pagină</item>
+                            <item lang="ru">Голосов на странице</item>
+                            <item lang="sl">Glasov na stran</item>
+                            <item lang="zh">页面中投票</item>
+                        </translations>
+                    </item>
+                    <item id="polls_comments_on_page">
+                        <name>Answers on page</name>
+                        <type>input</type>
+                        <default_value>20</default_value>
+                        <translations>
+                            <item lang="da">svar på side</item>
+                            <item lang="el">Απαντήσεις στην σελίδα</item>
+                            <item lang="ro">Răspunsuri pe pagină</item>
+                            <item lang="ru">Ответов на странице</item>
+                            <item lang="sl">Odgovorov na stran</item>
+                            <item lang="zh">页面中回答</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item for="demo" type='file'>database/demo.sql</item>
+        <item for="demo" type='file' editions="ULTIMATE">database/demo_ultimate.sql</item>
+        <item for="demo" type='file' table="poll_descriptions" lang="en" >database/demo_en.sql</item>
+        <item for="demo" type='file' table="page_descriptions" lang="en" >database/demo_pages_en.sql</item>
+        <item for="demo" type='file' table="poll_descriptions" lang="ru" >database/demo_ru.sql</item>
+        <item for="demo" type='file' table="page_descriptions" lang="ru" >database/demo_pages_ru.sql</item>
+        <item>DROP TABLE IF EXISTS `?:polls`;</item>
+        <item>DROP TABLE IF EXISTS `?:polls_answers`;</item>
+        <item>DROP TABLE IF EXISTS `?:polls_votes`;</item>
+        <item>DROP TABLE IF EXISTS `?:poll_descriptions`;</item>
+        <item>DROP TABLE IF EXISTS `?:poll_items`;</item>
+        <item>CREATE TABLE `?:polls` (
+                `page_id` mediumint(8) unsigned NOT NULL default '0',
+                `start_date` int(11) unsigned NOT NULL default '0',
+                `end_date` int(11) unsigned NOT NULL default '0',
+                `show_results` char(1) NOT NULL default 'V',
+                PRIMARY KEY  (`page_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>CREATE TABLE `?:polls_answers` (
+                `answer_id` mediumint(8) unsigned NOT NULL default '0',
+                `vote_id` mediumint(8) unsigned NOT NULL default '0',
+                `item_id` mediumint(8) unsigned NOT NULL default '0',
+                `comment` varchar(255) NOT NULL default '',
+                PRIMARY KEY  (`answer_id`,`vote_id`,`item_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>CREATE TABLE `?:polls_votes` (
+                `vote_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `page_id` mediumint(8) unsigned NOT NULL default '0',
+                `ip_address` varchar(15) NOT NULL default '',
+                `user_id` mediumint(8) unsigned NOT NULL default '0',
+                `time` int(11) NOT NULL default '0',
+                `type` char(1) NOT NULL default '',
+                PRIMARY KEY  (`vote_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>CREATE TABLE `?:poll_descriptions` (
+                `object_id` mediumint(8) unsigned NOT NULL default '0',
+                `page_id` mediumint(8) unsigned NOT NULL default '0',
+                `lang_code` char(2) NOT NULL default '',
+                `type` char(1) NOT NULL default 'P',
+                `description` mediumtext NOT NULL,
+                PRIMARY KEY  (`object_id`,`lang_code`,`type`),
+                KEY `page_id` (`page_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>CREATE TABLE `?:poll_items` (
+                `item_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `parent_id` mediumint(8) unsigned NOT NULL default '0',
+                `type` char(1) NOT NULL default 'Q',
+                `position` smallint(5) NOT NULL default '0',
+                `required` char(1) NOT NULL default '',
+                `page_id` mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`item_id`),
+                KEY `parent_id` (`parent_id`),
+                KEY `type` (`type`),
+                KEY `page_id` (`page_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:polls`;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:polls_answers`;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:polls_votes`;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:poll_descriptions`;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:poll_items`;</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="block_polls">Polls</item>
+        <item lang="en" id="block_polls_description"/>
+        <item lang="ru" id="block_polls">Голосования</item>
+        <item lang="ru" id="block_polls_description"/>
+        <item lang="zh" id="block_polls">投票</item>
+        <item lang="zh" id="block_polls_description"/>
+        <item lang="en" id="poll">Poll</item>
+        <item lang="en" id="questions">Questions</item>
+        <item lang="en" id="poll_statistics">Poll statistics</item>
+        <item lang="en" id="add_polls_and_close">Add polls and close</item>
+        <item lang="en" id="add_polls">Add polls</item>
+        <item lang="en" id="required_not_answered">You should answer all the mandatory questions</item>
+        <item lang="en" id="thanks_for_voting">Thank you for taking time to complete this poll.</item>
+        <item lang="en" id="poll_show_results">Poll results visible to</item>
+        <item lang="en" id="poll_results_nobody">nobody</item>
+        <item lang="en" id="poll_results_voted">voted users</item>
+        <item lang="en" id="poll_results_everybody">everybody (in a pop-up)</item>
+        <item lang="en" id="poll_header">Poll header</item>
+        <item lang="en" id="poll_footer">Poll footer</item>
+        <item lang="en" id="poll_results">Poll message</item>
+        <item lang="en" id="new_question">New question</item>
+        <item lang="en" id="add_question">Add question</item>
+        <item lang="en" id="editing_question">Editing question</item>
+        <item lang="en" id="add_poll">Add poll</item>
+        <item lang="en" id="polls_total_submited">Total number of submitted poll forms </item>
+        <item lang="en" id="polls_total_completed">Number of poll forms completed in full</item>
+        <item lang="en" id="polls_first_submited">First poll form submitted</item>
+        <item lang="en" id="polls_last_submited">Last poll form submitted</item>
+        <item lang="en" id="statistics_by_questions">Statistics by questions</item>
+        <item lang="en" id="view_answers">View answers</item>
+        <item lang="en" id="polls_votes">Votes</item>
+        <item lang="en" id="answers">Answers</item>
+        <item lang="en" id="question_text">Question text</item>
+        <item lang="en" id="select_single_type">Select single option</item>
+        <item lang="en" id="select_one_or_more_type">Select one or more options</item>
+        <item lang="en" id="text_answer_type">Provide a textual answer</item>
+        <item lang="en" id="answer_text">Answer text</item>
+        <item lang="en" id="text_box">Text box</item>
+        <item lang="en" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Message that is displayed in the storefront after the poll is completed.</item>
+
+        <item lang="bg" id="poll">Анкета</item>
+        <item lang="bg" id="questions">Въпроси</item>
+        <item lang="bg" id="poll_statistics">Анкета статистика</item>
+        <item lang="bg" id="add_polls_and_close">Добави анкети и затвори</item>
+        <item lang="bg" id="add_polls">Добави анкети</item>
+        <item lang="bg" id="required_not_answered">Трябва да отговорете на всички задължителните въпроси</item>
+        <item lang="bg" id="thanks_for_voting">Благодаря ви за отделеното време.</item>
+        <item lang="bg" id="poll_header">Анкета хедър</item>
+        <item lang="bg" id="poll_footer">Анкета футър</item>
+        <item lang="bg" id="poll_results">Съобщение</item>
+        <item lang="bg" id="new_question">Нов въпрос</item>
+        <item lang="bg" id="add_question">Добави въпрос</item>
+        <item lang="bg" id="editing_question">Редактиране на въпрос</item>
+        <item lang="bg" id="add_poll">Добави анкета</item>
+        <item lang="bg" id="polls_total_submited">Общ брой на попълнените формуляри</item>
+        <item lang="bg" id="polls_total_completed">Броят на напълно завършени форми</item>
+        <item lang="bg" id="polls_first_submited">Първа анкета представена</item>
+        <item lang="bg" id="polls_last_submited">Последна анкета представена</item>
+        <item lang="bg" id="statistics_by_questions">Статистика по въпроси</item>
+        <item lang="bg" id="view_answers">Вижте отговорите</item>
+        <item lang="bg" id="polls_votes">Гласове</item>
+        <item lang="bg" id="answers">Отговори</item>
+        <item lang="bg" id="question_text">Текст на въпроса</item>
+        <item lang="bg" id="select_single_type">Изберете една опция</item>
+        <item lang="bg" id="select_one_or_more_type">Изберете една или повече опции</item>
+        <item lang="bg" id="text_answer_type">Текстов отговор</item>
+        <item lang="bg" id="answer_text">Отговор текст</item>
+        <item lang="bg" id="text_box">Текстово поле</item>
+
+        <item lang="da" id="poll">Afstemning</item>
+        <item lang="da" id="questions">spørgsmål</item>
+        <item lang="da" id="poll_statistics">Afstemnings statistik</item>
+        <item lang="da" id="add_polls_and_close">Tilføj meningsmåling og luk</item>
+        <item lang="da" id="add_polls">Tilføj meningsmålinger</item>
+        <item lang="da" id="required_not_answered">Du skal besvare alle obligatoriske spørgsmål.</item>
+        <item lang="da" id="thanks_for_voting">Tak fordi du tog dig tid til at fuldføre denne afstemning.</item>
+        <item lang="da" id="poll_header">Afstemning hoved</item>
+        <item lang="da" id="poll_footer">Afstemning fåd</item>
+        <item lang="da" id="poll_results">Afstemnings besked</item>
+        <item lang="da" id="new_question">Nyt sprøgsmål</item>
+        <item lang="da" id="add_question">Tilføj spørgsmål</item>
+        <item lang="da" id="editing_question">redigere spørgsmål</item>
+        <item lang="da" id="add_poll">Tilføj meningsmåling</item>
+        <item lang="da" id="polls_total_submited">Samlet antal meningsmåling formularer forelægges</item>
+        <item lang="da" id="polls_total_completed">Antal meningsmåling former helt afsluttet</item>
+        <item lang="da" id="polls_first_submited">Først afstemning tilføjet</item>
+        <item lang="da" id="polls_last_submited">Seneste meningsmåling, der forelægges</item>
+        <item lang="da" id="statistics_by_questions">Statistik af spørgsmål</item>
+        <item lang="da" id="view_answers">Se svarene</item>
+        <item lang="da" id="polls_votes">Stemmer</item>
+        <item lang="da" id="answers">Svar</item>
+        <item lang="da" id="question_text">spørgsmål tekst</item>
+        <item lang="da" id="select_single_type">Vælg én valgmulighed</item>
+        <item lang="da" id="select_one_or_more_type">Vælg en eller flere muligheder</item>
+        <item lang="da" id="text_answer_type">Give en tekstuel svar</item>
+        <item lang="da" id="answer_text">Svar tekst</item>
+        <item lang="da" id="text_box">Tekstboks</item>
+
+        <item lang="el" id="poll">Ψηφοφορία</item>
+        <item lang="el" id="questions">Ερωτήσεις</item>
+        <item lang="el" id="poll_statistics">Στατιστικές ψηφοφορίας</item>
+        <item lang="el" id="add_polls_and_close">Προσθήκη ψηφοφοριών και κλείσιμο</item>
+        <item lang="el" id="add_polls">Προσθήκη Ψηφοφοριών</item>
+        <item lang="el" id="required_not_answered">Θα πρέπει να απαντήσετε σε όλες τις υποχρεωτικές ερωτήσεις</item>
+        <item lang="el" id="thanks_for_voting">Σας ευχαριστούμε που ξοδέψατε χρόνο για αυτήν τη δημοσκόπηση..</item>
+        <item lang="el" id="poll_header">Πρώτες σειρές πληροφοριών της ψηφοφορίας(στο πάνω μέρος της σελίδας)</item>
+        <item lang="el" id="poll_footer">Τελευταίες σειρές πληροφοριών της ψηφοφορίας(στο κάτω μέρος της σελίδας)</item>
+        <item lang="el" id="poll_results">Μήνυμα ψηφοφορίας</item>
+        <item lang="el" id="new_question">Νέ ερώτημα</item>
+        <item lang="el" id="add_question">Προσθήκη Ερώτησης</item>
+        <item lang="el" id="editing_question">Επεξεργασία ερώτησης</item>
+        <item lang="el" id="add_poll">Προσθήκη ψηφοφορίας</item>
+        <item lang="el" id="polls_total_submited">Συνολικός αριθμός των υποβληθέντων εντύπων δημοσκόπησης</item>
+        <item lang="el" id="polls_total_completed">Αριθμός των εντύπων της δημοσκόπησης που συμπληρώθηκαν πλήρως </item>
+        <item lang="el" id="polls_first_submited">Υποβλήθηκε η πρώτη φόρμα ψηφοφορίας</item>
+        <item lang="el" id="polls_last_submited">Υποβλήθηκε η τελευταία φόρμα ψηφοφορίας</item>
+        <item lang="el" id="statistics_by_questions">Στατιστικά στοιχεία από ερωτήσεις</item>
+        <item lang="el" id="view_answers">Προβολή απαντήσεων</item>
+        <item lang="el" id="polls_votes">Ψήφοι</item>
+        <item lang="el" id="answers">Απαντήσεις</item>
+        <item lang="el" id="question_text">Κείμενο ερώτησης</item>
+        <item lang="el" id="select_single_type">Επιλέξτε μονή επιλογή</item>
+        <item lang="el" id="select_one_or_more_type">Επιλογή ενός ή περισσοτέρων προϊόντων</item>
+        <item lang="el" id="text_answer_type">Δώστε μια απάντηση κειμένου</item>
+        <item lang="el" id="answer_text">Κείμενο απάντησης</item>
+        <item lang="el" id="text_box">Πλαίσιο κειμένου</item>
+
+        <item lang="fr" id="poll_statistics">Statistiques du sondage</item>
+        <item lang="fr" id="add_polls_and_close">Ajouter les sondages et fermer</item>
+        <item lang="fr" id="add_polls">Ajouter des sondages</item>
+        <item lang="fr" id="thanks_for_voting">Merci d'avoir pris le temps de compléter ce sondage.</item>
+        <item lang="fr" id="poll_header">Haut de page du sondage</item>
+        <item lang="fr" id="poll_footer">Bas de page du sondage</item>
+        <item lang="fr" id="poll_results">Message du sondage complet</item>
+        <item lang="fr" id="add_question">Ajouter une question</item>
+        <item lang="fr" id="add_poll">Ajouter un sondage</item>
+        <item lang="fr" id="polls_total_submited">Nombre total de formulaires sondage soumis</item>
+        <item lang="fr" id="polls_total_completed">Nombre de formulaires sondage entièrement complété</item>
+        <item lang="fr" id="polls_first_submited">1er formulaire de sondage soumis</item>
+        <item lang="fr" id="polls_last_submited">Dernier formulaire de sondage soumis</item>
+        <item lang="fr" id="statistics_by_questions">Statistiques par questions</item>
+        <item lang="fr" id="view_answers">Voir toutes les réponses</item>
+        <item lang="fr" id="answers">Réponses</item>
+        <item lang="fr" id="question_text">Question</item>
+        <item lang="fr" id="select_single_type">Sélectionner une seule option</item>
+        <item lang="fr" id="select_one_or_more_type">Sélectionner une ou plus d'options</item>
+        <item lang="fr" id="text_answer_type">Fournir une réponse textuelle</item>
+        <item lang="fr" id="answer_text">Texte de réponse</item>
+        <item lang="fr" id="text_box">Champs de saisie</item>
+
+        <item lang="it" id="poll">Sondaggio</item>
+        <item lang="it" id="questions">Domande</item>
+        <item lang="it" id="poll_statistics">Statistiche sondaggio</item>
+        <item lang="it" id="add_polls_and_close">Aggiungi sondaggi e poi chiudi</item>
+        <item lang="it" id="add_polls">Aggiungi sondaggi</item>
+        <item lang="it" id="required_not_answered">È necessario rispondere a tutte le domande obbligatorie</item>
+        <item lang="it" id="thanks_for_voting">Grazie per aver dedicato tempo per completare questo sondaggio.\n</item>
+        <item lang="it" id="poll_show_results">Permetti ai partecipanti di vedere i risultati</item>
+        <item lang="it" id="poll_header">Intestazione</item>
+        <item lang="it" id="poll_footer">Testo di chiusura</item>
+        <item lang="it" id="poll_results">Testo sondaggio</item>
+        <item lang="it" id="new_question">Nuova domanda</item>
+        <item lang="it" id="add_question">Aggiungi domanda</item>
+        <item lang="it" id="editing_question">Modifica domanda</item>
+        <item lang="it" id="add_poll">Aggiungi sondaggio</item>
+        <item lang="it" id="polls_total_submited">Numero totale di sondaggi inviati</item>
+        <item lang="it" id="polls_total_completed">Il numero dei sondaggi completati è pieno</item>
+        <item lang="it" id="polls_first_submited">Primo sondaggio inviato</item>
+        <item lang="it" id="polls_last_submited">Ultimo sondaggio inviato</item>
+        <item lang="it" id="statistics_by_questions">Statistiche di domande</item>
+        <item lang="it" id="view_answers">Visualizza risposte</item>
+        <item lang="it" id="polls_votes">Voti</item>
+        <item lang="it" id="answers">Risposte</item>
+        <item lang="it" id="question_text">Testo domanda</item>
+        <item lang="it" id="select_single_type">Seleziona singola opzione</item>
+        <item lang="it" id="select_one_or_more_type">Seleziona una o più opzioni</item>
+        <item lang="it" id="text_answer_type">Fornisci una risposta testuale</item>
+        <item lang="it" id="answer_text">Testo di risposta</item>
+        <item lang="it" id="text_box">Testo nel box</item>
+
+        <item lang="no" id="poll">Spørreundersøkelse</item>
+        <item lang="no" id="questions">Spørsmål</item>
+        <item lang="no" id="poll_statistics">Statistikk for spørreundersøkelse</item>
+        <item lang="no" id="add_polls_and_close">Legg til spørreundersøkelser og lukk</item>
+        <item lang="no" id="add_polls">Legg til Spørreundersøkelser</item>
+        <item lang="no" id="required_not_answered">Du må svare på alle de obligatoriske spørsmålene</item>
+        <item lang="no" id="thanks_for_voting">Takk for at du tok deg tid til å fullføre denne spørreundersøkelsen.</item>
+        <item lang="no" id="poll_header">Spørreundersøkelsens toptekst</item>
+        <item lang="no" id="poll_footer">Spørreundersøkelsens buntekst</item>
+        <item lang="no" id="poll_results">Melding for spørreundersøkelse</item>
+        <item lang="no" id="new_question">Nytt spørsmål</item>
+        <item lang="no" id="add_question">Legg til Spørsmål</item>
+        <item lang="no" id="editing_question">Redigerer spørsmål</item>
+        <item lang="no" id="add_poll">Legg til spørreundersøkelse</item>
+        <item lang="no" id="polls_total_submited">Totalt antall innsendte spørreundersøkelsesskjemaer</item>
+        <item lang="no" id="polls_total_completed">Antall spørreundersøkelsesskjemaer gjennomført i sitt fulle</item>
+        <item lang="no" id="polls_first_submited">Første spørreundersøkelsesskjema avgitt</item>
+        <item lang="no" id="polls_last_submited">Siste spørreundersøkelsesskjema sendt inn</item>
+        <item lang="no" id="statistics_by_questions">Statistikk etter spørsmål</item>
+        <item lang="no" id="view_answers">Vis svar</item>
+        <item lang="no" id="polls_votes">Stemmer</item>
+        <item lang="no" id="answers">Svar</item>
+        <item lang="no" id="question_text">Spørsmåltekst</item>
+        <item lang="no" id="select_single_type">Velg ett alternativ</item>
+        <item lang="no" id="select_one_or_more_type">Velg ett eller flere alternativer</item>
+        <item lang="no" id="text_answer_type">Gi et svar som tekst</item>
+        <item lang="no" id="answer_text">Svartekst</item>
+        <item lang="no" id="text_box">Tekstboks</item>
+
+        <item lang="ro" id="poll">Sondaj</item>
+        <item lang="ro" id="questions">Întrebări</item>
+        <item lang="ro" id="poll_statistics">Statistici sondaj</item>
+        <item lang="ro" id="add_polls_and_close">Adăugați chestionare și închideți</item>
+        <item lang="ro" id="add_polls">Adăugați chestionare</item>
+        <item lang="ro" id="required_not_answered">Ar trebui să răspundeți la toate întrebările obligatorii.</item>
+        <item lang="ro" id="thanks_for_voting">Vă mulțumim pentru că v-ați luat timp să completați acest sondaj!</item>
+        <item lang="ro" id="poll_header">Antetul sondajului</item>
+        <item lang="ro" id="poll_footer">Subsolul sondajului</item>
+        <item lang="ro" id="poll_results">Mesajul sondajului</item>
+        <item lang="ro" id="new_question">Întrebare nouă</item>
+        <item lang="ro" id="add_question">Adăugați o întrebare</item>
+        <item lang="ro" id="editing_question">Editare întrebare</item>
+        <item lang="ro" id="add_poll">Adăugați un chestionar</item>
+        <item lang="ro" id="polls_total_submited">Numărul total de sondaje susținute</item>
+        <item lang="ro" id="polls_total_completed">Numărul de sondaje completate</item>
+        <item lang="ro" id="polls_first_submited">Primul sondaj susținut</item>
+        <item lang="ro" id="polls_last_submited">Ultimul sondaj susținut</item>
+        <item lang="ro" id="statistics_by_questions">Statistici de întrebări</item>
+        <item lang="ro" id="view_answers">Vezi răspunsurile</item>
+        <item lang="ro" id="polls_votes">Voturi</item>
+        <item lang="ro" id="answers">Răspunsuri</item>
+        <item lang="ro" id="question_text">Textul întrebării</item>
+        <item lang="ro" id="select_single_type">Selectați o opțiune unică</item>
+        <item lang="ro" id="select_one_or_more_type">Selectează una sau mai multe opțiuni</item>
+        <item lang="ro" id="text_answer_type">Furnizați un răspuns textual</item>
+        <item lang="ro" id="answer_text">Textul răspunsului</item>
+        <item lang="ro" id="text_box">Căsuță text</item>
+
+        <item lang="ru" id="poll">Опрос</item>
+        <item lang="ru" id="questions">Вопросы</item>
+        <item lang="ru" id="poll_statistics">Статистика опроса</item>
+        <item lang="ru" id="add_polls_and_close">Добавить опросы и закрыть</item>
+        <item lang="ru" id="add_polls">Добавить опросы</item>
+        <item lang="ru" id="required_not_answered">Вы должны ответить на все обязательные вопросы.</item>
+        <item lang="ru" id="thanks_for_voting">Спасибо за участие в опросе.</item>
+        <item lang="ru" id="poll_show_results">Отображать результаты для участников опроса</item>
+        <item lang="ru" id="poll_results_nobody">никому</item>
+        <item lang="ru" id="poll_results_voted">проголосовавшим</item>
+        <item lang="ru" id="poll_results_everybody">всем (во всплывающем окне)</item>
+        <item lang="ru" id="poll_header">Верхний колонтитул опроса</item>
+        <item lang="ru" id="poll_footer">Нижний колонтитул опроса</item>
+        <item lang="ru" id="poll_results">Сообщение по завершению опроса</item>
+        <item lang="ru" id="new_question">Новый вопрос</item>
+        <item lang="ru" id="add_question">Добавить вопрос</item>
+        <item lang="ru" id="editing_question">Редактирование вопроса</item>
+        <item lang="ru" id="add_poll">Добавить опрос</item>
+        <item lang="ru" id="polls_total_submited">Общее количество заполненных форм</item>
+        <item lang="ru" id="polls_total_completed">Количество полностью заполненных форм</item>
+        <item lang="ru" id="polls_first_submited">Первая заполненная форма</item>
+        <item lang="ru" id="polls_last_submited">Последняя заполненная форма</item>
+        <item lang="ru" id="statistics_by_questions">Статистика вопросов</item>
+        <item lang="ru" id="view_answers">Посмотреть ответы</item>
+        <item lang="ru" id="polls_votes">Голоса</item>
+        <item lang="ru" id="answers">Ответы</item>
+        <item lang="ru" id="question_text">Текст вопроса</item>
+        <item lang="ru" id="select_single_type">Выбрать один вариант</item>
+        <item lang="ru" id="select_one_or_more_type">Выбрать один или несколько вариантов</item>
+        <item lang="ru" id="text_answer_type">Дать свой ответ</item>
+        <item lang="ru" id="answer_text">Текст ответа</item>
+        <item lang="ru" id="text_box">Текстовое поле</item>
+
+        <item lang="sl" id="poll">Anketa</item>
+        <item lang="sl" id="questions">Vprašanja</item>
+        <item lang="sl" id="poll_statistics">Statistika ankete</item>
+        <item lang="sl" id="add_polls_and_close">Dodaj ankete in zapri</item>
+        <item lang="sl" id="add_polls">Dodaj ankete</item>
+        <item lang="sl" id="required_not_answered">Moral bi odgovorili na vsa vprašanja.</item>
+        <item lang="sl" id="thanks_for_voting">Hvala, ker ste si vzeli čas za dokončanje te ankete.</item>
+        <item lang="sl" id="poll_header">Glava ankete</item>
+        <item lang="sl" id="poll_footer">Vznožje ankete</item>
+        <item lang="sl" id="poll_results">Sporočilo ankete</item>
+        <item lang="sl" id="new_question">Novo vprašanje</item>
+        <item lang="sl" id="add_question">Dodaj vprašanje</item>
+        <item lang="sl" id="editing_question">Urejanje vprašanja</item>
+        <item lang="sl" id="add_poll">Dodaj anketo</item>
+        <item lang="sl" id="polls_total_submited">Skupno število predloženih obrazcev ankete</item>
+        <item lang="sl" id="polls_total_completed">Število anketnih obrazcev je v celoti zaključeno</item>
+        <item lang="sl" id="polls_first_submited">Prva oblika ankete predložena</item>
+        <item lang="sl" id="polls_last_submited">Zadnja oblika ankete predložena</item>
+        <item lang="sl" id="statistics_by_questions">Statistika po vprašanjih</item>
+        <item lang="sl" id="view_answers">Prikaži odgovore</item>
+        <item lang="sl" id="polls_votes">Glasovi</item>
+        <item lang="sl" id="answers">Odgovori</item>
+        <item lang="sl" id="question_text">Besedilo vprašanja</item>
+        <item lang="sl" id="select_single_type">Izberite eno možnost</item>
+        <item lang="sl" id="select_one_or_more_type">Izberite eno ali več možnosti</item>
+        <item lang="sl" id="text_answer_type">Navedite tekstovni odgovor</item>
+        <item lang="sl" id="answer_text">Besedilo odgovora</item>
+        <item lang="sl" id="text_box">Okvir</item>
+
+        <item lang="zh" id="poll">投票</item>
+        <item lang="zh" id="questions">问题</item>
+        <item lang="zh" id="poll_statistics">投票统计</item>
+        <item lang="zh" id="add_polls_and_close">添加投票并关闭</item>
+        <item lang="zh" id="add_polls">添加投票</item>
+        <item lang="zh" id="required_not_answered">您应该回答所有必须的问题</item>
+        <item lang="zh" id="thanks_for_voting">谢谢您花时间完成投票.</item>
+        <item lang="zh" id="poll_show_results">可见投票结果的</item>
+        <item lang="zh" id="poll_results_nobody">没有人</item>
+        <item lang="zh" id="poll_results_voted">投票会员</item>
+        <item lang="zh" id="poll_results_everybody">每个人(在弹出窗口中)</item>
+        <item lang="zh" id="poll_header">投票页眉</item>
+        <item lang="zh" id="poll_footer">投票页脚</item>
+        <item lang="zh" id="poll_results">投票信息</item>
+        <item lang="zh" id="new_question">新的问题</item>
+        <item lang="zh" id="add_question">添加问题</item>
+        <item lang="zh" id="editing_question">编辑问题</item>
+        <item lang="zh" id="add_poll">添加投票</item>
+        <item lang="zh" id="polls_total_submited">提交的投票表格总数</item>
+        <item lang="zh" id="polls_total_completed">投票表格数量全部完成</item>
+        <item lang="zh" id="polls_first_submited">第一次投票表格提交</item>
+        <item lang="zh" id="polls_last_submited">最后一次投票表格提交</item>
+        <item lang="zh" id="statistics_by_questions">问题统计</item>
+        <item lang="zh" id="view_answers">查看回复</item>
+        <item lang="zh" id="polls_votes">投票</item>
+        <item lang="zh" id="answers">回复</item>
+        <item lang="zh" id="question_text">问题正文</item>
+        <item lang="zh" id="select_single_type">选择单一选项</item>
+        <item lang="zh" id="select_one_or_more_type">选择一个或多个选项</item>
+        <item lang="zh" id="text_answer_type">提供一个文本回答</item>
+        <item lang="zh" id="answer_text">文本回复</item>
+        <item lang="zh" id="text_box">文本框</item>
+        <item lang="bg" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Съобщение, което се показва след като анкетата е завършена.</item>
+
+        <item lang="da" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Besked, der vises i butiksfacade efter valget er afsluttet.</item>
+
+        <item lang="el" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Μήνυμα που εμφανίζεται στην κεντρική σελίδα του καταστήματος  μετά την ολοκλήρωση της ψηφοφορίας.</item>
+
+        <item lang="it" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Messaggio visualizzato nella vetrina dopo il sondaggio completato.\n</item>
+
+        <item lang="nl" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Bericht dat getoond wordt als de enquête beëindigd is.</item>
+
+        <item lang="no" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Melding som vises på butikkforsiden etter at spørreundersøkelsen er fullført.</item>
+
+        <item lang="ro" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Mesajul care e afișat după ce chestionarul este finalizat.</item>
+
+        <item lang="ru" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">Сообщение, отображаемое в магазине после завершения опроса.</item>
+
+        <item lang="zh" id="tt_addons_polls_hooks_pages_tabs_content_post_poll_results">投票完毕后在店面中显示的消息.</item>
+    </language_variables>
+    <functions>
+        <item for="uninstall">fn_polls_remove_pages</item>
+    </functions>
+</addon>

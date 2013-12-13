@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>buy_together</id>
+    <name>Buy together</name>
+    <description>Allows you to set up share discounts on certain product combinations</description>
+    <version>1.0</version>
+    <priority>100</priority>
+    <position>0</position>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <language_variables>
+        <item lang="en" id="buy_together">Buy together</item>
+        <item lang="en" id="specify_options">Specify options</item>
+        <item lang="en" id="total_list_price">Total list price</item>
+        <item lang="en" id="price_for_all">Price for all</item>
+        <item lang="en" id="add_all_to_cart">Add all to cart</item>
+        <item lang="en" id="editing_combination">Editing combination</item>
+        <item lang="en" id="buy_together_calculation_information">Total price: [total_price], Discount: [discount], Combination price: [combination_price]</item>
+        <item lang="en" id="display_in_promotions">Display in promotions</item>
+        <item lang="en" id="combination_products">Combination products</item>
+        <item lang="en" id="share_discount">Share discount</item>
+        <item lang="en" id="buy_together_is_not_compatible_with_configurator">[product_name] cannot be added to combination. Buy together is not compatible with the Product configurator addon</item>
+        <item lang="en" id="buy_together_is_not_compatible_with_recurring_billing">[product_name] cannot be added to combination. Buy together is not compatible with the Recurring billing addon</item>
+        <item lang="en" id="buy_together_combination_cannot_be_added">Combination cannot be added to cart</item>
+        <item lang="en" id="buy_together_product_was_removed">[product] did not have enough amount ([amount]) and was removed from the cart</item>
+        <item lang="en" id="buy_together_fill_the_mandatory_fields">Please specify product options before adding this product combination to the cart.</item>
+        <item lang="ru" id="add_all_to_cart">Добавить в корзину</item>
+        <item lang="ru" id="buy_together">Комбинации товаров</item>
+        <item lang="ru" id="buy_together_calculation_information">Итоговая цена: [total_price], Скидка [discount], Цена комбинации: [combination_price]</item>
+        <item lang="ru" id="buy_together_combination_cannot_be_added">Комбинация не может быть добавлена в корзину</item>
+        <item lang="ru" id="buy_together_fill_the_mandatory_fields">Пожалуйста, выберите параметры товара перед добавлений данной комбинации товаров в корзину.</item>
+        <item lang="ru" id="buy_together_is_not_compatible_with_configurator">[product_name] не может быть добавлен в комбинацию. Модуль "Комбинации товаров" не совместим с модулем "Конфигуратор товаров"</item>
+        <item lang="ru" id="buy_together_is_not_compatible_with_recurring_billing">[product_name] не может быть добавлен в комбинацию. Модуль "Комбинации товаров" не совместим с модулем "Оплата в рассрочку"</item>
+        <item lang="ru" id="buy_together_product_was_removed">[product] не имеет достаточного кол-ва на складу ([amount]) и был удален из корзины.</item>
+        <item lang="ru" id="combination_products">Комбинация товаров</item>
+        <item lang="ru" id="display_in_promotions">Показывать в поощрениях</item>
+        <item lang="ru" id="editing_combination">Редактирование комбинации</item>
+        <item lang="ru" id="price_for_all">Цена для всех</item>
+        <item lang="ru" id="share_discount">Поделить скидку</item>
+        <item lang="ru" id="specify_options">Задать параметры</item>
+        <item lang="ru" id="total_list_price">Итоговая рыночная цена</item>
+        
+        <item lang="zh" id="buy_together">一起购买</item>
+        <item lang="zh" id="specify_options">指定选项</item>
+        <item lang="zh" id="total_list_price">整个清单价格</item>
+        <item lang="zh" id="price_for_all">全部价格</item>
+        <item lang="zh" id="add_all_to_cart">添加全部到购物车</item>
+        <item lang="zh" id="editing_combination">编辑组合</item>
+        <item lang="zh" id="buy_together_calculation_information">总价: [total_price], 折扣: [discount], 组合价格: [combination_price]</item>
+        <item lang="zh" id="display_in_promotions">在促销中显示</item>
+        <item lang="zh" id="combination_products">组合产品</item>
+        <item lang="zh" id="share_discount">共享折扣</item>
+        <item lang="zh" id="buy_together_is_not_compatible_with_configurator">[product_name] 产品无法添加到组合中.一起购买与此产品附加配置不一致</item>
+        <item lang="zh" id="buy_together_is_not_compatible_with_recurring_billing">[product_name] 产品无法添加到组合中. 一起购买与附加周期性帐单不一致</item>
+        <item lang="zh" id="buy_together_combination_cannot_be_added">组合无法添加到购物车</item>
+        <item lang="zh" id="buy_together_product_was_removed">[product] 数量不足([amount])已从购物车移除</item>
+        <item lang="zh" id="buy_together_fill_the_mandatory_fields">请指定产品选项前添加此产品组合到购物车.</item>
+    </language_variables>
+    <queries>
+        <item>DROP TABLE IF EXISTS `?:buy_together`</item>
+        <item>DROP TABLE IF EXISTS `?:buy_together_descriptions`</item>
+        <item>
+            CREATE TABLE `?:buy_together` (
+                `chain_id` int(10) unsigned NOT NULL auto_increment,
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                `products` text,`modifier` decimal(12,3) unsigned NOT NULL default '0',
+                `modifier_type` varchar(20) NOT NULL default 'by_fixed',
+                `date_from` int(11) unsigned NOT NULL default '0',
+                `date_to` int(11) unsigned NOT NULL default '0',
+                `display_in_promotions` char(1) NOT NULL default 'Y',
+                `status` char(1) NOT NULL default 'D',
+                PRIMARY KEY (`chain_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        </item>
+        <item>
+            CREATE TABLE `?:buy_together_descriptions` (
+                `chain_id` int(10) unsigned NOT NULL,
+                `name` varchar(50) NOT NULL default '',
+                `description` mediumtext,
+                `lang_code` char(2) NOT NULL default '',
+                PRIMARY KEY  (`chain_id`,`lang_code`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:buy_together`</item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:buy_together_descriptions`</item>
+    </queries>
+    <translations>
+        <item for="name" lang="ru">Комбинации товаров</item>
+        <item for="description" lang="ru">Позволяет устанавливать общие скидки на конкретные комбинации товаров</item>
+        <item for="name" lang="zh">一起购买</item>
+        <item for="description" lang="zh">允许您对某些产品组合设置共享折扣</item>
+    </translations>
+</addon>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>customers_also_bought</id>
+    <name>Customers also bought</name>
+    <description>Makes it possible to create a special block for the products often purchased along with the current one</description>
+    <version>1.0</version>
+    <priority>900</priority>
+    <position>110</position>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="de">andere vom Kunden gekaufte Artikel</item>
+        <item for="name" lang="es">Clientes también compraron</item>
+        <item for="name" lang="fr">Les clients ont aussi acheté</item>
+        <item for="name" lang="it">I nostri clienti hanno anche comprato</item>
+        <item for="name" lang="nl">Klanten kochten ook</item>
+        <item for="name" lang="da">Kunderne har også købt</item>
+        <item for="name" lang="el">Οι πελάτες αγόρασαν επίσης</item>
+        <item for="name" lang="ro">Clienții de asemenea au cumpărat</item>
+        <item for="name" lang="ru">Сопутствующие товары</item>
+        <item for="name" lang="sl">Kupci so kupili tudi</item>
+        <item for="name" lang="zh">客户同时购买</item>
+        <item for="description" lang="ru">Позволяет создать блок товаров, которые чаще всего покупают вместе с данным</item>
+        <item for="description" lang="zh">可以给经常与当前产品一起购买的产品创建一个特殊的块</item>
+    </translations>
+    <queries>
+        <item for="demo" type='file'>database/demo.sql</item>
+        <item>DROP TABLE IF EXISTS ?:also_bought_products;</item>
+        <item>
+            CREATE TABLE `?:also_bought_products` (
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                `related_id` mediumint(8) unsigned NOT NULL default '0',
+                `amount` smallint(5) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`product_id`,`related_id`)
+                ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:also_bought_products;</item>
+    </queries>
+</addon>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>bestsellers</id>
+    <name>Bestsellers &amp; on sale products</name>
+    <description>Collects best selling &amp; on sale product data and adds block fillings to show such products</description>
+    <version>1.0</version>
+    <priority>2300</priority>
+    <position>120</position>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <queries>
+        <item for="demo" type='file'>database/demo.sql</item>
+        <item>DROP TABLE IF EXISTS ?:product_sales</item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:product_sales` (
+                `category_id` mediumint(8) unsigned NOT NULL default '0',
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                `amount` mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`category_id`,`product_id`),
+                KEY `pa` (`product_id`,`amount`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:product_sales</item>
+    </queries>
+    <translations>
+        <item for="name" lang="ru">Бестселлеры и товары со скидкой</item>
+        <item for="description" lang="ru">Собирает информацию о наиболее покупаемых товарах и товарах со скидкой, а также позволяет заполнять блок товаров подобными товарами</item>
+    </translations>
+    <language_variables>
+        <item lang="en" id="sort_by_bestsellers_asc">Sort by Bestselling: Low to High</item>
+        <item lang="en" id="sort_by_bestsellers_desc">Sort by Bestselling</item>
+        <item lang="ru" id="sort_by_bestsellers_asc">Сортировать по продаваемости: по возрастанию</item>
+        <item lang="ru" id="sort_by_bestsellers_desc">Сортировать по продаваемости</item>
+        
+        <item lang="en" id="sort_by_on_sale_asc">Sort by discount: Low to High</item>
+        <item lang="en" id="sort_by_on_sale_desc">Sort by discount: High to Low</item>
+        <item lang="ru" id="sort_by_on_sale_asc">Сортировать по размеру скидки: Высокие скидки в начале</item>
+        <item lang="ru" id="sort_by_on_sale_desc">Сортировать по размеру скидки: Высокие скидки в конце</item>
+
+        <item lang="zh" id="sort_by_bestsellers_asc">按畅销排序: 低到高</item>
+        <item lang="zh" id="sort_by_bestsellers_desc">按畅销排序</item>
+        <item lang="en" id="sales_amount">Sales amount</item>
+        <item lang="en" id="bestselling">Bestselling</item>
+
+        <item lang="bg" id="sales_amount">Брой продажби</item>
+        <item lang="bg" id="bestselling">Най-продаван</item>
+
+        <item lang="da" id="sales_amount">Salgs beløb</item>
+        <item lang="da" id="bestselling">Mest solgte</item>
+
+        <item lang="el" id="sales_amount">Ποσό πωλήσεων</item>
+        <item lang="el" id="bestselling">Καλύτεροι πωλητές</item>
+
+        <item lang="it" id="sales_amount">Importo vendite</item>
+        <item lang="it" id="bestselling">Più venduto</item>
+
+        <item lang="no" id="sales_amount">Salgssum</item>
+        <item lang="no" id="bestselling">Bestselgende</item>
+
+        <item lang="ro" id="sales_amount">Suma de vânzări</item>
+        <item lang="ro" id="bestselling">Cele mai vândute</item>
+
+        <item lang="ru" id="sales_amount">Количество продаж</item>
+        <item lang="ru" id="bestselling">Кол-во продаж</item>
+
+        <item lang="sl" id="sales_amount">Prodajna količina</item>
+        <item lang="sl" id="bestselling">Uspešnica</item>
+
+        <item lang="zh" id="sales_amount">销售金额</item>
+        <item lang="zh" id="bestselling">热销产品</item>
+
+        <item lang="en" id="on_sale">On sale</item>
+        <item lang="ru" id="on_sale">Товары со скидкой</item>
+    </language_variables>
+</addon>

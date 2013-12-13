@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>seo</id>
+    <name>SEO</name>
+    <description>Adds Search engine-friendly URLs support</description>
+    <version>1.0</version>
+    <priority>1800</priority>
+    <position>160</position>
+    <description>requires URL manipulation engine - mod_rewrite or isapi_rewrite</description>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="da">SEO</item>
+        <item for="name" lang="el">SEO (απαιτείται μηχανή χειραγώγησης URL  - mod_rewrite ή isapi_rewrite)</item>
+        <item for="name" lang="it">SEO</item>
+        <item for="name" lang="ro">SEO</item>
+        <item for="name" lang="sl">SEO</item>
+        <item for="name" lang="zh">搜索引擎优化</item>
+        <item for="description" lang="it">richiedemod_rewrite o isapi_rewrite</item>
+        <item for="description" lang="ro">necesitră motorul de manipulare a URL-ului - mod_rewrite or isapi_rewrite</item>
+        <item for="description" lang="ru">Добавляет поддержку удобных для восприятия человеком URLs</item>
+        <item for="description" lang="sl">zahteva URL manipulacijo - mod_rewrite ali isapi_rewrite</item>
+        <item for="description" lang="zh">添加搜索引擎 - 友好的URL支持</item>
+    </translations>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="seo_product_type">
+                        <name>Product/page SEF URL format</name>
+                        <type>selectbox</type>
+                        <default_value>product_category</default_value>
+                        <variants>
+                            <item id="product_file">
+                                <name>product_name.html</name>
+                                <translations>
+                                    <item lang="es">nombre_producto.html</item>
+                                    <item lang="da">produkt_navn.html</item>
+                                    <item lang="ro">nume_produs.html</item>
+                                    <item lang="zh">product_name.html</item>
+                                </translations>
+                            </item>
+                            <item id="product_category">
+                                <name>category_name/[subcategory_name/]product_name.html</name>
+                                <translations>
+                                    <item lang="es">nombre_categoria/[nombre_subcategoria/]nombre_producto.html</item>
+                                    <item lang="ro">nume_categorie/[nume_subcategorie/]nume_produs.html</item>
+                                    <item lang="zh">category_name/[subcategory_name/]product_name.html</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">Tipo de SEF URL de productos (optimización para motores de busqueda)</item>
+                            <item lang="fr">Product SEF URL type</item>
+                            <item lang="da">Produkt / side SEF URL-format</item>
+                            <item lang="el">Μορφή Προϊόντος/Σελίδα SEF URL</item>
+                            <item lang="ro">Format Produs/pagină SEF URL</item>
+                            <item lang="ru">Формат SEF URL для товаров/страниц</item>
+                            <item lang="sl">Izdelek/stran SEF URL formata</item>
+                            <item lang="zh">产品SEF URL类型</item>
+                        </translations>
+                    </item>
+                    <item id="seo_category_type">
+                        <name>Categories SEF URL format</name>
+                        <type>selectbox</type>
+                        <default_value>category</default_value>
+                        <variants>
+                            <item id="file">
+                                <name>[parent_item_name/]item_name[-page2].html</name>
+                                <translations>
+                                    <item lang="da">[parent_item_name/]item_name[-page2].html</item>
+                                    <item lang="ro">[nume_de_bază_produs/]nume_produs[-pagina-2].html</item>
+                                    <item lang="zh">[parent_item_name/]item_name[-page2].html</item>
+                                </translations>
+                            </item>
+                            <item id="category">
+                                <name>[parent_item_name/]item_name/[page2/]</name>
+                                <translations>
+                                    <item lang="da">[parent_item_name/]item_name/[page2/]</item>
+                                    <item lang="ro">[nume_de_bază_produs/]nume_produs/[pagina-2/]</item>
+                                    <item lang="zh">[parent_item_name/]item_name/[page2/]</item>
+                                </translations>
+                            </item>
+                            <item id="root_category">
+                                <name>item_name/[page2/]</name>
+                                <translations>
+                                    <item lang="da">navn_navn / [Side2 /]</item>
+                                    <item lang="ro">nume_produs/[pagina2/]</item>
+                                    <item lang="zh">item_name/[page2/]</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">Tipo de SEO àra Categorías, Fabricantes y Temas</item>
+                            <item lang="da">Categories SEF URL format</item>
+                            <item lang="el">Κατηγορία SEF μορφής URL</item>
+                            <item lang="ro">Format Categorie SEF URL</item>
+                            <item lang="ru">Формат SEF URL для категорий</item>
+                            <item lang="zh">分类SEF URL格式</item>
+                        </translations>
+                    </item>
+                    <item id="single_url">
+                        <name>Use single URL for all languages</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="da">Brug enkelt webadresse til alle sprog</item>
+                            <item lang="el">Χρήση μονής URL για όλες τις γλώσσες</item>
+                            <item lang="ro">Folosește un singur URL pentru toate limbiile</item>
+                            <item lang="ru">Использовать один и тот же URL для всех языков</item>
+                            <item lang="sl">Uporaba enotnega URL za vse jezike</item>
+                            <item lang="zh">所有语言使用单一的URL</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="seo_language">
+                        <name>Show language in the URL</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                        <translations>
+                            <item lang="es">Mostrar lenguaje en la URL</item>
+                            <item lang="da">Vis sprog i URL</item>
+                            <item lang="el">Προβολή γλώσσας στην διεύθυνση URL</item>
+                            <item lang="ro">Afișează limba în URL</item>
+                            <item lang="ru">Отображать язык в URL</item>
+                            <item lang="sl">Pokaži jezik v URL</item>
+                            <item lang="zh">在URL中显示语言</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="multi_language">
+                        <name>Support multi-language URLs</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                        <translations>
+                            <item lang="ru">Поддержка многоязычных URL</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:seo_names;</item>
+        <item>
+            CREATE TABLE `?:seo_names` (
+                `name` varchar(250) NOT NULL default '',
+                `object_id` mediumint(8) unsigned NOT NULL default '0',
+                `company_id` int(11) unsigned NOT NULL default '0',
+                `type` char(1) NOT NULL default '',
+                `dispatch` varchar(64) NOT NULL default '',
+                `lang_code` char(2) not null default '',
+                PRIMARY KEY  (`object_id`,`type`,`dispatch`,`lang_code`, `company_id`),
+                KEY `name` (`name`,`lang_code`),
+                KEY `type` (`name`,`type`,`lang_code`),
+                KEY (dispatch)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_seo_rules', 'Y', 'addons');</item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO  ?:privileges (privilege, is_default, section_id) VALUES ('view_seo_rules', 'Y', 'addons');</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'view_seo_rules' OR privilege LIKE 'manage_seo_rules'</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:seo_names;</item>
+        <item for="install" type="file">database/demo.sql</item>
+        <item for="install" type="file" editions="ULTIMATE">database/demo_ultimate.sql</item>
+    </queries>
+
+    <language_variables>
+
+        <item id="controller_description" lang="en"><![CDATA[If you want to specify a SEO-name for the URL, e.g. http://example.com/index.php?dispatch=<b>categories.catalog</b>, you need to enter the "<b>categories.catalog</b>" value into the "<b>The value of the "dispatch" parameter from the URL</b>" field and specify the SEO name in the "<b>SEO name</b>" field.]]></item>
+        <item id="controller_description" lang="bg"><![CDATA[Ако искате да зададете SEO име за URL http://example.com/index.php?dispatch=<b>categories.catalog</b>, трябва да въведете "<b>categories.catalog</b>" за стойност в полето "<b>Стойност на "dispatch" параметъра за URL</b>" и определено SEO име в "<b>SEO name</b>" полето.]]></item>
+        <item id="controller_description" lang="da"><![CDATA[del af webadressen, der vil indikere en erstatning (f.eks <b>categories.catalog</b> for URL index.php?dispatch=<b>categories.catalog</b>)]]></item>
+        <item id="controller_description" lang="el"><![CDATA[Εάν θέλετε να καθορίσετε ένα SEO-όνομα για τη URL http://example.com/index.php?dispatch=<b>categories.catalog</b>, πρέπει να εισάγετε την  "<b>categories.catalog</b>" αξία μέσα  στο "<b>The value of the "dispatch" parameter from the URL</b>" πεδίο και καθορίστε το όνομα SEO στο"<b>SEO name</b>" πεδίο.]]></item>
+        <item id="controller_description" lang="it"><![CDATA[Se vuoi specificare un SEO-name per es: http://example.com/index.php?dispatch=<b>categories.catalog</b>. devi inserire il valore "<b>categories.catalog</b>" nel campo "<b>valore del parametro "dispatch" dell\'URL</b>" e specificare SEO name nel campo "<b>SEO name</b>"]]></item>
+        <item id="controller_description" lang="no"><![CDATA[Hvis du vil angi et SEO-navn for URL http://example.com/index.php?dispatch=<b>categories.catalog</b>, må du skrive inn "<b>categories.catalog</b>"-verdien inn i feltet som heter "<b>Verdien av "dispatch" parameteren i URL\'en</b>" og angi SEO navn i "<b>SEO navn</ b>"-feltet.]]></item>
+        <item id="controller_description" lang="ro"><![CDATA[Partea URL-ului care va indica o înlocuire (e.g. <b>categories.catalog</b> pentru URL-ul index.php?dispatch=<b>categories.catalog</b>)]]></item>
+        <item id="controller_description" lang="ru"><![CDATA[Например, если вы хотите задать SEO имя для URL http://example.com/index.php?dispatch=<b>categories.catalog</b>, вам необходимо ввести в поле "<b>Значение параметра "dispatch" из URL</b>" значение "<b>categories.catalog</b>" и задать SEO имя.]]></item>
+        <item id="controller_description" lang="sl"><![CDATA[Del URL kaže, da bo potrebna zamenjava (npr <b>categories.catalog</b> za URL index.php?dispatch=<b>categories.catalog</b>)]]></item>
+        <item id="controller_description" lang="zh"><![CDATA[如果您的URL想要一个特殊的SEO名称http://example.com/index.php?dispatch=<b>categories.catalog</b>,您需要输入 "<b>categories.catalog</b>"区域的值"<b>这个是URL中"dispatch"参数的值</b>"与指定SEO的名字"<b>SEO name</b>".]]></item>
+        
+        <item lang="en" id="seo_name">SEO name</item>
+        <item lang="en" id="warning_seo_urls_disabled">SEO-friendly URLs are disabled. Check your web server and URL manipulation engine settings.</item>
+        <item lang="en" id="seo">SEO</item>
+        <item lang="en" id="dispatch_value">Dispatch value</item>
+        <item lang="en" id="url_dispatch_part">The value of the "dispatch" parameter from the URL</item>
+        <item lang="en" id="new_rule">New rule</item>
+        <item lang="en" id="seo_rules">SEO rules</item>
+        <item lang="en" id="seo_page_title">page [n]</item>
+        <item lang="en" id="privileges.manage_seo_rules">Manage SEO rules</item>
+        <item lang="en" id="privileges.view_seo_rules">View SEO rules</item>
+
+        <item lang="bg" id="seo_name">SEO Име</item>
+        <item lang="bg" id="warning_seo_urls_disabled">SEO-friendly URLs са неактивни. Проверете вашият уеб сървър и модула за работа с URL.</item>
+        <item lang="bg" id="dispatch_value">Стойност за изпращане</item>
+        <item lang="bg" id="url_dispatch_part">Стойност на параметъра "dispatch" от URL</item>
+        <item lang="bg" id="new_rule">Ново правило</item>
+        <item lang="bg" id="seo_rules">SEO правила</item>
+
+        <item lang="da" id="seo_name">SEO navn</item>
+        <item lang="da" id="warning_seo_urls_disabled">SEO URL'er kan ikke arbejde for nu - de var handicappede. Tjek venligst din webserver, og URL manipulation motor indstillinger.</item>
+        <item lang="da" id="new_rule">Ny regel</item>
+        <item lang="da" id="seo_rules">SEO regler</item>
+
+        <item lang="el" id="seo_name">Όνομα SEO </item>
+        <item lang="el" id="warning_seo_urls_disabled">SEO-friendly URLs είναι απενεργοποιημένες. Ελέγξτε τον διαδικτυακό σας διακομιστή και τις ρυθμίσεις χειραγώγησης της URL engine.</item>
+        <item lang="el" id="dispatch_value">Αξία αποστολής</item>
+        <item lang="el" id="url_dispatch_part"> Η αξία της "dispatch" παραμέτρου από την URL</item>
+        <item lang="el" id="new_rule">Νέος κανόνας</item>
+        <item lang="el" id="seo_rules">Κανόνες SEO </item>
+
+        <item lang="es" id="seo_name">Nombre SEO</item>
+
+        <item lang="fr" id="seo_name">SEO nom</item>
+
+        <item lang="it" id="seo_name">Nome SEO</item>
+        <item lang="it" id="warning_seo_urls_disabled">SEO-friendly URLs sono disabilitati. Controlla il tuo server Web e URL nelle impostazioni del motore di controllo</item>
+        <item lang="it" id="dispatch_value">Valore di spedizione</item>
+        <item lang="it" id="url_dispatch_part">Il valore del parametro "spedizione" dall'URL</item>
+        <item lang="it" id="new_rule">Nuova regola</item>
+        <item lang="it" id="seo_rules">Regole SEO</item>
+
+        <item lang="no" id="seo_name">SEO navn</item>
+        <item lang="no" id="warning_seo_urls_disabled">SEO-vennlige nettadresser er deaktivert. Sjekk din web server og URL manipulasjon motor innstillinger.</item>
+        <item lang="no" id="dispatch_value">Dispatch-verdi fra URL</item>
+        <item lang="no" id="url_dispatch_part">Verdien av "ekspederings" parameteren fra URL'en</item>
+        <item lang="no" id="new_rule">Ny regel</item>
+        <item lang="no" id="seo_rules">SEO regler</item>
+
+        <item lang="ro" id="seo_name">Numele SEO</item>
+        <item lang="ro" id="warning_seo_urls_disabled">URL-urile SEO URLs nu pot funcționa acum - au fost dezactivate. Vă rugăm verificați serverul web și setările de manipulare a URL-urilor.</item>
+        <item lang="ro" id="new_rule">O regulă nouă</item>
+        <item lang="ro" id="seo_rules">Reguli SEO</item>
+
+        <item lang="ru" id="seo_name">SEO имя</item>
+        <item lang="ru" id="warning_seo_urls_disabled">SEO ссылки не могут работать сейчас - они были выключены. Пожалуйста, проверьте настройки вашего веб-сервера и модуля работы с URL.</item>
+        <item lang="ru" id="dispatch_value">Значение dispatch</item>
+        <item lang="ru" id="url_dispatch_part">Значение параметра "dispatch" из URL</item>
+        <item lang="ru" id="new_rule">Новое правило</item>
+        <item lang="ru" id="seo_rules">SEO правила</item>
+        <item lang="ru" id="seo_page_title">страница [n]</item>
+        <item lang="ru" id="privileges.manage_seo_rules">Управление правилами SEO</item>
+        <item lang="ru" id="privileges.view_seo_rules">Просмотр правил SEO</item>
+
+        <item lang="sl" id="seo_name">SEO ime</item>
+        <item lang="sl" id="warning_seo_urls_disabled">SEO URL-ji za zdaj ne morejo delati - so onemogočeni. Prosimo, preverite vaše Apache mod_rewrite in nastavitve.</item>
+        <item lang="sl" id="new_rule">Novo pravilo</item>
+        <item lang="sl" id="seo_rules">SEO pravila</item>
+
+        <item lang="zh" id="seo_name">SEO 名称</item>
+        <item lang="zh" id="warning_seo_urls_disabled">SEO-friendly URLs已禁止.请检查您的 web 服务器和 URL 操作引擎设置.</item>
+        <item lang="zh" id="dispatch_value">调度值</item>
+        <item lang="zh" id="url_dispatch_part">来自URL的"dispatch"参数的值</item>
+        <item lang="zh" id="new_rule">新的规则</item>
+        <item lang="zh" id="seo_rules">SEO 规则</item>
+    </language_variables>
+    <functions>
+        <item for="install">fn_seo_install</item>
+    </functions>
+</addon>

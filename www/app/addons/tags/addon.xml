@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>tags</id>
+    <name>Tags</name>
+    <description>Enables product tags</description>
+    <version>1.0</version>
+    <priority>200</priority>
+    <position>200</position>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="el">Ετικέτες</item>
+        <item for="name" lang="it">Tag</item>
+        <item for="name" lang="ro">Etichete</item>
+        <item for="name" lang="ru">Теги</item>
+        <item for="name" lang="sl">Oznake</item>
+        <item for="name" lang="zh">标签</item>
+        <item for="description" lang="ru">Позволяет создавать теги для товаров</item>
+        <item for="description" lang="zh">启用产品标签</item>
+    </translations>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="tags_for_products">
+                        <name>Tags for products</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="fr">Personal delivery (for registered mail only)</item>
+                            <item lang="da">Etiketter for produkter</item>
+                            <item lang="el">Ετικέτες προιόντων</item>
+                            <item lang="ro">Etichete pentru produse</item>
+                            <item lang="ru">Теги для товаров</item>
+                            <item lang="sl">Oznake za proizvode</item>
+                            <item lang="zh">产品标签</item>
+                        </translations>
+                    </item>
+                    <item id="tags_for_pages">
+                        <name>Tags for pages</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                        <translations>
+                            <item lang="fr">Acknowledgement of delivery (for registered mail only)</item>
+                            <item lang="da">Etiketter for sider</item>
+                            <item lang="el">Ετικέτες σελίδων</item>
+                            <item lang="ro">Etichete pentru pagini</item>
+                            <item lang="ru">Теги для страниц</item>
+                            <item lang="sl">Oznak na strani</item>
+                            <item lang="zh">页面标签</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item for="demo" type='file'>database/demo.sql</item>
+        <item for="demo" type='file' editions="ULTIMATE">database/demo_ultimate.sql</item>
+        <item>DROP TABLE IF EXISTS ?:tag_links;</item>
+        <item>DROP TABLE IF EXISTS ?:tags;</item>
+        <item>
+            CREATE TABLE `?:tag_links` (
+                `tag_id` mediumint(8) unsigned NOT NULL,
+                `object_type` char(1) NOT NULL default 'P',
+                `object_id` mediumint(8) unsigned NOT NULL,
+                `user_id` mediumint(8) unsigned NOT NULL,
+                PRIMARY KEY  (`object_type`,`object_id`,`user_id`,`tag_id`),
+                KEY `tag_id` (`tag_id`),
+                KEY `user_id` (`user_id`),
+                KEY `ids` (`tag_id`,`user_id`,`object_type`,`object_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            CREATE TABLE `?:tags` (
+                `tag_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `company_id` int(11) unsigned NOT NULL default '0',
+                `tag` varchar(255) NOT NULL default '',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `status` char(1) NOT NULL default 'P',
+                PRIMARY KEY  (`tag_id`),
+                UNIQUE KEY `tag` (`tag`, `company_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:tag_links;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:tags;</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="block_tags">Tags</item>
+        <item lang="en" id="block_tags_description">Product tags</item>
+        <item lang="en" id="tag_modifications_saved">Modifications successfully saved. They will be applied after administrator's approval.</item>
+        <item lang="en" id="addons.tags.add_a_tag">add a tag</item>
+
+        <item lang="ru" id="block_tags">Теги</item>
+        <item lang="ru" id="block_tags_description">Теги товаров</item>
+        <item lang="ru" id="addons.tags.add_a_tag">добавить тег</item>
+        
+        <item lang="zh" id="block_tags">标签</item>
+        <item lang="zh" id="block_tags_description">产品标签</item>
+        <item lang="zh" id="tag_modifications_saved">成功保存修改.他们在管理员批准后将被应用.</item>
+        <item lang="en" id="items_marked_by_tag">Items marked by the tag "[tag]":</item>
+        <item lang="en" id="my_items_marked_by_tag">My items marked by the tag "[tag]":</item>
+        <item lang="en" id="tag">Tag</item>
+        <item lang="en" id="new_tag">New tag</item>
+        <item lang="en" id="add_tag">Add tag</item>
+
+        <item lang="bg" id="items_marked_by_tag">Артикули отличени с таг "[tag]":</item>
+        <item lang="bg" id="my_items_marked_by_tag">Моите артикули отбелязани с таг "[tag]":</item>
+        <item lang="bg" id="tag">Таг</item>
+        <item lang="bg" id="new_tag">Нов таг</item>
+        <item lang="bg" id="add_tag">Добави таг</item>
+
+        <item lang="da" id="items_marked_by_tag">Elementer markeret med tag "[tag]":</item>
+        <item lang="da" id="my_items_marked_by_tag">Mine emner præget af tag "[tag]":</item>
+        <item lang="da" id="tag">mærke</item>
+        <item lang="da" id="new_tag">Nye mærker</item>
+        <item lang="da" id="add_tag">Tilføj mærkat</item>
+
+        <item lang="el" id="items_marked_by_tag">Τα στοιχεία που επισημαίνονται με τη φράση:  "[tag]":</item>
+        <item lang="el" id="my_items_marked_by_tag">Τα αντικείμενα μου χαρακτηρίζονται από την ετικέτα "[tag]":</item>
+        <item lang="el" id="tag">Καρτέλα</item>
+        <item lang="el" id="new_tag">Νέα ετικέτα</item>
+        <item lang="el" id="add_tag">Προσθήκη ετικέτας</item>
+
+        <item lang="fr" id="items_marked_by_tag">Items marked by tag "[tag]":</item>
+        <item lang="fr" id="my_items_marked_by_tag">My items marked by tag "[tag]":</item>
+        <item lang="fr" id="new_tag">Nouveau tag</item>
+        <item lang="fr" id="add_tag">Ajouter un tag</item>
+
+        <item lang="it" id="items_marked_by_tag">Articoli segnati dal tag "[tag]":</item>
+        <item lang="it" id="my_items_marked_by_tag">I miei articoli contrassegnati dal tag "[tag]":</item>
+        <item lang="it" id="new_tag">Nuovo tag</item>
+        <item lang="it" id="add_tag">Aggiungi tag</item>
+
+        <item lang="no" id="items_marked_by_tag">Elementer merket med taggen "[tag]":</item>
+        <item lang="no" id="my_items_marked_by_tag">Mine elementer merket med "[tag]" taggen:</item>
+        <item lang="no" id="tag">Tagg</item>
+        <item lang="no" id="new_tag">Nye tagg</item>
+        <item lang="no" id="add_tag">Legg til tagg</item>
+
+        <item lang="ro" id="items_marked_by_tag">Produse marcate cu tag-ul "[tag]":</item>
+        <item lang="ro" id="my_items_marked_by_tag">Produsele mele marcate de tag-ul "[tag]":</item>
+        <item lang="ro" id="tag">Etichetă</item>
+        <item lang="ro" id="new_tag">Tag nou</item>
+        <item lang="ro" id="add_tag">Adăugați un tag</item>
+
+        <item lang="ru" id="items_marked_by_tag">Элементы обозначенные тегом "[tag]":</item>
+        <item lang="ru" id="my_items_marked_by_tag">Мои элементы помеченные тегом "[tag]":</item>
+        <item lang="ru" id="tag">Тег</item>
+        <item lang="ru" id="new_tag">Новый тег</item>
+        <item lang="ru" id="add_tag">Добавить тег</item>
+
+        <item lang="sl" id="items_marked_by_tag">Elementi označeni z oznako "[tag]":</item>
+        <item lang="sl" id="my_items_marked_by_tag">Moji predmeti označeni z oznako "[tag]":</item>
+        <item lang="sl" id="tag">Oznaka</item>
+        <item lang="sl" id="new_tag">Nova oznaka</item>
+        <item lang="sl" id="add_tag">Dodaj oznako</item>
+
+        <item lang="zh" id="items_marked_by_tag">项目标记的标签 "[tag]":</item>
+        <item lang="zh" id="my_items_marked_by_tag">我的项目标记的标签 "[tag]":</item>
+        <item lang="zh" id="tag">标签</item>
+        <item lang="zh" id="new_tag">新的标签</item>
+        <item lang="zh" id="add_tag">添加标签</item>
+    </language_variables>
+</addon>

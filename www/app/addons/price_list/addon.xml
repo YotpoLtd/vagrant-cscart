@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>price_list</id>
+    <name>Price list</name>
+    <description>Generates configurable price list in PDF or XLS</description>
+    <version>1.0</version>
+    <priority>4100</priority>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <!-- TABLE LAYOUT -->
+                    <item id="table_layout_header">
+                        <name>Table layout</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Разметка прайс-листа</item>
+                            <item lang="zh">表格排版</item>
+                        </translations>
+                    </item>
+                    <item id="price_list_fields">
+                        <name>Fields</name>
+                        <type>selectable_box</type>
+                        <default_value><![CDATA[#M#product_code=Y&product=Y&amount=Y&price=Y]]></default_value>
+                        <translations>
+                            <item lang="ru">Поля</item>
+                            <item lang="zh">字段</item>
+                        </translations>
+                    </item>
+                    <item id="price_list_sorting">
+                        <name>Sort by</name>
+                        <type>selectbox</type>
+                        <default_value>product_code</default_value>
+                        <translations>
+                            <item lang="ru">Сортировать по</item>
+                            <item lang="zh">排序</item>
+                        </translations>
+                    </item>
+                    <item id="group_by_category">
+                        <name>Group by category</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="ru">Группировать по категориям</item>
+                            <item lang="zh">目录组</item>
+                        </translations>
+                    </item>
+                    <item id="include_options">
+                        <name>Include product options</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                        <translations>
+                            <item lang="ru">Включать параметры товаров</item>
+                            <item lang="zh">包含产品选项</item>
+                        </translations>
+                    </item>
+                    <item id="xls_header">
+                        <name>XLS layout</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Разметка XLS</item>
+                            <item lang="zh">XLS排版</item>
+                        </translations>
+                    </item>
+                    <item id="xls_url">
+                        <name>XLS url</name>
+                        <type>info</type>
+                        <handler>fn_price_list_xls_url_info</handler>
+                    </item>
+                    <item id="pdf_header">
+                        <name>PDF layouts</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Разметка PDF</item>
+                            <item lang="zh">PDF排版</item>
+                        </translations>
+                    </item>
+                    <item id="pdf_url">
+                        <name>PDF url</name>
+                        <type>info</type>
+                        <handler>fn_price_list_pdf_url_info</handler>
+                    </item>
+                    <item id="clear_header">
+                        <name>Clear cache</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Почистить кеш</item>
+                            <item lang="zh">清除缓存</item>
+                        </translations>
+                    </item>
+                    <item id="clear_url">
+                        <name>Clear cache</name>
+                        <type>info</type>
+                        <handler>fn_price_list_clear_url_info</handler>
+                        <translations>
+                            <item lang="ru">Почистить кеш</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="en" id="price_list">Price list</item>
+        <item lang="en" id="selected_fields">Selected fields</item>
+        <item lang="en" id="xml_info">Use this link to download the price list in XLS (MS Excel) format</item>
+        <item lang="en" id="ult_xml_info">Use this links to download the price list in XLS (MS Excel) format</item>
+        <item lang="en" id="pdf_info">Use this link to download the price list in PDF format</item>
+        <item lang="en" id="ult_pdf_info">Use this links to download the price list in PDF format</item>
+        <item lang="en" id="clear_cache_info"><![CDATA[If columns were added or changed, please <a href="[clear_cache_url]">clear the cache</a> to regenerate the price list.]]></item>
+        <item lang="en" id="generating_pdf">Generating PDF. Please, be patient...</item>
+        <item lang="en" id="generating_xls">Generating XLS. Please, be patient...</item>
+        <item lang="en" id="xls_currencies_note">Please, note: the prices in XLS will be indicated in base currency.</item>
+        <item lang="en" id="price_list_ziparchive_not_installed"><![CDATA[Impossible to create XML price list. Please add zip support in PHP on your server. Follow <a href="http://www.php.net/manual/en/zip.installation.php">http://www.php.net/manual/en/zip.installation.php</a>.]]></item>
+        <item lang="ru" id="clear_cache_info"><![CDATA[Если были удалены или добавлены колонки, пожалуйста <a href="[clear_cache_url]">почистите кеш</a>, чтобы заново сгенерировать прайс-лист.]]></item>
+        <item lang="ru" id="generating_pdf">Генерация PDF. Пожалуйста, подождите...</item>
+        <item lang="ru" id="generating_xls">Генерация XLS. Пожалуйста, подождите...</item>
+        <item lang="ru" id="pdf_info">Используйте эту ссылку для скачивания прайс-листа в формате PDF</item>
+        <item lang="ru" id="price_list">Прайс-лист</item>
+        <item lang="ru" id="selected_fields">Выбранные поля</item>
+        <item lang="ru" id="ult_pdf_info">Используйте эту ссылку для скачивания прайс-листа в формате PDF</item>
+        <item lang="ru" id="ult_xml_info">Используйте эту ссылку для скачивания прайс-листа в формате XLS (MS Excel)</item>
+        <item lang="ru" id="xls_currencies_note">Пожалуйста, учтите: цены в файле XLS будут указаны в базовой валюте.</item>
+        <item lang="ru" id="xml_info">Используйте эту ссылку для скачивания прайс-листа в формате XLS (MS Excel)</item>
+        <item lang="ru" id="price_list_ziparchive_not_installed"><![CDATA[Невозможно создать прайс-лист в XML формате. Пожалуйста добавьте поддержку zip архивов в PHP на вашем сервере. Детали <a href="http://www.php.net/manual/ru/zip.installation.php">http://www.php.net/manual/ru/zip.installation.php</a>.]]></item>
+        
+        <item lang="zh" id="price_list">价格清单</item>
+        <item lang="zh" id="selected_fields">选择的字段</item>
+        <item lang="zh" id="xml_info">使用此连接去下载XLS(MS Excel)格式的价格列表</item>
+        <item lang="zh" id="ult_xml_info">使用此连接去下载XLS(MS Excel)格式的价格列表</item>
+        <item lang="zh" id="pdf_info">使用此连接去下载PDF格式的价格列表</item>
+        <item lang="zh" id="ult_pdf_info">使用此连接去下载PDF格式的价格列表</item>
+        <item lang="zh" id="clear_cache_info"><![CDATA[如果列被添加或更改, 请<a href="[clear_cache_url]">清除缓存</a>再生成价格清单.]]></item>
+        <item lang="zh" id="generating_pdf">生成PDF. 请耐心等待......</item>
+        <item lang="zh" id="generating_xls">生成XLS. 请耐心等待......</item>
+        <item lang="zh" id="xls_currencies_note">请注意: XLS中的价格将基于货币显示.</item>
+        <item lang="zh" id="price_list_ziparchive_not_installed"><![CDATA[无法创建XML价格清单. 请在服务器的PHP中增加zip支持. 连接 <a href="http://www.php.net/manual/en/zip.installation.php">http://www.php.net/manual/en/zip.installation.php</a>.]]></item>
+        <item lang="it" id="ult_xml_info">Usa questo link per scaricare il listino prezzi in formato XLS (MS Excel)\n</item>
+        <item lang="it" id="xml_info">Usa questo link per scaricare il listino in formato XLS (MS Excel)</item>
+        <item lang="it" id="xls_currencies_note">Nota bene: il prezzo in XLS sarà indicato nella corrente valuta</item>
+        <item lang="it" id="ult_pdf_info">Usa questo link per scaricare il listino prezzi in formato PDF\n</item>
+        <item lang="it" id="pdf_info">Usa questo link per scaricare il listino prezzi in formato PDF</item>
+        <item lang="it" id="clear_cache_info"><![CDATA[Se sono state aggiunte o modificate colonne, <a href="[admin_index]?dispatch=addons.manage&cc">pulisci la cache</a> per rigenerare il listino prezzi.]]></item>
+        <item lang="it" id="generating_pdf">Generazione PDF. Ti preghiamo di avere pazienza...</item>
+        <item lang="it" id="price_list">Listino prezzi</item>
+        <item lang="it" id="generating_xls">Generazione XLS. Ti preghiamo di avere pazienza...</item>
+        <item lang="it" id="price_list_ziparchive_not_installed"><![CDATA[Impossibile creare il listino prezzi XML. Si prega di aggiungere il supporto zip in PHP sul server. Segui <a href="http://www.php.net/manual/en/zip.installation.php">http://www.php.net/manual/en/zip.installation.php</a>.]]></item>
+    </language_variables>
+    <translations>
+        <item for="name" lang="ru">Прайс-лист</item>
+        <item for="description" lang="ru">Генерирует настраиваемые прайс-листы в формате PDF и XLS</item>
+        <item for="name" lang="zh">价格清单</item>
+        <item for="description" lang="zh">生成 PDF 或 XLS 可配置的价格清单</item>
+    </translations>
+</addon>

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>attachments</id>
+    <name>Attachments</name>
+    <description>Makes it possible to attach files to products</description>
+    <version>1.0</version>
+    <priority>600</priority>
+    <position>0</position>
+    <status>active</status>
+    <has_icon>Y</has_icon>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="fr">Attachements</item>
+        <item for="name" lang="el">Eπισυνάψεις</item>
+        <item for="name" lang="it">Allegati</item>
+        <item for="name" lang="ro">Atașamente</item>
+        <item for="name" lang="ru">Прикрепленные файлы</item>
+        <item for="name" lang="sl">Priponke</item>
+        <item for="name" lang="zh">附件</item>
+        <item for="description" lang="ru">Позволяет прикрепить файлы к товарам</item>
+        <item for="description" lang="zh">可以将文件附加到产品</item>
+    </translations>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:attachments;</item>
+        <item>DROP TABLE IF EXISTS ?:attachment_descriptions;</item>
+        <item>
+            CREATE TABLE `?:attachments` (
+                `attachment_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `object_type` varchar(30) NOT NULL default '',
+                `object_id` mediumint(8) unsigned NOT NULL default '0',
+                `type` char(1) NOT NULL default '',
+                `position` int(11) NOT NULL default '0',
+                `filename` varchar(100) NOT NULL default '',
+                `filesize` int(11) unsigned NOT NULL default '0',
+                `usergroup_ids` varchar(255) NOT NULL default '0',
+                `status` char(1) NOT NULL default 'A',
+                PRIMARY KEY  (`attachment_id`),
+                KEY `object_type` (`object_type`,`object_id`),
+                KEY `type` (`type`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:attachment_descriptions` (
+                `attachment_id` mediumint(8) unsigned NOT NULL default '0',
+                `lang_code` char(2) NOT NULL default '',
+                `description` varchar(255) NOT NULL default '',
+                PRIMARY KEY  (`attachment_id`,`lang_code`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:attachments;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:attachment_descriptions;</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="attachments">Attachments</item>
+        <item lang="en" id="new_attachment">New attachment</item>
+        <item lang="en" id="add_attachment">Add attachment</item>
+        <item lang="en" id="editing_attachment">Editing attachment</item>
+
+        <item lang="bg" id="attachments">Прикачени файлове</item>
+        <item lang="bg" id="new_attachment">Нов прикрепен файл</item>
+        <item lang="bg" id="add_attachment">Добави атачмънт</item>
+        <item lang="bg" id="editing_attachment">Редактиране на прикачен файл</item>
+
+        <item lang="da" id="attachments">vedhæft</item>
+        <item lang="da" id="new_attachment">ny attachment</item>
+        <item lang="da" id="add_attachment">Tilføj fil</item>
+        <item lang="da" id="editing_attachment">redigere vedhæft</item>
+
+        <item lang="el" id="attachments">Συλημένα</item>
+        <item lang="el" id="new_attachment">Νέα επισύναψη</item>
+        <item lang="el" id="add_attachment">Προσθήκη επισυνάψεων</item>
+        <item lang="el" id="editing_attachment">Επεξεργασία επισύναψης</item>
+
+        <item lang="fr" id="attachments">Fichiers joints</item>
+        <item lang="fr" id="new_attachment">Nouveau fichier joint</item>
+        <item lang="fr" id="add_attachment">Ajouter un fichier joint</item>
+        <item lang="fr" id="editing_attachment">Edition du fichier joint</item>
+
+        <item lang="it" id="attachments">Allegati</item>
+        <item lang="it" id="new_attachment">Nuovo allegato</item>
+        <item lang="it" id="add_attachment">Aggiungi allegato</item>
+        <item lang="it" id="editing_attachment">Modifica allegato</item>
+
+        <item lang="no" id="attachments">Vedlegg</item>
+        <item lang="no" id="new_attachment">Nytt vedlegg</item>
+        <item lang="no" id="add_attachment">Legg til vedlegg</item>
+        <item lang="no" id="editing_attachment">Redigerer vedlegg</item>
+
+        <item lang="ro" id="attachments">Atașamente</item>
+        <item lang="ro" id="new_attachment">Atașament nou</item>
+        <item lang="ro" id="add_attachment">Adăugare atașament</item>
+        <item lang="ro" id="editing_attachment">Editare atașament</item>
+
+        <item lang="ru" id="attachments">Приложения</item>
+        <item lang="ru" id="new_attachment">Новый прикрепленный объект</item>
+        <item lang="ru" id="add_attachment">Добавить приложение</item>
+        <item lang="ru" id="editing_attachment">Редактирование приложения</item>
+
+        <item lang="sl" id="attachments">priponke</item>
+        <item lang="sl" id="new_attachment">Novo priloga</item>
+        <item lang="sl" id="add_attachment">Dodaj priponko</item>
+        <item lang="sl" id="editing_attachment">Urejanje priloge</item>
+
+        <item lang="zh" id="attachments">附件</item>
+        <item lang="zh" id="new_attachment">新的附件</item>
+        <item lang="zh" id="add_attachment">添加附件</item>
+        <item lang="zh" id="editing_attachment">编辑附件</item>
+    </language_variables>
+</addon>

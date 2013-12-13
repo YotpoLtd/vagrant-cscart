@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>quickbooks</id>
+    <name>Quickbooks</name>
+    <description>Integrates the Quickbooks accounting software with the store</description>
+    <version>1.0</version>
+    <priority>1500</priority>
+    <position>150</position>
+    <status>active</status>
+    <translations>
+        <item for="name" lang="it">Quickbook</item>
+        <item for="name" lang="ro">CărțiRapide</item>
+        <item for="name" lang="sl">Na blagajno</item>
+        <item for="name" lang="zh">QuickBooks</item>
+        <item for="description" lang="ru">Интеграция с сервисом Quickbooks</item>
+        <item for="description" lang="zh">在商店整合QuickBooks财务软件</item>
+    </translations>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="trns_class">
+                        <name>Transaction class name</name>
+                        <type>input</type>
+                        <default_value>Website:Retail</default_value>
+                        <translations>
+                            <item lang="fr">Nom de classe Transaction</item>
+                            <item lang="da">Transaction klasse navn</item>
+                            <item lang="el">Ονομα κατηγορίας συναλλαγής</item>
+                            <item lang="ro">Numele clasei de tranzacție</item>
+                            <item lang="ru">Название класса транзакции</item>
+                            <item lang="sl">Ime klase transakcije</item>
+                            <item lang="zh">交易类的名称</item>
+                        </translations>
+                    </item>
+                    <item id="accnt_tax">
+                        <name>Account to track taxes. The type of this account should be INC.</name>
+                        <type>input</type>
+                        <default_value>Website:Tax</default_value>
+                        <translations>
+                            <item lang="fr">Compte de suivi de taxes. Le type de ce compte doit etre INC.</item>
+                            <item lang="el">Λογαριασμός για την παρακολούθηση του φόρου. Ο τύπος αυτού του λογαριασμού θα πρέπει να είναι INC.</item>
+                            <item lang="ro">Contul pentru a urmări taxele. Tipul acestui cont trebuie să fie INC.</item>
+                            <item lang="ru">Учетная запись, позволяющая отслеживать налоги. Тип данной записи должен быть INC.</item>
+                            <item lang="sl">Račun za spremljanje davkov. Vrsta tega računa mora biti INC</item>
+                            <item lang="zh">帐户用于跟踪税收.此帐户类型的应该是INC.</item>
+                        </translations>
+                    </item>
+                    <item id="accnt_product">
+                        <name>Account to track product sales. The type of this account should be INC.</name>
+                        <type>input</type>
+                        <default_value>Sales:Product</default_value>
+                        <translations>
+                            <item lang="fr">Compte de suivi des ventes de produit. Le type de ce compte doit etre INC.</item>
+                            <item lang="el">Λογαριασμός για να παρακολουθείτε τις πωλήσεις του προϊόντος. Ο τύπος αυτού του λογαριασμού θα πρέπει να είναι INC.</item>
+                            <item lang="ro">Contul pentru a urmări vânzările. Tipul acestui cont trebuie să fie INC.</item>
+                            <item lang="ru">Учетная запись, позволяющая отслеживать продажу товара. Тип данной записи должен быть INC.</item>
+                            <item lang="sl">Račun za sledenje prodaje izdelkov. Vrsta tega računa mora biti INC</item>
+                            <item lang="zh">帐户用于跟踪产品销售.此帐户类型的应该是INC.</item>
+                        </translations>
+                    </item>
+                    <item id="accnt_shipping">
+                        <name>Account to track shipping cost. The type of this account should be INC.</name>
+                        <type>input</type>
+                        <default_value>Sales:Shipping</default_value>
+                        <translations>
+                            <item lang="fr">Compte de suivi des frais de port. Le type de ce compte doit etre INC.</item>
+                            <item lang="el">Λογαριασμός για να παρακολουθείτε τα έξοδα αποστολής. Ο τύπος αυτού του λογαριασμού θα πρέπει να είναι INC.</item>
+                            <item lang="ro">Contul pentru a urmări costurile de transport . Acest tip de cont terbuie să fie INC.</item>
+                            <item lang="ru">Учетная запись, позволяющая отслеживать плату за доставку. Тип данной записи должен быть INC.</item>
+                            <item lang="sl">Račun za spremljanje stroškov. Vrsta tega računa mora biti INC</item>
+                            <item lang="zh">帐户用于跟踪配送成本.此帐户类型的应该是INC.</item>
+                        </translations>
+                    </item>
+                    <item id="accnt_discount">
+                        <name>Account to track discounts. The type of this account should be INC.</name>
+                        <type>input</type>
+                        <default_value>Sales:Discount</default_value>
+                        <translations>
+                            <item lang="fr">Compte de suivi des remises. Le type de ce compte doit etre INC.</item>
+                            <item lang="el">Λογαριασμός για να παρακολουθείτε τις εκπτώσεις. Ο τύπος αυτού του λογαριασμού θα πρέπει να  είναι INC.</item>
+                            <item lang="ro">Contul pentru a urmări discounturile. Tipul acestui cont trebuie să fie INC.</item>
+                            <item lang="ru">Учетная запись, позволяющая отслеживать скидки. Тип данной записи должен быть INC.</item>
+                            <item lang="sl">Račun za spremljanje popustov. Vrsta tega računa mora biti INCRačun za spremljanje popustov. Vrsta tega računa mora biti INC</item>
+                            <item lang="zh">帐户用于跟踪折扣.此帐户类型的应该是INC.</item>
+                        </translations>
+                    </item>
+                    <item id="accnt_surcharge">
+                        <name>Account to track the payment surcharge of your items sales (where applicable). The type of this account should be INC.</name>
+                        <type>input</type>
+                        <default_value>Sales:Surcharge</default_value>
+                        <translations>
+                            <item lang="el">Λογαριασμός για να παρακολουθείτε την επιβάρυνση των πωλήσεων των αντικειμένων  σας (όπου εφαρμόζεται). Ο τύπος αυτού του λογαριασμού θα πρέπει να είναι  INC.</item>
+                            <item lang="nl">Boeknummer om betalingskosten te registreren. Het type moet zijn INC.</item>
+                            <item lang="ru">Учетная запись, позволяющая отслеживать надбавки к платежам (где есть возможность). Тип данной учетной записи должен быть INC.</item>
+                            <item lang="zh">帐户用于跟踪您的物品销售支付附加费(若适用).此帐户类型的应该是INC.</item>
+                        </translations>
+                    </item>
+                    <item id="accnt_asset">
+                        <name>Account to track the value of your inventory. The type of this account should be OASSET.</name>
+                        <type>input</type>
+                        <default_value>Inventory Asset</default_value>
+                        <translations>
+                            <item lang="fr">Compte de suivi de la valeur de votre inventaire. Le type de ce compte doit etre  OASSET.</item>
+                            <item lang="el">Λογαριασμός για να παρακολουθείτε την αξία των αποθεμάτων σας. Ο τύπος αυτού του λογαριασμού θα πρέπει να OASSET.</item>
+                            <item lang="ro">Contul pentru a urmări valoarea inventarului dvs. Tipul acestui acestui cont trebuie să fie OASSET.</item>
+                            <item lang="ru">Учетная запись, позволяющая отслеживать количество товаров. Тип данной записи должен быть OASSET.</item>
+                            <item lang="sl">Račun za spremljanje vrednosti inventarja. Vrsta tega računa mora biti OASSET.</item>
+                            <item lang="zh">帐户用于跟踪您的库存数量.此帐户类型的应该是OASSET.</item>
+                        </translations>
+                    </item>
+                    <item id="accnt_cogs">
+                        <name>Account to track the cost of your items sales. The type of this account should be COGS.</name>
+                        <type>input</type>
+                        <default_value>Cost of Goods Sold</default_value>
+                        <translations>
+                            <item lang="fr">Compte de suivi du cout de vos items vendus. Le type de ce compte doit etre COGS.</item>
+                            <item lang="el">Λογαριασμός για την παρακολούθηση του κόστους πωλήσεων των αντικειμένων σας. Ο τύπος αυτού του λογαριασμού θα πρέπει να είναι  COGS</item>
+                            <item lang="ro">Contul pentru a urmări costul produselor vândute. Tipul acestui cont trebuie să fie COGS.</item>
+                            <item lang="ru">Учетная запись, позволяющая отслеживать суммы Ваших продаж. Тип данной записи должен быть COGS.</item>
+                            <item lang="sl">Račun za sledenje vaših stroškov prodaje artiklov. Vrsta tega računa, mora biti COGS.</item>
+                            <item lang="zh">帐户用于跟踪您的物品销售成本.此帐户类型的应该是COGS.</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="en" id="export_to_quickbooks">Export to Quickbooks</item>
+
+        <item lang="bg" id="export_to_quickbooks">Експорт към QuickBooks</item>
+
+        <item lang="da" id="export_to_quickbooks">Eksporter til Quickbooks</item>
+
+        <item lang="el" id="export_to_quickbooks">Εξαγωγή σε Quickbooks</item>
+
+        <item lang="es" id="export_to_quickbooks">Exportar a Quickbooks</item>
+
+        <item lang="fr" id="export_to_quickbooks">Exporter vers Quickbooks</item>
+
+        <item lang="it" id="export_to_quickbooks">Esporta su Quickbooks</item>
+
+        <item lang="no" id="export_to_quickbooks">Eksporter til Quickbooks</item>
+
+        <item lang="ro" id="export_to_quickbooks">Exportați către Quickbooks</item>
+
+        <item lang="ru" id="export_to_quickbooks">Экспорт в Quickbooks</item>
+
+        <item lang="sl" id="export_to_quickbooks">Izvozi v Quickbooks</item>
+
+        <item lang="zh" id="export_to_quickbooks">导出到Quickbooks</item>
+    </language_variables>
+</addon>

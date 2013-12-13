@@ -1,0 +1,560 @@
+<?xml version="1.0"?>
+<addon scheme="2.0" edition_type="ROOT,ULT:VENDOR">
+    <id>reward_points</id>
+    <name>Reward points</name>
+    <description>Lets customers earn and spend points for purchases</description>
+    <version>1.0</version>
+    <priority>1900</priority>
+    <position>180</position>
+    <translations>
+        <item for="name" lang="es">Puntos de recompensa</item>
+        <item for="name" lang="fr">Points de fidélité</item>
+        <item for="name" lang="da">belønning punkter</item>
+        <item for="name" lang="el">Πόντοι επιβράβευσης</item>
+        <item for="name" lang="it">Punti ricompensa</item>
+        <item for="name" lang="ro">Puncte de fidelitate</item>
+        <item for="name" lang="ru">Бонусные баллы</item>
+        <item for="name" lang="sl">Nagradne točke</item>
+        <item for="name" lang="zh">奖励积分</item>
+        <item for="description" lang="ru">Позволяет покупателю зарабатывать бонусные баллы за покупку товаров для их дальнейшего использования</item>
+        <item for="description" lang="zh">让客户购买赚取和消费积分</item>
+    </translations>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="point_rate">
+                        <name>Points Exchange Rate (PER - the number of points equal to 1 conventional unit)</name>
+                        <type>input</type>
+                        <default_value>50</default_value>
+                        <translations>
+                            <item lang="es">Tipo de cambio de puntos (PER - el número de puntos igual a una unidad convencional)</item>
+                            <item lang="el">Πόντοι Συναλλαγματικών Ισοτιμιών (PER - ο αριθμός των σημείων ίσο με 1 συμβατικό μονάδα)</item>
+                            <item lang="ro">Rata punctelor în schimb (PER - numărul de puncte echivalentul unei unități)</item>
+                            <item lang="ru">Обменный Курс Балла (количество баллов, равное 1-й условной единице)</item>
+                            <item lang="sl">Točke Menjalnega Razmerja (TMR - število točk je enako 1 konvencionalni enoti)</item>
+                            <item lang="zh">积分兑换率(PER-积分数等于1常规单位)</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="auto_price_in_points">
+                        <name>"Price in points" is calculated automatically on PER basis</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">"Precio en puntos" es calculado automáticamente en base al PER</item>
+                            <item lang="el">"Price in points" υπολογίζεται αυτόματα με  τη βάση PER</item>
+                            <item lang="ro">"Prețul în puncte" e calculat în mod automat în baza PER-ului</item>
+                            <item lang="ru">"Цена в " высчитывается автоматически на основе обменного курса</item>
+                            <item lang="sl">"Cena v točkah" se izračuna samodejno na podlagi TMR</item>
+                            <item lang="zh">"价格在积分中"每单位自动计算</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="price_in_points_with_discounts">
+                        <name>"Price in points" is recalculated taking into account discounts</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">"Precio en puntos" es recalculado teniendo en cuenta los descuentos</item>
+                            <item lang="el">"Price in points" υπολογίζεται εκ νέου λαμβάνοντας υπόψη τις εκπτώσεις για λογαριασμό</item>
+                            <item lang="ro">"Prețul în puncte" este recalculat luând în considerare reducerile</item>
+                            <item lang="ru">"Цена в баллах" пересчитывается, принимая во внимание скидки</item>
+                            <item lang="sl">"Cena v točkah" se ponovno preračuna z upoštevanjem popustov</item>
+                            <item lang="zh">"价格在积分中"考虑到帐户折扣重新计算</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="points_with_discounts">
+                        <name>"Points" is recalculated taking into account discounts</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">"Puntos" son recalculados teniendo descuentos en cuenta</item>
+                            <item lang="el">"Points"υπολογίζεται εκ νέου λαμβάνοντας υπόψη τις εκπτώσεις της παραγγελίας</item>
+                            <item lang="ro">"Puncte" sunt recalculate luând în considerare discounturile contului</item>
+                            <item lang="ru">"Баллы" пересчитываются, принимая во внимание скидки</item>
+                            <item lang="sl">"Točke" se ponovno preračuna z upoštevanjem popustov</item>
+                            <item lang="zh">"积分"考虑到帐户折扣重新计算</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="price_in_points_order_discount">
+                        <name>"Price in points" is recalculated taking into account order discounts</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="el">"Price in points" υπολογίζεται εκ νέου λαμβάνοντας υπόψη τις εκπτώσεις της παραγγελίας</item>
+                            <item lang="nl">Order-kortingen worden meegerekend in de "prijs in punten" berekening</item>
+                            <item lang="ru">"Цена в баллах" пересчитывается, принимая во внимание общую скидку на заказ</item>
+                            <item lang="zh">"价格在积分中"考虑到帐户定单折扣重新计算</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="reward_points_order_discount">
+                        <name>"Points" is recalculated taking into account order discounts</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="el"> "Points" υπολογίζεται εκ νέου λαμβάνοντας υπόψη τις εκπτώσεις της παραγγελίας</item>
+                            <item lang="nl">Order kortingen worden in de puntenberekening meegenomen</item>
+                            <item lang="ru">"Баллы" пересчитываются, принимая во внимание общую скидку на заказ</item>
+                            <item lang="zh">"积分"考虑到帐户定单折扣重新计算</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="higher_level_extract">
+                        <name>If the product and the product category do not have defined reward points but the higher level category has such reward points, extract data from it</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">Si el producto y la categoría de producto no tienen puntos de recompensa definidos pero la categoría de nivel más alta tiene tales puntos de recompensa, extraer datos de ahí</item>
+                            <item lang="el">Εάν το προϊόν και η κατηγορία του προϊόντος δεν έχουν καθορισμένους πόντους ανταμοιβής, αλλά η κατηγορία υψηλότερου επιπέδου έχει τέτοιους πόντους ανταμοιβής, εξάγετε τα  δεδομένα από το</item>
+                            <item lang="ro">Dacă produsul și categoria produsului nu i-au fost definite puncte de recompensă dar categoriei cu un nivel mai superior îi va fi definită, extrage datele din aceasta</item>
+                            <item lang="ru">Если бонусные баллы не заданы для товара или категории товара, но заданы для категории высшего уровня, извлечь данные из нее</item>
+                            <item lang="sl">Če proizvod in kategorija proizvoda nimata opredeljenih nagradnih točke višje kategorijo, kot je raven take nagrade točke, se vzame podatke od tam</item>
+                            <item lang="zh">如果产品和产品分类没有已定义的奖励积分,但更高级别分类具有这种奖励积分,则从中提取数据</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="several_points_action">
+                        <name>If several reward points can be applied, set</name>
+                        <type>selectbox</type>
+                        <default_value>min</default_value>
+                        <variants>
+                            <item id="min">
+                                <name>Minimal</name>
+                                <translations>
+                                    <item lang="es">Mínimos</item>
+                                    <item lang="el">Ελάχιστο</item>
+                                    <item lang="ro">Minim</item>
+                                    <item lang="ru">Минимальный</item>
+                                    <item lang="sl">Minimalno</item>
+                                    <item lang="zh">最小</item>
+                                </translations>
+                            </item>
+                            <item id="max">
+                                <name>Maximal</name>
+                                <translations>
+                                    <item lang="es">Máximos</item>
+                                    <item lang="el">Μέγιστο</item>
+                                    <item lang="ro">Maxim</item>
+                                    <item lang="ru">Максимальный</item>
+                                    <item lang="sl">Maksimalno</item>
+                                    <item lang="zh">最大</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">Si varios puntos de recompensa pueden ser aplicados, elegir</item>
+                            <item lang="el">Εάν μπορούν να εφαρμοστούν πολλοί πόντοι ανταμοιβής,σειρά</item>
+                            <item lang="ro">În cazul în care pot aplicate mai multe puncte de recompensă, setează</item>
+                            <item lang="ru">Если можно применить разное количество бонусных баллов, то установить</item>
+                            <item lang="sl">Če bo uporabljenih več nagradnih točk, določi</item>
+                            <item lang="zh">如果几个积分奖励可以应用,设置</item>
+                        </translations>
+                    </item>
+                    <item id="consider_zero_values">
+                        <tooltip>The reward points rules with the zero values should be considered</tooltip>
+                        <name>Apply zero reward point values</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                        <translations>
+                            <item lang="el">Apply zero reward point values </item>
+                            <item lang="ro">Punctele de răsplată cu zerouri ar trebui luate în considerare</item>
+                            <item lang="ru">Применять бонусные баллы с нулевым значением</item>
+                            <item lang="zh">应用零奖励积分值</item>
+                            <item lang="ru" for="tooltip">Рассматривать правила начисления бонусных баллов с нулевыми значениями</item>
+                            <item lang="zh" for="tooltip">奖励积分规则为零值必须考虑</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="log_per_page">
+                        <name>Log lines per page</name>
+                        <type>input</type>
+                        <default_value>10</default_value>
+                        <translations>
+                            <item lang="es">Líneas de registro por página</item>
+                            <item lang="da">Log linier per side</item>
+                            <item lang="el">Γραμμές καταγραφής ανα σελίδα</item>
+                            <item lang="ro">Linii de jurnal pe pagină</item>
+                            <item lang="ru">Количество строчек записей событий на странице</item>
+                            <item lang="sl">Prijavnih vrstic na stran</item>
+                            <item lang="zh">每页日志行数</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:reward_point_changes;</item>
+        <item>DROP TABLE IF EXISTS ?:reward_points;</item>
+        <item>DROP TABLE IF EXISTS ?:product_point_prices;</item>
+        <item>
+            CREATE TABLE `?:reward_point_changes` (
+                `change_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `user_id` mediumint(8) unsigned NOT NULL default '0',
+                `amount` int(11) NOT NULL default '0',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `action` char(1) NOT NULL default 'A',
+                `reason` text NOT NULL,
+                PRIMARY KEY  (`change_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:reward_points` (
+                `reward_point_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `object_id` mediumint(8) unsigned NOT NULL default '0',
+                `usergroup_id` mediumint(8) unsigned NOT NULL default '0',
+                `amount` int(11) unsigned NOT NULL default '0',
+                `amount_type` char(1) NOT NULL default 'A',
+                `object_type` char(1) NOT NULL default 'P',
+                `company_id` int(11) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`reward_point_id`),
+                UNIQUE KEY `unique_key` (`object_id`,`usergroup_id`,`object_type`,`company_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:product_point_prices` (
+                `point_price_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                `point_price` int(11) unsigned NOT NULL default '0',
+                `lower_limit` smallint(5) unsigned NOT NULL default '0',
+                `usergroup_id` mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`point_price_id`),
+                UNIQUE KEY `unique_key` (`lower_limit`,`usergroup_id`,`product_id`),
+                KEY `src_k` (`product_id`,`lower_limit`,`usergroup_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_reward_points', 'Y', 'addons');</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'manage_reward_points'</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:reward_point_changes;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:reward_points;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:product_point_prices;</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="pay_by_points">Allow payment by points</item>
+        <item lang="en" id="override_per">Override global PER</item>
+        <item lang="en" id="override_gc_points_brief">Override global/category points</item>
+        <item lang="en" id="text_points_exceed_points_on_account">The number of the points entered by you exceeds the number of points at your account.</item>
+        <item lang="en" id="text_points_exceed_points_that_can_be_applied">The number of points entered by you exceeds the number of points that can be applied to this order.</item>
+        <item lang="en" id="text_points_cannot_applied_because_subtotal_redeemed">Points cannot be applied because the subtotal is completely redeemed.</item>
+        <item lang="en" id="text_cannot_apply_points_to_this_order_because_total">Unfortunately, you cannot apply points to this order, because the total cost is zero.</item>
+        <item lang="en" id="text_cannot_apply_points_to_this_order_because_user">Unfortunately, you cannot apply points to this order, because you do not have enough points at the account.</item>
+        <item lang="en" id="text_order_status_has_not_been_changed">The order status has not been changed, because the user did not have enough points.</item>
+        <item lang="en" id="price_in_points_increased">Price in points has been increased by</item>
+        <item lang="en" id="price_in_points_decreased">Price in points has been decreased by</item>
+        <item lang="en" id="earned_points">Points earned per product</item>
+        <item lang="en" id="override_g_points">Override global point value for all products in this category</item>
+        <item lang="en" id="amount_type">Amount type</item>
+        <item lang="en" id="maximum">Maximum</item>
+        <item lang="en" id="earned_point_modifier">Earned point modifier</item>
+        <item lang="en" id="override_gc_points">Override global/category point value for this product</item>
+        <item lang="en" id="view_user_points">View user points</item>
+        <item lang="en" id="log">Log</item>
+        <item lang="en" id="subtract">Subtract</item>
+        <item lang="en" id="change_points">Change points</item>
+        <item lang="en" id="add_subtract_points"><![CDATA[Add & subtract points]]></item>
+        <item lang="en" id="cleanup_log">Cleanup log</item>
+        <item lang="en" id="we_would_like_to_inform">We would like to inform you that</item>
+        <item lang="en" id="reward_points_subj_added_to">have been added to your account.</item>
+        <item lang="en" id="reward_points_subj_subtracted_from">have been subtracted from your account.</item>
+        <item lang="en" id="privileges.manage_reward_points">Manage reward points system</item>
+
+        <item lang="bg" id="pay_by_points">Позволи плащане с точки</item>
+        <item lang="bg" id="override_per">Замяна на глобалните точки на валутните курсове</item>
+        <item lang="bg" id="override_gc_points_brief">Подмени стойностите </item>
+        <item lang="bg" id="text_points_exceed_points_on_account">Точки, които сте въвели надвишава броя на точките по сметката Ви.</item>
+        <item lang="bg" id="text_points_exceed_points_that_can_be_applied">Броят на точките, вписани от Вас надвишава броя на точките, които могат да бъдат прилагани към този ред.</item>
+        <item lang="bg" id="text_points_cannot_applied_because_subtotal_redeemed">Точките не могат да бъдат приложени тъй като междинната сума е напълно изплатена.</item>
+        <item lang="bg" id="text_cannot_apply_points_to_this_order_because_total">Не може да използвате точки защото общите разходи са нула.</item>
+        <item lang="bg" id="text_cannot_apply_points_to_this_order_because_user">За съжаление, вие не може да използвате точки за тази поръчка, защото не разполагате с достатъчно точки в сметката.</item>
+        <item lang="bg" id="text_order_status_has_not_been_changed">Статусът на поръчката не е променен защото потребителят е нямал достатъчно точки.</item>
+        <item lang="bg" id="price_in_points_increased">Цена в точки е увеличена с</item>
+        <item lang="bg" id="price_in_points_decreased">Цена в точки е намаляла с</item>
+        <item lang="bg" id="earned_points">Спечелени точки за всеки продукт</item>
+        <item lang="bg" id="override_g_points">Замяна на глобалните стойности за всички продукти в тази категория</item>
+        <item lang="bg" id="amount_type">Сума тип</item>
+        <item lang="bg" id="maximum">Максимален</item>
+        <item lang="bg" id="earned_point_modifier">Модификатор на точки</item>
+        <item lang="bg" id="override_gc_points">Подмени стойностите за този продукт</item>
+        <item lang="bg" id="view_user_points">Виж потребителските точки</item>
+        <item lang="bg" id="log">Вход</item>
+        <item lang="bg" id="subtract">Изваждане</item>
+        <item lang="bg" id="change_points">Промени позиции</item>
+        <item lang="bg" id="add_subtract_points"><![CDATA[Добави &]]></item>
+        <item lang="bg" id="cleanup_log">Изтриване на лог</item>
+        <item lang="bg" id="we_would_like_to_inform">Бихме искали да Ви информираме, че</item>
+        <item lang="bg" id="reward_points_subj_added_to">са били добавени към сметката Ви.</item>
+        <item lang="bg" id="reward_points_subj_subtracted_from">са били приспаднати от сметката ви.</item>
+
+        <item lang="da" id="pay_by_points">Tillad betaling via  points</item>
+        <item lang="da" id="override_per">Overskriv global PER</item>
+        <item lang="da" id="override_gc_points_brief">Overskriv global/kategori points</item>
+        <item lang="da" id="text_points_exceed_points_on_account">Point ind af dig overstige antallet af point på din konto.</item>
+        <item lang="da" id="text_points_exceed_points_that_can_be_applied">Point indtastes ved du overskrider det antal point, der kan anvendes til denne ordre.</item>
+        <item lang="da" id="text_points_cannot_applied_because_subtotal_redeemed">Point kan ikke anvendes, fordi Tilsammen er helt forløst.</item>
+        <item lang="da" id="text_cannot_apply_points_to_this_order_because_total">Desværre kan du ikke anvende punkt for denne ordre, fordi de samlede omkostninger er nul.</item>
+        <item lang="da" id="text_cannot_apply_points_to_this_order_because_user">Desværre kan du ikke anvende punkt til denne ordre, fordi du ikke har tilstrækkeligt med point på kontoen.</item>
+        <item lang="da" id="text_order_status_has_not_been_changed">Rækkefølgen status er ikke blevet ændret, fordi brugeren ikke har tilstrækkeligt med point.</item>
+        <item lang="da" id="price_in_points_increased">Pris i point er blevet øget med</item>
+        <item lang="da" id="price_in_points_decreased">Pris i point er faldet med</item>
+        <item lang="da" id="earned_points">Points tjent pr. produkt </item>
+        <item lang="da" id="override_g_points">Tilsidesæt globale punkt værdi for alle produkter i denne kategori</item>
+        <item lang="da" id="amount_type">Beløb type</item>
+        <item lang="da" id="maximum">Maksimal</item>
+        <item lang="da" id="earned_point_modifier">Tjente point modifikator</item>
+        <item lang="da" id="override_gc_points">Tilsidesæt globale / kategori punkt værdi for dette produkt</item>
+        <item lang="da" id="view_user_points">Vis brugerens point</item>
+        <item lang="da" id="log">log</item>
+        <item lang="da" id="subtract">træk fra</item>
+        <item lang="da" id="change_points">Skift point</item>
+        <item lang="da" id="add_subtract_points"><![CDATA[Tilføj & fratrække point]]></item>
+        <item lang="da" id="cleanup_log">Ryd log</item>
+        <item lang="da" id="we_would_like_to_inform">Vi vil gerne meddele Dem, at</item>
+        <item lang="da" id="reward_points_subj_added_to">er blevet tilføjet til din konto.</item>
+        <item lang="da" id="reward_points_subj_subtracted_from">er blevet trukket fra din konto.</item>
+
+        <item lang="el" id="pay_by_points">Δυνατότητα πληρωμής με πόντους</item>
+        <item lang="el" id="override_per">Παράκαμωη γενικού PER</item>
+        <item lang="el" id="override_gc_points_brief">Παράκαμψη γενικής/κατηγορίας πόντων</item>
+        <item lang="el" id="text_points_exceed_points_on_account">Ο αριθμός των πόντων που έχει εισαχθεί από εσάς, υπερβαίνει τον αριθμό των πόντων στο λογαριασμό σας.</item>
+        <item lang="el" id="text_points_exceed_points_that_can_be_applied">Ο αριθμός των πόντων που έχουν εισαχθεί από εσάς υπερβαίνει τον αριθμό των σημείων που μπορούν να εφαρμοστούν σε αυτή τη σειρά.</item>
+        <item lang="el" id="text_points_cannot_applied_because_subtotal_redeemed">Οι πόντοι δεν μπορούν να εφαρμοστού, διότι το υποσύνολο έχει εξαργυρωθεί.</item>
+        <item lang="el" id="text_cannot_apply_points_to_this_order_because_total">Δυστυχώς, δεν μπορείτε να εφαρμόσετε τους πόντους σε αυτή τη παραγγελία, διότι το συνολικό κόστος είναι μηδενικό.</item>
+        <item lang="el" id="text_cannot_apply_points_to_this_order_because_user">Δυστυχώς, δεν μπορείτε να εφαρμόσετε τους πόντους σε αυτή τη παραγγελία, καθώς δεν έχετε πόντους σε αυτόν τον λογαριασμό.</item>
+        <item lang="el" id="text_order_status_has_not_been_changed">Η κατάσταση της παραγγελίας δεν έχει αλλάξει, επειδή ο χρήστης δεν διέθετε αρκετούς πόντους.</item>
+        <item lang="el" id="price_in_points_increased">Η τιμή στους πόντους έχει αυξηθεί κατά</item>
+        <item lang="el" id="price_in_points_decreased">Η τιμή στους πόντους έχει μειωθεί κατά</item>
+        <item lang="el" id="earned_points">Πόντοι που κερδήθηκαν ανά προϊόν</item>
+        <item lang="el" id="override_g_points">Παράκαμωη όλων των γενικών πόντων για αυτά τα προϊόντα στην κατηγορία</item>
+        <item lang="el" id="amount_type">Τύπος ποσότητας</item>
+        <item lang="el" id="maximum">Μέγιστο</item>
+        <item lang="el" id="earned_point_modifier">Μετατροπέας κερδισμένων πόντων</item>
+        <item lang="el" id="override_gc_points">Παράκαμψη γενικής/κατηγορίας τιμής πόντων για αυτό το προϊόν</item>
+        <item lang="el" id="view_user_points">Προβολή πόντοι του χρήστη</item>
+        <item lang="el" id="log">Σύνδεση</item>
+        <item lang="el" id="subtract">Αφαίρεση</item>
+        <item lang="el" id="change_points">Πόντοι αλλαγής</item>
+        <item lang="el" id="add_subtract_points">Προσθήκη/αφαίρεση πόντων</item>
+        <item lang="el" id="cleanup_log">Εκκαθάριση μητρώου</item>
+        <item lang="el" id="we_would_like_to_inform">Θα θέλαμε να σας ενημερώσουμε ότι</item>
+        <item lang="el" id="reward_points_subj_added_to">έχουν προστεθεί στο λογαριασμό σας.</item>
+        <item lang="el" id="reward_points_subj_subtracted_from">έχουν αφαιρεθεί από το λογαριασμό σας.</item>
+
+        <item lang="es" id="pay_by_points">Permitir pago con puntos</item>
+        <item lang="es" id="override_per">Anular global POR</item>
+        <item lang="es" id="override_gc_points_brief">Anule puntos globales / puntos de categoría</item>
+        <item lang="es" id="text_points_exceed_points_on_account">Los puntos escritos por usted exceden el número de puntos en su cuenta.</item>
+        <item lang="es" id="text_points_exceed_points_that_can_be_applied">Los puntos escritos por usted exceden el número de puntos que pueden ser aplicados a este pedido.</item>
+        <item lang="es" id="text_points_cannot_applied_because_subtotal_redeemed">Los puntos no pueden ser aplicados porque el subtotal está completamente amortizado.</item>
+        <item lang="es" id="text_cannot_apply_points_to_this_order_because_total">Lamentablemente usted no puede aplicar puntos a este pedido porque los gastos totales son cero.</item>
+        <item lang="es" id="text_cannot_apply_points_to_this_order_because_user">Lamentablemente usted no puede aplicar puntos a este pedido, porque usted no tiene bastantes puntos en la cuenta.</item>
+        <item lang="es" id="text_order_status_has_not_been_changed">El estado del pedido no ha sido cambiado porque el usuario no tenía bastante número de puntos.</item>
+        <item lang="es" id="earned_points">Puntos ganados por producto</item>
+        <item lang="es" id="override_g_points">Anule el valor global de puntos para todos los productos de esta categoría</item>
+        <item lang="es" id="maximum">Máximo</item>
+        <item lang="es" id="earned_point_modifier">Modificador de puntos ganados</item>
+        <item lang="es" id="override_gc_points">Anule el valor global o de categoría para este producto</item>
+        <item lang="es" id="view_user_points">Vea puntos de usuario</item>
+        <item lang="es" id="log">Registro</item>
+        <item lang="es" id="subtract">Restar</item>
+        <item lang="es" id="change_points">Cambiar puntos</item>
+        <item lang="es" id="cleanup_log">Limpiar registro</item>
+        <item lang="es" id="we_would_like_to_inform">Nos gustaría informarle sobre esto</item>
+        <item lang="es" id="reward_points_subj_added_to">han sido añadidos a su cuenta.</item>
+        <item lang="es" id="reward_points_subj_subtracted_from">han sido restados de su cuenta.</item>
+
+        <item lang="fr" id="pay_by_points">Autoriser le paiment par points</item>
+        <item lang="fr" id="override_per">Ignorer PER global</item>
+        <item lang="fr" id="override_gc_points_brief">Ignorer les points global/catégories</item>
+        <item lang="fr" id="text_points_exceed_points_on_account">Les points inscrits par vous dépassez le nombre de points sur votre compte.</item>
+        <item lang="fr" id="text_points_exceed_points_that_can_be_applied">Les points inscrits par vous dépassez le nombre de points qui peuvent être appliqués à cette commande.</item>
+        <item lang="fr" id="text_points_cannot_applied_because_subtotal_redeemed">Les points ne peuvent pas être appliquées, car le sous-total est complètement remboursé.</item>
+        <item lang="fr" id="text_cannot_apply_points_to_this_order_because_total">Malheureusement vous ne pouvez pas appliquer les points à cette commande car le coût total est égal à zéro.</item>
+        <item lang="fr" id="text_cannot_apply_points_to_this_order_because_user">Malheureusement vous ne pouvez pas appliquer les points à cette commande, car vous n'avez pas assez de points sur ce compte.</item>
+        <item lang="fr" id="text_order_status_has_not_been_changed">La commande n'a pas été changé parce que l'utilisateur ne dispose pas d'assez de nombre de points.</item>
+        <item lang="fr" id="price_in_points_increased">Prix en point a été augmenté par</item>
+        <item lang="fr" id="price_in_points_decreased">Prix en point a été baissé par</item>
+        <item lang="fr" id="earned_points">Points gagnés par produit</item>
+        <item lang="fr" id="override_g_points">Ignorer la valeur du point global pour tous les produits de cette catégorie</item>
+        <item lang="fr" id="earned_point_modifier">Modificateur des points gagnés</item>
+        <item lang="fr" id="override_gc_points">Ignorer la valeur du point global/catégorie pour ce produit</item>
+        <item lang="fr" id="view_user_points">Voir les points de l'utilisateur</item>
+        <item lang="fr" id="log">Connexion</item>
+        <item lang="fr" id="subtract">Soustraire</item>
+        <item lang="fr" id="change_points">Changer les points</item>
+        <item lang="fr" id="cleanup_log">Nettoyer le journal</item>
+        <item lang="fr" id="we_would_like_to_inform">Nous voudrions vous informez que</item>
+        <item lang="fr" id="reward_points_subj_added_to">ont été ajouté à votre compte.</item>
+        <item lang="fr" id="reward_points_subj_subtracted_from">ont été enlevé de votre compte.</item>
+
+        <item lang="it" id="pay_by_points">Consentire il pagamento per punti</item>
+        <item lang="it" id="override_per">Escludi PER globale</item>
+        <item lang="it" id="override_gc_points_brief">Escludi punti globali/categoria</item>
+        <item lang="it" id="text_points_exceed_points_on_account">Il numero dei punti inserito dall'utente supera il numero di punti al vostro conto.\n</item>
+        <item lang="it" id="text_points_exceed_points_that_can_be_applied">Il numero di punti immessi dall'utente supera il numero di punti che possono essere applicati a questo ordine.\n</item>
+        <item lang="it" id="text_points_cannot_applied_because_subtotal_redeemed">I punti non possono essere applicate in quanto il totale parziale viene completamente rimborsato.\n</item>
+        <item lang="it" id="text_cannot_apply_points_to_this_order_because_total">Purtroppo, non è possibile applicare i punti a questo ordine, perché il costo totale è pari a zero.\n</item>
+        <item lang="it" id="text_cannot_apply_points_to_this_order_because_user">Purtroppo, non è possibile applicare i punti a questo ordine, perché non hai abbastanza punti sul conto.\n</item>
+        <item lang="it" id="text_order_status_has_not_been_changed">Lo stato dell'ordine non è stato modificato, perché l'utente non ha avuto abbastanza punti.</item>
+        <item lang="it" id="price_in_points_increased">Il prezzo in punti è stato aumentato di</item>
+        <item lang="it" id="price_in_points_decreased">Il prezzo in punti è stato abbassato di</item>
+        <item lang="it" id="earned_points">Punti guadagnati per prodotto</item>
+        <item lang="it" id="override_g_points">Escludi il valore del punto globale per tutti i prodotti di questa categoria</item>
+        <item lang="it" id="amount_type">Tipologia di quantità</item>
+        <item lang="it" id="maximum">Numero massimo</item>
+        <item lang="it" id="earned_point_modifier">Gestione punti guadagnati</item>
+        <item lang="it" id="override_gc_points">Escludi il valore dei punti globali/categoria per questo prodotto</item>
+        <item lang="it" id="view_user_points">Visualizza punti utente</item>
+        <item lang="it" id="log">Registra</item>
+        <item lang="it" id="subtract">Sottrarre</item>
+        <item lang="it" id="change_points">Punti cambio</item>
+        <item lang="it" id="add_subtract_points"><![CDATA[Aggiungi & sottrai punti]]></item>
+        <item lang="it" id="cleanup_log">Pulizia log</item>
+        <item lang="it" id="we_would_like_to_inform">Siamo lieati di informarvi che</item>
+        <item lang="it" id="reward_points_subj_added_to">sono stati aggiunti al tuo account.</item>
+        <item lang="it" id="reward_points_subj_subtracted_from">sono stati sottratti dal tuo account.</item>
+
+        <item lang="no" id="pay_by_points">Tillat betaling med poeng</item>
+        <item lang="no" id="override_per">Overstyr global PER</item>
+        <item lang="no" id="override_gc_points_brief">Overstyrer globale/kategori poeng</item>
+        <item lang="no" id="text_points_exceed_points_on_account">Antallet poeng som du har lagt inn overstiger antall poeng på kontoen din.</item>
+        <item lang="no" id="text_points_exceed_points_that_can_be_applied">Antall poeng som du har lagt overstiger antall poeng som kan brukes på denne bestillingen.</item>
+        <item lang="no" id="text_points_cannot_applied_because_subtotal_redeemed">Poeng kan ikke brukes fordi delsummen er helt innfridd.</item>
+        <item lang="no" id="text_cannot_apply_points_to_this_order_because_total">Dessverre kan du ikke bruke poeng på denne ordren, fordi den totale kostnaden er null.</item>
+        <item lang="no" id="text_cannot_apply_points_to_this_order_because_user">Dessverre kan du ikke bruke poeng på denne ordren, fordi du ikke har nok poeng på kontoen.</item>
+        <item lang="no" id="text_order_status_has_not_been_changed">Ordren status har ikke blitt forandret, fordi brukeren ikke hadde nok poeng.</item>
+        <item lang="no" id="price_in_points_increased">Pris i poeng har blitt økt med</item>
+        <item lang="no" id="price_in_points_decreased">Pris i poeng har blitt redusert med</item>
+        <item lang="no" id="earned_points">Poeng opptjent per produkt</item>
+        <item lang="no" id="override_g_points">Overstyr global poengverdi for alle produkter i denne kategorien</item>
+        <item lang="no" id="amount_type">Mengdetype</item>
+        <item lang="no" id="maximum">Maksimum</item>
+        <item lang="no" id="earned_point_modifier">Opptjente poeng modifikator</item>
+        <item lang="no" id="override_gc_points">Overstyr global/kategori poengverdi for dette produktet</item>
+        <item lang="no" id="view_user_points">Vis brukerpoeng</item>
+        <item lang="no" id="log">Logg</item>
+        <item lang="no" id="subtract">Trekk fra</item>
+        <item lang="no" id="change_points">Endre poeng</item>
+        <item lang="no" id="add_subtract_points">Legg til/trekk fra poeng</item>
+        <item lang="no" id="cleanup_log">Oppryddingslogg</item>
+        <item lang="no" id="we_would_like_to_inform">Vi ønsker å informere deg om at</item>
+        <item lang="no" id="reward_points_subj_added_to">har blitt lagt til kontoen din.</item>
+        <item lang="no" id="reward_points_subj_subtracted_from">er trukket fra kontoen din.</item>
+
+        <item lang="ro" id="pay_by_points">Permiteți plata pe bază de puncte</item>
+        <item lang="ro" id="override_per">Ignoră PER-ul global</item>
+        <item lang="ro" id="override_gc_points_brief">Ignoră puncte globale/pt. categorie</item>
+        <item lang="ro" id="text_points_exceed_points_on_account">Punctele introduse de către dvs. depășește numărul de puncte de pe contul dvs.</item>
+        <item lang="ro" id="text_points_exceed_points_that_can_be_applied">Punctele introduse de către dvs. depășește numărul de puncte care pot fi aplicate acestei comenzi.</item>
+        <item lang="ro" id="text_points_cannot_applied_because_subtotal_redeemed">Punctele nu pot fi aplicate pentru că subtotalul este complet compensat.</item>
+        <item lang="ro" id="text_cannot_apply_points_to_this_order_because_total">Ne pare rău dar nu puteți aplica puncte pentru această comandă, pentru că costul total este zero.</item>
+        <item lang="ro" id="text_cannot_apply_points_to_this_order_because_user">Ne pare rău dar nu puteți aplica puncte pentru această comandă, pentru că nu aveți sufieciente puncte în contul dvs.</item>
+        <item lang="ro" id="text_order_status_has_not_been_changed">Statutul comenzii nu a fost schimbat, pentru că nu aveți puncte suficiente.</item>
+        <item lang="ro" id="price_in_points_increased">Prețul în puncte a fost majorat cu</item>
+        <item lang="ro" id="price_in_points_decreased">Prețul în puncte a fost redus cu</item>
+        <item lang="ro" id="earned_points">Puncte acumulate pe produs</item>
+        <item lang="ro" id="override_g_points">Ignoră valoarea punctelor globale pentru toate produsele din această categorie</item>
+        <item lang="ro" id="amount_type">Tipul sumei</item>
+        <item lang="ro" id="maximum">Maxim</item>
+        <item lang="ro" id="earned_point_modifier">Modificatorul de puncte acumulate</item>
+        <item lang="ro" id="override_gc_points">Ignoră setările de puncte globale/pt. categoire pentru acest produs</item>
+        <item lang="ro" id="view_user_points">Vezi punctele utilizatorilor</item>
+        <item lang="ro" id="log">Jurnal</item>
+        <item lang="ro" id="subtract">Scade</item>
+        <item lang="ro" id="change_points">Schimbați punctele</item>
+        <item lang="ro" id="add_subtract_points"><![CDATA[Adăugați & sustrageți puncte]]></item>
+        <item lang="ro" id="cleanup_log">Curățați jurnalul</item>
+        <item lang="ro" id="we_would_like_to_inform">Am dori să vă informăm că</item>
+        <item lang="ro" id="reward_points_subj_added_to">au fost adăugate contului dvs.</item>
+        <item lang="ro" id="reward_points_subj_subtracted_from">au fost restrase din contul dvs.</item>
+
+        <item lang="ru" id="pay_by_points">Разрешить оплату баллами</item>
+        <item lang="ru" id="override_per">Заменять глобальный обменный курс балла</item>
+        <item lang="ru" id="override_gc_points_brief">Заменять глобальные баллы и баллы категорий</item>
+        <item lang="ru" id="text_points_exceed_points_on_account">Баллы, введенные Вами, превышают количество баллов на вашем счету.</item>
+        <item lang="ru" id="text_points_exceed_points_that_can_be_applied">Введённые баллы превышают количество баллов, которое можно применить в этом заказе.</item>
+        <item lang="ru" id="text_points_cannot_applied_because_subtotal_redeemed">Баллы не могут быть применены, потому что подытог полностью погашен.</item>
+        <item lang="ru" id="text_cannot_apply_points_to_this_order_because_total">К сожалению, Вы не можете применить баллы к этому заказу, потому что его общая стоимость равна нулю.</item>
+        <item lang="ru" id="text_cannot_apply_points_to_this_order_because_user">К сожалению, Вы не можете применить баллы к этому заказу, на вашем счету недостаточное количество баллов.</item>
+        <item lang="ru" id="text_order_status_has_not_been_changed">Статус заказа не был изменен, так как у пользователя нет достаточного количества баллов.</item>
+        <item lang="ru" id="price_in_points_increased">Цена в баллах была увеличена на</item>
+        <item lang="ru" id="price_in_points_decreased">Цена в баллах была уменьшена на</item>
+        <item lang="ru" id="earned_points">Баллы за товар</item>
+        <item lang="ru" id="override_g_points">Заменять глобальные баллы для всех товаров в этой категории</item>
+        <item lang="ru" id="amount_type">Тип количества</item>
+        <item lang="ru" id="maximum">Максимальный</item>
+        <item lang="ru" id="earned_point_modifier">Модификатор баллов</item>
+        <item lang="ru" id="override_gc_points">Заменять глобальные баллы и баллы категории для этого товара</item>
+        <item lang="ru" id="view_user_points">Посмотреть баллы пользователя</item>
+        <item lang="ru" id="log">Журнал событий</item>
+        <item lang="ru" id="subtract">Вычесть</item>
+        <item lang="ru" id="change_points">Изменить баллы</item>
+        <item lang="ru" id="add_subtract_points"><![CDATA[Добавить & вычесть баллы]]></item>
+        <item lang="ru" id="cleanup_log">Очистить журналы событий</item>
+        <item lang="ru" id="we_would_like_to_inform">Мы хотим проинформировать вас о том, что</item>
+        <item lang="ru" id="reward_points_subj_added_to">были добавлены к вашей учетной записи.</item>
+        <item lang="ru" id="reward_points_subj_subtracted_from">были списаны с вашей учетной записи.</item>
+        <item lang="ru" id="privileges.manage_reward_points">Управление бонусными баллами</item>
+
+        <item lang="sl" id="pay_by_points">Dovoli plačilo v točkah</item>
+        <item lang="sl" id="override_per">Prekoračeno globalno PER</item>
+        <item lang="sl" id="override_gc_points_brief">Prekoračeno globalno/kategorija vrednost točke</item>
+        <item lang="sl" id="text_points_exceed_points_on_account">Točke, ki ste jih vnesli presegajo število točk na vašem računu.</item>
+        <item lang="sl" id="text_points_exceed_points_that_can_be_applied">Točke, ki ste jih vnesli presegajo število točk, ki jih je mogoče uporabiti za to naročilo.</item>
+        <item lang="sl" id="text_points_cannot_applied_because_subtotal_redeemed">Točke se ne morejo uporabiti, ker je vsota popolnoma odkupljena.</item>
+        <item lang="sl" id="text_cannot_apply_points_to_this_order_because_total">Žal ne morete uporabljati točk za to naročilo, ker so skupni stroški enaki nič.</item>
+        <item lang="sl" id="text_cannot_apply_points_to_this_order_because_user">Žal ne morete uporabiti točk za to naročilo, ker nimate dovolj točk na računu.</item>
+        <item lang="sl" id="text_order_status_has_not_been_changed">Vrstni red statusa se ni spremenil, ker uporabnik nima dovoljenega števila točk.</item>
+        <item lang="sl" id="price_in_points_increased">Cena v točkah se je povečala za</item>
+        <item lang="sl" id="price_in_points_decreased">Cena v točkah je zmanjšala za</item>
+        <item lang="sl" id="earned_points">Točke na proizvod</item>
+        <item lang="sl" id="override_g_points">Prekoračena globalna vrednost točke za vse artikle v tej kategoriji</item>
+        <item lang="sl" id="amount_type">Znesek tipa</item>
+        <item lang="sl" id="maximum">Največja</item>
+        <item lang="sl" id="earned_point_modifier">Zaslužene točke sprememb</item>
+        <item lang="sl" id="override_gc_points">Prekoračeno globalno/kategorija vrednost točke za ta proizvod</item>
+        <item lang="sl" id="view_user_points">Poglej uporabnikove točke</item>
+        <item lang="sl" id="log">Dnevnik</item>
+        <item lang="sl" id="subtract">Odštej</item>
+        <item lang="sl" id="change_points">Sprememba točke</item>
+        <item lang="sl" id="add_subtract_points"><![CDATA[Dodajanje & odštevanje točk]]></item>
+        <item lang="sl" id="cleanup_log">Počisti dnevnik</item>
+        <item lang="sl" id="we_would_like_to_inform">Želimo vas obvestiti, da</item>
+        <item lang="sl" id="reward_points_subj_added_to">so bili dodani na vaš račun.</item>
+        <item lang="sl" id="reward_points_subj_subtracted_from">so bili odšteti iz svojega računa.</item>
+
+        <item lang="zh" id="pay_by_points">允许积分支付</item>
+        <item lang="zh" id="override_per">覆盖全局 PER</item>
+        <item lang="zh" id="override_gc_points_brief">覆盖全局/分类积分</item>
+        <item lang="zh" id="text_points_exceed_points_on_account">您输入的积分超过了您的帐户积分.</item>
+        <item lang="zh" id="text_points_exceed_points_that_can_be_applied">您输入的积分超过了此订单应用的积分.</item>
+        <item lang="zh" id="text_points_cannot_applied_because_subtotal_redeemed">积分不能适用因为小计全部赎回.</item>
+        <item lang="zh" id="text_cannot_apply_points_to_this_order_because_total">很不幸,您无法在此订单中使用积分,因为总成本为零.</item>
+        <item lang="zh" id="text_cannot_apply_points_to_this_order_because_user">很不幸,您无法在此订单中使用积分,因为帐号中没有足够的积分.</item>
+        <item lang="zh" id="text_order_status_has_not_been_changed">订单状况没有改变,因为用户没有足够的积分.</item>
+        <item lang="zh" id="price_in_points_increased">积分价格上涨由</item>
+        <item lang="zh" id="price_in_points_decreased">积分价格降低由</item>
+        <item lang="zh" id="earned_points">单个产品赚取积分</item>
+        <item lang="zh" id="override_g_points">在此分类中对所有产品覆盖全局积分值</item>
+        <item lang="zh" id="amount_type">金额类型</item>
+        <item lang="zh" id="maximum">最大的</item>
+        <item lang="zh" id="earned_point_modifier">修改赚取积分</item>
+        <item lang="zh" id="override_gc_points">覆盖全局/此产品的分类积分</item>
+        <item lang="zh" id="view_user_points">查看用户积分</item>
+        <item lang="zh" id="log">日志</item>
+        <item lang="zh" id="subtract">减少</item>
+        <item lang="zh" id="change_points">更改积分</item>
+        <item lang="zh" id="add_subtract_points">添加和减少积分</item>
+        <item lang="zh" id="cleanup_log">清除日志</item>
+        <item lang="zh" id="we_would_like_to_inform">我们想通知您</item>
+        <item lang="zh" id="reward_points_subj_added_to">已被添加到您的帐户.</item>
+        <item lang="zh" id="reward_points_subj_subtracted_from">已从您的账户中扣除.</item>
+    </language_variables>
+</addon>

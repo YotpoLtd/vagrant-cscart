@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>google_analytics</id>
+    <name>Google Analytics</name>
+    <description>Integrates a Google Analytics service with the store</description>
+    <version>1.0</version>
+    <priority>2000</priority>
+    <position>230</position>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="tracking_code">
+                        <name>Google Analytics account number</name>
+                        <type>input</type>
+                        <translations>
+                            <item lang="es">Código de seguimiento</item>
+                            <item lang="fr">Tracking code</item>
+                            <item lang="da">Google Analytics-kontonummer</item>
+                            <item lang="el">Αριθμός λογαριασμού Google Analytics</item>
+                            <item lang="ro">Numărul de cont al contului Google Analytics</item>
+                            <item lang="ru">Номер учетной записи Google Analytics</item>
+                            <item lang="sl">Številka Google Analytics računa</item>
+                            <item lang="zh">谷歌分析帐户号码</item>
+                        </translations>
+                    </item>
+                    <item id="track_ecommerce">
+                        <name>Track e-commerce transactions</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">Rastrear transacciones de e-commerce</item>
+                            <item lang="da">spore e-handelstransaktioner</item>
+                            <item lang="el">Παρακολούθηση  των συναλλαγών ηλεκτρονικού εμπορίου</item>
+                            <item lang="ro">Urmărește și tranzacții electronice</item>
+                            <item lang="ru">Отслеживать продажи</item>
+                            <item lang="sl">Sled transakcije e-poslovanja</item>
+                            <item lang="zh">跟踪电子商务交易</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <translations>
+        <item for="description" lang="ru">Интегрирует сервис Google Analytics в магазин</item>
+        <item for="name" lang="zh">谷歌分析</item>
+        <item for="description" lang="zh">在商店整合谷歌分析服务</item>
+    </translations>
+</addon>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>hidpi</id>
+    <name>HiDPI displays support</name>
+    <description>Support for Retina displays</description>
+    <version>1.0</version>
+    <priority>1</priority>
+    <position>0</position>
+    <default_language>en</default_language>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="ru">Поддержка HiDPI</item>
+        <item for="description" lang="ru">Поддержка экранов Retina</item>
+    </translations>
+    <language_variables>
+        <item lang="en" id="hidpi">HiDPI</item>
+        <item lang="en" id="text_hidpi_support_enabled">HiDPI support is enabled</item>
+        <item lang="en" id="text_hidpi_support_tooltip">What does HiDPI stand for?
+HiDPI stands for High resolution Dots Per Inch when referring to displays. For example, the Retina displays found on the iPhone, iPad, and MacBook Pro are HiDPI.</item>
+        <item lang="en" id="text_hidpi_install">All newly uploaded images will be automatically shrinked to improve loading time on non-HiDPI devices.
+            Existing images are not changed. It is recommended to upload high-definition images.</item>
+        <item lang="en" id="text_hidpi_uninstall">Some images may be shrinked to improve loading time on non-HiDPI devices.
+            You may want to re-upload the images with better resolution.</item>
+
+        <item lang="ru" id="text_hidpi_support_enabled">Включена поддержка дисплеев высокого разрешения (HiDPI)</item>
+        <item lang="ru" id="text_hidpi_support_tooltip">Что значит HiDPI?
+Применимо к дисплеям, HiDPI расшифровывается как High resolution Dots Per Inch (большое количество точек на дюйм). К таким дисплеям, например, относятся Retina-дисплеи, используемые в iPhone, iPad, и MacBook Pro.</item>
+        <item lang="ru" id="text_hidpi_install">Загружаемые изображения будут автоматически уменьшаться для оптимизации загрузки страниц на устройствах без поддержки HiDPI
+            .Рекомендуется загружать изображения в высоком разрешении.</item>
+        <item lang="ru" id="text_hidpi_uninstall">Некоторые изображения могли быть уменьшены для оптимизации загрузки страниц на устройствах без поддержки HiDPI.
+            Обновите эти изображения вручную.</item>
+    </language_variables>
+
+    <functions>
+        <item for="install">fn_hidpi_install</item>
+        <item for="uninstall">fn_hidpi_uninstall</item>
+    </functions>
+
+    
+</addon>

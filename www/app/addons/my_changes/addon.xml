@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>my_changes</id>
+    <name>My changes</name>
+    <description>A dummy add-on for easier hook design editing</description>
+    <version>1.0</version>
+    <priority>4294967294</priority>
+    <position>0</position>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <default_language>en</default_language>
+    <translations>
+        <item for="name" lang="ru">Мои изменения</item>
+        <item for="description" lang="ru">Шаблон модуля</item>
+        
+        <item for="name" lang="zh">我的修改</item>
+        <item for="description" lang="zh">以方便设计编辑的钩子插件</item>
+    </translations>
+</addon>

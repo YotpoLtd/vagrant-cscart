@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+	<id>image_zoom</id>
+	<name>Image zoom</name>
+	<description>Shows zoomed image on product image hover</description>
+        <translations>
+		<item for="name" lang="ru">Увеличенные изображения товаров</item>
+		<item for="description" lang="ru">Показывает увеличенные изображения при наведении указателя мыши</item>
+	</translations>
+	<priority>3500</priority>
+	<position>100</position>
+	<status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+        <tab_order>prepend</tab_order>
+        <settings edition_type="ROOT,ULT:VENDOR">
+            <sections>
+                <section id="general">
+                    <name>General</name>
+                    <items>
+                        <item id="cz_opacity">
+                            <type>input</type>
+                            <default_value>0.6</default_value>
+                            <name>Opacity</name>
+                            <tooltip>Opacity of tint 0-1. If zero, no tint will be visible.</tooltip>
+                            <translations>
+                                <item lang="en" for="name">Opacity</item>
+                                <item lang="en" for="tooltip">Opacity of tint 0-1. If zero, no tint will be visible.</item>
+                            </translations>
+                        </item>
+                        <item id="cz_animation_time">
+                            <type>input</type>
+                            <default_value>200</default_value>
+                            <name>Animation time</name>
+                            <tooltip>Duration of the animation effects in milliseconds.</tooltip>
+                            <translations>
+                                <item lang="en" for="name">Animation time</item>
+                                <item lang="en" for="tooltip">Duration of the animation effects in milliseconds.</item>
+                            </translations>
+                        </item>
+                        <item id="cz_tint_color_picker">
+                            <type>input</type>
+                            <default_value>#ffffff</default_value>
+                            <name>Color</name>
+                            <tooltip>Color to use for the tint effect. Example: #ffffff.</tooltip>
+                            <translations>
+                                <item lang="en" for="name">Color</item>
+                                <item lang="en" for="tooltip">Color to use for the tint effect. Example: #ffffff.</item>
+                            </translations>
+                        </item>
+                        <item id="cz_zoom_position">
+                            <type>selectbox</type>
+                            <default_value>3</default_value>
+                            <name>Zoom position</name>
+                            <tooltip><![CDATA[Specifies position of zoom window. If numeric (0-15), position is relative to page image as shown by the following key (blue squares represent zoom window). If a string is supplied, value will be used as a selector to pinpoint the exact position and size of an element in the page. If the value "inside" is specified, the zoom image will appear inside the page image.<br /><br /><img src="design/backend/media/images/addons/image_zoom/zoom-positions.png" />]]></tooltip>
+                            <variants>
+                                <item id="1">
+                                    <name>Zoom position №1</name>
+                                    <translations>
+                                        <item lang="en">Zoom position №1</item>
+                                    </translations>
+                                </item>
+                                <item id="2">
+                                    <name>Zoom position №2</name>                        
+                                    <translations>
+                                        <item lang="en">Zoom position №2</item>
+                                    </translations>
+                                </item>
+                                <item id="3">
+                                    <name>Zoom position №3</name>
+                                    <translations>
+                                        <item lang="en">Zoom position №3</item>
+                                    </translations>
+                                </item>
+                                <item id="4">
+                                    <name>Zoom position №4</name>                        
+                                    <translations>
+                                        <item lang="en">Zoom position №4</item>
+                                    </translations>
+                                </item>
+                                <item id="5">
+                                    <name>Zoom position №5</name>
+                                    <translations>
+                                        <item lang="en">Zoom position №5</item>
+                                    </translations>
+                                </item>
+                                <item id="6">
+                                    <name>Zoom position №6</name>                        
+                                    <translations>
+                                        <item lang="en">Zoom position №6</item>
+                                    </translations>
+                                </item>
+                                <item id="7">
+                                    <name>Zoom position №7</name>
+                                    <translations>
+                                        <item lang="en">Zoom position №7</item>
+                                    </translations>
+                                </item>
+                                <item id="8">
+                                    <name>Zoom position №8</name>                        
+                                    <translations>
+                                        <item lang="en">Zoom position №8</item>
+                                    </translations>
+                                </item>
+                                <item id="9">
+                                    <name>Zoom position №9</name>
+                                    <translations>
+                                        <item lang="en">Zoom position №9</item>
+                                    </translations>
+                                </item>
+                                <item id="10">
+                                    <name>Zoom position №10</name>                        
+                                    <translations>
+                                        <item lang="en">Zoom position №10</item>
+                                    </translations>
+                                </item>
+                                <item id="11">
+                                    <name>Zoom position №11</name>
+                                    <translations>
+                                        <item lang="en">Zoom position №11</item>
+                                    </translations>
+                                </item>
+                                <item id="12">
+                                    <name>Zoom position №12</name>                        
+                                    <translations>
+                                        <item lang="en">Zoom position №12</item>
+                                    </translations>
+                                </item>
+                                <item id="13">
+                                    <name>Zoom position №13</name>
+                                    <translations>
+                                        <item lang="en">Zoom position №13</item>
+                                    </translations>
+                                </item>
+                            </variants>
+                            <translations>
+                                <item lang="en">Zoom position list</item>
+                            </translations>
+                        </item>
+                        <item id="cz_zoom_size_mode">
+                            <type>selectbox</type>
+                            <default_value>zoom</default_value>
+                            <name>Zoom size mode</name>
+                            <tooltip>Defines the rule for sizing the zoom window and lens.</tooltip>
+                            <variants>
+                                <item id="image">
+                                    <name>Image</name>
+                                    <translations>
+                                        <item lang="en">Image</item>
+                                    </translations>
+                                </item>
+                                <item id="lens">
+                                    <name>Lens</name>                        
+                                    <translations>
+                                        <item lang="en">Lens</item>
+                                    </translations>
+                                </item>
+                                <item id="zoom">
+                                    <name>Zoom</name>
+                                    <translations>
+                                        <item lang="en">Zoom</item>
+                                    </translations>
+                                </item>
+                                <item id="full">
+                                    <name>Full</name>                        
+                                    <translations>
+                                        <item lang="en">Full</item>
+                                    </translations>
+                                </item>
+                            </variants>
+                            <translations>
+                                <item lang="en">Zoom size mode</item>
+                            </translations>
+                        </item>
+                        <item id="cz_caption_position">
+                            <type>selectbox</type>
+                            <default_value>bottom</default_value>
+                            <name>Caption position</name>
+                            <tooltip>Position of caption, "top" or "bottom".</tooltip>
+                            <variants>
+                                <item id="top">
+                                    <name>Top</name>
+                                    <translations>
+                                        <item lang="en">Top</item>
+                                    </translations>
+                                </item>
+                                <item id="bottom">
+                                    <name>Bottom</name>                        
+                                    <translations>
+                                        <item lang="en">Bottom</item>
+                                    </translations>
+                                </item>
+                            </variants>
+                            <translations>
+                                <item lang="en">Caption position</item>
+                            </translations>
+                        </item>
+                        <item id="cz_ease_time">
+                            <type>input</type>
+                            <default_value>200</default_value>
+                            <name>Ease time</name>
+                            <tooltip>Number of milliseconds of mouse easing movement of zoom image. The bigger the number, the more easing. Zero means no easing.</tooltip>
+                            <translations>
+                                <item lang="en" for="name">Ease time</item>
+                                <item lang="en" for="tooltip">Number of milliseconds of mouse easing movement of zoom image. The bigger the number, the more easing. Zero means no easing.</item>
+                            </translations>
+                        </item>
+                        <item id="cz_zoom_fly_out">
+                            <type>checkbox</type>
+                            <default_value>Y</default_value>
+                            <name>Zoom fly out</name>
+                            <tooltip>Turns 'flying' zoom animation on or off.</tooltip>
+                            <translations>
+                                <item lang="en" for="name">Zoom fly out</item>
+                                <item lang="en" for="tooltip">Turns 'flying' zoom animation on or off.</item>
+                            </translations>
+                        </item>                       
+                    </items>
+                </section>
+            </sections>
+        </settings>
+</addon>

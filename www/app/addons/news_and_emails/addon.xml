@@ -1,0 +1,1934 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>news_and_emails</id>
+    <name><![CDATA[News & e-mails]]></name>
+    <description>Lets you manage site news and configure newsletter sending</description>
+    <version>1.0</version>
+    <priority>500</priority>
+    <position>110</position>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="es"><![CDATA[Noticias & Emails]]></item>
+        <item for="name" lang="fr"><![CDATA[Actualités & emails]]></item>
+        <item for="name" lang="it"><![CDATA[Notizie & e-mails]]></item>
+        <item for="name" lang="nl"><![CDATA[Nieuws & e-mails]]></item>
+        <item for="name" lang="da"><![CDATA[Nyheder & e-mails]]></item>
+        <item for="name" lang="el"><![CDATA[Nέα & e-mails]]></item>
+        <item for="name" lang="ro"><![CDATA[Noutăți & e-mail-uri]]></item>
+        <item for="name" lang="ru">Новости и новостные рассылки</item>
+        <item for="name" lang="sl"><![CDATA[Novice & e-sporočila]]></item>
+        <item for="name" lang="zh"><![CDATA[新闻&邮件]]></item>
+        <item for="description" lang="ru">Позволяет создавать новости на сайте и настраивать новостные рассылки</item>
+        <item for="description" lang="zh">让您管理站点的新闻和配置时事通讯发送</item>
+    </translations>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="newsletters_per_pass">
+                        <name>Newsletters sent per step</name>
+                        <type>input</type>
+                        <default_value>10</default_value>
+                        <translations>
+                            <item lang="fr">Cash on delivery (ECONOMY only)</item>
+                            <item lang="da">Nyhedsbreve sendt pr trin</item>
+                            <item lang="el">Ενημερωτικά δελτία που στάλθηκαν ανα βήμα</item>
+                            <item lang="ro">Buletine de știri trimise per pas</item>
+                            <item lang="ru">Отправлять рассылок за один шаг</item>
+                            <item lang="sl">Novice poslane po korakih</item>
+                            <item lang="zh">货到付款(经济而已)</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="elm_advanced_mailing_server_options">
+                        <name>Advanced mailing server options</name>
+                        <type>header</type>
+                        <handler/>
+                        <translations>
+                            <item lang="fr">Proxy settings</item>
+                            <item lang="da">Avanceret mail-server options</item>
+                            <item lang="el"> Προηγμένες επιλογές διακομιστή αλληλογραφίας</item>
+                            <item lang="ro">Setări avansate ale serverului de e-mail</item>
+                            <item lang="ru">Расширенные настройки почтового сервера</item>
+                            <item lang="sl">Dodatne možnosti poštnega strežnika</item>
+                            <item lang="zh">高级邮件服务选项</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="mailer_send_method">
+                        <name>Method of sending e-mails</name>
+                        <type>selectbox</type>
+                        <default_value>default</default_value>
+                        <variants>
+                            <item id="smtp">
+                                <name>via SMTP server</name>
+                                <translations>
+                                    <item lang="da">via SMTP-server</item>
+                                    <item lang="el">Μέσω του διακομιστή SMTP </item>
+                                    <item lang="ro">prin server SMTP</item>
+                                    <item lang="ru">используя SMTP сервер</item>
+                                    <item lang="sl">Preko strežnika SMTP</item>
+                                    <item lang="zh">通过SMTP服务器</item>
+                                </translations>
+                            </item>
+                            <item id="mail">
+                                <name>via php mail function</name>
+                                <translations>
+                                    <item lang="el">Μέσω της λειτουργίας php mail</item>
+                                    <item lang="ro">prin funcția mail a php-ului</item>
+                                    <item lang="ru">используя функцию php mail</item>
+                                    <item lang="sl">preko php funkcije e-sporočila</item>
+                                    <item lang="zh">通过php邮件功能</item>
+                                </translations>
+                            </item>
+                            <item id="sendmail">
+                                <name>via sendmail program</name>
+                                <translations>
+                                    <item lang="el">Μέδω προγράμματος αποστολής mail</item>
+                                    <item lang="ro">prin intermediul unui program de trimite a e-mail-urilor</item>
+                                    <item lang="ru">используя програму sendmail</item>
+                                    <item lang="sl">preko sendmail programa</item>
+                                    <item lang="zh">通过sendmail程序</item>
+                                </translations>
+                            </item>
+                            <item id="default">
+                                <name>use default settings</name>
+                                <translations>
+                                    <item lang="da">brug stanDArdindstillingerne</item>
+                                    <item lang="el">Χρήση προεπιλεγμένων ρυθμίσεων</item>
+                                    <item lang="ro">folosește setările predefinite</item>
+                                    <item lang="ru">использовать настройки по умолчанию</item>
+                                    <item lang="sl">uporabite privzete nastavitev</item>
+                                    <item lang="zh">使用默认设置</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="fr">Cash on delivery (for registered mail only)</item>
+                            <item lang="da">Metode til at sende e-mails</item>
+                            <item lang="el">Μέθοδος αποστολής e-mails</item>
+                            <item lang="ro">Modalitatea de trimite a e-mail-urilor</item>
+                            <item lang="ru">Способ отправки электронной почты</item>
+                            <item lang="sl">Način pošiljanja e-pošte</item>
+                            <item lang="zh">货到付款(仅注册的邮件)</item>
+                        </translations>
+                    </item>
+                    <item id="elm_smtp_server_settings">
+                        <name>SMTP server settings</name>
+                        <type>header</type>
+                        <handler/>
+                        <translations>
+                            <item lang="fr">Clickatel settings</item>
+                            <item lang="da">SMTP-server indstillinger</item>
+                            <item lang="el">Ρυθμίσεις του διακομιστή SMTP </item>
+                            <item lang="ro">Setări server SMTP</item>
+                            <item lang="ru">Настройки сервера SMTP</item>
+                            <item lang="sl">SMTP nastavitve strežnika</item>
+                            <item lang="zh">SMTP服务器设置</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="mailer_smtp_host">
+                        <name>SMTP host</name>
+                        <type>input</type>
+                        <default_value/>
+                        <translations>
+                            <item lang="el">SMTP host </item>
+                            <item lang="ro">Host SMTP</item>
+                            <item lang="ru">SMTP Хост</item>
+                            <item lang="sl">SMTP gostitelj</item>
+                            <item lang="zh">SMTP主机</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="mailer_smtp_username">
+                        <name>SMTP username</name>
+                        <type>input</type>
+                        <default_value/>
+                        <translations>
+                            <item lang="fr">Additional insurance (up to CHF 3000.-)</item>
+                            <item lang="da">SMTP-brugernavn</item>
+                            <item lang="el">Ονομα χρήστη του διακομιστή SMTP</item>
+                            <item lang="ro">Utilizator SMTP</item>
+                            <item lang="ru">SMTP имя пользователя</item>
+                            <item lang="sl">SMTP uporabniško ime</item>
+                            <item lang="zh">SMTP用户名</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="mailer_smtp_password">
+                        <name>SMTP password</name>
+                        <type>input</type>
+                        <default_value/>
+                        <translations>
+                            <item lang="fr">Bulky goods</item>
+                            <item lang="da">SMTP-adgangskode</item>
+                            <item lang="el">Κωδικός SMTP</item>
+                            <item lang="ro">Parolă SMTP</item>
+                            <item lang="ru">SMTP пароль</item>
+                            <item lang="sl">SMTP geslo</item>
+                            <item lang="zh">SMTP密码</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="mailer_smtp_auth">
+                        <name>Use SMTP authentication</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                        <translations>
+                            <item lang="fr">Manual processing</item>
+                            <item lang="da">Brug SMTP-godkendelse</item>
+                            <item lang="el">Χρήση πιστοποίησης STMP</item>
+                            <item lang="ro">Folosește autenficiare SMTP</item>
+                            <item lang="ru">Использовать аутентификацию</item>
+                            <item lang="sl">uporabi SMTP autentifikacijo</item>
+                            <item lang="zh">使用SMTP验证</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="elm_sendmail_settings">
+                        <name>Sendmail settings</name>
+                        <type>header</type>
+                        <handler/>
+                        <translations>
+                            <item lang="da">Sendmail-indstillinger</item>
+                            <item lang="el">Ρυθμίσεις αποστολής mail</item>
+                            <item lang="ro">Setări program Sendmail</item>
+                            <item lang="ru">Настройки Sendmail</item>
+                            <item lang="sl">Nastavitve pošiljanja pošte</item>
+                            <item lang="zh">Sendmail设置</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="mailer_sendmail_path">
+                        <name>Path to sendmail program</name>
+                        <type>input</type>
+                        <default_value/>
+                        <translations>
+                            <item lang="da">Sti sendmail program</item>
+                            <item lang="el">Η διαδρομή προς το πρόγραμμα αποστολής mail</item>
+                            <item lang="ro">Rădăcină către programul sendmail</item>
+                            <item lang="ru">Путь до программы sendmail</item>
+                            <item lang="sl">Pot do programa za pošiljanje pošte</item>
+                            <item lang="zh">Sendmail程序的路径</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="en" id="warning_subscribers_import">Some mailing lists from the input file could not be found in the database. Certain imported subscribers will be left unassigned.</item>
+        <item lang="en" id="subscribers_menu_item_text">Subscribers</item>
+        <item lang="en" id="news_list_page">News list page</item>
+        <item lang="en" id="view_news_page">News page</item>
+        <item lang="en" id="block_mailing_lists">Newsletter subscription</item>
+        <item lang="en" id="block_news">News</item>
+        <item lang="en" id="block_mailing_lists_description">Email field for newsletter subscription</item>
+        <item lang="en" id="block_news_description"/>
+        <item lang="en" id="privileges.view_news">View news</item>
+        <item lang="en" id="privileges.manage_news">Manage news</item>
+        <item lang="ru" id="block_mailing_lists">Подписка на рассылку</item>
+        <item lang="ru" id="block_mailing_lists_description">Поле для ввода email для подписки на рассылку</item>
+        <item lang="ru" id="block_news">Новости</item>
+        <item lang="ru" id="news_list_page">Страница новостей</item>
+        <item lang="ru" id="subscribers_menu_item_text">Подписчики</item>
+        <item lang="ru" id="view_news_page">Просмотреть страницу новостей</item>
+        <item lang="ru" id="warning_subscribers_import">Некоторые списки рассылок, указанных в файле, не найдены в базе данных. Некоторые импортированные подписчики останутся не назначенными для списков рассылок.</item>
+        <item lang="ru" id="block_news_description"/>
+        <item lang="ru" id="privileges.view_news">Просмотр новостей</item>
+        <item lang="ru" id="privileges.manage_news">Управление новостями</item>
+        
+        <item lang="zh" id="warning_subscribers_import">输入文件中部分邮件列表在数据库中没有找到. 某些导入的订阅者将缺少赋值.</item>
+        <item lang="zh" id="subscribers_menu_item_text">订阅者</item>
+        <item lang="zh" id="news_list_page">新闻列表页面</item>
+        <item lang="zh" id="view_news_page">新闻页面</item>
+        <item lang="zh" id="block_mailing_lists">时事通讯订阅</item>
+        <item lang="zh" id="block_news">新闻</item>
+        <item lang="zh" id="block_mailing_lists_description">时事通讯订阅电子邮件字段</item>
+        <item lang="zh" id="block_news_description"/>
+        <item lang="en" id="warning_newsletter_no_recipients">Newsletter hasn't been sent because no recipients were found matching the selected criteria.</item>
+        <item lang="en" id="text_newsletter_sent">The newsletter(s) have been sent successfully.</item>
+        <item lang="en" id="email_cannot_be_empty">E-mail cannot be empty</item>
+        <item lang="en" id="sending_email_to">Sending email to [email]...</item>
+        <item lang="en" id="news">News</item>
+        <item lang="en" id="text_subscriber_added">Your e-mail has been successfully added to our free e-mail updates list</item>
+        <item lang="en" id="error_email_already_subscribed">Your e-mail is already subscribed.</item>
+        <item lang="en" id="text_subscriber_removed">Your e-mail has been successfully removed from our free e-mail updates list</item>
+        <item lang="en" id="text_subscriber_activated">Your email has been successfully activated</item>
+        <item lang="en" id="link_message_for_test_letter">The link will be displayed in a live newsletter</item>
+        <item lang="en" id="newsletters">Newsletters</item>
+        <item lang="en" id="templates">Templates</item>
+        <item lang="en" id="autoresponders">Autoresponders</item>
+        <item lang="en" id="campaigns">Campaigns</item>
+        <item lang="en" id="sent">Sent</item>
+        <item lang="en" id="add_news">Add news</item>
+        <item lang="en" id="add_news_and_close">Add news and close</item>
+        <item lang="en" id="subscribers_num">Number of subscribers</item>
+        <item lang="en" id="editing_mailing_list">Editing mailing list</item>
+        <item lang="en" id="from_name">From name</item>
+        <item lang="en" id="from_email">From email</item>
+        <item lang="en" id="reply_to">Reply to</item>
+        <item lang="en" id="register_autoresponder">Confirmation email</item>
+        <item lang="en" id="no_autoresponder">No autoresponder</item>
+        <item lang="en" id="show_on_checkout">Show at checkout</item>
+        <item lang="en" id="show_on_registration">Show on registration</item>
+        <item lang="en" id="show_on_separate_page">Show on separate page</item>
+        <item lang="en" id="editing_news">Editing news</item>
+        <item lang="en" id="new_news">New news</item>
+        <item lang="en" id="campaign_stats">Campaign statistics</item>
+        <item lang="en" id="add_campaign">Add campaign</item>
+        <item lang="en" id="new_campaign">New campaign</item>
+        <item lang="en" id="newsletter_templates">Newsletter templates</item>
+        <item lang="en" id="newsletter_autoresponders">Newsletter autoresponders</item>
+        <item lang="en" id="subject">Subject</item>
+        <item lang="en" id="add_newsletter">Add newsletter</item>
+        <item lang="en" id="add_template">Add template</item>
+        <item lang="en" id="add_autoresponder">Add autoresponder</item>
+        <item lang="en" id="more_subjects">Random subjects (one per line)</item>
+        <item lang="en" id="body_html">HTML body</item>
+        <item lang="en" id="no_template">No template</item>
+        <item lang="en" id="load">Load</item>
+        <item lang="en" id="campaign">Campaign</item>
+        <item lang="en" id="send_to">Send to</item>
+        <item lang="en" id="add_recipients_from_users">Add recipients from users</item>
+        <item lang="en" id="customers_with_abandoned">Customers with abandoned</item>
+        <item lang="en" id="cart_or_wishlist">Cart or Wishlist</item>
+        <item lang="en" id="which_is">which is</item>
+        <item lang="en" id="days_old">days old</item>
+        <item lang="en" id="send_to_test_email">Send to test email</item>
+        <item lang="en" id="save_and_send">Save and send</item>
+        <item lang="en" id="newsletter">Newsletter</item>
+        <item lang="en" id="newsletter_template">Newsletter template</item>
+        <item lang="en" id="newsletter_autoresponder">Newsletter autoresponder</item>
+        <item lang="en" id="mailing_list">Mailing list</item>
+        <item lang="en" id="confirmed">Confirmed</item>
+        <item lang="en" id="subscribed_to">Subscribed to [num] lists</item>
+        <item lang="en" id="subscribed">Subscribed</item>
+        <item lang="en" id="text_success_subscription">You have been successfully subscribed to our free e-mail updates and promotions!</item>
+        <item lang="en" id="text_unsubscribe_instructions"><![CDATA[We respect your privacy and do not send unsolicited e-mail to users who have not requested correspondence. You have received this e-mail because you requested to receive our free updates and promotions.<br /><br /> \n\nIf you wish to unsubscribe, please follow the link below:]]></item>
+        <item lang="en" id="updates_subscription">updates and promotions subscription</item>
+        <item lang="en" id="ult_shared_with">Shared with:</item>
+        <item lang="en" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">Email of a sender.</item>
+        <item lang="en" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Name of a sender (e.g. company name).</item>
+        <item lang="en" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Email to send replies to.</item>
+        <item lang="en" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">If several subjects are specified, email subject is randomly picked from this list.</item>
+        <item lang="en" id="tt_addons_news_and_emails_views_newsletters_update_users">If the message text contains the unsubscribe link, it will be empty for these users.</item>
+
+        <item lang="bg" id="warning_newsletter_no_recipients">Бюлетина не е изпратен, тъй като няма получателите за избраните критерии.</item>
+        <item lang="bg" id="text_newsletter_sent">Бюлетин (а) са изпратени успешно.</item>
+        <item lang="bg" id="sending_email_to">Изпращане на имейл до [email]...</item>
+        <item lang="bg" id="news">Новини</item>
+        <item lang="bg" id="text_subscriber_added">Вашата електронна поща е успешно добавена към нашият пощенски списък</item>
+        <item lang="bg" id="error_email_already_subscribed">Вашият е-мейл вече е записан.</item>
+        <item lang="bg" id="text_subscriber_removed">Вашата електронна поща е успешно отстранена от нашият пощенски списък</item>
+        <item lang="bg" id="text_subscriber_activated">Вашият имейл е успешно активиран</item>
+        <item lang="bg" id="link_message_for_test_letter">Връзката ще бъде показана в бюлетина</item>
+        <item lang="bg" id="newsletters">Бюлетини</item>
+        <item lang="bg" id="templates">Шаблони</item>
+        <item lang="bg" id="autoresponders">Автоматични отговори</item>
+        <item lang="bg" id="campaigns">Кампании</item>
+        <item lang="bg" id="sent">Изпратени</item>
+        <item lang="bg" id="add_news">Добави новина</item>
+        <item lang="bg" id="add_news_and_close">Добави новина и затвори</item>
+        <item lang="bg" id="subscribers_num">Брой на абонатите</item>
+        <item lang="bg" id="editing_mailing_list">Редактиране на пощенския списък</item>
+        <item lang="bg" id="from_name">От</item>
+        <item lang="bg" id="from_email">От email</item>
+        <item lang="bg" id="reply_to">Отговор на</item>
+        <item lang="bg" id="register_autoresponder">Email за потвърждение</item>
+        <item lang="bg" id="no_autoresponder">Без авт. отговор</item>
+        <item lang="bg" id="show_on_checkout">Покажи на страницата за поръчки</item>
+        <item lang="bg" id="show_on_registration">Покажи при регистрация</item>
+        <item lang="bg" id="show_on_separate_page">Покажи на отделна страница</item>
+        <item lang="bg" id="editing_news">Редактиране на новини</item>
+        <item lang="bg" id="new_news">Нова новина</item>
+        <item lang="bg" id="campaign_stats">Статистики за кампании</item>
+        <item lang="bg" id="add_campaign">Добави кампания</item>
+        <item lang="bg" id="new_campaign">Нова кампания</item>
+        <item lang="bg" id="newsletter_templates">Шаблони за бюлетини</item>
+        <item lang="bg" id="newsletter_autoresponders">Автоматични отговори</item>
+        <item lang="bg" id="subject">Тема</item>
+        <item lang="bg" id="add_newsletter">Добави бюлетин</item>
+        <item lang="bg" id="add_template">Добави шаблон</item>
+        <item lang="bg" id="add_autoresponder">Добави авт. отговор</item>
+        <item lang="bg" id="more_subjects">Произволни теми (по една на ред)</item>
+        <item lang="bg" id="body_html">HTML текст</item>
+        <item lang="bg" id="no_template">Няма шаблон</item>
+        <item lang="bg" id="load">Зареди</item>
+        <item lang="bg" id="campaign">Кампания</item>
+        <item lang="bg" id="send_to">Изпрати на</item>
+        <item lang="bg" id="add_recipients_from_users">Добави получатели от потребителите</item>
+        <item lang="bg" id="customers_with_abandoned">Клиенти с незавършени</item>
+        <item lang="bg" id="cart_or_wishlist">Количка или списък "Желания"</item>
+        <item lang="bg" id="which_is">който е</item>
+        <item lang="bg" id="days_old">дни преди</item>
+        <item lang="bg" id="send_to_test_email">Изпрати за тест на email</item>
+        <item lang="bg" id="save_and_send">Запази и изпрати</item>
+        <item lang="bg" id="newsletter">бюлетин</item>
+        <item lang="bg" id="newsletter_template">Шаблон за бюлетин</item>
+        <item lang="bg" id="newsletter_autoresponder">Автоматичен отговор</item>
+        <item lang="bg" id="mailing_list">Пощенски списък</item>
+        <item lang="bg" id="confirmed">Потвърден</item>
+        <item lang="bg" id="subscribed_to">Абонирани за [брой] списъци</item>
+        <item lang="bg" id="subscribed">Записан</item>
+        <item lang="bg" id="text_success_subscription">Вие успешно се абонирахте за нашия безплатен пощенски списък с актуализации и промоции!</item>
+        <item lang="bg" id="text_unsubscribe_instructions"><![CDATA[Ние уважаваме неприкосновеността на личните Ви данни.  и не изпращаме имейл съобщения до потребители, които не са поискали. Вие получавате това съобщение, защото се абонирате за нашия бюлетин. <br> <br>\n\n\n\n\n\n\n\nАко искате да се отпишете, моля, кликнете на линка:]]></item>
+        <item lang="bg" id="updates_subscription">Абонирайте се за актуализации</item>
+
+        <item lang="da" id="warning_newsletter_no_recipients">Nyhedsbrevet er ikke blevet sendt, fordi ingen modtagere blev fundet, der matcher de valgte kriterier.</item>
+        <item lang="da" id="text_newsletter_sent">Nyhedsbrevet er blevet sendt.</item>
+        <item lang="da" id="sending_email_to">Sender e-mail til [email]...</item>
+        <item lang="da" id="news">Nyhed</item>
+        <item lang="da" id="text_subscriber_added">Din e-mail er blevet føjet til vores gratis nyhedsliste</item>
+        <item lang="da" id="error_email_already_subscribed">Din e-mail er allerede tilmeldt.</item>
+        <item lang="da" id="text_subscriber_removed">Din e-mail er blevet fjernet fra vores gratis nyhedsbrev</item>
+        <item lang="da" id="text_subscriber_activated">Din e-mail er blevet aktiveret</item>
+        <item lang="da" id="link_message_for_test_letter">Linket vil blive vist i en levende nyhedsbrev</item>
+        <item lang="da" id="newsletters">Nyhedsbrev</item>
+        <item lang="da" id="templates">template</item>
+        <item lang="da" id="autoresponders">Autosvar</item>
+        <item lang="da" id="campaigns">kampagner</item>
+        <item lang="da" id="sent">Sendt</item>
+        <item lang="da" id="add_news">Tilføj nyhed</item>
+        <item lang="da" id="add_news_and_close">Tilføj nyhed og luk</item>
+        <item lang="da" id="subscribers_num">Antal af abonnenter</item>
+        <item lang="da" id="editing_mailing_list">redigere mailing list</item>
+        <item lang="da" id="from_name">Af</item>
+        <item lang="da" id="from_email">e-mail fra</item>
+        <item lang="da" id="reply_to">Besvar</item>
+        <item lang="da" id="register_autoresponder">Bekræftelses-e-mail</item>
+        <item lang="da" id="no_autoresponder">Ikke autosvar</item>
+        <item lang="da" id="show_on_checkout">Vis ved kassen</item>
+        <item lang="da" id="show_on_registration">Vis på registrering</item>
+        <item lang="da" id="show_on_separate_page">is på separat side</item>
+        <item lang="da" id="editing_news">redigere nyhed </item>
+        <item lang="da" id="new_news">nye Nyheder</item>
+        <item lang="da" id="campaign_stats">Kampagne statistik</item>
+        <item lang="da" id="add_campaign">Tilføj kampagne</item>
+        <item lang="da" id="new_campaign">ny kampagne</item>
+        <item lang="da" id="newsletter_templates">Nyhedsbrev skabeloner\n</item>
+        <item lang="da" id="newsletter_autoresponders">Nyhedsbrev autosvar</item>
+        <item lang="da" id="subject">Emne</item>
+        <item lang="da" id="add_newsletter">Tilføj nyhedsbrev</item>
+        <item lang="da" id="add_template">Tilføj skabelon</item>
+        <item lang="da" id="add_autoresponder">tilføj autosvar</item>
+        <item lang="da" id="more_subjects">Tilfældige fag (et per linje)</item>
+        <item lang="da" id="body_html">HTML hoveddel</item>
+        <item lang="da" id="no_template">Ingen template</item>
+        <item lang="da" id="load">læs</item>
+        <item lang="da" id="campaign">kampagne</item>
+        <item lang="da" id="send_to">Send til</item>
+        <item lang="da" id="add_recipients_from_users">Tilføj beløbsmodtagelse fra brugere</item>
+        <item lang="da" id="send_to_test_email">Send til test email</item>
+        <item lang="da" id="save_and_send">Gem og send</item>
+        <item lang="da" id="newsletter">Nyhedsbrev</item>
+        <item lang="da" id="newsletter_template">Nyhedsbrev skabelon\n</item>
+        <item lang="da" id="newsletter_autoresponder">Nyhedsbrev autosvar</item>
+        <item lang="da" id="mailing_list">Mail liste</item>
+        <item lang="da" id="confirmed">bekræftelse</item>
+        <item lang="da" id="subscribed_to">Abonnerer på [num] lister</item>
+        <item lang="da" id="subscribed">abonnere</item>
+        <item lang="da" id="text_success_subscription">u er nu tilmeldt vores gratis e-mails med nyheder og tilbud!</item>
+        <item lang="da" id="text_unsubscribe_instructions"><![CDATA[Vi respekterer dit privatliv og vil ikke sende uopfordrede e-mails til brugere, der ikke har anmodet om dette. Du har modtaget denne e-mail, fordi du har anmodet om at modtage vores gratis nyhedsbrev. <br /> <br />\nHvis du ikke ønsker at modtage disse mails, beder vi dig afmelde dem så hurtigt som muligt for at forhindre flere e-mails.\n\nHvis du ønsker at afmelde, skal du følge linket nedenfor:]]></item>
+        <item lang="da" id="updates_subscription">opdateringer og promover abonnement</item>
+
+        <item lang="de" id="warning_newsletter_no_recipients">Newsletter wurde nicht versandt, weil kein passender Empfanger gefunden werden konnte.</item>
+        <item lang="de" id="text_newsletter_sent">Der Newsletter wurde erfolgreich versandt</item>
+        <item lang="de" id="text_subscriber_added">Ihre E-Mail wurde erfolgreich in unserem System registriert.</item>
+        <item lang="de" id="error_email_already_subscribed">Ihre E-Mail-Adresse ist bereits vergeben.</item>
+        <item lang="de" id="text_subscriber_removed">Ihre E-Mail wurde aus unserem System entfernt.</item>
+        <item lang="de" id="newsletters">Newsletter</item>
+        <item lang="de" id="sent">versendet</item>
+        <item lang="de" id="add_news">News hinzufugen</item>
+        <item lang="de" id="subject">Betreff</item>
+        <item lang="de" id="add_newsletter">Newsletter hinzufugen</item>
+        <item lang="de" id="send_to">Senden an</item>
+        <item lang="de" id="text_success_subscription"><![CDATA[Herzlich Willkommen! <br>\nSie wurden unserem Newsletters-Verteiler erfolgreich hinzugefugt.]]></item>
+        <item lang="de" id="text_unsubscribe_instructions">Wenn Sie den Newsletter nicht mehr erhalten mochten, klicken Sie bitte auf:</item>
+        <item lang="de" id="updates_subscription">Bestellung Updates und Werbung</item>
+
+        <item lang="el" id="warning_newsletter_no_recipients">Τα ενημερωτικά δελτία(newsletters) δεν έχουν αποσταλεί , καθώς δεν βρέθηκαν παραλήπτες να ταιριάζουν στα επιλεγμένα κριτήρια.</item>
+        <item lang="el" id="text_newsletter_sent">Το ενημερωτικό δελτίο(α) (newsletters), στάλθηκε επιτυχώς</item>
+        <item lang="el" id="sending_email_to">Αποστολή email στο [email] ...</item>
+        <item lang="el" id="news">Νέα</item>
+        <item lang="el" id="text_subscriber_added">Το e-mail σας έχει έχει προστεθεί επιτυχώς στήν δωρεάν λίστα αναβαθμίσεων μέσω e-mail.</item>
+        <item lang="el" id="error_email_already_subscribed">Το e-mail έχει ήδη εγγραφεί.</item>
+        <item lang="el" id="text_subscriber_removed">Το e-mail σας έχει έχει αφαιρεθεί επιτυχώς από την δωρεάν λίστα αναβαθμίσεων μέσω e-mail.</item>
+        <item lang="el" id="text_subscriber_activated">Το email ενεργοποιήθηκε επιτυχώς.</item>
+        <item lang="el" id="link_message_for_test_letter">Ο σύνδεσμος θα παρουσιάζετε στο live newsletter</item>
+        <item lang="el" id="newsletters">Ενημερωτικό δελτίο</item>
+        <item lang="el" id="templates">Πρότυπα εμφάνισης (templates)</item>
+        <item lang="el" id="autoresponders">Αυτόματες απαντήσεις</item>
+        <item lang="el" id="campaigns">Καμπάνιες</item>
+        <item lang="el" id="sent">Εστάλη</item>
+        <item lang="el" id="add_news">Προσθήκη νέων</item>
+        <item lang="el" id="add_news_and_close">Προσθήκη νέων και κλείσιμο</item>
+        <item lang="el" id="subscribers_num">Αριθμός συνδρομητή</item>
+        <item lang="el" id="editing_mailing_list">Επεξεργασία λίστας αποδεκτών αλληλογραφίας</item>
+        <item lang="el" id="from_name">Από το όνομα</item>
+        <item lang="el" id="from_email">Από το e-mail</item>
+        <item lang="el" id="reply_to">Απάντηση σε</item>
+        <item lang="el" id="register_autoresponder">Ε-mail επιβεβαίωσης</item>
+        <item lang="el" id="no_autoresponder">Χωρίς αυτόματο αποκριτή</item>
+        <item lang="el" id="show_on_checkout">Προβολή κατά την πληρωμή</item>
+        <item lang="el" id="show_on_registration">Προβολή στην καταχώριση</item>
+        <item lang="el" id="show_on_separate_page">Προβολή σε ξεχωριστή σελίδα</item>
+        <item lang="el" id="editing_news">Επεξεργασία γεγονότων</item>
+        <item lang="el" id="new_news">Καινούργιες ειδήσεις</item>
+        <item lang="el" id="campaign_stats">Στατιστικά καμπάνιας</item>
+        <item lang="el" id="add_campaign">Προσθήκη καμπάνιας</item>
+        <item lang="el" id="new_campaign">Νέα καμπάνια</item>
+        <item lang="el" id="newsletter_templates">Τtemplates ενημερωτικού δελτίου</item>
+        <item lang="el" id="newsletter_autoresponders">Αυτόματοι αποκριτές ενημερωτικού δελτίου</item>
+        <item lang="el" id="subject">Θέμα</item>
+        <item lang="el" id="add_newsletter">Προσθήκη newsletter</item>
+        <item lang="el" id="add_template">Προσθήκη εμφάνισης ιστοσελίδας</item>
+        <item lang="el" id="add_autoresponder">Προσθήκη αυτόματων απαντήσεων</item>
+        <item lang="el" id="more_subjects">Τυχαία αντικείμενα (ένα ανα σειρά)</item>
+        <item lang="el" id="body_html">Σώμα HTML</item>
+        <item lang="el" id="no_template">Χωρίς θέμα εμφάνισης</item>
+        <item lang="el" id="load">Φόρτωση</item>
+        <item lang="el" id="campaign">Καμπάνια</item>
+        <item lang="el" id="send_to">Αποστολή σε</item>
+        <item lang="el" id="add_recipients_from_users">Προσθήκη παραληπτών από χρήστες</item>
+        <item lang="el" id="customers_with_abandoned">Οι πελάτες με εγκαταλελειμμένα</item>
+        <item lang="el" id="cart_or_wishlist">Καλάθι ή λίστα επιθυμιών</item>
+        <item lang="el" id="which_is">Ποιο είναι</item>
+        <item lang="el" id="days_old">μέρες πριν</item>
+        <item lang="el" id="send_to_test_email">Αποστολή για  να δοκιμάσετε το email</item>
+        <item lang="el" id="save_and_send">Αποθήκευση και αποστολή</item>
+        <item lang="el" id="newsletter">Ενημερωτικά δελτία</item>
+        <item lang="el" id="newsletter_template">Τtemplate ενημερωτικού δελτίου</item>
+        <item lang="el" id="newsletter_autoresponder">Αυτόματο αποκριτής ενημερωτικού δελτίου</item>
+        <item lang="el" id="mailing_list">Λίστα αποστολής</item>
+        <item lang="el" id="confirmed">Επιβεβαιώθηκε</item>
+        <item lang="el" id="subscribed_to">Έγινε εγγραφή στις [num] λίστες</item>
+        <item lang="el" id="subscribed">Έγινε εγγραφή</item>
+        <item lang="el" id="text_success_subscription">Έχετε επιτυχώς εγγραφεί στις δωρεάν αναβαθμίσεις ηλεκτρονικού ταχυδρομείου και στις προσφορές μας !</item>
+        <item lang="el" id="text_unsubscribe_instructions"><![CDATA[Σεβόμαστε το απόρρητό σας και δεν στέλνουμε ανεπιθύμητα e-mail σε χρήστες που δεν έχουν ζητήσει την αλληλογραφία. Έχετε λάβει αυτό το e-mail, επειδή ζητήσατε να λαμβάνετε νέα και προσφορές μας <br /> <br />  n  nΑν επιθυμείτε να διαγραφείτε, παρακαλώ ακολουθήστε τον παρακάτω σύνδεσμο.:]]></item>
+        <item lang="el" id="updates_subscription">Συνδρομή ενημερώσεων και προωθήσεων</item>
+
+        <item lang="es" id="warning_newsletter_no_recipients">El boletín de noticias no fue enviado porque ningún destinatario fue encontrado coincidiendo con los criterios seleccionados.</item>
+        <item lang="es" id="text_newsletter_sent">El boletín(es) de noticia(s) han sido enviado(s) con éxito</item>
+        <item lang="es" id="news">Noticias</item>
+        <item lang="es" id="text_subscriber_added">Su dirección de E-mail ha sido añadida con éxito a nuestra lista de noticias y promociones.</item>
+        <item lang="es" id="error_email_already_subscribed">Su dirección de E-mail ya se encuentra subscrita</item>
+        <item lang="es" id="text_subscriber_removed">Su dirección de E-mail ha sido eliminada con éxito de nuestra lista de noticias y promociones.</item>
+        <item lang="es" id="newsletters">Boletines de noticias</item>
+        <item lang="es" id="sent">Enviado</item>
+        <item lang="es" id="add_news">Añadir noticias</item>
+        <item lang="es" id="show_on_separate_page">Mostrar en páginas separadas</item>
+        <item lang="es" id="subject">Sujeto</item>
+        <item lang="es" id="add_newsletter">Añadir newsletter</item>
+        <item lang="es" id="load">Cargar</item>
+        <item lang="es" id="send_to">Enviar a</item>
+        <item lang="es" id="newsletter">Boletín de noticias</item>
+        <item lang="es" id="text_success_subscription">¡Usted se subscribió con éxito a nuestras noticias y promociones!</item>
+        <item lang="es" id="text_unsubscribe_instructions"><![CDATA[<br /><br />\n\n----------------------------------------------------------\n\n<br /><br />\n\nRespetamos su intimidad y no enviamos correos electrónicos a usuarios que no lo han solicitado. Usted ha recibido este correo electrónico porque solicitó recibir nuestras actualizaciones y promociones.<br /><br /> \n\nSi usted desea cancelar la suscripción por favor visite el enlace de abajo:]]></item>
+        <item lang="es" id="updates_subscription">actualizar y promocionar suscripciones</item>
+
+        <item lang="fr" id="warning_newsletter_no_recipients">La newsletter n'a pas été envoyée car aucun destinataire n'a été trouvé correspondant au critère sélectionné.</item>
+        <item lang="fr" id="text_newsletter_sent">Les newsletters ont été envoyées avec succès</item>
+        <item lang="fr" id="news">Actualités</item>
+        <item lang="fr" id="text_subscriber_added">Votre email a été ajouté avec succès à notre liste de mailing</item>
+        <item lang="fr" id="error_email_already_subscribed">Votre email est déjà dans notre base.</item>
+        <item lang="fr" id="text_subscriber_removed">Votre email a été enlevé avec succès de notre liste de mailing</item>
+        <item lang="fr" id="autoresponders">Réponses automatiques</item>
+        <item lang="fr" id="campaigns">Campagnes</item>
+        <item lang="fr" id="sent">Envoyé</item>
+        <item lang="fr" id="add_news">Ajouter actualités</item>
+        <item lang="fr" id="subscribers_num">Nombre d'abonnés</item>
+        <item lang="fr" id="editing_mailing_list">Edition d'une mailing list</item>
+        <item lang="fr" id="from_name">De nom</item>
+        <item lang="fr" id="from_email">De l' email</item>
+        <item lang="fr" id="reply_to">Répondre à</item>
+        <item lang="fr" id="register_autoresponder">E-mail à retourner si le client répond</item>
+        <item lang="fr" id="no_autoresponder">Pas de réponse automatique</item>
+        <item lang="fr" id="show_on_checkout">Afficher au moment du paiement</item>
+        <item lang="fr" id="show_on_registration">Afficher à l'enregistrement</item>
+        <item lang="fr" id="show_on_separate_page">Afficher dans une page séparée</item>
+        <item lang="fr" id="editing_news">Édition d'une actualité</item>
+        <item lang="fr" id="new_news">Nouvelle actualité</item>
+        <item lang="fr" id="add_campaign">Ajouter une campagne</item>
+        <item lang="fr" id="new_campaign">Nouvelle campagne</item>
+        <item lang="fr" id="newsletter_autoresponders">Newsletter réponses automatiques</item>
+        <item lang="fr" id="subject">Sujet</item>
+        <item lang="fr" id="add_newsletter">Ajouter une newsletter</item>
+        <item lang="fr" id="add_template">Ajouter un template</item>
+        <item lang="fr" id="add_autoresponder">Ajouter une réponse automatique</item>
+        <item lang="fr" id="more_subjects">Autres sujets (un par ligne. Le système choisira un sujet aléatoirement pour chaque email envoyé)</item>
+        <item lang="fr" id="body_html">Corps HTML</item>
+        <item lang="fr" id="no_template">Aucun template</item>
+        <item lang="fr" id="load">Charger</item>
+        <item lang="fr" id="campaign">Campagne</item>
+        <item lang="fr" id="send_to">Envoyer à</item>
+        <item lang="fr" id="add_recipients_from_users">Ajouter des destinataires depuis la liste utilisateurs</item>
+        <item lang="fr" id="send_to_test_email">Envoyer pour tester email</item>
+        <item lang="fr" id="save_and_send">Sauver et envoyer</item>
+        <item lang="fr" id="newsletter_autoresponder">Newsletter réponse automatique</item>
+        <item lang="fr" id="mailing_list">Liste d'Email</item>
+        <item lang="fr" id="confirmed">Confirmé</item>
+        <item lang="fr" id="subscribed_to">Inscris à [num] liste(s)</item>
+        <item lang="fr" id="subscribed">Inscris</item>
+        <item lang="fr" id="text_success_subscription">Vous êtes inscrit avec succès à notre mailing liste de mises à jour et promotions !</item>
+        <item lang="fr" id="text_unsubscribe_instructions"><![CDATA[Nous respectons votre confidentialité et n'envoyions pas de courriers non-sollicités aux clients qui n'ont pas demandés de nos nouvelles. Vous avez reçu cet email parce que vous avez demandé nos mise à jour gratuites et nos promotions.<br><br> \n\nSi vous voulez vous désinscrire, veuillez suivre le lien ci-dessous :]]></item>
+        <item lang="fr" id="updates_subscription">abonnement aux mises à jour et promotions</item>
+
+        <item lang="it" id="warning_newsletter_no_recipients">La newsletter non e stata inviata perche non sono stati trovati i destinatari in base i criteri selezionati.</item>
+        <item lang="it" id="text_newsletter_sent">Newsletter inviata correttamente</item>
+        <item lang="it" id="sending_email_to">Invio email a [email]...</item>
+        <item lang="it" id="text_subscriber_added">Sei stato iscritto correttamente alla nostra lista per la ricezione di aggiornamenti e promozioni via email!</item>
+        <item lang="it" id="error_email_already_subscribed">Il tuo indirizzo email e gia iscritto.</item>
+        <item lang="it" id="text_subscriber_removed">Il tuo indirizzo email e stato rimosso dal nostro database</item>
+        <item lang="it" id="link_message_for_test_letter">Il link verrà visualizzato in una live newsleter</item>
+        <item lang="it" id="newsletters">Newsletter</item>
+        <item lang="it" id="templates">Modelli</item>
+        <item lang="it" id="autoresponders">Autorisponditori</item>
+        <item lang="it" id="campaigns">Campagne</item>
+        <item lang="it" id="warning_subscribers_import">Alcune mailing list dal file di input non sono state trovate nel database. Alcuni iscritti saranno lasciati non assegnati.</item>
+        <item lang="it" id="sent">Inviato</item>
+        <item lang="it" id="add_news">Aggiungi notizie</item>
+        <item lang="it" id="add_news_and_close">Aggiungi news e poi chiudi</item>
+        <item lang="it" id="subscribers_num">Numero iscritti</item>
+        <item lang="it" id="add_subscribers">Aggiungi iscritti</item>
+        <item lang="it" id="editing_mailing_list">Modifica mailing list</item>
+        <item lang="it" id="new_mailing_lists">Nuova mailing list</item>
+        <item lang="it" id="from_name">Nome "da"</item>
+        <item lang="it" id="from_email">E-mail "da"</item>
+        <item lang="it" id="reply_to">Rispondi a</item>
+        <item lang="it" id="register_autoresponder">E-mail di conferma</item>
+        <item lang="it" id="no_autoresponder">Nessun autorisponditore</item>
+        <item lang="it" id="show_on_checkout">Visualizza al checkout</item>
+        <item lang="it" id="show_on_registration">Visualizza in registrazione</item>
+        <item lang="it" id="show_on_separate_page">Visualizza su pagina separata</item>
+        <item lang="it" id="editing_news">Modifica novità</item>
+        <item lang="it" id="new_news">Nuove news</item>
+        <item lang="it" id="campaign_stats">Statistiche</item>
+        <item lang="it" id="add_campaign">Aggiungi campagna</item>
+        <item lang="it" id="new_campaign">Nuova campagna</item>
+        <item lang="it" id="newsletter_templates">Modello di newsletter</item>
+        <item lang="it" id="newsletter_autoresponders">Autorisponditore newsletter</item>
+        <item lang="it" id="subject">Soggetto</item>
+        <item lang="it" id="add_newsletter">Aggiungi newsletter</item>
+        <item lang="it" id="add_template">Aggiungi template</item>
+        <item lang="it" id="add_autoresponder">Aggiungi autorisponditore</item>
+        <item lang="it" id="more_subjects">Soggetto random (uno per linea)</item>
+        <item lang="it" id="body_html">Corpo del messaggio (HTML)</item>
+        <item lang="it" id="no_template">Nessun modello</item>
+        <item lang="it" id="load">Carica</item>
+        <item lang="it" id="campaign">Campagna</item>
+        <item lang="it" id="send_to">Invia a</item>
+        <item lang="it" id="add_recipients_from_users">Aggiungi destinatari dall'elenco utenti</item>
+        <item lang="it" id="customers_with_abandoned">Clienti non attivi</item>
+        <item lang="it" id="cart_or_wishlist">Carrello o lista desideri</item>
+        <item lang="it" id="which_is">Che è</item>
+        <item lang="it" id="days_old">Giorni</item>
+        <item lang="it" id="send_to_test_email">Invia a indirizzo di test</item>
+        <item lang="it" id="save_and_send">Salva e invia</item>
+        <item lang="it" id="newsletter_template">modello newsletter</item>
+        <item lang="it" id="newsletter_autoresponder">autorisponditore</item>
+        <item lang="it" id="confirmed">Confermato</item>
+        <item lang="it" id="subscribed_to">Iscritto a [num] lista</item>
+        <item lang="it" id="subscribed">Iscritto</item>
+        <item lang="it" id="text_success_subscription">Sei stato iscritto correttamente alla nostra lista per la ricezione di aggiornamenti e promozioni via email!</item>
+        <item lang="it" id="text_unsubscribe_instructions"><![CDATA[Rispettiamo la tua privacy e non invieremo email non richieste. Hai ricevuto questa email perche hai fatto richiesta della ricezione di novita dal nostro sito riguardo promozioni e aggiornamenti.<br><br> \nSe vuoi cancellare il tuo indirizzo email dal nostro database segui questo link:]]></item>
+        <item lang="it" id="updates_subscription">Iscrizione per aggiornamenti e promozioni</item>
+
+        <item lang="nl" id="warning_newsletter_no_recipients">Nieuwsbrief is niet verzonden omdat het selectiecriterium geen ontvangers bevat.</item>
+        <item lang="nl" id="text_newsletter_sent">De nieuwsbrieven zijn succesvol verzonden.</item>
+        <item lang="nl" id="news">Nieuws</item>
+        <item lang="nl" id="text_subscriber_added"><![CDATA[<b>Dank u!</b><br>Uw e-mailadres is succesvol toegevoegd aan onze gratis nieuwsbrief met o.a. speciale aanbiedingen en andere waardevolle informatie!]]></item>
+        <item lang="nl" id="error_email_already_subscribed">Dit e-mailadres is al ingeschreven.</item>
+        <item lang="nl" id="text_subscriber_removed">Uw email is succesvol verwijderd van onze gratis nieuwsbrief.</item>
+        <item lang="nl" id="newsletters">Nieuwsbrieven</item>
+        <item lang="nl" id="sent">Verstuur</item>
+        <item lang="nl" id="add_news">Toevoegen nieuws</item>
+        <item lang="nl" id="subject">Onderwerp</item>
+        <item lang="nl" id="add_newsletter">Toevoegen nieuwsbrief</item>
+        <item lang="nl" id="send_to">Stuur naar</item>
+        <item lang="nl" id="which_is">welke is</item>
+        <item lang="nl" id="newsletter">Nieuwsbrief</item>
+        <item lang="nl" id="text_success_subscription">U bent succesvol ingeschreven op onze gratis emaillijst met speciale aanbiedingen en promoties!</item>
+        <item lang="nl" id="text_unsubscribe_instructions"><![CDATA[Wij respecteren uw privacy enorm en willen absoluut geen ongewenste correspondentie versturen! U ontvangt deze email omdat u zich in onze webwinkel heeft ingeschreven voor het ontvangen van speciale aanbieden en/of informatie. <br><br> \nIndien u zich wilt hiervoor wilt uitschrijven kunt u klikken op onderstaande link:]]></item>
+
+        <item lang="no" id="warning_newsletter_no_recipients">Nyhetsbrevet har ikke blitt sendt fordi ingen mottakere funnet som passer de valgte kriteriene.</item>
+        <item lang="no" id="text_newsletter_sent">Nyhetsbrev har blitt sendt.</item>
+        <item lang="no" id="sending_email_to">Sender e-post til [email]...</item>
+        <item lang="no" id="news">Nyheter</item>
+        <item lang="no" id="text_subscriber_added">Din e-post har blitt lagt til i vår liste for gratis e-post oppdateringer</item>
+        <item lang="no" id="error_email_already_subscribed">Din e-post abonnerer allerede.</item>
+        <item lang="no" id="text_subscriber_removed">Din e-post har blitt fjernet fra vår liste for gratis e-post oppdateringer</item>
+        <item lang="no" id="text_subscriber_activated">Din e-post har blitt aktivert</item>
+        <item lang="no" id="link_message_for_test_letter">Linken vil bli vist i et live nyhetsbrev</item>
+        <item lang="no" id="newsletters">Nyhetsbrev</item>
+        <item lang="no" id="templates">Maler</item>
+        <item lang="no" id="autoresponders">Autosvarer</item>
+        <item lang="no" id="campaigns">Kampanjer</item>
+        <item lang="no" id="sent">Sendt</item>
+        <item lang="no" id="add_news">Legg til nyheter</item>
+        <item lang="no" id="add_news_and_close">Legg til nyheter og lukk</item>
+        <item lang="no" id="subscribers_num">Antall abonnenter</item>
+        <item lang="no" id="editing_mailing_list">Redigerer forsendelsesliste</item>
+        <item lang="no" id="from_name">Fra navn</item>
+        <item lang="no" id="from_email">Fra e-post</item>
+        <item lang="no" id="reply_to">Svar til</item>
+        <item lang="no" id="register_autoresponder">E-postbekreftelse</item>
+        <item lang="no" id="no_autoresponder">Ingen autosvarer</item>
+        <item lang="no" id="show_on_checkout">Vis i kassen</item>
+        <item lang="no" id="show_on_registration">Vis ved registrering</item>
+        <item lang="no" id="show_on_separate_page">Vis på egen side</item>
+        <item lang="no" id="editing_news">Redigerer nyheter</item>
+        <item lang="no" id="new_news">Nye nyheter</item>
+        <item lang="no" id="campaign_stats">Kampanjestatistikk</item>
+        <item lang="no" id="add_campaign">Legg til kampanje</item>
+        <item lang="no" id="new_campaign">Ny kampanje</item>
+        <item lang="no" id="newsletter_templates">Nyhetsbrev maler</item>
+        <item lang="no" id="newsletter_autoresponders">Nyhetsbrev autosvarere</item>
+        <item lang="no" id="subject">Emne</item>
+        <item lang="no" id="add_newsletter">Legg til nyhetsbrev</item>
+        <item lang="no" id="add_template">Legg til mal</item>
+        <item lang="no" id="add_autoresponder">Legg autosvarer</item>
+        <item lang="no" id="more_subjects">Vilkårlige emner (en per linje)</item>
+        <item lang="no" id="body_html">HTML kropp</item>
+        <item lang="no" id="no_template">Ingen mal</item>
+        <item lang="no" id="load">Last</item>
+        <item lang="no" id="campaign">Kampanje</item>
+        <item lang="no" id="send_to">Send til</item>
+        <item lang="no" id="add_recipients_from_users">Legge til mottakere fra brukere</item>
+        <item lang="no" id="customers_with_abandoned">Kunder med forlatte</item>
+        <item lang="no" id="cart_or_wishlist">Handlevogn eller Ønskeliste</item>
+        <item lang="no" id="which_is">som er</item>
+        <item lang="no" id="days_old">dager gamle</item>
+        <item lang="no" id="send_to_test_email">Send til test e-post</item>
+        <item lang="no" id="save_and_send">Lagre og send</item>
+        <item lang="no" id="newsletter">Nyhetsbrev</item>
+        <item lang="no" id="newsletter_template">Nyhetsbrev mal</item>
+        <item lang="no" id="newsletter_autoresponder">Nyhetsbrev autosvarer</item>
+        <item lang="no" id="mailing_list">Forsendelsesliste</item>
+        <item lang="no" id="confirmed">Bekreftet</item>
+        <item lang="no" id="subscribed_to">Abonnerer på [num] lister</item>
+        <item lang="no" id="subscribed">Abonnert</item>
+        <item lang="no" id="text_success_subscription">Du er nå påmeldt til vår gratis e-post oppdateringer og kampanjer!</item>
+        <item lang="no" id="text_unsubscribe_instructions"><![CDATA[Vi respekterer ditt privatliv og ikke sende uønsket e-post til brukere som ikke har bedt om korrespondanse. Du har mottatt denne e-posten fordi du bedt om å motta vår gratis oppdateringer og kampanjer <br /> <br /> Hvis du ønsker å avslutte abonnementet, vennligst følg linken nedenfor.:]]></item>
+        <item lang="no" id="updates_subscription">oppdateringer og kampanjer abonnement</item>
+
+        <item lang="ro" id="warning_newsletter_no_recipients">Newsletter-ul nu a fost trimis pentru că nu a fost găsit nici un destinatar care să se potrivească cu criteriile selectate.</item>
+        <item lang="ro" id="text_newsletter_sent">Newsletter-ul(urile) au fost trimise cu succes</item>
+        <item lang="ro" id="sending_email_to">Se trimite e-mail lui [email]...</item>
+        <item lang="ro" id="news">Noutăți</item>
+        <item lang="ro" id="text_subscriber_added">E-mail-ul dvs. a fost adăugat cu succes la lista cu actualizări gratuite</item>
+        <item lang="ro" id="error_email_already_subscribed">Adresa dvs. de e-mail este deja abonată.</item>
+        <item lang="ro" id="text_subscriber_removed">Adresa dvs. a fost ștearsă cu succes din lista cu actualizări gratuite</item>
+        <item lang="ro" id="text_subscriber_activated">E-mail-ul dvs. a fost activat cu succes</item>
+        <item lang="ro" id="link_message_for_test_letter">Link-ul va fi afișat într-un buletin de știri live</item>
+        <item lang="ro" id="newsletters">Buletine informative</item>
+        <item lang="ro" id="templates">Șabloane</item>
+        <item lang="ro" id="autoresponders">Răspunzători în mod automat</item>
+        <item lang="ro" id="campaigns">Campanii</item>
+        <item lang="ro" id="sent">Trimite</item>
+        <item lang="ro" id="add_news">Adăugați noutăți</item>
+        <item lang="ro" id="add_news_and_close">Adăugați noutăți și închideți</item>
+        <item lang="ro" id="subscribers_num">Numărul de abonați</item>
+        <item lang="ro" id="editing_mailing_list">Editare listă de discuții</item>
+        <item lang="ro" id="from_name">Numele expeditorului</item>
+        <item lang="ro" id="from_email">E-mailul expeditorului</item>
+        <item lang="ro" id="reply_to">Răspune-ți la</item>
+        <item lang="ro" id="register_autoresponder">E-mail-ul de confirmare</item>
+        <item lang="ro" id="no_autoresponder">Nici un răspunzător automat</item>
+        <item lang="ro" id="show_on_checkout">Afișează la evaluator</item>
+        <item lang="ro" id="show_on_registration">Afișează în înregistrare</item>
+        <item lang="ro" id="show_on_separate_page">Afișează pe pagini separate</item>
+        <item lang="ro" id="editing_news">Editare noutăți</item>
+        <item lang="ro" id="new_news">Știri noi</item>
+        <item lang="ro" id="campaign_stats">Statisticile de campanie</item>
+        <item lang="ro" id="add_campaign">Adăugați o campanie</item>
+        <item lang="ro" id="new_campaign">Campanie nouă</item>
+        <item lang="ro" id="newsletter_templates">Șabloanele buletinului informativ</item>
+        <item lang="ro" id="newsletter_autoresponders">Răspunzătoare automate a buletinului informativ</item>
+        <item lang="ro" id="subject">Subiect</item>
+        <item lang="ro" id="add_newsletter">Adăugați buletin de știri</item>
+        <item lang="ro" id="add_template">Adăugați un template nou</item>
+        <item lang="ro" id="add_autoresponder">Adăugați un răspunzător automat</item>
+        <item lang="ro" id="more_subjects">Subiecte aleatorii (câte unu pe linie)</item>
+        <item lang="ro" id="body_html">Sistemul HTML </item>
+        <item lang="ro" id="no_template">Nici un șablon</item>
+        <item lang="ro" id="load">Încărcați</item>
+        <item lang="ro" id="campaign">Campanie</item>
+        <item lang="ro" id="send_to">Trimiteți către</item>
+        <item lang="ro" id="add_recipients_from_users">Adăugați destinatari de la utilizatori</item>
+        <item lang="ro" id="send_to_test_email">Trimiteți un e-mail de test</item>
+        <item lang="ro" id="save_and_send">Salvați și trimiteți</item>
+        <item lang="ro" id="newsletter">Buletin informativ</item>
+        <item lang="ro" id="newsletter_template">Șablonul buletinului informativ</item>
+        <item lang="ro" id="newsletter_autoresponder">Răspunzătorul automat al buletinului informativ</item>
+        <item lang="ro" id="mailing_list">Listă de adrese</item>
+        <item lang="ro" id="confirmed">Confirmat</item>
+        <item lang="ro" id="subscribed_to">Abonat la lista [num]</item>
+        <item lang="ro" id="subscribed">Abonat</item>
+        <item lang="ro" id="text_success_subscription">V-ați abonat cu succes la actualizări și promoții!</item>
+        <item lang="ro" id="text_unsubscribe_instructions"><![CDATA[Noi respectăm politica de confidențialitate a datelor dvs. și nu trimitem corespondențe nesolicitate. Ați primit acest e-mail pentru că ați solicitat să primiți actualizări gratuite și promoții.<br /><br /> Dacă doriți să vă dezabonați, vă rugăm să urmați link-ul următor:]]></item>
+        <item lang="ro" id="updates_subscription">abonament actualizări şi promoţii</item>
+
+        <item lang="ru" id="warning_newsletter_no_recipients">Рассылка не была произведена, т.к. нет подписчиков, удовлетворяющих заданным условиям.</item>
+        <item lang="ru" id="text_newsletter_sent">Рассылка(-и) отправлена(-ы).</item>
+        <item lang="ru" id="sending_email_to">Отправление сообщения по адресу [email]...</item>
+        <item lang="ru" id="news">Новости</item>
+        <item lang="ru" id="text_subscriber_added">Ваш email был успешно добавлен в нашу рассылку</item>
+        <item lang="ru" id="error_email_already_subscribed">Ваш e-mail уже участвует в подписке</item>
+        <item lang="ru" id="text_subscriber_removed">Ваш email был успешно удален из нашей рассылки</item>
+        <item lang="ru" id="text_subscriber_activated">Ваш e-mail был активирован успешно</item>
+        <item lang="ru" id="link_message_for_test_letter">Данная ссылка будет отображаться в реальной рассылке</item>
+        <item lang="ru" id="newsletters">Рассылки</item>
+        <item lang="ru" id="templates">Шаблоны</item>
+        <item lang="ru" id="autoresponders">Автоответчики</item>
+        <item lang="ru" id="campaigns">Акции</item>
+        <item lang="ru" id="sent">Отправлено</item>
+        <item lang="ru" id="add_news">Добавить новость(-и)</item>
+        <item lang="ru" id="add_news_and_close">Добавить новости и закрыть</item>
+        <item lang="ru" id="subscribers_num">Количество подписчиков</item>
+        <item lang="ru" id="editing_mailing_list">Редактирование списка рассылок</item>
+        <item lang="ru" id="from_name">От кого</item>
+        <item lang="ru" id="from_email">E-mail отправителя</item>
+        <item lang="ru" id="reply_to">Ответить на e-mail</item>
+        <item lang="ru" id="register_autoresponder">E-mail подтверждения</item>
+        <item lang="ru" id="no_autoresponder">Без автоответчика</item>
+        <item lang="ru" id="show_on_checkout">Показывать на странице оформления заказа</item>
+        <item lang="ru" id="show_on_registration">Показывать при регистрации</item>
+        <item lang="ru" id="show_on_separate_page">Показывать на отдельной странице</item>
+        <item lang="ru" id="editing_news">Редактирование новостей</item>
+        <item lang="ru" id="new_news">Новые новости</item>
+        <item lang="ru" id="campaign_stats">Статистика акции</item>
+        <item lang="ru" id="add_campaign">Добавить компанию</item>
+        <item lang="ru" id="new_campaign">Новая компания</item>
+        <item lang="ru" id="newsletter_templates">Шаблоны рассылки</item>
+        <item lang="ru" id="newsletter_autoresponders">Автоответчики</item>
+        <item lang="ru" id="subject">Тема</item>
+        <item lang="ru" id="add_newsletter">Добавить рассылку</item>
+        <item lang="ru" id="add_template">Добавить шаблон</item>
+        <item lang="ru" id="add_autoresponder">Добавить автоответчик</item>
+        <item lang="ru" id="more_subjects">Больше тем (Тема для каждого сообщения будет выбрана случайно из данного списка)</item>
+        <item lang="ru" id="body_html">Текст письма (HTML)</item>
+        <item lang="ru" id="no_template">Шаблонов нет</item>
+        <item lang="ru" id="load">Загрузить</item>
+        <item lang="ru" id="campaign">Акция</item>
+        <item lang="ru" id="send_to">Отправить</item>
+        <item lang="ru" id="add_recipients_from_users">Добавить получателей из пользователей</item>
+        <item lang="ru" id="customers_with_abandoned">Покупатели оставившие  (без изменений)</item>
+        <item lang="ru" id="cart_or_wishlist">Корзина или Отложенные</item>
+        <item lang="ru" id="which_is">В течение</item>
+        <item lang="ru" id="days_old">дней</item>
+        <item lang="ru" id="send_to_test_email">Отправить тестовое сообщение</item>
+        <item lang="ru" id="save_and_send">Сохранить и отправить</item>
+        <item lang="ru" id="newsletter">Рассылка</item>
+        <item lang="ru" id="newsletter_template">Шаблон рассылки</item>
+        <item lang="ru" id="newsletter_autoresponder">Автоответчик</item>
+        <item lang="ru" id="mailing_list">Список рассылок</item>
+        <item lang="ru" id="confirmed">Подтвержден</item>
+        <item lang="ru" id="subscribed_to">Подписан на [num] рассылок</item>
+        <item lang="ru" id="subscribed">Подписан</item>
+        <item lang="ru" id="text_success_subscription">Вы были успешно подписаны на наши бесплатные рассылки с обновлениями и акциями!</item>
+        <item lang="ru" id="text_unsubscribe_instructions"><![CDATA[Мы уважаем вашу частную жизнь. Мы не рассылаем  e-mail сообщений пользователям, которые этого не просили. Вы получили это сообщение, потому что подписались на нашу рассылку.<br><br> \n\n\n\nЕсли Вы хотите отказаться от подписки, пожалуйста, нажмите на ссылку:]]></item>
+        <item lang="ru" id="updates_subscription">Подписка на обновления</item>
+        <item lang="ru" id="ult_shared_with">Общее для витрин:</item>
+
+        <item lang="sl" id="warning_newsletter_no_recipients">Okrožnica ni bila poslana, ker niso bili najdeni nobeni prejemniki, ki bi ustrezali izbranim pogojem.</item>
+        <item lang="sl" id="text_newsletter_sent">Okrožnica/e je bila/so bile uspešno poslana/e</item>
+        <item lang="sl" id="sending_email_to">Pošiljanje e-pošte na [email]...</item>
+        <item lang="sl" id="news">Novica</item>
+        <item lang="sl" id="text_subscriber_added">Vaš e-poštni naslov je bil uspešno dodan v naš brezplačni epoštni seznam. Da bi aktivirali vašo naročnino preverite svoj e-poštni naslov za nadaljnja navodila.</item>
+        <item lang="sl" id="error_email_already_subscribed">Vaš elektronski naslov je že vpisan</item>
+        <item lang="sl" id="text_subscriber_removed">Naslov vaše elektronske pošte je bil uspešno odstranjen z naše liste brezplačnih obvestil o novostih</item>
+        <item lang="sl" id="text_subscriber_activated">Vaša e-pošta je bil uspešno aktivirana</item>
+        <item lang="sl" id="newsletters">Okrožnice</item>
+        <item lang="sl" id="templates">Predloge</item>
+        <item lang="sl" id="autoresponders">Avtomatski odgovori</item>
+        <item lang="sl" id="campaigns">Akcije</item>
+        <item lang="sl" id="sent">Poslano</item>
+        <item lang="sl" id="add_news">Dodaj novico</item>
+        <item lang="sl" id="add_news_and_close">Dodaj novice in zapri</item>
+        <item lang="sl" id="subscribers_num">Število naročnikov</item>
+        <item lang="sl" id="editing_mailing_list">Urejanje poštnega seznama</item>
+        <item lang="sl" id="from_name">Iz imena</item>
+        <item lang="sl" id="from_email">Od e-pošte</item>
+        <item lang="sl" id="reply_to">Odgovori</item>
+        <item lang="sl" id="register_autoresponder">Potrditev e-pošte</item>
+        <item lang="sl" id="no_autoresponder">Ni avtomatskega odgovora</item>
+        <item lang="sl" id="show_on_checkout">Prikaži na blagajni</item>
+        <item lang="sl" id="show_on_registration">Prikaži ob registraciji</item>
+        <item lang="sl" id="show_on_separate_page">Prikaži na ločeni strani</item>
+        <item lang="sl" id="editing_news">Urejanje novic</item>
+        <item lang="sl" id="new_news">Nova novica</item>
+        <item lang="sl" id="campaign_stats">Statistika akcije</item>
+        <item lang="sl" id="add_campaign">Dodaj oglaševalsko akcijo</item>
+        <item lang="sl" id="new_campaign">Nova kampanija</item>
+        <item lang="sl" id="newsletter_templates">Predloga člankov</item>
+        <item lang="sl" id="newsletter_autoresponders">Avtomatski članki</item>
+        <item lang="sl" id="subject">Zadeva</item>
+        <item lang="sl" id="add_newsletter">Dodaj okrožnico</item>
+        <item lang="sl" id="add_template">Dodaj predlogo</item>
+        <item lang="sl" id="add_autoresponder">Dodaj samodejni odgovor</item>
+        <item lang="sl" id="more_subjects">Naključni predmet (enega v vsako vrstico)</item>
+        <item lang="sl" id="body_html">HTML telo</item>
+        <item lang="sl" id="no_template">Ni predloge</item>
+        <item lang="sl" id="load">Naložiti</item>
+        <item lang="sl" id="campaign">Akcija</item>
+        <item lang="sl" id="send_to">Pošlji</item>
+        <item lang="sl" id="add_recipients_from_users">Dodaj prejemnike od uporabnikov</item>
+        <item lang="sl" id="send_to_test_email">Pošljite testno e-pošto</item>
+        <item lang="sl" id="save_and_send">Shrani in pošlji</item>
+        <item lang="sl" id="newsletter">Okrožnica</item>
+        <item lang="sl" id="newsletter_template">Predloga članka</item>
+        <item lang="sl" id="newsletter_autoresponder">Avtomatski članek</item>
+        <item lang="sl" id="mailing_list">Poštni seznam</item>
+        <item lang="sl" id="confirmed">Potrjen</item>
+        <item lang="sl" id="subscribed_to">Vpisani na [num] seznam</item>
+        <item lang="sl" id="subscribed">Vpisani</item>
+        <item lang="sl" id="text_success_subscription">Uspešno ste se naročili na naša brezplačna elektronska obvestila o novostih in promocijah!</item>
+        <item lang="sl" id="text_unsubscribe_instructions"><![CDATA[Spoštujemo vašo zasebnost in ne pošiljamo nenaročenih e-poštnih naslovov uporabnikom, ki nimajo zahtevane korespondence. Prejeli ste to e-pošto, ker ste zahtevali prejemanje naših brezplačnih posodobitev in promocij. <br /> <br /> Če se želite odjaviti, sledite spodnji povezavi:]]></item>
+        <item lang="sl" id="updates_subscription">naročanje na novosti in promocije</item>
+
+        <item lang="zh" id="warning_newsletter_no_recipients">时事通讯没有被发送,因为没有符合选定条件的收信人.</item>
+        <item lang="zh" id="text_newsletter_sent">新闻邮件已成功发送.</item>
+        <item lang="zh" id="sending_email_to">发邮件给 [email]...</item>
+        <item lang="zh" id="news">新闻</item>
+        <item lang="zh" id="text_subscriber_added">您的电子邮件已经成功添加到我们的免费电子邮件更新列表中</item>
+        <item lang="zh" id="error_email_already_subscribed">您的电子邮件已经订阅.</item>
+        <item lang="zh" id="text_subscriber_removed">您的电子邮件已经成功从我们的免费电子邮件更新列表中移除</item>
+        <item lang="zh" id="text_subscriber_activated">已成功激活您的电子邮件</item>
+        <item lang="zh" id="link_message_for_test_letter">链接将显示在实时通讯中</item>
+        <item lang="zh" id="newsletters">时事通讯</item>
+        <item lang="zh" id="templates">模板</item>
+        <item lang="zh" id="autoresponders">自动回覆</item>
+        <item lang="zh" id="campaigns">竞选运动</item>
+        <item lang="zh" id="sent">发送</item>
+        <item lang="zh" id="add_news">添加新闻</item>
+        <item lang="zh" id="add_news_and_close">添加新闻并关闭</item>
+        <item lang="zh" id="subscribers_num">订阅数量</item>
+        <item lang="zh" id="editing_mailing_list">编辑邮件清单</item>
+        <item lang="zh" id="from_name">来自名称</item>
+        <item lang="zh" id="from_email">来自邮件</item>
+        <item lang="zh" id="reply_to">回复给</item>
+        <item lang="zh" id="register_autoresponder">邮件确认</item>
+        <item lang="zh" id="no_autoresponder">不自动回覆</item>
+        <item lang="zh" id="show_on_checkout">在结帐显示</item>
+        <item lang="zh" id="show_on_registration">注册时显示</item>
+        <item lang="zh" id="show_on_separate_page">分页显示</item>
+        <item lang="zh" id="editing_news">编辑新闻</item>
+        <item lang="zh" id="new_news">最新新闻</item>
+        <item lang="zh" id="campaign_stats">活动统计</item>
+        <item lang="zh" id="add_campaign">添加竞选运动</item>
+        <item lang="zh" id="new_campaign">新的竞选</item>
+        <item lang="zh" id="newsletter_templates">新闻稿模板</item>
+        <item lang="zh" id="newsletter_autoresponders">新闻稿自动回覆</item>
+        <item lang="zh" id="subject">主题</item>
+        <item lang="zh" id="add_newsletter">添加新闻稿</item>
+        <item lang="zh" id="add_template">添加模板</item>
+        <item lang="zh" id="add_autoresponder">添加自动回覆</item>
+        <item lang="zh" id="more_subjects">随机主题 (每行一个)</item>
+        <item lang="zh" id="body_html">HTML正文</item>
+        <item lang="zh" id="no_template">没有模板</item>
+        <item lang="zh" id="load">加载</item>
+        <item lang="zh" id="campaign">竞选运动</item>
+        <item lang="zh" id="send_to">发送给</item>
+        <item lang="zh" id="add_recipients_from_users">从用户添加收件人</item>
+        <item lang="zh" id="customers_with_abandoned">弃置的客户</item>
+        <item lang="zh" id="cart_or_wishlist">购物车或收藏列表</item>
+        <item lang="zh" id="which_is">已有</item>
+        <item lang="zh" id="days_old">天</item>
+        <item lang="zh" id="send_to_test_email">发送测试邮件</item>
+        <item lang="zh" id="save_and_send">保存并发送</item>
+        <item lang="zh" id="newsletter">新闻稿</item>
+        <item lang="zh" id="newsletter_template">新闻稿模板</item>
+        <item lang="zh" id="newsletter_autoresponder">新闻稿自动回覆</item>
+        <item lang="zh" id="mailing_list">邮件列表</item>
+        <item lang="zh" id="confirmed">已确认</item>
+        <item lang="zh" id="subscribed_to">订阅 [num] 列表</item>
+        <item lang="zh" id="subscribed">订阅的</item>
+        <item lang="zh" id="text_success_subscription">您已成功订阅我们的免费电子邮件更新和促销活动!</item>
+        <item lang="zh" id="text_unsubscribe_instructions"><![CDATA[我们尊重您的隐私不会向相应的用户发送未经请求的电子邮件.您收到这封电子邮件，因为您请求接收我们的免费更新和促销活动.<br /><br /> \n\n如果您想要取消订阅，请按照下面的链接:]]></item>
+        <item lang="zh" id="updates_subscription">更新和促销订阅</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">Имейл на изпращача.</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Име на изпращача (например име на компанията).</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Имейл за изпращане на отговори.</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Ако зададете няколко теми, темата на писмото се избира на случаен принцип от този списък.</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_newsletters_update_users">Ако съобщението съдържа линк за отказ, той ще бъде празен за тези потребители.</item>
+
+        <item lang="da" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail fra en afsender.</item>
+        <item lang="da" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Navn på en afsender (f.eks firmanavn ).</item>
+        <item lang="da" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">E-mail som svar er sendt.</item>
+        <item lang="da" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Hvis flere fag er angivet, e-mail-emne er tilfældigt udvalgt fra denne liste.</item>
+
+        <item lang="el" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail του αποστολέα.</item>
+        <item lang="el" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Όνομα του αποστολέα (π.χ. το όνομα της εταιρείας).</item>
+        <item lang="el" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Συντάξτε email ,για να στείλετε απαντήσεις.</item>
+        <item lang="el" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Αν προσδιορίζονται διάφορα θέματα, το θέμα του email έχει επιλεχθεί τυχαία από αυτή τη λίστα.</item>
+        <item lang="el" id="tt_addons_news_and_emails_views_newsletters_update_users">Εάν το κείμενο του μηνύματος περιέχει τον μη εγγεγραμμένο σύνδεσμο, θα είναι άδειο για αυτούς τους χρήστες.</item>
+
+        <item lang="it" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">Email del mittente</item>
+        <item lang="it" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">nome del mittente (nome compagnia).</item>
+        <item lang="it" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Email per inviare risposte</item>
+        <item lang="it" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Se i soggetti vengono specificati, il soggetto dell' e-mail è scelto a caso da questa lista.\n</item>
+        <item lang="it" id="tt_addons_news_and_emails_views_newsletters_update_users">Se il testo del messaggio contiene il link di cancellazione, sarà vuota per questi utenti.\n</item>
+
+        <item lang="nl" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail van een afzender.</item>
+        <item lang="nl" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Naam van de afzender (bijv. bedrijfsnaam).</item>
+        <item lang="nl" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Antwoord e-mail adres.</item>
+        <item lang="nl" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Als meerdere onderwerpen opgegeven zijn zal het systeem er steeds willekeurig een kiezen uit de lijst.</item>
+        <item lang="nl" id="tt_addons_news_and_emails_views_newsletters_update_users">Als de bericht-tekst een 'afmelden' link bevat zal deze leeg zijn voor deze gebruikers.</item>
+
+        <item lang="no" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-post til en avsender.</item>
+        <item lang="no" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Navn på en avsender (f.eks firmanavn).</item>
+        <item lang="no" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">E-post til å sende svar til.</item>
+        <item lang="no" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Hvis flere emner er spesifisert, er e-post emne tilfeldig plukket fra denne listen.</item>
+        <item lang="no" id="tt_addons_news_and_emails_views_newsletters_update_users">Hvis meldingen teksten inneholder unsubscribe linken, vil det bli tomt for disse brukerne.</item>
+
+        <item lang="ro" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail-ul expeditorului.</item>
+        <item lang="ro" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Numele expeditorului (ex: nume companie).</item>
+        <item lang="ro" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">E-mail-ul la care vor fi trimise răspunsurile.</item>
+        <item lang="ro" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Dacă mai multe subiecte sunt specificate, e-mail-ul subiectului va fi luat în mod aleatoriu din această listă.</item>
+
+        <item lang="ru" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail адрес отправителя.</item>
+        <item lang="ru" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Имя отправителя (например, название компании).</item>
+        <item lang="ru" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">E-mail адрес, на который отправляются ответы.</item>
+        <item lang="ru" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Если задано несколько тем, тема письма случайно выбирается из этого списка.\n\n</item>
+        <item lang="ru" id="tt_addons_news_and_emails_views_newsletters_update_users">Если сообщение содержит ссылку для отмены подписки, она будет пустой для данных пользователей.</item>
+
+        <item lang="zh" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">发件人的电子邮件.</item>
+        <item lang="zh" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">发件人的名字 (e.g. 公司名).</item>
+        <item lang="zh" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">电子邮件的答复将发送给.</item>
+        <item lang="zh" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">如果指定了几个主题,电子邮件主题将随机从该列表中选择.</item>
+        <item lang="zh" id="tt_addons_news_and_emails_views_newsletters_update_users">如果消息文本包含取消订阅链接,它将清除这些用户.</item>
+    </language_variables>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:news;</item>
+        <item>DROP TABLE IF EXISTS ?:news_descriptions;</item>
+        <item>DROP TABLE IF EXISTS ?:newsletters;</item>
+        <item>DROP TABLE IF EXISTS ?:newsletter_links;</item>
+        <item>DROP TABLE IF EXISTS ?:newsletter_descriptions;</item>
+        <item>DROP TABLE IF EXISTS ?:subscribers;</item>
+        <item>DROP TABLE IF EXISTS ?:newsletter_campaigns;</item>
+        <item>DROP TABLE IF EXISTS ?:mailing_lists;</item>
+        <item>DROP TABLE IF EXISTS ?:user_mailing_lists;</item>
+        <item>
+            CREATE TABLE `?:news` (
+                `news_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `company_id` int(11) unsigned NOT NULL default '0',
+                `date` int(11) unsigned NOT NULL default '0',
+                `separate` char(1) NOT NULL default 'N',
+                `status` char(1) NOT NULL default 'D',
+                `localization` varchar(255) NOT NULL default '',
+                PRIMARY KEY  (`news_id`),
+                KEY `localization` (`localization`),
+                KEY `status` (`status`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:news_descriptions` (
+                `news_id` mediumint(8) unsigned NOT NULL default '0',
+                `news` varchar(128) NOT NULL default '',
+                `description` mediumtext NOT NULL,
+                `lang_code` char(2) NOT NULL default '',
+                PRIMARY KEY  (`news_id`,`lang_code`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:newsletters` (
+                `newsletter_id` mediumint(8) unsigned unsigned NOT NULL auto_increment,
+                `campaign_id` mediumint(8) unsigned NOT NULL default '0',
+                `sent_date` int(11) unsigned NOT NULL default '0',
+                `status` char(1) NOT NULL default 'A',
+                `type` char(1) NOT NULL default 'N',
+                `mailing_lists` varchar(255) NOT NULL default '',
+                `users` text NOT NULL default '',
+                `abandoned_type` varchar(10) NOT NULL DEFAULT 'both',
+                `abandoned_days` int(11) NOT NULL DEFAULT 0,
+                PRIMARY KEY  (`newsletter_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:newsletter_links` (
+                `link_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `campaign_id` mediumint(8) unsigned NOT NULL,
+                `newsletter_id` mediumint(8) unsigned NOT NULL,
+                `url` varchar(255) NOT NULL default '',
+                `clicks` mediumint(8) unsigned,  PRIMARY KEY  (`link_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:newsletter_descriptions` (
+                `newsletter_id` mediumint(8) unsigned NOT NULL default '0',
+                `newsletter` varchar(255) NOT NULL default '',
+                `newsletter_multiple` text NOT NULL default '',
+                `body_html` mediumtext NOT NULL,
+                `lang_code` char(2) NOT NULL default '',
+                PRIMARY KEY  (`newsletter_id`,`lang_code`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:subscribers` (
+                `subscriber_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `email` varchar(128) NOT NULL default '',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                UNIQUE KEY  (`email`) ,
+                PRIMARY KEY  (`subscriber_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;</item>
+        <item>
+            CREATE TABLE `?:newsletter_campaigns` (
+                `campaign_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `status` char(1) NOT NULL default 'D',
+                PRIMARY KEY  (`campaign_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:mailing_lists` (
+                `list_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `from_email` varchar(64) NOT NULL default '',
+                `from_name` varchar(128) NOT NULL default '',
+                `reply_to` varchar(64) NOT NULL default '',
+                `show_on_checkout` tinyint(3) unsigned NOT NULL default '0',
+                `show_on_registration` tinyint(3) unsigned NOT NULL default '0',
+                `status` char(1) NOT NULL default 'D',
+                `register_autoresponder` mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`list_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:user_mailing_lists` (
+                `subscriber_id` mediumint(8) unsigned NOT NULL,
+                `list_id` mediumint(8) unsigned NOT NULL,
+                `activation_key` varchar(32) NOT NULL default '',
+                `unsubscribe_key` varchar(32) NOT NULL default '',
+                `confirmed` tinyint(3) unsigned NOT NULL default '0',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `lang_code` char(2) NOT NULL default '',
+                KEY `subscriber_id` (`subscriber_id`),
+                KEY `list_id` (`list_id`),
+                UNIQUE KEY `subscriber_list` (`list_id`, `subscriber_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:usergroup_privileges (usergroup_id, privilege) VALUES ('4', 'view_news');</item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:usergroup_privileges (usergroup_id, privilege) VALUES ('4', 'manage_news');</item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('view_news', 'Y', 'cms');</item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_news', 'Y', 'cms');</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:news;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:news_descriptions;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:newsletters;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:newsletter_links;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:newsletter_descriptions;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:subscribers;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:newsletter_campaigns;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:mailing_lists;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:user_mailing_lists;</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege = 'view_news'</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:usergroup_privileges WHERE privilege = 'view_news'</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege = 'manage_news'</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:usergroup_privileges WHERE privilege = 'manage_news'</item>
+
+        <item for="demo" type='file'>database/demo.sql</item>
+        <item for="demo" type='file' editions="ULTIMATE">database/demo_ultimate.sql</item>
+        <item for="demo" type='file' table="news_descriptions" lang="en" >database/demo_en.sql</item>
+        <item for="demo" type='file' table="common_descriptions" lang="en" >database/demo_common_en.sql</item>
+        <item for="demo" type='file' table="newsletter_descriptions" lang="en" >database/demo_newsletters_en.sql</item>
+        <item for="demo" type='file' table="news_descriptions" lang="ru" >database/demo_ru.sql</item>
+        <item for="demo" type='file' table="common_descriptions" lang="ru" >database/demo_common_ru.sql</item>
+        <item for="demo" type='file' table="newsletter_descriptions" lang="ru" >database/demo_newsletters_ru.sql</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="add_mailing_lists">Add mailing list</item>
+        <item lang="en" id="new_mailing_lists">New mailing list</item>
+        <item lang="en" id="add_subscribers">Add subscribers</item>
+        <item lang="en" id="new_subscribers">New subscribers</item>
+
+        <item lang="bg" id="add_mailing_lists">Добави пощенския списък</item>
+        <item lang="bg" id="add_subscribers">Добави абонати</item>
+        <item lang="bg" id="new_subscribers">Добави нови абонати</item>
+
+        <item lang="da" id="add_mailing_lists">Tilføj postlister</item>
+        <item lang="da" id="add_subscribers">Tilføj abonnenter</item>
+        <item lang="da" id="new_subscribers">Tilføj nye abonnenter</item>
+
+        <item lang="el" id="add_mailing_lists">Προσθήκη λίστα διευθύνσεων e-mail</item>
+        <item lang="el" id="add_subscribers">Προσθήκη συνδρομητών</item>
+        <item lang="el" id="new_subscribers">Προσθήκη νέων συνδρομητών</item>
+
+        <item lang="fr" id="add_mailing_lists">Ajouter une liste d'email</item>
+        <item lang="fr" id="add_subscribers">Ajouter des abonnés</item>
+        <item lang="fr" id="new_subscribers">Ajouter des nouveaux abonnés</item>
+
+        <item lang="it" id="add_mailing_lists">Aggiungi mailing lists</item>
+
+        <item lang="no" id="add_mailing_lists">Legg til forsendelseslister</item>
+        <item lang="no" id="add_subscribers">Legg til abonnenter</item>
+        <item lang="no" id="new_subscribers">Legg til nye abonnenter</item>
+
+        <item lang="ro" id="add_mailing_lists">Adăugați listele de discuții</item>
+        <item lang="ro" id="add_subscribers">Adăugați abonați</item>
+        <item lang="ro" id="new_subscribers">Adăugați noi abonați</item>
+
+        <item lang="ru" id="add_mailing_lists">Добавить список рассылки</item>
+        <item lang="ru" id="add_subscribers">Добавить подписчиков</item>
+        <item lang="ru" id="new_subscribers">Добавить новых подписчиков</item>
+
+        <item lang="sl" id="add_mailing_lists">Dodaj dopisni seznam</item>
+        <item lang="sl" id="add_subscribers">Dodaj naročnike</item>
+        <item lang="sl" id="new_subscribers">Dodaj nove naročnike</item>
+        
+        <item lang="zh" id="add_mailing_lists">添加邮件列表</item>
+        <item lang="zh" id="new_mailing_lists">新邮件列表</item>
+        <item lang="zh" id="add_subscribers">添加订阅者</item>
+        <item lang="zh" id="new_subscribers">新订阅者</item>
+        <item lang="en" id="warning_newsletter_no_recipients">Newsletter hasn't been sent because no recipients were found matching the selected criteria.</item>
+        <item lang="en" id="text_newsletter_sent">The newsletter(s) have been sent successfully.</item>
+        <item lang="en" id="email_cannot_be_empty">E-mail cannot be empty</item>
+        <item lang="en" id="sending_email_to">Sending email to [email]...</item>
+        <item lang="en" id="news">News</item>
+        <item lang="en" id="text_subscriber_added">Your e-mail has been successfully added to our free e-mail updates list</item>
+        <item lang="en" id="error_email_already_subscribed">Your e-mail is already subscribed.</item>
+        <item lang="en" id="text_subscriber_removed">Your e-mail has been successfully removed from our free e-mail updates list</item>
+        <item lang="en" id="text_subscriber_activated">Your email has been successfully activated</item>
+        <item lang="en" id="link_message_for_test_letter">The link will be displayed in a live newsletter</item>
+        <item lang="en" id="newsletters">Newsletters</item>
+        <item lang="en" id="templates">Templates</item>
+        <item lang="en" id="autoresponders">Autoresponders</item>
+        <item lang="en" id="campaigns">Campaigns</item>
+        <item lang="en" id="sent">Sent</item>
+        <item lang="en" id="add_news">Add news</item>
+        <item lang="en" id="add_news_and_close">Add news and close</item>
+        <item lang="en" id="subscribers_num">Number of subscribers</item>
+        <item lang="en" id="editing_mailing_list">Editing mailing list</item>
+        <item lang="en" id="from_name">From name</item>
+        <item lang="en" id="from_email">From email</item>
+        <item lang="en" id="reply_to">Reply to</item>
+        <item lang="en" id="register_autoresponder">Confirmation email</item>
+        <item lang="en" id="no_autoresponder">No autoresponder</item>
+        <item lang="en" id="show_on_checkout">Show at checkout</item>
+        <item lang="en" id="show_on_registration">Show on registration</item>
+        <item lang="en" id="show_on_separate_page">Show on separate page</item>
+        <item lang="en" id="editing_news">Editing news</item>
+        <item lang="en" id="new_news">New news</item>
+        <item lang="en" id="campaign_stats">Campaign statistics</item>
+        <item lang="en" id="add_campaign">Add campaign</item>
+        <item lang="en" id="new_campaign">New campaign</item>
+        <item lang="en" id="newsletter_templates">Newsletter templates</item>
+        <item lang="en" id="newsletter_autoresponders">Newsletter autoresponders</item>
+        <item lang="en" id="subject">Subject</item>
+        <item lang="en" id="add_newsletter">Add newsletter</item>
+        <item lang="en" id="add_template">Add template</item>
+        <item lang="en" id="add_autoresponder">Add autoresponder</item>
+        <item lang="en" id="more_subjects">Random subjects (one per line)</item>
+        <item lang="en" id="body_html">HTML body</item>
+        <item lang="en" id="no_template">No template</item>
+        <item lang="en" id="load">Load</item>
+        <item lang="en" id="campaign">Campaign</item>
+        <item lang="en" id="send_to">Send to</item>
+        <item lang="en" id="add_recipients_from_users">Add recipients from users</item>
+        <item lang="en" id="customers_with_abandoned">Customers with abandoned</item>
+        <item lang="en" id="cart_or_wishlist">Cart or Wishlist</item>
+        <item lang="en" id="which_is">which is</item>
+        <item lang="en" id="days_old">days old</item>
+        <item lang="en" id="send_to_test_email">Send to test email</item>
+        <item lang="en" id="save_and_send">Save and send</item>
+        <item lang="en" id="newsletter">Newsletter</item>
+        <item lang="en" id="newsletter_template">Newsletter template</item>
+        <item lang="en" id="newsletter_autoresponder">Newsletter autoresponder</item>
+        <item lang="en" id="mailing_list">Mailing list</item>
+        <item lang="en" id="confirmed">Confirmed</item>
+        <item lang="en" id="subscribed_to">Subscribed to [num] lists</item>
+        <item lang="en" id="subscribed">Subscribed</item>
+        <item lang="en" id="text_success_subscription">You have been successfully subscribed to our free e-mail updates and promotions!</item>
+        <item lang="en" id="text_unsubscribe_instructions"><![CDATA[We respect your privacy and do not send unsolicited e-mail to users who have not requested correspondence. You have received this e-mail because you requested to receive our free updates and promotions.<br /><br /> \n\nIf you wish to unsubscribe, please follow the link below:]]></item>
+        <item lang="en" id="updates_subscription">updates and promotions subscription</item>
+        <item lang="en" id="ult_shared_with">Shared with:</item>
+
+        <item lang="bg" id="warning_newsletter_no_recipients">Бюлетина не е изпратен, тъй като няма получателите за избраните критерии.</item>
+        <item lang="bg" id="text_newsletter_sent">Бюлетин (а) са изпратени успешно.</item>
+        <item lang="bg" id="sending_email_to">Изпращане на имейл до [email]...</item>
+        <item lang="bg" id="news">Новини</item>
+        <item lang="bg" id="text_subscriber_added">Вашата електронна поща е успешно добавена към нашият пощенски списък</item>
+        <item lang="bg" id="error_email_already_subscribed">Вашият е-мейл вече е записан.</item>
+        <item lang="bg" id="text_subscriber_removed">Вашата електронна поща е успешно отстранена от нашият пощенски списък</item>
+        <item lang="bg" id="text_subscriber_activated">Вашият имейл е успешно активиран</item>
+        <item lang="bg" id="link_message_for_test_letter">Връзката ще бъде показана в бюлетина</item>
+        <item lang="bg" id="newsletters">Бюлетини</item>
+        <item lang="bg" id="templates">Шаблони</item>
+        <item lang="bg" id="autoresponders">Автоматични отговори</item>
+        <item lang="bg" id="campaigns">Кампании</item>
+        <item lang="bg" id="sent">Изпратени</item>
+        <item lang="bg" id="add_news">Добави новина</item>
+        <item lang="bg" id="add_news_and_close">Добави новина и затвори</item>
+        <item lang="bg" id="subscribers_num">Брой на абонатите</item>
+        <item lang="bg" id="editing_mailing_list">Редактиране на пощенския списък</item>
+        <item lang="bg" id="from_name">От</item>
+        <item lang="bg" id="from_email">От email</item>
+        <item lang="bg" id="reply_to">Отговор на</item>
+        <item lang="bg" id="register_autoresponder">Email за потвърждение</item>
+        <item lang="bg" id="no_autoresponder">Без авт. отговор</item>
+        <item lang="bg" id="show_on_checkout">Покажи на страницата за поръчки</item>
+        <item lang="bg" id="show_on_registration">Покажи при регистрация</item>
+        <item lang="bg" id="show_on_separate_page">Покажи на отделна страница</item>
+        <item lang="bg" id="editing_news">Редактиране на новини</item>
+        <item lang="bg" id="new_news">Нова новина</item>
+        <item lang="bg" id="campaign_stats">Статистики за кампании</item>
+        <item lang="bg" id="add_campaign">Добави кампания</item>
+        <item lang="bg" id="new_campaign">Нова кампания</item>
+        <item lang="bg" id="newsletter_templates">Шаблони за бюлетини</item>
+        <item lang="bg" id="newsletter_autoresponders">Автоматични отговори</item>
+        <item lang="bg" id="subject">Тема</item>
+        <item lang="bg" id="add_newsletter">Добави бюлетин</item>
+        <item lang="bg" id="add_template">Добави шаблон</item>
+        <item lang="bg" id="add_autoresponder">Добави авт. отговор</item>
+        <item lang="bg" id="more_subjects">Произволни теми (по една на ред)</item>
+        <item lang="bg" id="body_html">HTML текст</item>
+        <item lang="bg" id="no_template">Няма шаблон</item>
+        <item lang="bg" id="load">Зареди</item>
+        <item lang="bg" id="campaign">Кампания</item>
+        <item lang="bg" id="send_to">Изпрати на</item>
+        <item lang="bg" id="add_recipients_from_users">Добави получатели от потребителите</item>
+        <item lang="bg" id="customers_with_abandoned">Клиенти с незавършени</item>
+        <item lang="bg" id="cart_or_wishlist">Количка или списък "Желания"</item>
+        <item lang="bg" id="which_is">който е</item>
+        <item lang="bg" id="days_old">дни преди</item>
+        <item lang="bg" id="send_to_test_email">Изпрати за тест на email</item>
+        <item lang="bg" id="save_and_send">Запази и изпрати</item>
+        <item lang="bg" id="newsletter">бюлетин</item>
+        <item lang="bg" id="newsletter_template">Шаблон за бюлетин</item>
+        <item lang="bg" id="newsletter_autoresponder">Автоматичен отговор</item>
+        <item lang="bg" id="mailing_list">Пощенски списък</item>
+        <item lang="bg" id="confirmed">Потвърден</item>
+        <item lang="bg" id="subscribed_to">Абонирани за [брой] списъци</item>
+        <item lang="bg" id="subscribed">Записан</item>
+        <item lang="bg" id="text_success_subscription">Вие успешно се абонирахте за нашия безплатен пощенски списък с актуализации и промоции!</item>
+        <item lang="bg" id="text_unsubscribe_instructions"><![CDATA[Ние уважаваме неприкосновеността на личните Ви данни.  и не изпращаме имейл съобщения до потребители, които не са поискали. Вие получавате това съобщение, защото се абонирате за нашия бюлетин. <br> <br>\n\n\n\n\n\n\n\nАко искате да се отпишете, моля, кликнете на линка:]]></item>
+        <item lang="bg" id="updates_subscription">Абонирайте се за актуализации</item>
+
+        <item lang="da" id="warning_newsletter_no_recipients">Nyhedsbrevet er ikke blevet sendt, fordi ingen modtagere blev fundet, der matcher de valgte kriterier.</item>
+        <item lang="da" id="text_newsletter_sent">Nyhedsbrevet er blevet sendt.</item>
+        <item lang="da" id="sending_email_to">Sender e-mail til [email]...</item>
+        <item lang="da" id="news">Nyhed</item>
+        <item lang="da" id="text_subscriber_added">Din e-mail er blevet føjet til vores gratis nyhedsliste</item>
+        <item lang="da" id="error_email_already_subscribed">Din e-mail er allerede tilmeldt.</item>
+        <item lang="da" id="text_subscriber_removed">Din e-mail er blevet fjernet fra vores gratis nyhedsbrev</item>
+        <item lang="da" id="text_subscriber_activated">Din e-mail er blevet aktiveret</item>
+        <item lang="da" id="link_message_for_test_letter">Linket vil blive vist i en levende nyhedsbrev</item>
+        <item lang="da" id="newsletters">Nyhedsbrev</item>
+        <item lang="da" id="templates">template</item>
+        <item lang="da" id="autoresponders">Autosvar</item>
+        <item lang="da" id="campaigns">kampagner</item>
+        <item lang="da" id="sent">Sendt</item>
+        <item lang="da" id="add_news">Tilføj nyhed</item>
+        <item lang="da" id="add_news_and_close">Tilføj nyhed og luk</item>
+        <item lang="da" id="subscribers_num">Antal af abonnenter</item>
+        <item lang="da" id="editing_mailing_list">redigere mailing list</item>
+        <item lang="da" id="from_name">Af</item>
+        <item lang="da" id="from_email">e-mail fra</item>
+        <item lang="da" id="reply_to">Besvar</item>
+        <item lang="da" id="register_autoresponder">Bekræftelses-e-mail</item>
+        <item lang="da" id="no_autoresponder">Ikke autosvar</item>
+        <item lang="da" id="show_on_checkout">Vis ved kassen</item>
+        <item lang="da" id="show_on_registration">Vis på registrering</item>
+        <item lang="da" id="show_on_separate_page">is på separat side</item>
+        <item lang="da" id="editing_news">redigere nyhed </item>
+        <item lang="da" id="new_news">nye Nyheder</item>
+        <item lang="da" id="campaign_stats">Kampagne statistik</item>
+        <item lang="da" id="add_campaign">Tilføj kampagne</item>
+        <item lang="da" id="new_campaign">ny kampagne</item>
+        <item lang="da" id="newsletter_templates">Nyhedsbrev skabeloner\n</item>
+        <item lang="da" id="newsletter_autoresponders">Nyhedsbrev autosvar</item>
+        <item lang="da" id="subject">Emne</item>
+        <item lang="da" id="add_newsletter">Tilføj nyhedsbrev</item>
+        <item lang="da" id="add_template">Tilføj skabelon</item>
+        <item lang="da" id="add_autoresponder">tilføj autosvar</item>
+        <item lang="da" id="more_subjects">Tilfældige fag (et per linje)</item>
+        <item lang="da" id="body_html">HTML hoveddel</item>
+        <item lang="da" id="no_template">Ingen template</item>
+        <item lang="da" id="load">læs</item>
+        <item lang="da" id="campaign">kampagne</item>
+        <item lang="da" id="send_to">Send til</item>
+        <item lang="da" id="add_recipients_from_users">Tilføj beløbsmodtagelse fra brugere</item>
+        <item lang="da" id="send_to_test_email">Send til test email</item>
+        <item lang="da" id="save_and_send">Gem og send</item>
+        <item lang="da" id="newsletter">Nyhedsbrev</item>
+        <item lang="da" id="newsletter_template">Nyhedsbrev skabelon\n</item>
+        <item lang="da" id="newsletter_autoresponder">Nyhedsbrev autosvar</item>
+        <item lang="da" id="mailing_list">Mail liste</item>
+        <item lang="da" id="confirmed">bekræftelse</item>
+        <item lang="da" id="subscribed_to">Abonnerer på [num] lister</item>
+        <item lang="da" id="subscribed">abonnere</item>
+        <item lang="da" id="text_success_subscription">u er nu tilmeldt vores gratis e-mails med nyheder og tilbud!</item>
+        <item lang="da" id="text_unsubscribe_instructions"><![CDATA[Vi respekterer dit privatliv og vil ikke sende uopfordrede e-mails til brugere, der ikke har anmodet om dette. Du har modtaget denne e-mail, fordi du har anmodet om at modtage vores gratis nyhedsbrev. <br /> <br />\nHvis du ikke ønsker at modtage disse mails, beder vi dig afmelde dem så hurtigt som muligt for at forhindre flere e-mails.\n\nHvis du ønsker at afmelde, skal du følge linket nedenfor:]]></item>
+        <item lang="da" id="updates_subscription">opdateringer og promover abonnement</item>
+
+        <item lang="de" id="warning_newsletter_no_recipients">Newsletter wurde nicht versandt, weil kein passender Empfanger gefunden werden konnte.</item>
+        <item lang="de" id="text_newsletter_sent">Der Newsletter wurde erfolgreich versandt</item>
+        <item lang="de" id="text_subscriber_added">Ihre E-Mail wurde erfolgreich in unserem System registriert.</item>
+        <item lang="de" id="error_email_already_subscribed">Ihre E-Mail-Adresse ist bereits vergeben.</item>
+        <item lang="de" id="text_subscriber_removed">Ihre E-Mail wurde aus unserem System entfernt.</item>
+        <item lang="de" id="newsletters">Newsletter</item>
+        <item lang="de" id="sent">versendet</item>
+        <item lang="de" id="add_news">News hinzufugen</item>
+        <item lang="de" id="subject">Betreff</item>
+        <item lang="de" id="add_newsletter">Newsletter hinzufugen</item>
+        <item lang="de" id="send_to">Senden an</item>
+        <item lang="de" id="text_success_subscription"><![CDATA[Herzlich Willkommen! <br>\nSie wurden unserem Newsletters-Verteiler erfolgreich hinzugefugt.]]></item>
+        <item lang="de" id="text_unsubscribe_instructions">Wenn Sie den Newsletter nicht mehr erhalten mochten, klicken Sie bitte auf:</item>
+        <item lang="de" id="updates_subscription">Bestellung Updates und Werbung</item>
+
+        <item lang="el" id="warning_newsletter_no_recipients">Τα ενημερωτικά δελτία(newsletters) δεν έχουν αποσταλεί , καθώς δεν βρέθηκαν παραλήπτες να ταιριάζουν στα επιλεγμένα κριτήρια.</item>
+        <item lang="el" id="text_newsletter_sent">Το ενημερωτικό δελτίο(α) (newsletters), στάλθηκε επιτυχώς</item>
+        <item lang="el" id="sending_email_to">Αποστολή email στο [email] ...</item>
+        <item lang="el" id="news">Νέα</item>
+        <item lang="el" id="text_subscriber_added">Το e-mail σας έχει έχει προστεθεί επιτυχώς στήν δωρεάν λίστα αναβαθμίσεων μέσω e-mail.</item>
+        <item lang="el" id="error_email_already_subscribed">Το e-mail έχει ήδη εγγραφεί.</item>
+        <item lang="el" id="text_subscriber_removed">Το e-mail σας έχει έχει αφαιρεθεί επιτυχώς από την δωρεάν λίστα αναβαθμίσεων μέσω e-mail.</item>
+        <item lang="el" id="text_subscriber_activated">Το email ενεργοποιήθηκε επιτυχώς.</item>
+        <item lang="el" id="link_message_for_test_letter">Ο σύνδεσμος θα παρουσιάζετε στο live newsletter</item>
+        <item lang="el" id="newsletters">Ενημερωτικό δελτίο</item>
+        <item lang="el" id="templates">Πρότυπα εμφάνισης (templates)</item>
+        <item lang="el" id="autoresponders">Αυτόματες απαντήσεις</item>
+        <item lang="el" id="campaigns">Καμπάνιες</item>
+        <item lang="el" id="sent">Εστάλη</item>
+        <item lang="el" id="add_news">Προσθήκη νέων</item>
+        <item lang="el" id="add_news_and_close">Προσθήκη νέων και κλείσιμο</item>
+        <item lang="el" id="subscribers_num">Αριθμός συνδρομητή</item>
+        <item lang="el" id="editing_mailing_list">Επεξεργασία λίστας αποδεκτών αλληλογραφίας</item>
+        <item lang="el" id="from_name">Από το όνομα</item>
+        <item lang="el" id="from_email">Από το e-mail</item>
+        <item lang="el" id="reply_to">Απάντηση σε</item>
+        <item lang="el" id="register_autoresponder">Ε-mail επιβεβαίωσης</item>
+        <item lang="el" id="no_autoresponder">Χωρίς αυτόματο αποκριτή</item>
+        <item lang="el" id="show_on_checkout">Προβολή κατά την πληρωμή</item>
+        <item lang="el" id="show_on_registration">Προβολή στην καταχώριση</item>
+        <item lang="el" id="show_on_separate_page">Προβολή σε ξεχωριστή σελίδα</item>
+        <item lang="el" id="editing_news">Επεξεργασία γεγονότων</item>
+        <item lang="el" id="new_news">Καινούργιες ειδήσεις</item>
+        <item lang="el" id="campaign_stats">Στατιστικά καμπάνιας</item>
+        <item lang="el" id="add_campaign">Προσθήκη καμπάνιας</item>
+        <item lang="el" id="new_campaign">Νέα καμπάνια</item>
+        <item lang="el" id="newsletter_templates">Τtemplates ενημερωτικού δελτίου</item>
+        <item lang="el" id="newsletter_autoresponders">Αυτόματοι αποκριτές ενημερωτικού δελτίου</item>
+        <item lang="el" id="subject">Θέμα</item>
+        <item lang="el" id="add_newsletter">Προσθήκη newsletter</item>
+        <item lang="el" id="add_template">Προσθήκη εμφάνισης ιστοσελίδας</item>
+        <item lang="el" id="add_autoresponder">Προσθήκη αυτόματων απαντήσεων</item>
+        <item lang="el" id="more_subjects">Τυχαία αντικείμενα (ένα ανα σειρά)</item>
+        <item lang="el" id="body_html">Σώμα HTML</item>
+        <item lang="el" id="no_template">Χωρίς θέμα εμφάνισης</item>
+        <item lang="el" id="load">Φόρτωση</item>
+        <item lang="el" id="campaign">Καμπάνια</item>
+        <item lang="el" id="send_to">Αποστολή σε</item>
+        <item lang="el" id="add_recipients_from_users">Προσθήκη παραληπτών από χρήστες</item>
+        <item lang="el" id="customers_with_abandoned">Οι πελάτες με εγκαταλελειμμένα</item>
+        <item lang="el" id="cart_or_wishlist">Καλάθι ή λίστα επιθυμιών</item>
+        <item lang="el" id="which_is">Ποιο είναι</item>
+        <item lang="el" id="days_old">μέρες πριν</item>
+        <item lang="el" id="send_to_test_email">Αποστολή για  να δοκιμάσετε το email</item>
+        <item lang="el" id="save_and_send">Αποθήκευση και αποστολή</item>
+        <item lang="el" id="newsletter">Ενημερωτικά δελτία</item>
+        <item lang="el" id="newsletter_template">Τtemplate ενημερωτικού δελτίου</item>
+        <item lang="el" id="newsletter_autoresponder">Αυτόματο αποκριτής ενημερωτικού δελτίου</item>
+        <item lang="el" id="mailing_list">Λίστα αποστολής</item>
+        <item lang="el" id="confirmed">Επιβεβαιώθηκε</item>
+        <item lang="el" id="subscribed_to">Έγινε εγγραφή στις [num] λίστες</item>
+        <item lang="el" id="subscribed">Έγινε εγγραφή</item>
+        <item lang="el" id="text_success_subscription">Έχετε επιτυχώς εγγραφεί στις δωρεάν αναβαθμίσεις ηλεκτρονικού ταχυδρομείου και στις προσφορές μας !</item>
+        <item lang="el" id="text_unsubscribe_instructions"><![CDATA[Σεβόμαστε το απόρρητό σας και δεν στέλνουμε ανεπιθύμητα e-mail σε χρήστες που δεν έχουν ζητήσει την αλληλογραφία. Έχετε λάβει αυτό το e-mail, επειδή ζητήσατε να λαμβάνετε νέα και προσφορές μας <br /> <br />  n  nΑν επιθυμείτε να διαγραφείτε, παρακαλώ ακολουθήστε τον παρακάτω σύνδεσμο.:]]></item>
+        <item lang="el" id="updates_subscription">Συνδρομή ενημερώσεων και προωθήσεων</item>
+
+        <item lang="es" id="warning_newsletter_no_recipients">El boletín de noticias no fue enviado porque ningún destinatario fue encontrado coincidiendo con los criterios seleccionados.</item>
+        <item lang="es" id="text_newsletter_sent">El boletín(es) de noticia(s) han sido enviado(s) con éxito</item>
+        <item lang="es" id="news">Noticias</item>
+        <item lang="es" id="text_subscriber_added">Su dirección de E-mail ha sido añadida con éxito a nuestra lista de noticias y promociones.</item>
+        <item lang="es" id="error_email_already_subscribed">Su dirección de E-mail ya se encuentra subscrita</item>
+        <item lang="es" id="text_subscriber_removed">Su dirección de E-mail ha sido eliminada con éxito de nuestra lista de noticias y promociones.</item>
+        <item lang="es" id="newsletters">Boletines de noticias</item>
+        <item lang="es" id="sent">Enviado</item>
+        <item lang="es" id="add_news">Añadir noticias</item>
+        <item lang="es" id="show_on_separate_page">Mostrar en páginas separadas</item>
+        <item lang="es" id="subject">Sujeto</item>
+        <item lang="es" id="add_newsletter">Añadir newsletter</item>
+        <item lang="es" id="load">Cargar</item>
+        <item lang="es" id="send_to">Enviar a</item>
+        <item lang="es" id="newsletter">Boletín de noticias</item>
+        <item lang="es" id="text_success_subscription">¡Usted se subscribió con éxito a nuestras noticias y promociones!</item>
+        <item lang="es" id="text_unsubscribe_instructions"><![CDATA[<br /><br />\n\n----------------------------------------------------------\n\n<br /><br />\n\nRespetamos su intimidad y no enviamos correos electrónicos a usuarios que no lo han solicitado. Usted ha recibido este correo electrónico porque solicitó recibir nuestras actualizaciones y promociones.<br /><br /> \n\nSi usted desea cancelar la suscripción por favor visite el enlace de abajo:]]></item>
+        <item lang="es" id="updates_subscription">actualizar y promocionar suscripciones</item>
+
+        <item lang="fr" id="warning_newsletter_no_recipients">La newsletter n'a pas été envoyée car aucun destinataire n'a été trouvé correspondant au critère sélectionné.</item>
+        <item lang="fr" id="text_newsletter_sent">Les newsletters ont été envoyées avec succès</item>
+        <item lang="fr" id="news">Actualités</item>
+        <item lang="fr" id="text_subscriber_added">Votre email a été ajouté avec succès à notre liste de mailing</item>
+        <item lang="fr" id="error_email_already_subscribed">Votre email est déjà dans notre base.</item>
+        <item lang="fr" id="text_subscriber_removed">Votre email a été enlevé avec succès de notre liste de mailing</item>
+        <item lang="fr" id="autoresponders">Réponses automatiques</item>
+        <item lang="fr" id="campaigns">Campagnes</item>
+        <item lang="fr" id="sent">Envoyé</item>
+        <item lang="fr" id="add_news">Ajouter actualités</item>
+        <item lang="fr" id="subscribers_num">Nombre d'abonnés</item>
+        <item lang="fr" id="editing_mailing_list">Edition d'une mailing list</item>
+        <item lang="fr" id="from_name">De nom</item>
+        <item lang="fr" id="from_email">De l' email</item>
+        <item lang="fr" id="reply_to">Répondre à</item>
+        <item lang="fr" id="register_autoresponder">E-mail à retourner si le client répond</item>
+        <item lang="fr" id="no_autoresponder">Pas de réponse automatique</item>
+        <item lang="fr" id="show_on_checkout">Afficher au moment du paiement</item>
+        <item lang="fr" id="show_on_registration">Afficher à l'enregistrement</item>
+        <item lang="fr" id="show_on_separate_page">Afficher dans une page séparée</item>
+        <item lang="fr" id="editing_news">Édition d'une actualité</item>
+        <item lang="fr" id="new_news">Nouvelle actualité</item>
+        <item lang="fr" id="add_campaign">Ajouter une campagne</item>
+        <item lang="fr" id="new_campaign">Nouvelle campagne</item>
+        <item lang="fr" id="newsletter_autoresponders">Newsletter réponses automatiques</item>
+        <item lang="fr" id="subject">Sujet</item>
+        <item lang="fr" id="add_newsletter">Ajouter une newsletter</item>
+        <item lang="fr" id="add_template">Ajouter un template</item>
+        <item lang="fr" id="add_autoresponder">Ajouter une réponse automatique</item>
+        <item lang="fr" id="more_subjects">Autres sujets (un par ligne. Le système choisira un sujet aléatoirement pour chaque email envoyé)</item>
+        <item lang="fr" id="body_html">Corps HTML</item>
+        <item lang="fr" id="no_template">Aucun template</item>
+        <item lang="fr" id="load">Charger</item>
+        <item lang="fr" id="campaign">Campagne</item>
+        <item lang="fr" id="send_to">Envoyer à</item>
+        <item lang="fr" id="add_recipients_from_users">Ajouter des destinataires depuis la liste utilisateurs</item>
+        <item lang="fr" id="send_to_test_email">Envoyer pour tester email</item>
+        <item lang="fr" id="save_and_send">Sauver et envoyer</item>
+        <item lang="fr" id="newsletter_autoresponder">Newsletter réponse automatique</item>
+        <item lang="fr" id="mailing_list">Liste d'Email</item>
+        <item lang="fr" id="confirmed">Confirmé</item>
+        <item lang="fr" id="subscribed_to">Inscris à [num] liste(s)</item>
+        <item lang="fr" id="subscribed">Inscris</item>
+        <item lang="fr" id="text_success_subscription">Vous êtes inscrit avec succès à notre mailing liste de mises à jour et promotions !</item>
+        <item lang="fr" id="text_unsubscribe_instructions"><![CDATA[Nous respectons votre confidentialité et n'envoyions pas de courriers non-sollicités aux clients qui n'ont pas demandés de nos nouvelles. Vous avez reçu cet email parce que vous avez demandé nos mise à jour gratuites et nos promotions.<br><br> \n\nSi vous voulez vous désinscrire, veuillez suivre le lien ci-dessous :]]></item>
+        <item lang="fr" id="updates_subscription">abonnement aux mises à jour et promotions</item>
+
+        <item lang="it" id="warning_newsletter_no_recipients">La newsletter non e stata inviata perche non sono stati trovati i destinatari in base i criteri selezionati.</item>
+        <item lang="it" id="text_newsletter_sent">Newsletter inviata correttamente</item>
+        <item lang="it" id="sending_email_to">Invio email a [email]...</item>
+        <item lang="it" id="text_subscriber_added">Sei stato iscritto correttamente alla nostra lista per la ricezione di aggiornamenti e promozioni via email!</item>
+        <item lang="it" id="error_email_already_subscribed">Il tuo indirizzo email e gia iscritto.</item>
+        <item lang="it" id="text_subscriber_removed">Il tuo indirizzo email e stato rimosso dal nostro database</item>
+        <item lang="it" id="link_message_for_test_letter">Il link verrà visualizzato in una live newsleter</item>
+        <item lang="it" id="newsletters">Newsletter</item>
+        <item lang="it" id="templates">Modelli</item>
+        <item lang="it" id="autoresponders">Autorisponditori</item>
+        <item lang="it" id="campaigns">Campagne</item>
+        <item lang="it" id="warning_subscribers_import">Alcune mailing list dal file di input non sono state trovate nel database. Alcuni iscritti saranno lasciati non assegnati.</item>
+        <item lang="it" id="sent">Inviato</item>
+        <item lang="it" id="add_news">Aggiungi notizie</item>
+        <item lang="it" id="add_news_and_close">Aggiungi news e poi chiudi</item>
+        <item lang="it" id="subscribers_num">Numero iscritti</item>
+        <item lang="it" id="add_subscribers">Aggiungi iscritti</item>
+        <item lang="it" id="editing_mailing_list">Modifica mailing list</item>
+        <item lang="it" id="new_mailing_lists">Nuova mailing list</item>
+        <item lang="it" id="from_name">Nome "da"</item>
+        <item lang="it" id="from_email">E-mail "da"</item>
+        <item lang="it" id="reply_to">Rispondi a</item>
+        <item lang="it" id="register_autoresponder">E-mail di conferma</item>
+        <item lang="it" id="no_autoresponder">Nessun autorisponditore</item>
+        <item lang="it" id="show_on_checkout">Visualizza al checkout</item>
+        <item lang="it" id="show_on_registration">Visualizza in registrazione</item>
+        <item lang="it" id="show_on_separate_page">Visualizza su pagina separata</item>
+        <item lang="it" id="editing_news">Modifica novità</item>
+        <item lang="it" id="new_news">Nuove news</item>
+        <item lang="it" id="campaign_stats">Statistiche</item>
+        <item lang="it" id="add_campaign">Aggiungi campagna</item>
+        <item lang="it" id="new_campaign">Nuova campagna</item>
+        <item lang="it" id="newsletter_templates">Modello di newsletter</item>
+        <item lang="it" id="newsletter_autoresponders">Autorisponditore newsletter</item>
+        <item lang="it" id="subject">Soggetto</item>
+        <item lang="it" id="add_newsletter">Aggiungi newsletter</item>
+        <item lang="it" id="add_template">Aggiungi template</item>
+        <item lang="it" id="add_autoresponder">Aggiungi autorisponditore</item>
+        <item lang="it" id="more_subjects">Soggetto random (uno per linea)</item>
+        <item lang="it" id="body_html">Corpo del messaggio (HTML)</item>
+        <item lang="it" id="no_template">Nessun modello</item>
+        <item lang="it" id="load">Carica</item>
+        <item lang="it" id="campaign">Campagna</item>
+        <item lang="it" id="send_to">Invia a</item>
+        <item lang="it" id="add_recipients_from_users">Aggiungi destinatari dall'elenco utenti</item>
+        <item lang="it" id="customers_with_abandoned">Clienti non attivi</item>
+        <item lang="it" id="cart_or_wishlist">Carrello o lista desideri</item>
+        <item lang="it" id="which_is">Che è</item>
+        <item lang="it" id="days_old">Giorni</item>
+        <item lang="it" id="send_to_test_email">Invia a indirizzo di test</item>
+        <item lang="it" id="save_and_send">Salva e invia</item>
+        <item lang="it" id="newsletter_template">modello newsletter</item>
+        <item lang="it" id="newsletter_autoresponder">autorisponditore</item>
+        <item lang="it" id="confirmed">Confermato</item>
+        <item lang="it" id="subscribed_to">Iscritto a [num] lista</item>
+        <item lang="it" id="subscribed">Iscritto</item>
+        <item lang="it" id="text_success_subscription">Sei stato iscritto correttamente alla nostra lista per la ricezione di aggiornamenti e promozioni via email!</item>
+        <item lang="it" id="text_unsubscribe_instructions"><![CDATA[Rispettiamo la tua privacy e non invieremo email non richieste. Hai ricevuto questa email perche hai fatto richiesta della ricezione di novita dal nostro sito riguardo promozioni e aggiornamenti.<br><br> \nSe vuoi cancellare il tuo indirizzo email dal nostro database segui questo link:]]></item>
+        <item lang="it" id="updates_subscription">Iscrizione per aggiornamenti e promozioni</item>
+
+        <item lang="nl" id="warning_newsletter_no_recipients">Nieuwsbrief is niet verzonden omdat het selectiecriterium geen ontvangers bevat.</item>
+        <item lang="nl" id="text_newsletter_sent">De nieuwsbrieven zijn succesvol verzonden.</item>
+        <item lang="nl" id="news">Nieuws</item>
+        <item lang="nl" id="text_subscriber_added"><![CDATA[<b>Dank u!</b><br>Uw e-mailadres is succesvol toegevoegd aan onze gratis nieuwsbrief met o.a. speciale aanbiedingen en andere waardevolle informatie!]]></item>
+        <item lang="nl" id="error_email_already_subscribed">Dit e-mailadres is al ingeschreven.</item>
+        <item lang="nl" id="text_subscriber_removed">Uw email is succesvol verwijderd van onze gratis nieuwsbrief.</item>
+        <item lang="nl" id="newsletters">Nieuwsbrieven</item>
+        <item lang="nl" id="sent">Verstuur</item>
+        <item lang="nl" id="add_news">Toevoegen nieuws</item>
+        <item lang="nl" id="subject">Onderwerp</item>
+        <item lang="nl" id="add_newsletter">Toevoegen nieuwsbrief</item>
+        <item lang="nl" id="send_to">Stuur naar</item>
+        <item lang="nl" id="which_is">welke is</item>
+        <item lang="nl" id="newsletter">Nieuwsbrief</item>
+        <item lang="nl" id="text_success_subscription">U bent succesvol ingeschreven op onze gratis emaillijst met speciale aanbiedingen en promoties!</item>
+        <item lang="nl" id="text_unsubscribe_instructions"><![CDATA[Wij respecteren uw privacy enorm en willen absoluut geen ongewenste correspondentie versturen! U ontvangt deze email omdat u zich in onze webwinkel heeft ingeschreven voor het ontvangen van speciale aanbieden en/of informatie. <br><br> \nIndien u zich wilt hiervoor wilt uitschrijven kunt u klikken op onderstaande link:]]></item>
+
+        <item lang="no" id="warning_newsletter_no_recipients">Nyhetsbrevet har ikke blitt sendt fordi ingen mottakere funnet som passer de valgte kriteriene.</item>
+        <item lang="no" id="text_newsletter_sent">Nyhetsbrev har blitt sendt.</item>
+        <item lang="no" id="sending_email_to">Sender e-post til [email]...</item>
+        <item lang="no" id="news">Nyheter</item>
+        <item lang="no" id="text_subscriber_added">Din e-post har blitt lagt til i vår liste for gratis e-post oppdateringer</item>
+        <item lang="no" id="error_email_already_subscribed">Din e-post abonnerer allerede.</item>
+        <item lang="no" id="text_subscriber_removed">Din e-post har blitt fjernet fra vår liste for gratis e-post oppdateringer</item>
+        <item lang="no" id="text_subscriber_activated">Din e-post har blitt aktivert</item>
+        <item lang="no" id="link_message_for_test_letter">Linken vil bli vist i et live nyhetsbrev</item>
+        <item lang="no" id="newsletters">Nyhetsbrev</item>
+        <item lang="no" id="templates">Maler</item>
+        <item lang="no" id="autoresponders">Autosvarer</item>
+        <item lang="no" id="campaigns">Kampanjer</item>
+        <item lang="no" id="sent">Sendt</item>
+        <item lang="no" id="add_news">Legg til nyheter</item>
+        <item lang="no" id="add_news_and_close">Legg til nyheter og lukk</item>
+        <item lang="no" id="subscribers_num">Antall abonnenter</item>
+        <item lang="no" id="editing_mailing_list">Redigerer forsendelsesliste</item>
+        <item lang="no" id="from_name">Fra navn</item>
+        <item lang="no" id="from_email">Fra e-post</item>
+        <item lang="no" id="reply_to">Svar til</item>
+        <item lang="no" id="register_autoresponder">E-postbekreftelse</item>
+        <item lang="no" id="no_autoresponder">Ingen autosvarer</item>
+        <item lang="no" id="show_on_checkout">Vis i kassen</item>
+        <item lang="no" id="show_on_registration">Vis ved registrering</item>
+        <item lang="no" id="show_on_separate_page">Vis på egen side</item>
+        <item lang="no" id="editing_news">Redigerer nyheter</item>
+        <item lang="no" id="new_news">Nye nyheter</item>
+        <item lang="no" id="campaign_stats">Kampanjestatistikk</item>
+        <item lang="no" id="add_campaign">Legg til kampanje</item>
+        <item lang="no" id="new_campaign">Ny kampanje</item>
+        <item lang="no" id="newsletter_templates">Nyhetsbrev maler</item>
+        <item lang="no" id="newsletter_autoresponders">Nyhetsbrev autosvarere</item>
+        <item lang="no" id="subject">Emne</item>
+        <item lang="no" id="add_newsletter">Legg til nyhetsbrev</item>
+        <item lang="no" id="add_template">Legg til mal</item>
+        <item lang="no" id="add_autoresponder">Legg autosvarer</item>
+        <item lang="no" id="more_subjects">Vilkårlige emner (en per linje)</item>
+        <item lang="no" id="body_html">HTML kropp</item>
+        <item lang="no" id="no_template">Ingen mal</item>
+        <item lang="no" id="load">Last</item>
+        <item lang="no" id="campaign">Kampanje</item>
+        <item lang="no" id="send_to">Send til</item>
+        <item lang="no" id="add_recipients_from_users">Legge til mottakere fra brukere</item>
+        <item lang="no" id="customers_with_abandoned">Kunder med forlatte</item>
+        <item lang="no" id="cart_or_wishlist">Handlevogn eller Ønskeliste</item>
+        <item lang="no" id="which_is">som er</item>
+        <item lang="no" id="days_old">dager gamle</item>
+        <item lang="no" id="send_to_test_email">Send til test e-post</item>
+        <item lang="no" id="save_and_send">Lagre og send</item>
+        <item lang="no" id="newsletter">Nyhetsbrev</item>
+        <item lang="no" id="newsletter_template">Nyhetsbrev mal</item>
+        <item lang="no" id="newsletter_autoresponder">Nyhetsbrev autosvarer</item>
+        <item lang="no" id="mailing_list">Forsendelsesliste</item>
+        <item lang="no" id="confirmed">Bekreftet</item>
+        <item lang="no" id="subscribed_to">Abonnerer på [num] lister</item>
+        <item lang="no" id="subscribed">Abonnert</item>
+        <item lang="no" id="text_success_subscription">Du er nå påmeldt til vår gratis e-post oppdateringer og kampanjer!</item>
+        <item lang="no" id="text_unsubscribe_instructions"><![CDATA[Vi respekterer ditt privatliv og ikke sende uønsket e-post til brukere som ikke har bedt om korrespondanse. Du har mottatt denne e-posten fordi du bedt om å motta vår gratis oppdateringer og kampanjer <br /> <br /> Hvis du ønsker å avslutte abonnementet, vennligst følg linken nedenfor.:]]></item>
+        <item lang="no" id="updates_subscription">oppdateringer og kampanjer abonnement</item>
+
+        <item lang="ro" id="warning_newsletter_no_recipients">Newsletter-ul nu a fost trimis pentru că nu a fost găsit nici un destinatar care să se potrivească cu criteriile selectate.</item>
+        <item lang="ro" id="text_newsletter_sent">Newsletter-ul(urile) au fost trimise cu succes</item>
+        <item lang="ro" id="sending_email_to">Se trimite e-mail lui [email]...</item>
+        <item lang="ro" id="news">Noutăți</item>
+        <item lang="ro" id="text_subscriber_added">E-mail-ul dvs. a fost adăugat cu succes la lista cu actualizări gratuite</item>
+        <item lang="ro" id="error_email_already_subscribed">Adresa dvs. de e-mail este deja abonată.</item>
+        <item lang="ro" id="text_subscriber_removed">Adresa dvs. a fost ștearsă cu succes din lista cu actualizări gratuite</item>
+        <item lang="ro" id="text_subscriber_activated">E-mail-ul dvs. a fost activat cu succes</item>
+        <item lang="ro" id="link_message_for_test_letter">Link-ul va fi afișat într-un buletin de știri live</item>
+        <item lang="ro" id="newsletters">Buletine informative</item>
+        <item lang="ro" id="templates">Șabloane</item>
+        <item lang="ro" id="autoresponders">Răspunzători în mod automat</item>
+        <item lang="ro" id="campaigns">Campanii</item>
+        <item lang="ro" id="sent">Trimite</item>
+        <item lang="ro" id="add_news">Adăugați noutăți</item>
+        <item lang="ro" id="add_news_and_close">Adăugați noutăți și închideți</item>
+        <item lang="ro" id="subscribers_num">Numărul de abonați</item>
+        <item lang="ro" id="editing_mailing_list">Editare listă de discuții</item>
+        <item lang="ro" id="from_name">Numele expeditorului</item>
+        <item lang="ro" id="from_email">E-mailul expeditorului</item>
+        <item lang="ro" id="reply_to">Răspune-ți la</item>
+        <item lang="ro" id="register_autoresponder">E-mail-ul de confirmare</item>
+        <item lang="ro" id="no_autoresponder">Nici un răspunzător automat</item>
+        <item lang="ro" id="show_on_checkout">Afișează la evaluator</item>
+        <item lang="ro" id="show_on_registration">Afișează în înregistrare</item>
+        <item lang="ro" id="show_on_separate_page">Afișează pe pagini separate</item>
+        <item lang="ro" id="editing_news">Editare noutăți</item>
+        <item lang="ro" id="new_news">Știri noi</item>
+        <item lang="ro" id="campaign_stats">Statisticile de campanie</item>
+        <item lang="ro" id="add_campaign">Adăugați o campanie</item>
+        <item lang="ro" id="new_campaign">Campanie nouă</item>
+        <item lang="ro" id="newsletter_templates">Șabloanele buletinului informativ</item>
+        <item lang="ro" id="newsletter_autoresponders">Răspunzătoare automate a buletinului informativ</item>
+        <item lang="ro" id="subject">Subiect</item>
+        <item lang="ro" id="add_newsletter">Adăugați buletin de știri</item>
+        <item lang="ro" id="add_template">Adăugați un template nou</item>
+        <item lang="ro" id="add_autoresponder">Adăugați un răspunzător automat</item>
+        <item lang="ro" id="more_subjects">Subiecte aleatorii (câte unu pe linie)</item>
+        <item lang="ro" id="body_html">Sistemul HTML </item>
+        <item lang="ro" id="no_template">Nici un șablon</item>
+        <item lang="ro" id="load">Încărcați</item>
+        <item lang="ro" id="campaign">Campanie</item>
+        <item lang="ro" id="send_to">Trimiteți către</item>
+        <item lang="ro" id="add_recipients_from_users">Adăugați destinatari de la utilizatori</item>
+        <item lang="ro" id="send_to_test_email">Trimiteți un e-mail de test</item>
+        <item lang="ro" id="save_and_send">Salvați și trimiteți</item>
+        <item lang="ro" id="newsletter">Buletin informativ</item>
+        <item lang="ro" id="newsletter_template">Șablonul buletinului informativ</item>
+        <item lang="ro" id="newsletter_autoresponder">Răspunzătorul automat al buletinului informativ</item>
+        <item lang="ro" id="mailing_list">Listă de adrese</item>
+        <item lang="ro" id="confirmed">Confirmat</item>
+        <item lang="ro" id="subscribed_to">Abonat la lista [num]</item>
+        <item lang="ro" id="subscribed">Abonat</item>
+        <item lang="ro" id="text_success_subscription">V-ați abonat cu succes la actualizări și promoții!</item>
+        <item lang="ro" id="text_unsubscribe_instructions"><![CDATA[Noi respectăm politica de confidențialitate a datelor dvs. și nu trimitem corespondențe nesolicitate. Ați primit acest e-mail pentru că ați solicitat să primiți actualizări gratuite și promoții.<br /><br /> Dacă doriți să vă dezabonați, vă rugăm să urmați link-ul următor:]]></item>
+        <item lang="ro" id="updates_subscription">abonament actualizări şi promoţii</item>
+
+        <item lang="ru" id="warning_newsletter_no_recipients">Рассылка не была произведена, т.к. нет подписчиков, удовлетворяющих заданным условиям.</item>
+        <item lang="ru" id="text_newsletter_sent">Рассылка(-и) отправлена(-ы).</item>
+        <item lang="ru" id="sending_email_to">Отправление сообщения по адресу [email]...</item>
+        <item lang="ru" id="news">Новости</item>
+        <item lang="ru" id="text_subscriber_added">Ваш email был успешно добавлен в нашу рассылку</item>
+        <item lang="ru" id="error_email_already_subscribed">Ваш e-mail уже участвует в подписке</item>
+        <item lang="ru" id="text_subscriber_removed">Ваш email был успешно удален из нашей рассылки</item>
+        <item lang="ru" id="text_subscriber_activated">Ваш e-mail был активирован успешно</item>
+        <item lang="ru" id="link_message_for_test_letter">Данная ссылка будет отображаться в реальной рассылке</item>
+        <item lang="ru" id="newsletters">Рассылки</item>
+        <item lang="ru" id="templates">Шаблоны</item>
+        <item lang="ru" id="autoresponders">Автоответчики</item>
+        <item lang="ru" id="campaigns">Акции</item>
+        <item lang="ru" id="sent">Отправлено</item>
+        <item lang="ru" id="add_news">Добавить новость(-и)</item>
+        <item lang="ru" id="add_news_and_close">Добавить новости и закрыть</item>
+        <item lang="ru" id="subscribers_num">Количество подписчиков</item>
+        <item lang="ru" id="editing_mailing_list">Редактирование списка рассылок</item>
+        <item lang="ru" id="from_name">От кого</item>
+        <item lang="ru" id="from_email">E-mail отправителя</item>
+        <item lang="ru" id="reply_to">Ответить на e-mail</item>
+        <item lang="ru" id="register_autoresponder">E-mail подтверждения</item>
+        <item lang="ru" id="no_autoresponder">Без автоответчика</item>
+        <item lang="ru" id="show_on_checkout">Показывать на странице оформления заказа</item>
+        <item lang="ru" id="show_on_registration">Показывать при регистрации</item>
+        <item lang="ru" id="show_on_separate_page">Показывать на отдельной странице</item>
+        <item lang="ru" id="editing_news">Редактирование новостей</item>
+        <item lang="ru" id="new_news">Новые новости</item>
+        <item lang="ru" id="campaign_stats">Статистика акции</item>
+        <item lang="ru" id="add_campaign">Добавить компанию</item>
+        <item lang="ru" id="new_campaign">Новая компания</item>
+        <item lang="ru" id="newsletter_templates">Шаблоны рассылки</item>
+        <item lang="ru" id="newsletter_autoresponders">Автоответчики</item>
+        <item lang="ru" id="subject">Тема</item>
+        <item lang="ru" id="add_newsletter">Добавить рассылку</item>
+        <item lang="ru" id="add_template">Добавить шаблон</item>
+        <item lang="ru" id="add_autoresponder">Добавить автоответчик</item>
+        <item lang="ru" id="more_subjects">Больше тем (Тема для каждого сообщения будет выбрана случайно из данного списка)</item>
+        <item lang="ru" id="body_html">Текст письма (HTML)</item>
+        <item lang="ru" id="no_template">Шаблонов нет</item>
+        <item lang="ru" id="load">Загрузить</item>
+        <item lang="ru" id="campaign">Акция</item>
+        <item lang="ru" id="send_to">Отправить</item>
+        <item lang="ru" id="add_recipients_from_users">Добавить получателей из пользователей</item>
+        <item lang="ru" id="customers_with_abandoned">Покупатели оставившие  (без изменений)</item>
+        <item lang="ru" id="cart_or_wishlist">Корзина или Отложенные</item>
+        <item lang="ru" id="which_is">В течение</item>
+        <item lang="ru" id="days_old">дней</item>
+        <item lang="ru" id="send_to_test_email">Отправить тестовое сообщение</item>
+        <item lang="ru" id="save_and_send">Сохранить и отправить</item>
+        <item lang="ru" id="newsletter">Рассылка</item>
+        <item lang="ru" id="newsletter_template">Шаблон рассылки</item>
+        <item lang="ru" id="newsletter_autoresponder">Автоответчик</item>
+        <item lang="ru" id="mailing_list">Список рассылок</item>
+        <item lang="ru" id="confirmed">Подтвержден</item>
+        <item lang="ru" id="subscribed_to">Подписан на [num] рассылок</item>
+        <item lang="ru" id="subscribed">Подписан</item>
+        <item lang="ru" id="text_success_subscription">Вы были успешно подписаны на наши бесплатные рассылки с обновлениями и акциями!</item>
+        <item lang="ru" id="text_unsubscribe_instructions"><![CDATA[Мы уважаем вашу частную жизнь. Мы не рассылаем  e-mail сообщений пользователям, которые этого не просили. Вы получили это сообщение, потому что подписались на нашу рассылку.<br><br> \n\n\n\nЕсли Вы хотите отказаться от подписки, пожалуйста, нажмите на ссылку:]]></item>
+        <item lang="ru" id="updates_subscription">Подписка на обновления</item>
+        <item lang="ru" id="ult_shared_with">Общее для витрин:</item>
+
+        <item lang="sl" id="warning_newsletter_no_recipients">Okrožnica ni bila poslana, ker niso bili najdeni nobeni prejemniki, ki bi ustrezali izbranim pogojem.</item>
+        <item lang="sl" id="text_newsletter_sent">Okrožnica/e je bila/so bile uspešno poslana/e</item>
+        <item lang="sl" id="sending_email_to">Pošiljanje e-pošte na [email]...</item>
+        <item lang="sl" id="news">Novica</item>
+        <item lang="sl" id="text_subscriber_added">Vaš e-poštni naslov je bil uspešno dodan v naš brezplačni epoštni seznam. Da bi aktivirali vašo naročnino preverite svoj e-poštni naslov za nadaljnja navodila.</item>
+        <item lang="sl" id="error_email_already_subscribed">Vaš elektronski naslov je že vpisan</item>
+        <item lang="sl" id="text_subscriber_removed">Naslov vaše elektronske pošte je bil uspešno odstranjen z naše liste brezplačnih obvestil o novostih</item>
+        <item lang="sl" id="text_subscriber_activated">Vaša e-pošta je bil uspešno aktivirana</item>
+        <item lang="sl" id="newsletters">Okrožnice</item>
+        <item lang="sl" id="templates">Predloge</item>
+        <item lang="sl" id="autoresponders">Avtomatski odgovori</item>
+        <item lang="sl" id="campaigns">Akcije</item>
+        <item lang="sl" id="sent">Poslano</item>
+        <item lang="sl" id="add_news">Dodaj novico</item>
+        <item lang="sl" id="add_news_and_close">Dodaj novice in zapri</item>
+        <item lang="sl" id="subscribers_num">Število naročnikov</item>
+        <item lang="sl" id="editing_mailing_list">Urejanje poštnega seznama</item>
+        <item lang="sl" id="from_name">Iz imena</item>
+        <item lang="sl" id="from_email">Od e-pošte</item>
+        <item lang="sl" id="reply_to">Odgovori</item>
+        <item lang="sl" id="register_autoresponder">Potrditev e-pošte</item>
+        <item lang="sl" id="no_autoresponder">Ni avtomatskega odgovora</item>
+        <item lang="sl" id="show_on_checkout">Prikaži na blagajni</item>
+        <item lang="sl" id="show_on_registration">Prikaži ob registraciji</item>
+        <item lang="sl" id="show_on_separate_page">Prikaži na ločeni strani</item>
+        <item lang="sl" id="editing_news">Urejanje novic</item>
+        <item lang="sl" id="new_news">Nova novica</item>
+        <item lang="sl" id="campaign_stats">Statistika akcije</item>
+        <item lang="sl" id="add_campaign">Dodaj oglaševalsko akcijo</item>
+        <item lang="sl" id="new_campaign">Nova kampanija</item>
+        <item lang="sl" id="newsletter_templates">Predloga člankov</item>
+        <item lang="sl" id="newsletter_autoresponders">Avtomatski članki</item>
+        <item lang="sl" id="subject">Zadeva</item>
+        <item lang="sl" id="add_newsletter">Dodaj okrožnico</item>
+        <item lang="sl" id="add_template">Dodaj predlogo</item>
+        <item lang="sl" id="add_autoresponder">Dodaj samodejni odgovor</item>
+        <item lang="sl" id="more_subjects">Naključni predmet (enega v vsako vrstico)</item>
+        <item lang="sl" id="body_html">HTML telo</item>
+        <item lang="sl" id="no_template">Ni predloge</item>
+        <item lang="sl" id="load">Naložiti</item>
+        <item lang="sl" id="campaign">Akcija</item>
+        <item lang="sl" id="send_to">Pošlji</item>
+        <item lang="sl" id="add_recipients_from_users">Dodaj prejemnike od uporabnikov</item>
+        <item lang="sl" id="send_to_test_email">Pošljite testno e-pošto</item>
+        <item lang="sl" id="save_and_send">Shrani in pošlji</item>
+        <item lang="sl" id="newsletter">Okrožnica</item>
+        <item lang="sl" id="newsletter_template">Predloga članka</item>
+        <item lang="sl" id="newsletter_autoresponder">Avtomatski članek</item>
+        <item lang="sl" id="mailing_list">Poštni seznam</item>
+        <item lang="sl" id="confirmed">Potrjen</item>
+        <item lang="sl" id="subscribed_to">Vpisani na [num] seznam</item>
+        <item lang="sl" id="subscribed">Vpisani</item>
+        <item lang="sl" id="text_success_subscription">Uspešno ste se naročili na naša brezplačna elektronska obvestila o novostih in promocijah!</item>
+        <item lang="sl" id="text_unsubscribe_instructions"><![CDATA[Spoštujemo vašo zasebnost in ne pošiljamo nenaročenih e-poštnih naslovov uporabnikom, ki nimajo zahtevane korespondence. Prejeli ste to e-pošto, ker ste zahtevali prejemanje naših brezplačnih posodobitev in promocij. <br /> <br /> Če se želite odjaviti, sledite spodnji povezavi:]]></item>
+        <item lang="sl" id="updates_subscription">naročanje na novosti in promocije</item>
+
+        <item lang="zh" id="warning_newsletter_no_recipients">时事通讯没有被发送,因为没有符合选定条件的收信人.</item>
+        <item lang="zh" id="text_newsletter_sent">新闻邮件已成功发送.</item>
+        <item lang="zh" id="sending_email_to">发邮件给 [email]...</item>
+        <item lang="zh" id="news">新闻</item>
+        <item lang="zh" id="text_subscriber_added">您的电子邮件已经成功添加到我们的免费电子邮件更新列表中</item>
+        <item lang="zh" id="error_email_already_subscribed">您的电子邮件已经订阅.</item>
+        <item lang="zh" id="text_subscriber_removed">您的电子邮件已经成功从我们的免费电子邮件更新列表中移除</item>
+        <item lang="zh" id="text_subscriber_activated">已成功激活您的电子邮件</item>
+        <item lang="zh" id="link_message_for_test_letter">链接将显示在实时通讯中</item>
+        <item lang="zh" id="newsletters">时事通讯</item>
+        <item lang="zh" id="templates">模板</item>
+        <item lang="zh" id="autoresponders">自动回覆</item>
+        <item lang="zh" id="campaigns">竞选运动</item>
+        <item lang="zh" id="sent">发送</item>
+        <item lang="zh" id="add_news">添加新闻</item>
+        <item lang="zh" id="add_news_and_close">添加新闻并关闭</item>
+        <item lang="zh" id="subscribers_num">订阅数量</item>
+        <item lang="zh" id="editing_mailing_list">编辑邮件清单</item>
+        <item lang="zh" id="from_name">来自名称</item>
+        <item lang="zh" id="from_email">来自邮件</item>
+        <item lang="zh" id="reply_to">回复给</item>
+        <item lang="zh" id="register_autoresponder">邮件确认</item>
+        <item lang="zh" id="no_autoresponder">不自动回覆</item>
+        <item lang="zh" id="show_on_checkout">在结帐显示</item>
+        <item lang="zh" id="show_on_registration">注册时显示</item>
+        <item lang="zh" id="show_on_separate_page">分页显示</item>
+        <item lang="zh" id="editing_news">编辑新闻</item>
+        <item lang="zh" id="new_news">最新新闻</item>
+        <item lang="zh" id="campaign_stats">活动统计</item>
+        <item lang="zh" id="add_campaign">添加竞选运动</item>
+        <item lang="zh" id="new_campaign">新的竞选</item>
+        <item lang="zh" id="newsletter_templates">新闻稿模板</item>
+        <item lang="zh" id="newsletter_autoresponders">新闻稿自动回覆</item>
+        <item lang="zh" id="subject">主题</item>
+        <item lang="zh" id="add_newsletter">添加新闻稿</item>
+        <item lang="zh" id="add_template">添加模板</item>
+        <item lang="zh" id="add_autoresponder">添加自动回覆</item>
+        <item lang="zh" id="more_subjects">随机主题 (每行一个)</item>
+        <item lang="zh" id="body_html">HTML正文</item>
+        <item lang="zh" id="no_template">没有模板</item>
+        <item lang="zh" id="load">加载</item>
+        <item lang="zh" id="campaign">竞选运动</item>
+        <item lang="zh" id="send_to">发送给</item>
+        <item lang="zh" id="add_recipients_from_users">从用户添加收件人</item>
+        <item lang="zh" id="customers_with_abandoned">弃置的客户</item>
+        <item lang="zh" id="cart_or_wishlist">购物车或收藏列表</item>
+        <item lang="zh" id="which_is">已有</item>
+        <item lang="zh" id="days_old">天</item>
+        <item lang="zh" id="send_to_test_email">发送测试邮件</item>
+        <item lang="zh" id="save_and_send">保存并发送</item>
+        <item lang="zh" id="newsletter">新闻稿</item>
+        <item lang="zh" id="newsletter_template">新闻稿模板</item>
+        <item lang="zh" id="newsletter_autoresponder">新闻稿自动回覆</item>
+        <item lang="zh" id="mailing_list">邮件列表</item>
+        <item lang="zh" id="confirmed">已确认</item>
+        <item lang="zh" id="subscribed_to">订阅 [num] 列表</item>
+        <item lang="zh" id="subscribed">订阅的</item>
+        <item lang="zh" id="text_success_subscription">您已成功订阅我们的免费电子邮件更新和促销活动!</item>
+        <item lang="zh" id="text_unsubscribe_instructions"><![CDATA[我们尊重您的隐私不会向相应的用户发送未经请求的电子邮件.您收到这封电子邮件，因为您请求接收我们的免费更新和促销活动.<br /><br /> \n\n如果您想要取消订阅，请按照下面的链接:]]></item>
+        <item lang="zh" id="updates_subscription">更新和促销订阅</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">Имейл на изпращача.</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Име на изпращача (например име на компанията).</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Имейл за изпращане на отговори.</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Ако зададете няколко теми, темата на писмото се избира на случаен принцип от този списък.</item>
+        <item lang="bg" id="tt_addons_news_and_emails_views_newsletters_update_users">Ако съобщението съдържа линк за отказ, той ще бъде празен за тези потребители.</item>
+
+        <item lang="da" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail fra en afsender.</item>
+        <item lang="da" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Navn på en afsender (f.eks firmanavn ).</item>
+        <item lang="da" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">E-mail som svar er sendt.</item>
+        <item lang="da" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Hvis flere fag er angivet, e-mail-emne er tilfældigt udvalgt fra denne liste.</item>
+
+        <item lang="el" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail του αποστολέα.</item>
+        <item lang="el" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Όνομα του αποστολέα (π.χ. το όνομα της εταιρείας).</item>
+        <item lang="el" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Συντάξτε email ,για να στείλετε απαντήσεις.</item>
+        <item lang="el" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Αν προσδιορίζονται διάφορα θέματα, το θέμα του email έχει επιλεχθεί τυχαία από αυτή τη λίστα.</item>
+        <item lang="el" id="tt_addons_news_and_emails_views_newsletters_update_users">Εάν το κείμενο του μηνύματος περιέχει τον μη εγγεγραμμένο σύνδεσμο, θα είναι άδειο για αυτούς τους χρήστες.</item>
+
+        <item lang="it" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">Email del mittente</item>
+        <item lang="it" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">nome del mittente (nome compagnia).</item>
+        <item lang="it" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Email per inviare risposte</item>
+        <item lang="it" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Se i soggetti vengono specificati, il soggetto dell' e-mail è scelto a caso da questa lista.\n</item>
+        <item lang="it" id="tt_addons_news_and_emails_views_newsletters_update_users">Se il testo del messaggio contiene il link di cancellazione, sarà vuota per questi utenti.\n</item>
+
+        <item lang="nl" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail van een afzender.</item>
+        <item lang="nl" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Naam van de afzender (bijv. bedrijfsnaam).</item>
+        <item lang="nl" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">Antwoord e-mail adres.</item>
+        <item lang="nl" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Als meerdere onderwerpen opgegeven zijn zal het systeem er steeds willekeurig een kiezen uit de lijst.</item>
+        <item lang="nl" id="tt_addons_news_and_emails_views_newsletters_update_users">Als de bericht-tekst een 'afmelden' link bevat zal deze leeg zijn voor deze gebruikers.</item>
+
+        <item lang="no" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-post til en avsender.</item>
+        <item lang="no" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Navn på en avsender (f.eks firmanavn).</item>
+        <item lang="no" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">E-post til å sende svar til.</item>
+        <item lang="no" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Hvis flere emner er spesifisert, er e-post emne tilfeldig plukket fra denne listen.</item>
+        <item lang="no" id="tt_addons_news_and_emails_views_newsletters_update_users">Hvis meldingen teksten inneholder unsubscribe linken, vil det bli tomt for disse brukerne.</item>
+
+        <item lang="ro" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail-ul expeditorului.</item>
+        <item lang="ro" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Numele expeditorului (ex: nume companie).</item>
+        <item lang="ro" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">E-mail-ul la care vor fi trimise răspunsurile.</item>
+        <item lang="ro" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Dacă mai multe subiecte sunt specificate, e-mail-ul subiectului va fi luat în mod aleatoriu din această listă.</item>
+
+        <item lang="ru" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">E-mail адрес отправителя.</item>
+        <item lang="ru" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">Имя отправителя (например, название компании).</item>
+        <item lang="ru" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">E-mail адрес, на который отправляются ответы.</item>
+        <item lang="ru" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">Если задано несколько тем, тема письма случайно выбирается из этого списка.\n\n</item>
+        <item lang="ru" id="tt_addons_news_and_emails_views_newsletters_update_users">Если сообщение содержит ссылку для отмены подписки, она будет пустой для данных пользователей.</item>
+
+        <item lang="zh" id="tt_addons_news_and_emails_views_mailing_lists_update_from_email">发件人的电子邮件.</item>
+        <item lang="zh" id="tt_addons_news_and_emails_views_mailing_lists_update_from_name">发件人的名字 (e.g. 公司名).</item>
+        <item lang="zh" id="tt_addons_news_and_emails_views_mailing_lists_update_reply_to">电子邮件的答复将发送给.</item>
+        <item lang="zh" id="tt_addons_news_and_emails_views_newsletters_update_more_subjects">如果指定了几个主题,电子邮件主题将随机从该列表中选择.</item>
+        <item lang="zh" id="tt_addons_news_and_emails_views_newsletters_update_users">如果消息文本包含取消订阅链接,它将清除这些用户.</item>
+    </language_variables>
+</addon>

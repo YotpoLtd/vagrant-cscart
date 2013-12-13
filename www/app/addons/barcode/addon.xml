@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>barcode</id>
+    <name>Order barcode</name>
+    <description>Makes it possible to configure and attach barcodes to orders</description>
+    <version>1.0</version>
+    <priority>2500</priority>
+    <position>4</position>
+    <translations>
+        <item for="name" lang="es">Códico de barras de pedido</item>
+        <item for="name" lang="fr">Codes barres</item>
+        <item for="name" lang="da">Ordre stregkode</item>
+        <item for="name" lang="el">Barcode παραγγελίας</item>
+        <item for="name" lang="it">Codice a barre ordini</item>
+        <item for="name" lang="ro">Codul de bare al comenzii</item>
+        <item for="name" lang="ru">Штрих-коды</item>
+        <item for="name" lang="sl">Barkoda naročila</item>
+        <item for="name" lang="zh">订单条码</item>
+        <item for="description" lang="ru">Позволяет добавлять и настраивать штрих-коды к заказам</item>
+        <item for="description" lang="zh">可以配置和附加条码到订单</item>
+    </translations>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="elm_image">
+                        <name>Image</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="es">Imagen</item>
+                            <item lang="el">Εικόνα</item>
+                            <item lang="ro">Imagine</item>
+                            <item lang="ru">Изображение</item>
+                            <item lang="sl">Slika</item>
+                            <item lang="zh">图像</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="elm_image_info">
+                        <name>Example Image</name>
+                        <type>info</type>
+                        <handler>fn_get_barcode_image</handler>
+                        <variants/>
+                        <translations>
+                            <item lang="ru">Пример изображения</item>
+                            <item lang="zh">图像范例</item>
+                        </translations>
+                    </item>
+                    <item id="elm_configs">
+                        <name>Configs</name>
+                        <type>header</type>
+                        <handler/>
+                        <translations>
+                            <item lang="es">Configuración</item>
+                            <item lang="fr">Configurations</item>
+                            <item lang="el">Δομές</item>
+                            <item lang="ro">Setări</item>
+                            <item lang="ru">Настройки</item>
+                            <item lang="sl">Nastavitve</item>
+                            <item lang="zh">配置</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="type">
+                        <name>Type</name>
+                        <type>selectbox</type>
+                        <default_value>C128B</default_value>
+                        <variants>
+                            <item id="C128A">
+                                <name>Code 128-A</name>
+                                <translations>
+                                    <item lang="el">Κωδικός 128-Α</item>
+                                    <item lang="ro">Cod 128-A</item>
+                                    <item lang="sl">Koda 128-A</item>
+                                    <item lang="ru">Код 128-A</item>
+                                    <item lang="zh">128-A 码</item>
+                                </translations>
+                            </item>
+                            <item id="C128B">
+                                <name>Code 128-B</name>
+                                <translations>
+                                    <item lang="el">Κωδικός 128-Β</item>
+                                    <item lang="ro">Cod 128-B</item>
+                                    <item lang="sl">Koda 128-B</item>
+                                    <item lang="ru">Код 128-B</item>
+                                    <item lang="zh">128-B 码</item>
+                                </translations>
+                            </item>
+                            <item id="C128C">
+                                <name>Code 128-C</name>
+                                <translations>
+                                    <item lang="el">Κωδικός 128-C</item>
+                                    <item lang="ro">Cod 128-C</item>
+                                    <item lang="sl">Koda 128-C</item>
+                                    <item lang="ru">Код 128-C</item>
+                                    <item lang="zh">128-C 码</item>
+                                </translations>
+                            </item>
+                            <item id="I25">
+                                <name>Interleaved 2 of 5</name>
+                                <translations>
+                                    <item lang="el">Παρεμβολλή φύλλων μεταξύ των σελίδων 2 απο 5</item>
+                                    <item lang="ro">Intercalat între 2 și 5</item>
+                                    <item lang="sl">Komplet 2 of 5</item>
+                                    <item lang="ru">Чередуется 2 через 5</item>
+                                    <item lang="zh">交叉二五条形码</item>
+                                </translations>
+                            </item>
+                            <item id="C39">
+                                <name>Code 39</name>
+                                <translations>
+                                    <item lang="da">C39</item>
+                                    <item lang="el">Κωδικός 39</item>
+                                    <item lang="ro">Cod 39</item>
+                                    <item lang="sl">Koda 39</item>
+                                    <item lang="ru">Код 39</item>
+                                    <item lang="zh">39码</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">Tipo</item>
+                            <item lang="el">Τύπος</item>
+                            <item lang="ro">Tip</item>
+                            <item lang="ru">Тип</item>
+                            <item lang="sl">Tip</item>
+                            <item lang="zh">类型</item>
+                        </translations>
+                    </item>
+                    <item id="output">
+                        <name>Output</name>
+                        <type>selectbox</type>
+                        <default_value>png</default_value>
+                        <variants>
+                            <item id="png">
+                                <name>Portable Network Graphics (PNG)</name>
+                                <translations>
+                                    <item lang="zh">可移植网络图形 (PNG)</item>
+                                </translations>
+                            </item>
+                            <item id="jpeg">
+                                <name>Joint Photographic Experts Group (JPEG)</name>
+                                <translations>
+                                    <item lang="zh">静止图像的编码标准 (JPEG)</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">Salida</item>
+                            <item lang="el">Εξοδος</item>
+                            <item lang="ro">Extensie</item>
+                            <item lang="ru">Вывод</item>
+                            <item lang="sl">Izhod</item>
+                            <item lang="zh">输出</item>
+                        </translations>
+                    </item>
+                    <item id="text">
+                        <name>Text</name>
+                        <type>selectbox</type>
+                        <default_value>Y</default_value>
+                        <variants>
+                            <item id="N">
+                                <name>Disabled</name>
+                                <translations>
+                                    <item lang="es">Desactivado</item>
+                                    <item lang="el">Απενεργοποιήθηκε</item>
+                                    <item lang="ro">Dezactivat</item>
+                                    <item lang="ru">Выкл.</item>
+                                    <item lang="sl">Onemogočeno</item>
+                                    <item lang="zh">禁用</item>
+                                </translations>
+                            </item>
+                            <item id="Y">
+                                <name>Enabled</name>
+                                <translations>
+                                    <item lang="es">Activado</item>
+                                    <item lang="el">Ενεργοποιήθηκε</item>
+                                    <item lang="ro">Activat</item>
+                                    <item lang="ru">Вкл.</item>
+                                    <item lang="sl">Omogočeno</item>
+                                    <item lang="zh">启用</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">Texto</item>
+                            <item lang="fr">Texte</item>
+                            <item lang="el">Κείμενο</item>
+                            <item lang="ru">Текст</item>
+                            <item lang="sl">Besedilo</item>
+                            <item lang="zh">文本</item>
+                        </translations>
+                    </item>
+                    <item id="height">
+                        <name>Height,px</name>
+                        <type>input</type>
+                        <default_value>60</default_value>
+                        <translations>
+                            <item lang="es">Altura,px</item>
+                            <item lang="da">Højde, px</item>
+                            <item lang="el">Υψος, px</item>
+                            <item lang="ro">Înălțime, px</item>
+                            <item lang="ru">Высота, пикс.</item>
+                            <item lang="sl">Višina, px</item>
+                            <item lang="zh">高度,px</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="width">
+                        <name>Width,px</name>
+                        <type>input</type>
+                        <default_value>250</default_value>
+                        <translations>
+                            <item lang="es">Ancho,px</item>
+                            <item lang="fr">Largeur,px</item>
+                            <item lang="da">Width, px</item>
+                            <item lang="el">Πλάτος, px</item>
+                            <item lang="ro">Lățime, px</item>
+                            <item lang="ru">Ширина, пикс.</item>
+                            <item lang="sl">Širina, px</item>
+                            <item lang="zh">宽度,px</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="resolution">
+                        <name>Resolution</name>
+                        <type>radiogroup</type>
+                        <default_value>1</default_value>
+                        <variants>
+                            <item id="1">
+                                <name>    1</name>
+                                <translations>
+                                </translations>
+                            </item>
+                            <item id="2">
+                                <name>    2</name>
+                                <translations>
+                                </translations>
+                            </item>
+                            <item id="3">
+                                <name>    3</name>
+                                <translations>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">Resolución</item>
+                            <item lang="fr">Résolution</item>
+                            <item lang="el">Aνάλυση</item>
+                            <item lang="ro">Rezoluție</item>
+                            <item lang="ru">Разрешение</item>
+                            <item lang="sl">Resolucija</item>
+                            <item lang="zh">分辨率</item>
+                        </translations>
+                    </item>
+                    <item id="text_font">
+                        <name>Text Font</name>
+                        <type>radiogroup</type>
+                        <default_value>3</default_value>
+                        <variants>
+                            <item id="1">
+                                <name>1</name>
+                                <translations>
+                                </translations>
+                            </item>
+                            <item id="2">
+                                <name>2</name>
+                                <translations>
+                                </translations>
+                            </item>
+                            <item id="3">
+                                <name>3</name>
+                                <translations>
+                                </translations>
+                            </item>
+                            <item id="4">
+                                <name>4</name>
+                                <translations>
+                                </translations>
+                            </item>
+                            <item id="5">
+                                <name>5</name>
+                                <translations>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="es">Fuente del tecto</item>
+                            <item lang="da">Tekstskrifttype</item>
+                            <item lang="el">Κείμενο γραμματοσειράς</item>
+                            <item lang="ro">Font-ul textului</item>
+                            <item lang="ru">Шрифт текста</item>
+                            <item lang="sl">Besedilo pisave</item>
+                            <item lang="zh">文本字体</item>
+                        </translations>
+                    </item>
+                    <item id="prefix">
+                        <name>Barcode prefix</name>
+                        <type>input</type>
+                        <default_value>FF45CR99</default_value>
+                        <translations>
+                            <item lang="es">Prefijo del código</item>
+                            <item lang="da">stregkode prefix</item>
+                            <item lang="el">Πρόθεμα Barcode</item>
+                            <item lang="ro">Prefix-ul codului de bare</item>
+                            <item lang="ru">Префикс штрих-кода</item>
+                            <item lang="sl">Predpona barkode</item>
+                            <item lang="zh">条形码前缀</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="elm_specification">
+                        <name>Specification</name>
+                        <type>header</type>
+                        <handler/>
+                        <translations>
+                            <item lang="es">Especificación</item>
+                            <item lang="fr">Spécification</item>
+                            <item lang="el">Προσδιορισμός</item>
+                            <item lang="ro">Specificații</item>
+                            <item lang="ru">Характеристика</item>
+                            <item lang="sl">Specifikacija</item>
+                            <item lang="zh">规格</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="elm_spec_descr">
+                        <name>Spec Description</name>
+                        <type>info</type>
+                        <handler>fn_get_barcode_specification</handler>
+                        <variants/>
+                        <translations>
+                            <item lang="ru">Описание характеристики</item>
+                            <item lang="zh">规格描述</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="en" id="please_enable_the_add_on_to_see_barcode">Please enable the add-on to see a code example.</item>
+        <item lang="ru" id="please_enable_the_add_on_to_see_barcode">Для того что бы увидеть пример кода включите аддон.</item>
+        <item lang="zh" id="please_enable_the_add_on_to_see_barcode">请启用附加查看一个代码示例.</item>
+        <item lang="it" id="please_enable_the_add_on_to_see_barcode">Si prega di abilitare l'add-on per vedere un esempio di codice.</item>
+    </language_variables>
+</addon>

@@ -1,0 +1,15 @@
+{
+	"default_preset": "satori",
+	"names": {
+		"reddish": "Reddish",
+		"satori": "Satori",
+		"wooden": "Wooden",
+		"ocean": "Ocean"
+	},
+	"default": {
+		"reddish": true,
+		"satori": true,
+		"wooden": true,
+		"ocean": true
+	}
+}

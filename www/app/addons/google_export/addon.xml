@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>google_export</id>
+    <name>Google export</name>
+    <description>Expands the Data Feeds add-on to work with Google Base and creates an example of such data feed</description>
+    <version>1.0</version>
+    <priority>5000</priority>
+    <position>0</position>
+    <status>active</status>
+    <compatibility>
+        <dependencies>data_feeds</dependencies>
+    </compatibility>
+    <translations>
+        <item for="name" lang="ru">Экспорт в Google</item>
+        <item for="description" lang="ru">Расширяет возможности модуля Экспорт данных для работы с сервисом Google Base</item>
+
+        <item for="name" lang="zh">谷歌导出</item>
+        <item for="description" lang="zh">扩展数据源插件配合谷歌Base并创建此类数据源的例子</item>
+    </translations>
+    <settings edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="general_info">
+                        <name>General info</name>
+                        <translations>
+                          <item lang="ru">Общая информация</item>
+                          <item lang="zh">常规信息</item>
+                        </translations>
+                        <type>info</type>
+                        <handler>fn_google_export_generate_info</handler>
+                    </item>
+                    <item id="additional_langs">
+                        <name>Install additional languages for Google categories</name>
+                        <translations>
+                          <item lang="ru">Установить дополнительные языки для категорий Google</item>
+                          <item lang="zh">为谷歌分类安装其它语言</item>
+                        </translations>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <functions>
+        <item for="install">fn_google_export_add_features</item>
+        <item for="install">fn_google_export_add_feed</item>
+        <item for="uninstall">fn_google_export_remove_features</item>
+        <item for="uninstall">fn_google_export_remove_feed</item>
+    </functions>
+    <language_variables>
+        <item lang="en" id="google_export_general_info"><![CDATA[<p>Note: toggle this setting if you need multi-language Google categories installed. Supports French, German, Italian, Spanish, and British English. Pay attention that this operation can take a significant amount of time.</p>]]></item>
+        <item lang="ru" id="google_export_general_info"><![CDATA[<p>Замечание: включите эту настройку, если вам необходимо, чтобы были установлены мультиязычные категории Google. Поддерживаются французский, немецкий, итальянский, испанский и британский английский языки. Обратите внимание, что данная операция может занять значительное время.</p>]]></item>
+        <item lang="zh" id="google_export_general_info"><![CDATA[<p>注意: 切换这个设置您若需要安装谷歌分类多语言,支持法语,德语,意大利语,西班牙语,和英国英语. 请注意此操作可能需要很长的时间.</p>]]></item>
+        <item lang="en" id="google_export_start_import">Start importing</item>
+        <item lang="ru" id="google_export_start_import">Импорт данных</item>
+        <item lang="zh" id="google_export_start_import">开始导入</item>
+    </language_variables>
+</addon>

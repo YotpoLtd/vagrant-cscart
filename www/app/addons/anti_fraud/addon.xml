@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>anti_fraud</id>
+    <name>Anti fraud</name>
+    <description>Adds configurable security order verification using the Maxmind service to prevent fraud</description>
+    <version>1.0</version>
+    <priority>2100</priority>
+    <position>130</position>
+    <translations>
+        <item for="name" lang="es">Anti Fraude</item>
+        <item for="name" lang="fr">Anti Fraude</item>
+        <item for="name" lang="da">for Bekæmpelse af Svig</item>
+        <item for="name" lang="el">Anti Fraud </item>
+        <item for="name" lang="it">Anti frode</item>
+        <item for="name" lang="ro">Anti fraudă</item>
+        <item for="name" lang="ru">Антимошенничество</item>
+        <item for="name" lang="sl">Boj proti goljufijam</item>
+        <item for="name" lang="zh">反欺诈</item>
+        <item for="description" lang="ru">Добавляет конфигурируемую проверку безопасности заказа, используя сервис Maxmind, чтобы избежать мошенничества</item>
+    </translations>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="anti_fraud_key">
+                        <name>Maxmind license key</name>
+                        <type>input</type>
+                        <default_value/>
+                        <translations>
+                            <item lang="es">Clave de licencia de MaxMind</item>
+                            <item lang="fr">Clé de licence Maxmind</item>
+                            <item lang="da">Maxmind licens nøglen</item>
+                            <item lang="el">Αριθμός-κλειδί Maxmind</item>
+                            <item lang="ro">Liciență cheie Maxmind</item>
+                            <item lang="ru">Лицензионный ключ Maxmind</item>
+                            <item lang="sl">Maxmind licenčni ključ</item>
+                            <item lang="zh">Maxmind 许可证钥匙</item>
+                        </translations>
+                    </item>
+                    <item id="anti_fraud_safe_distance">
+                        <name>Safe distance (km)</name>
+                        <type>input</type>
+                        <default_value>90</default_value>
+                        <translations>
+                            <item lang="es">Distancia de seguridad (km)</item>
+                            <item lang="fr">Distance de sécurité</item>
+                            <item lang="da">Sikker afstand (km)</item>
+                            <item lang="el">Ασφαλής απόσταση (km)</item>
+                            <item lang="ro">Distanța de siguranță (km)</item>
+                            <item lang="ru">Безопасная дистанция (км)</item>
+                            <item lang="sl">Varna razdalja (km)</item>
+                            <item lang="zh">安全距离 (km)</item>
+                        </translations>
+                    </item>
+                    <item id="anti_fraud_max_order_total">
+                        <name>Max order total</name>
+                        <type>input</type>
+                        <default_value>500</default_value>
+                        <translations>
+                            <item lang="es">Máximo del pedido</item>
+                            <item lang="fr">Total max de commande</item>
+                            <item lang="da">Maksimum for alt</item>
+                            <item lang="el">Μέγιστο σύνολο παραγγελίας</item>
+                            <item lang="ro">Totalul maxim al unei comenzi</item>
+                            <item lang="ru">Максимальная сумма заказа</item>
+                            <item lang="sl">MAksimalno naročilo skupaj</item>
+                            <item lang="zh">最大订单额度</item>
+                        </translations>
+                    </item>
+                    <item id="anti_fraud_risk_factor">
+                        <name>Maximum risk factor (1..100)</name>
+                        <type>input</type>
+                        <default_value>25</default_value>
+                        <translations>
+                            <item lang="es">Factor de riesgo máximo (1..100)</item>
+                            <item lang="fr">Facteur de risque maximum  (1..100)</item>
+                            <item lang="el">Μέγιστος παράγοντας κινδύνου (1 .. 100)</item>
+                            <item lang="ro">Factorul de risc maxim (1..100)</item>
+                            <item lang="ru">Максимальный фактор риска (1..100)</item>
+                            <item lang="sl">Največji faktor rizičnosti (1..100)</item>
+                            <item lang="zh">最大的风险因素(1..100)</item>
+                        </translations>
+                    </item>
+                    <item id="antifraud_order_status">
+                        <name>Order status</name>
+                        <type>hidden</type>
+                        <translations>
+                            <item lang="ru">Статус заказа</item>
+                            <item lang="zh">订单状态</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="en" id="antifraud_failed_order">Your order was placed in the store. It is undergoing an additional check now. We will contact you as soon as the administrator finishes it</item>
+        <item lang="ru" id="antifraud_failed_order">Ваш заказ был размещен в магазине и в данный момент проходит дополнительную проверку. Мы свяжемся с вами как только она будет завершена.</item>
+        <item lang="zh" id="antifraud_failed_order">您已在商店下单. 正在进行一个额外的检查. 等管理员完成它后我们会尽快和您联系</item>
+        <item lang="en" id="risk_factor">Risk factor</item>
+        <item lang="en" id="not_available">n/a</item>
+        <item lang="en" id="decision">Decision</item>
+        <item lang="en" id="anti_fraud_order_not_approved">Order has not been approved because risk factor exceeds Maximum risk factor</item>
+        <item lang="en" id="anti_fraud_order_approved">Order has been approved</item>
+        <item lang="en" id="fraud_risk">Fraud risk</item>
+        <item lang="en" id="fraud_checking">Fraud checking</item>
+
+        <item lang="bg" id="risk_factor">Рисков фактор</item>
+        <item lang="bg" id="decision">решение</item>
+        <item lang="bg" id="anti_fraud_order_not_approved">Поръчката не е одобрена поради висок рисков фактор</item>
+        <item lang="bg" id="anti_fraud_order_approved">Поръчката е одобрена</item>
+        <item lang="bg" id="fraud_risk">Опасност от измама</item>
+        <item lang="bg" id="fraud_checking">Проверка за измама</item>
+
+        <item lang="da" id="risk_factor">Risiko faktor</item>
+        <item lang="da" id="not_available">n / a</item>
+        <item lang="da" id="decision">Afgørelse</item>
+        <item lang="da" id="anti_fraud_order_not_approved">Odrer er ikke blevet godkendt grundet for høj risiko</item>
+        <item lang="da" id="anti_fraud_order_approved">Odrer er blevet godkendt</item>
+        <item lang="da" id="fraud_risk">Svindel risiko\n</item>
+        <item lang="da" id="fraud_checking">Svig kontrol</item>
+
+        <item lang="el" id="risk_factor">Παράγοντα κινδύνου</item>
+        <item lang="el" id="not_available">μ/δ</item>
+        <item lang="el" id="decision">Απόφαση</item>
+        <item lang="el" id="anti_fraud_order_not_approved">Η παραγγελία δεν έχει εγκριθεί επειδή ο συντελεστής  επικινδυνότητας έχει υπερβεί</item>
+        <item lang="el" id="anti_fraud_order_approved">Η παραγγελία έχει εγκριθεί</item>
+        <item lang="el" id="fraud_risk">Κίνδυνος απάτης</item>
+        <item lang="el" id="fraud_checking">Έλεγχος απάτης</item>
+
+        <item lang="es" id="risk_factor">Factor de riesgo</item>
+        <item lang="es" id="not_available">no disponible</item>
+        <item lang="es" id="anti_fraud_order_not_approved">El pedido no ha sido aprobado a consecuencia de que el factor de riesgo es más alto que al factor máximo de riesgo permitido.</item>
+        <item lang="es" id="anti_fraud_order_approved">El pedido ha sido aprobado</item>
+        <item lang="es" id="fraud_checking">Comprobación de fraude</item>
+
+        <item lang="fr" id="risk_factor">Facteur de risque</item>
+        <item lang="fr" id="not_available">n/d</item>
+        <item lang="fr" id="anti_fraud_order_not_approved">Order has not been approved as a result of Risk factor is higher then Maximum risk factor\nLa commande n'a pas été approuvé car le facteur de risque est plus élevé que le maximum accepté</item>
+        <item lang="fr" id="anti_fraud_order_approved">La commande a été approuvé</item>
+        <item lang="fr" id="fraud_risk">Risque de fraude</item>
+        <item lang="fr" id="fraud_checking">Vérification de fraude</item>
+
+        <item lang="it" id="antifraud_failed_order">Il suo ordine è stato ricevuto. Al momento sono in corso ulteriori controlli antifrode. La ricontatteremo non appena li avremo terminati</item>
+        <item lang="it" id="risk_factor">Fattore di rischio</item>
+        <item lang="it" id="decision">Decisione</item>
+        <item lang="it" id="anti_fraud_order_not_approved">L'ordine non è stato approvato perchè il fattore di rischio supera il massimo consentito</item>
+        <item lang="it" id="anti_fraud_order_approved">L'ordine è stato approvato</item>
+        <item lang="it" id="fraud_risk">Rischio frode</item>
+        <item lang="it" id="fraud_checking">Verifica frode</item>
+
+        <item lang="no" id="risk_factor">Risikofaktor</item>
+        <item lang="no" id="decision">Avgjørelse</item>
+        <item lang="no" id="anti_fraud_order_not_approved">Ordren har ikke blitt godkjent fordi risikofaktor overstiger maksimal risikofaktor</item>
+        <item lang="no" id="anti_fraud_order_approved">Ordren er godkjent</item>
+        <item lang="no" id="fraud_risk">Bedrageririsiko</item>
+        <item lang="no" id="fraud_checking">Bedragerikontroll</item>
+
+        <item lang="ro" id="risk_factor">Factor de risc</item>
+        <item lang="ro" id="decision">Decizie</item>
+        <item lang="ro" id="anti_fraud_order_not_approved">Comanda nu a fost aprobată, deoarece comanda făcută deține un factor de risc mai mare decât cel stabilit</item>
+        <item lang="ro" id="anti_fraud_order_approved">Comanda a fost aprobată</item>
+        <item lang="ro" id="fraud_risk">Riscul fraudei</item>
+        <item lang="ro" id="fraud_checking">Verificare împotriva fraudei</item>
+
+        <item lang="ru" id="risk_factor">Фактор риска</item>
+        <item lang="ru" id="not_available">н/д</item>
+        <item lang="ru" id="decision">Решение</item>
+        <item lang="ru" id="anti_fraud_order_not_approved">Заказ не был принят в связи с тем, что фактор риска выше максимального</item>
+        <item lang="ru" id="anti_fraud_order_approved">Заказ был принят</item>
+        <item lang="ru" id="fraud_risk">Риск мошенничества</item>
+        <item lang="ru" id="fraud_checking">Проверка на мошенничество</item>
+
+        <item lang="sl" id="risk_factor">Faktor tveganja</item>
+        <item lang="sl" id="not_available">n/d</item>
+        <item lang="sl" id="decision">Odločitev</item>
+        <item lang="sl" id="anti_fraud_order_not_approved">Naročilo ni bilo odobreno. Rizični faktor je višjii, kot je najvišji dovoljen</item>
+        <item lang="sl" id="anti_fraud_order_approved">Naročilo je bilo odobreno</item>
+        <item lang="sl" id="fraud_risk">Tveganje goljufije</item>
+        <item lang="sl" id="fraud_checking">Preverjanje zlorabe</item>
+
+        <item lang="zh" id="risk_factor">风险因素</item>
+        <item lang="zh" id="decision">决定</item>
+        <item lang="zh" id="anti_fraud_order_not_approved">因为风险因子超过最大危险因素导致订单未被审核</item>
+        <item lang="zh" id="anti_fraud_order_approved">订单已获审核</item>
+        <item lang="zh" id="fraud_risk">欺诈风险</item>
+        <item lang="zh" id="fraud_checking">欺诈检查</item>
+    </language_variables>
+    <functions>
+        <item for="install">fn_anti_fraud_add_status</item>
+        <item for="uninstall">fn_anti_fraud_remove_status</item>
+    </functions>
+</addon>

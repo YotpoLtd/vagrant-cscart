@@ -1,0 +1,452 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>rma</id>
+    <name>RMA</name>
+    <description>Adds a return management system</description>
+    <version>1.0</version>
+    <priority>1600</priority>
+    <position>220</position>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="fr">RMA (Retour de marchandises)</item>
+        <item for="name" lang="ru">Возврат товаров</item>
+        <item for="name" lang="zh">RMA</item>
+        <item for="description" lang="ru">Активирует систему управления возвратами товаров</item>
+        <item for="description" lang="zh">添加一个退货管理系统</item>
+    </translations>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="display_product_return_period">
+                        <name>Display product return period</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">Mostrar tiempo de devolución del producto</item>
+                            <item lang="da">Vis produkt tilbage periode</item>
+                            <item lang="el">Εμφάνιση περίοδου επιστροφής των προϊόντων</item>
+                            <item lang="ro">Afișează perioada de returnare a produsului</item>
+                            <item lang="ru">Отображать период возврата товара</item>
+                            <item lang="sl">Prikaži obdobje vračila izdelka</item>
+                            <item lang="zh">显示产品退货周期</item>
+                        </translations>
+                    </item>
+                    <item id="dont_take_weekends_into_account">
+                        <name>Do not take weekends into account when calculating product return period</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">No tener en cuenta los fines de semana para calcular el tiempo de devolución del producto</item>
+                            <item lang="el">Μην πάρετε τα Σαββατοκύριακα υπόψη κατά τον υπολογισμό  της περιόδου επιστροφής των προϊόντων</item>
+                            <item lang="ro">Nu lua în considerare când se va calcula perioada de returnare a produsului</item>
+                            <item lang="ru">Не учитывать выходные при подсчете периода возврата товара</item>
+                            <item lang="sl">NE upoštevaj konec tedna pri izračunu dobe vračanja izdelka</item>
+                            <item lang="zh">当计算产品退货期时不考虑周末</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item for="demo" type='file'>database/demo.sql</item>
+        <item>DROP TABLE IF EXISTS ?:rma_property_descriptions;</item>
+        <item>DROP TABLE IF EXISTS ?:rma_properties;</item>
+        <item>DROP TABLE IF EXISTS ?:rma_return_products;</item>
+        <item>DROP TABLE IF EXISTS ?:rma_returns;</item>
+        <!--
+        /********************
+        *
+        * field "type" in
+        * R - RMA Reason
+        * A - RMA Action
+        *
+        */
+        -->
+        <item>
+            CREATE TABLE `?:rma_properties` (
+                `property_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `position` smallint(5) unsigned NOT NULL default '0',
+                `status` char(1) NOT NULL default '',
+                `type` char(1) NOT NULL default 'R',
+                `update_totals_and_inventory` char(1) NOT NULL default 'N',
+                PRIMARY KEY  (`property_id`),
+                KEY `c_status` (`property_id`,`status`),
+                KEY `status` (`status`,`type`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:rma_property_descriptions` (
+                `property_id` mediumint(8) unsigned NOT NULL default '0',
+                `lang_code` char(2) NOT NULL default '',
+                `property` varchar(255) NOT NULL default '',
+                PRIMARY KEY  (`property_id`,`lang_code`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <!--
+        /*********************
+        *
+        * field "type" in
+        * A - Accepted product
+        * D - Declined product
+        *
+        */
+        -->
+        <item>
+            CREATE TABLE `?:rma_return_products` (
+                `return_id` mediumint(8) unsigned NOT NULL default '0',
+                `item_id` int(11) unsigned NOT NULL default '0',
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                `reason` mediumint(8) unsigned NOT NULL default '0',
+                `amount` mediumint(8) unsigned NOT NULL default '0',
+                `type` char(1) NOT NULL default 'A',
+                `price` decimal(12,2) NOT NULL default '0.00',
+                `product_options` text,
+                `product` VARCHAR( 255 ) NOT NULL default '',
+                PRIMARY KEY  (`return_id`,`item_id`,`type`),
+                KEY `reason` (`reason`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:rma_returns` (
+                `return_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `order_id` mediumint(8) unsigned NOT NULL default '0',
+                `user_id` mediumint(8) unsigned NOT NULL default '0',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `action` mediumint(8) unsigned NOT NULL default '0',
+                `status` char(1) NOT NULL default 'O',
+                `total_amount` mediumint(8) unsigned NOT NULL default '0',
+                `comment` text,
+                `extra` text,
+                PRIMARY KEY  (`return_id`),
+                KEY `order_id` (`order_id`),
+                KEY `timestamp` (`timestamp`),
+                KEY `user_id` (`user_id`),
+                KEY `status` (`status`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item type="file">database/data.sql</item>
+        <item type="file" lang="en" table="rma_property_descriptions">database/lang_en.sql</item>
+        <item type="file" lang="ru" table="rma_property_descriptions">database/lang_ru.sql</item>
+        <item type="file" lang="es" table="rma_property_descriptions">database/lang_es.sql</item>
+        <item type="file" lang="el" table="rma_property_descriptions">database/lang_el.sql</item>
+        <item type="file" lang="da" table="rma_property_descriptions">database/lang_da.sql</item>
+        <item type="file" lang="ro" table="rma_property_descriptions">database/lang_ro.sql</item>
+        <item type="file" lang="sl" table="rma_property_descriptions">database/lang_sl.sql</item>
+
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO  ?:privileges (privilege, is_default, section_id) VALUES ('manage_rma', 'Y', 'addons');</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'manage_rma'</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:rma_property_descriptions;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:rma_properties;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:rma_return_products;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:rma_returns;</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="add_reason">Add reason</item>
+        <item lang="en" id="new_reason">New reason</item>
+        <item lang="en" id="type_comment">Type comments here</item>
+        <item lang="en" id="return_requests_note">Go to the list of your return requests</item>
+        <item lang="en" id="privileges.manage_rma">Manage RMA system</item>
+
+        <item lang="bg" id="add_reason">Добави причина</item>
+        <item lang="bg" id="new_reason">Добави нови основания</item>
+
+        <item lang="da" id="add_reason">Tilføj grund</item>
+        <item lang="da" id="new_reason">Tilføj ny grund</item>
+
+        <item lang="el" id="add_reason">Προσθήκη Λόγου</item>
+        <item lang="el" id="new_reason">Προσθήκη νέων λόγων</item>
+
+        <item lang="es" id="new_reason">Añadir nuevos reasons</item>
+
+        <item lang="fr" id="new_reason">Ajouter une nouvelle raison</item>
+
+        <item lang="no" id="add_reason">Legg til Begrunnelse</item>
+        <item lang="no" id="new_reason">Legg til nye grunner</item>
+
+        <item lang="ro" id="add_reason">Adăugați un motiv</item>
+        <item lang="ro" id="new_reason">Adăugați motive noi</item>
+
+        <item lang="ru" id="add_reason">Добавить причину</item>
+        <item lang="ru" id="new_reason">Добавить новые причины</item>
+        <item lang="ru" id="return_requests_note">Перейти к списку запросов на возврат товаров</item>
+        <item lang="ru" id="type_comment">Оставить комментарий</item>
+        <item lang="ru" id="privileges.manage_rma">Управление системой возврата товаров</item>
+
+        <item lang="sl" id="add_reason">Dodaj razlog</item>
+        <item lang="sl" id="new_reason">Dodaj nov razlog</item>
+        
+        <item lang="zh" id="add_reason">添加原因</item>
+        <item lang="zh" id="new_reason">新的原因</item>
+
+        <item lang="en" id="text_return_change_warning">The status of return #[return_id] will be changed</item>
+        <item lang="bg" id="text_return_change_warning">Статусът на Връщане #[return_id] ще бъде променено</item>
+        <item lang="da" id="text_return_change_warning">Status Return # [return_id] vil blive ændret</item>
+        <item lang="el" id="text_return_change_warning">Η κατάσταση της αλλαγής #[return_id]θα αλλάξει</item>
+        <item lang="es" id="text_return_change_warning">El estado de la devolución #[return_id] será  cambiado</item>
+        <item lang="fr" id="text_return_change_warning">Le statut de ce retour#[return_id] sera changé.</item>
+        <item lang="it" id="text_return_change_warning">Lo state di return #[return_id] sarà cambiato</item>
+        <item lang="no" id="text_return_change_warning">Status for retur #[return_id] vil bli endret</item>
+        <item lang="ro" id="text_return_change_warning">Statutul stocului #[return_id] va fi schimbat</item>
+        <item lang="ru" id="text_return_change_warning">Статус возврата #[return_id] будет изменен</item>
+        <item lang="sl" id="text_return_change_warning">Status тazaj #[return_id] se bo spremenila</item>
+        <item lang="zh" id="text_return_change_warning">此状态return #[return_id]将修改</item>
+        
+        <item lang="en" id="returnable">Returnable</item>
+        <item lang="en" id="returnable_product">Returnable product</item>
+        <item lang="en" id="rma_request_statuses">RMA request statuses</item>
+        <item lang="en" id="return_products_information">Return products information</item>
+        <item lang="en" id="declined_products_information">Declined products information</item>
+        <item lang="en" id="rma_reasons">RMA reasons</item>
+        <item lang="en" id="rma_actions">RMA actions</item>
+        <item lang="en" id="rma">RMA</item>
+        <item lang="en" id="return_period_days">Return period (days)</item>
+        <item lang="en" id="all_actions">All actions</item>
+        <item lang="en" id="order_total_will_changed">The order total will be changed by</item>
+        <item lang="en" id="shipping_costs_will_changed">Shipping costs will be changed by</item>
+        <item lang="en" id="decline_products">Decline products</item>
+        <item lang="en" id="create_gift_certificate">Create gift certificate</item>
+        <item lang="en" id="accept_products">Accept products</item>
+        <item lang="en" id="recalculate_order">Recalculate order</item>
+        <item lang="en" id="manually_recalculate_order">Recalculate the order manually</item>
+        <item lang="en" id="dont_recalculate_order">Do not recalculate order</item>
+        <item lang="en" id="delete_this_return">Delete this return</item>
+        <item lang="en" id="update_totals_and_inventory">Update totals and inventory</item>
+        <item lang="en" id="request_statuses">request statuses</item>
+
+        <item lang="bg" id="returnable">Подлежащ на връщане</item>
+        <item lang="bg" id="returnable_product">Подлежащ на връщане продукт</item>
+        <item lang="bg" id="rma_request_statuses">РСО статуси на заявки</item>
+        <item lang="bg" id="return_products_information">Информация за връщане на продукти</item>
+        <item lang="bg" id="declined_products_information">Информация за отказани продукти</item>
+        <item lang="bg" id="rma_reasons">РСО причини</item>
+        <item lang="bg" id="rma_actions">РСО действия</item>
+        <item lang="bg" id="return_period_days">Период за връщане (в дни)</item>
+        <item lang="bg" id="all_actions">Всички действия</item>
+        <item lang="bg" id="order_total_will_changed">Общата сума ще бъде променена от</item>
+        <item lang="bg" id="shipping_costs_will_changed">Разходите за доставка ще бъдат променени от</item>
+        <item lang="bg" id="decline_products">Отказани продукти</item>
+        <item lang="bg" id="create_gift_certificate">Създаване на талон за подарък</item>
+        <item lang="bg" id="accept_products">Приемам продукти</item>
+        <item lang="bg" id="recalculate_order">Преизчисли за</item>
+        <item lang="bg" id="manually_recalculate_order">Преизчисли ръчно</item>
+        <item lang="bg" id="dont_recalculate_order">Да не се преизчисли за</item>
+        <item lang="bg" id="delete_this_return">Изтриване на това връщане</item>
+        <item lang="bg" id="update_totals_and_inventory">Актуализиране на общата сума и остатъка на продуктите</item>
+        <item lang="bg" id="request_statuses">Статуси на заявки</item>
+
+        <item lang="da" id="returnable">Returklar</item>
+        <item lang="da" id="returnable_product">Returklar produkt</item>
+        <item lang="da" id="rma_request_statuses">RMA anmodning status</item>
+        <item lang="da" id="return_products_information">Retur produkter information</item>
+        <item lang="da" id="declined_products_information">afslået produkt information</item>
+        <item lang="da" id="rma_reasons">RMA årsag</item>
+        <item lang="da" id="rma_actions">RMA aktion</item>
+        <item lang="da" id="return_period_days">Retur tid (dage)</item>
+        <item lang="da" id="all_actions">Alle aktioner</item>
+        <item lang="da" id="order_total_will_changed">Ordre total vil blive ændret af</item>
+        <item lang="da" id="shipping_costs_will_changed">Forsendelsesomkostninger vil blive ændret ved</item>
+        <item lang="da" id="decline_products">Afslået produkt</item>
+        <item lang="da" id="create_gift_certificate">Opret gavekort</item>
+        <item lang="da" id="accept_products">acceptere produkter</item>
+        <item lang="da" id="recalculate_order">forudberegn ordre</item>
+        <item lang="da" id="manually_recalculate_order">Manuelt genberegne bestilling</item>
+        <item lang="da" id="dont_recalculate_order">Må ikke genberegne ordre </item>
+        <item lang="da" id="delete_this_return">Slet denne retur</item>
+        <item lang="da" id="update_totals_and_inventory">Opdater totaler og lager</item>
+        <item lang="da" id="request_statuses">anmodning status</item>
+
+        <item lang="el" id="returnable">Επιστρεπτέος</item>
+        <item lang="el" id="returnable_product">Επιστρεπτέο προϊόν</item>
+        <item lang="el" id="rma_request_statuses">Κατάσταση αιτήσεων RMA </item>
+        <item lang="el" id="return_products_information">Πληροφορίες επιστροφής προϊόντων</item>
+        <item lang="el" id="declined_products_information">Πληροφορίες για προιόντα που απορρίφτηκαν</item>
+        <item lang="el" id="rma_reasons">Λόγοι RMA </item>
+        <item lang="el" id="rma_actions">Ενέργειες RMA </item>
+        <item lang="el" id="return_period_days">Χρονική περίοδος (ημέρες)</item>
+        <item lang="el" id="all_actions">Όλες οι ενέργειες</item>
+        <item lang="el" id="order_total_will_changed">Το συνολικό ποσό της παραγγελίας θα αλλάξει με</item>
+        <item lang="el" id="shipping_costs_will_changed">Τα έξοδα αποστολής θα αλλάξουν με</item>
+        <item lang="el" id="decline_products">Απόρριψη προϊόντων</item>
+        <item lang="el" id="create_gift_certificate">Δημιουργία δωροεπιταγής</item>
+        <item lang="el" id="accept_products">Αποδοχή προϊόντων</item>
+        <item lang="el" id="recalculate_order">Επανυπολογισμός παραγγελίας</item>
+        <item lang="el" id="manually_recalculate_order">Επαναυπολογισμός της παραγγελίας χειροκίνητα</item>
+        <item lang="el" id="dont_recalculate_order">Μην επαναϋπολογίζετε την παραγγελία</item>
+        <item lang="el" id="delete_this_return">Διαγραφή αυτής της επιστροφής</item>
+        <item lang="el" id="update_totals_and_inventory">Ενημέρωση συνόλων  και καταγραφής εμπορευμάτων</item>
+        <item lang="el" id="request_statuses">καταστάσεις αιτήματος</item>
+
+        <item lang="es" id="returnable_product">Producto con opción de devolver</item>
+        <item lang="es" id="rma_request_statuses">Estado de las peticiones RMA</item>
+        <item lang="es" id="return_products_information">Información de productos a devolver</item>
+        <item lang="es" id="declined_products_information">Información de productos rechazados</item>
+        <item lang="es" id="rma_reasons">Razones RMA</item>
+        <item lang="es" id="rma_actions">Acciones RMA</item>
+        <item lang="es" id="return_period_days">Periodo de devolución (días)</item>
+        <item lang="es" id="all_actions">Todas las acciones</item>
+        <item lang="es" id="order_total_will_changed">El total del pedido será cambiado por</item>
+        <item lang="es" id="shipping_costs_will_changed">Los gastos de envío serán cambiados por</item>
+        <item lang="es" id="decline_products">Rechazar productos</item>
+        <item lang="es" id="create_gift_certificate">Cree certificado de regalo</item>
+        <item lang="es" id="accept_products">Aceptar productos</item>
+        <item lang="es" id="recalculate_order">Recalcular pedido</item>
+        <item lang="es" id="manually_recalculate_order">Recalcular orden de pedido manualmente</item>
+        <item lang="es" id="dont_recalculate_order">No recalcular pedido</item>
+        <item lang="es" id="delete_this_return">Borre esta devolución</item>
+        <item lang="es" id="update_totals_and_inventory">Actualizar importes e inventario</item>
+        <item lang="es" id="request_statuses">estados de petición</item>
+
+        <item lang="fr" id="returnable">Retournable</item>
+        <item lang="fr" id="returnable_product">Produit retournable</item>
+        <item lang="fr" id="rma_request_statuses">Statuts des requêtes RMA</item>
+        <item lang="fr" id="return_products_information">Retour  produits information</item>
+        <item lang="fr" id="declined_products_information">Information des produits refusée</item>
+        <item lang="fr" id="rma_reasons">Raisons RMA</item>
+        <item lang="fr" id="rma_actions">Actions RMA</item>
+        <item lang="fr" id="return_period_days">Période de retour (jours)</item>
+        <item lang="fr" id="all_actions">Toutes les actions</item>
+        <item lang="fr" id="order_total_will_changed">La commande total sera changé par</item>
+        <item lang="fr" id="shipping_costs_will_changed">Les frais d'expédition seront changé par</item>
+        <item lang="fr" id="decline_products">Produits refusés</item>
+        <item lang="fr" id="create_gift_certificate">Créer un bon-cadeau</item>
+        <item lang="fr" id="accept_products">Accepter les produits</item>
+        <item lang="fr" id="recalculate_order">Recalculer commande</item>
+        <item lang="fr" id="manually_recalculate_order">Recalculer les commandes manuellement</item>
+        <item lang="fr" id="dont_recalculate_order">Ne recalculez pas la commande</item>
+        <item lang="fr" id="delete_this_return">Supprimer ce retour</item>
+        <item lang="fr" id="update_totals_and_inventory">Mise à jour total et inventaire</item>
+        <item lang="fr" id="request_statuses">Statuts des requêtes</item>
+
+        <item lang="it" id="returnable">Restituibile</item>
+        <item lang="it" id="returnable_product">Prodotto restituibile</item>
+        <item lang="it" id="rma_request_statuses">Richiesta stati RMA</item>
+        <item lang="it" id="return_products_information">Informazione prodotti di ritorno</item>
+        <item lang="it" id="declined_products_information">Informazioni prodotto rifiutate</item>
+        <item lang="it" id="rma_reasons">Motivi RMA</item>
+        <item lang="it" id="rma_actions">Azioni RMA</item>
+        <item lang="it" id="return_period_days">Periodo di ritorno (giorni)</item>
+        <item lang="it" id="all_actions">Tutte le azioni</item>
+        <item lang="it" id="order_total_will_changed">Il totale dell'ordine sarà convertito da</item>
+        <item lang="it" id="shipping_costs_will_changed">I costi di spedizione saranno modificati da</item>
+        <item lang="it" id="decline_products">Prodotti rifiutati</item>
+        <item lang="it" id="create_gift_certificate">Crea un buono regalo</item>
+        <item lang="it" id="accept_products">Accetta prodotti</item>
+        <item lang="it" id="recalculate_order">Ricalcola ordine</item>
+        <item lang="it" id="manually_recalculate_order">Ricalcola l'ordine manualmente</item>
+        <item lang="it" id="dont_recalculate_order">Non ricalcolare ordine</item>
+        <item lang="it" id="delete_this_return">Elimina questo return</item>
+        <item lang="it" id="update_totals_and_inventory">Aggiorna totale e inventario</item>
+        <item lang="it" id="new_reason">Nuova ragione</item>
+        <item lang="it" id="add_reason">Aggiungi motivazione</item>
+        <item lang="it" id="request_statuses">Richiesta stati</item>
+
+        <item lang="no" id="returnable">Returnerbar</item>
+        <item lang="no" id="returnable_product">Returnerbart produkt</item>
+        <item lang="no" id="rma_request_statuses">RMA forespørselstatuser</item>
+        <item lang="no" id="return_products_information">Returproduktinformasjon</item>
+        <item lang="no" id="declined_products_information">Info om avslåtte produkter</item>
+        <item lang="no" id="rma_reasons">RMA grunner</item>
+        <item lang="no" id="rma_actions">RMA handlinger</item>
+        <item lang="no" id="return_period_days">Returperiode (dager)</item>
+        <item lang="no" id="all_actions">Alle handlinger</item>
+        <item lang="no" id="order_total_will_changed">Ordre total vil bli endret av</item>
+        <item lang="no" id="shipping_costs_will_changed">Fraktkostnader vil bli endret av</item>
+        <item lang="no" id="decline_products">Avslå produkter</item>
+        <item lang="no" id="create_gift_certificate">Opprett gavekort</item>
+        <item lang="no" id="accept_products">Godta produkter</item>
+        <item lang="no" id="recalculate_order">Omberegn ordre</item>
+        <item lang="no" id="manually_recalculate_order">Rekalkuler ordren manuelt</item>
+        <item lang="no" id="dont_recalculate_order">Ikke omberegn ordren</item>
+        <item lang="no" id="delete_this_return">Slett denne avkastningen</item>
+        <item lang="no" id="update_totals_and_inventory">Oppdater totaler og lagerbeholdning</item>
+        <item lang="no" id="request_statuses">forespørselstatuser</item>
+
+        <item lang="ro" id="returnable">Returnabil</item>
+        <item lang="ro" id="returnable_product">Produs returnabil</item>
+        <item lang="ro" id="rma_request_statuses">Statuturi solicitări RMA</item>
+        <item lang="ro" id="return_products_information">Informații returnare produse</item>
+        <item lang="ro" id="declined_products_information">Informațiile produselor respinse</item>
+        <item lang="ro" id="rma_reasons">Motive RMA</item>
+        <item lang="ro" id="rma_actions">Acțiuni RMA</item>
+        <item lang="ro" id="return_period_days">Perioada de returnare (zile)</item>
+        <item lang="ro" id="all_actions">Toate acțiunile</item>
+        <item lang="ro" id="order_total_will_changed">Totalul comenzii a fost schimbat de către</item>
+        <item lang="ro" id="shipping_costs_will_changed">Costurile de transport vor fi modificate cu</item>
+        <item lang="ro" id="decline_products">Produse respinse</item>
+        <item lang="ro" id="create_gift_certificate">Creați un certificat de cadou</item>
+        <item lang="ro" id="accept_products">Acceptă produse</item>
+        <item lang="ro" id="recalculate_order">Recalculați comanda</item>
+        <item lang="ro" id="manually_recalculate_order">Recalculați manual comanda</item>
+        <item lang="ro" id="dont_recalculate_order">Nu recalculați comanda</item>
+        <item lang="ro" id="delete_this_return">Ștergeți stoc</item>
+        <item lang="ro" id="update_totals_and_inventory">Actualizați totaluri și inventar</item>
+        <item lang="ro" id="request_statuses">statuturi solicitări</item>
+
+        <item lang="ru" id="returnable">Возвращаемый</item>
+        <item lang="ru" id="returnable_product">Возвращаемый товар</item>
+        <item lang="ru" id="rma_request_statuses">Статусы запросов на возврат</item>
+        <item lang="ru" id="return_products_information">Информация о товарах возврата</item>
+        <item lang="ru" id="declined_products_information">Информация об отклоненных товарах</item>
+        <item lang="ru" id="rma_reasons">Причины возврата</item>
+        <item lang="ru" id="rma_actions">Варианты компенсации</item>
+        <item lang="ru" id="rma">Возвраты</item>
+        <item lang="ru" id="return_period_days">Время возврата (в днях)</item>
+        <item lang="ru" id="all_actions">Все действия</item>
+        <item lang="ru" id="order_total_will_changed">Сумма заказа будет изменена</item>
+        <item lang="ru" id="shipping_costs_will_changed">Стоимость доставки будет изменяться по</item>
+        <item lang="ru" id="decline_products">Отклонить товары</item>
+        <item lang="ru" id="create_gift_certificate">Создать подарочный сертификат</item>
+        <item lang="ru" id="accept_products">Принять товары</item>
+        <item lang="ru" id="recalculate_order">Пересчитать заказ</item>
+        <item lang="ru" id="manually_recalculate_order">Пересчитать заказ вручную</item>
+        <item lang="ru" id="dont_recalculate_order">Не пересчитывать заказ</item>
+        <item lang="ru" id="delete_this_return">Удалить этот возврат</item>
+        <item lang="ru" id="update_totals_and_inventory">Обновить итоговые суммы и остаток товара</item>
+        <item lang="ru" id="request_statuses">статусы запросов</item>
+
+        <item lang="sl" id="returnable">Vračljiv</item>
+        <item lang="sl" id="returnable_product">Vračljiv artikel</item>
+        <item lang="sl" id="rma_request_statuses">RMA zahtevani statusi</item>
+        <item lang="sl" id="return_products_information">Informacije o izdelku za nazaj</item>
+        <item lang="sl" id="declined_products_information">Zavrnjene informacije o izdelku</item>
+        <item lang="sl" id="rma_reasons">RMA razlogi</item>
+        <item lang="sl" id="rma_actions">RMA dejavnosti</item>
+        <item lang="sl" id="return_period_days">Nazaj za obdobje (v dnevih)</item>
+        <item lang="sl" id="all_actions">Vsa dejanja</item>
+        <item lang="sl" id="order_total_will_changed">Naročilo skupaj bo spremenjeno</item>
+        <item lang="sl" id="shipping_costs_will_changed">Dostava stroškov se bo spremenila z</item>
+        <item lang="sl" id="decline_products">Zavrni izdelke</item>
+        <item lang="sl" id="create_gift_certificate">Ustvari darilni bon</item>
+        <item lang="sl" id="accept_products">Sprejmi izdelki</item>
+        <item lang="sl" id="recalculate_order">Preračunaj naročilo</item>
+        <item lang="sl" id="manually_recalculate_order">Ročno preračunaj naročilo</item>
+        <item lang="sl" id="dont_recalculate_order">Ne preračunajte naročila</item>
+        <item lang="sl" id="delete_this_return">Izbriši to vrnitev</item>
+        <item lang="sl" id="update_totals_and_inventory">Posodobi vsote in inventar</item>
+        <item lang="sl" id="request_statuses">zahtevani statusi</item>
+
+        <item lang="zh" id="returnable">可退回的</item>
+        <item lang="zh" id="returnable_product">可退回的产品</item>
+        <item lang="zh" id="rma_request_statuses">RMA请求状态</item>
+        <item lang="zh" id="return_products_information">退货产品信息</item>
+        <item lang="zh" id="declined_products_information">降价产品信息</item>
+        <item lang="zh" id="rma_reasons">RMA原因</item>
+        <item lang="zh" id="rma_actions">RMA 操作</item>
+        <item lang="zh" id="return_period_days">退货期 (天)</item>
+        <item lang="zh" id="all_actions">所有操作</item>
+        <item lang="zh" id="order_total_will_changed">订单总额将发生变化</item>
+        <item lang="zh" id="shipping_costs_will_changed">运费修改由</item>
+        <item lang="zh" id="decline_products">降价产品</item>
+        <item lang="zh" id="create_gift_certificate">创建礼卷</item>
+        <item lang="zh" id="accept_products">接受产品</item>
+        <item lang="zh" id="recalculate_order">重新计算订单</item>
+        <item lang="zh" id="manually_recalculate_order">手动重新计算订单</item>
+        <item lang="zh" id="dont_recalculate_order">不要重新计算订单</item>
+        <item lang="zh" id="delete_this_return">删除这个退货</item>
+        <item lang="zh" id="update_totals_and_inventory">更新汇总和库存</item>
+        <item lang="zh" id="request_statuses">请求状态</item>
+    </language_variables>
+</addon>

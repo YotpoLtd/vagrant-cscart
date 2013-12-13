@@ -1,0 +1,512 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>gift_certificates</id>
+    <name>Gift certificates</name>
+    <description>Adds a built-in gift certificate system</description>
+    <version>1.0</version>
+    <priority>1100</priority>
+    <position>180</position>
+    <status>active</status>
+    <translations>
+        <item for="name" lang="es">Certificados de regalo</item>
+        <item for="name" lang="fr">Bons cadeau</item>
+        <item for="name" lang="da">Gavekort</item>
+        <item for="name" lang="el">Δωροεπιταγές</item>
+        <item for="name" lang="it">Certificati regalo</item>
+        <item for="name" lang="ro">Certificare de cadou</item>
+        <item for="name" lang="ru">Подарочные сертификаты</item>
+        <item for="name" lang="sl">Darilni certifikat</item>
+        <item for="name" lang="zh">礼卷</item>
+        <item for="description" lang="ru">Подключает встроенную систему подарочных сертификатов</item>
+        <item for="description" lang="zh">添加一个内置礼卷系统</item>
+    </translations>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="min_amount">
+                        <name>Minimal amount</name>
+                        <type>input</type>
+                        <default_value>50</default_value>
+                        <translations>
+                            <item lang="es">Cantidad mínima</item>
+                            <item lang="da">Minimal beløb</item>
+                            <item lang="el">Ελάχιστο ποσό</item>
+                            <item lang="ro">Valoarea minimă</item>
+                            <item lang="ru">Минимальная сумма</item>
+                            <item lang="sl">Minimalni znesek</item>
+                            <item lang="zh">最小金额</item>
+                        </translations>
+                    </item>
+                    <item id="max_amount">
+                        <name>Maximal amount</name>
+                        <type>input</type>
+                        <default_value>1500</default_value>
+                        <translations>
+                            <item lang="es">Cantidad máxima</item>
+                            <item lang="da">Maksimal størrelse</item>
+                            <item lang="el">Μέγιστο ποσό</item>
+                            <item lang="ro">Valoarea maximă</item>
+                            <item lang="ru">Максимальная сумма</item>
+                            <item lang="sl">Maksimalni znesek</item>
+                            <item lang="zh">最大金额</item>
+                        </translations>
+                    </item>
+                    <item id="code_prefix">
+                        <name>GC Code prefix</name>
+                        <type>input</type>
+                        <default_value>GC</default_value>
+                        <translations>
+                            <item lang="el">GC Code prefix </item>
+                            <item lang="ro">Prefixul codului GC</item>
+                            <item lang="ru">Префикс кода подарочного сертификата</item>
+                            <item lang="sl">GC predpona kode</item>
+                            <item lang="zh">GC 代码前缀</item>
+                        </translations>
+                    </item>
+                    <item id="cert_per_page">
+                        <name>Gift certificates per page</name>
+                        <type>input</type>
+                        <default_value>10</default_value>
+                        <translations>
+                            <item lang="es">Certificados de regalo por página</item>
+                            <item lang="da">Gavekort per side</item>
+                            <item lang="el">Δωροεπιταγές ανα σελίδα</item>
+                            <item lang="ro">Certificate cadou per pagină</item>
+                            <item lang="ru">Подарочных сертификатов на страницу</item>
+                            <item lang="sl">Darilnih certifikatov na stran</item>
+                            <item lang="zh">每页礼券数</item>
+                        </translations>
+                    </item>
+                    <item id="free_products_allow">
+                        <name>Allow to use free products</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">Permitir usar productos gratis</item>
+                            <item lang="da">Tillad at bruge gratis produkter</item>
+                            <item lang="el">Δυνατότητα χρήσης δωρεάν προιόντων</item>
+                            <item lang="ro">Permiteți folosirea produselor gratuite</item>
+                            <item lang="ru">Позволять использовать бесплатные товары</item>
+                            <item lang="sl">Dovolite, da se uporabljajo brezplačni izdelki</item>
+                            <item lang="zh">允许使用免费产品</item>
+                        </translations>
+                    </item>
+                    <item id="redeem_shipping_cost">
+                        <name>Allow to redeem shipping cost with gift certificate</name>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
+                        <translations>
+                            <item lang="es">Permitir amortizar los gastos de envío con el certificado de regalo</item>
+                            <item lang="el">Δυνατότητα εξαγοράς εξόδων αποστολής με δωροεπιταγή</item>
+                            <item lang="ro">Permiteți și valorificarea transportului cu certificatul cadou</item>
+                            <item lang="ru">Позволять оплачивать стоимость доставки подарочным сертификатом</item>
+                            <item lang="sl">Dovolite, da se plača storšek dostave z darilnim bonom</item>
+                            <item lang="zh">允许赎回配送成本与礼卷</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="en" id="promo_code_or_certificate">Gift certificate or promo code</item>
+        <item lang="en" id="gift_certificate_added_to_cart">Gift certificate was added to your cart</item>
+        <item lang="en" id="gift_certificates_verify">Gift certificate verification</item>
+        <item lang="en" id="block_gift_certificates_verify">Gift certificate verification</item>
+        <item lang="en" id="block_gift_certificates_verify_description">Gift certificate input and validation</item>
+        <item lang="en" id="recipients_name">To</item>
+        <item lang="en" id="purchasers_name">From</item>
+        <item lang="en" id="gift_comment">Message</item>
+        <item lang="en" id="gift_cert_error_amount">Amount should not be higher than [max] and less than [min]</item>
+        <item lang="en" id="privileges.manage_gift_certificates">Manage gift certificate system</item>
+        <item lang="ru" id="gift_cert_error_amount">Сумма не должна превышать [max] и быть меньше [min]</item>
+        <item lang="ru" id="block_gift_certificates_verify">Проверка подарочного сертификата</item>
+        <item lang="ru" id="block_gift_certificates_verify_description">Ввод и проверка подарочного сертификата</item>
+        <item lang="ru" id="gift_certificates_verify">Проверка подарочного сертификата</item>
+        <item lang="ru" id="gift_certificate_added_to_cart">Подарочный сертификат был добавлен в корзину</item>
+        <item lang="ru" id="gift_comment">Сообщение</item>
+        <item lang="ru" id="promo_code_or_certificate">Подарочный сертификат или промо-код</item>
+        <item lang="ru" id="purchasers_name">От</item>
+        <item lang="ru" id="recipients_name">Кому</item>
+        <item lang="ru" id="theme_editor.gift_cert">Подарочный сертификат</item>
+        <item lang="ru" id="privileges.manage_gift_certificates">Управление подарочными сертификатами</item>
+        
+        <item lang="zh" id="promo_code_or_certificate">礼卷促销代码</item>
+        <item lang="zh" id="gift_certificate_added_to_cart">礼卷已添加到您的购物车</item>
+        <item lang="zh" id="gift_certificates_verify">礼卷检验</item>
+        <item lang="zh" id="block_gift_certificates_verify">礼卷检验</item>
+        <item lang="zh" id="block_gift_certificates_verify_description">礼卷输入和确认</item>
+        <item lang="zh" id="recipients_name">到</item>
+        <item lang="zh" id="purchasers_name">来自</item>
+        <item lang="zh" id="gift_comment">消息</item>
+        <item lang="zh" id="gift_cert_error_amount">总额不能高于[max]同时不低于[min]</item>
+        <item lang="en" id="detailed_info">Detailed information</item>
+        <item lang="en" id="history">History</item>
+        <item lang="en" id="gift_certificate_statuses">Gift certificate statuses</item>
+        <item lang="en" id="text_gift_cert_applied">Gift certificate has been applied</item>
+        <item lang="en" id="certificate_already_used">This gift certificate is already in use</item>
+        <item lang="en" id="certificate_code_not_available">Gift certificate cannot be applied. Please contact the store administration.</item>
+        <item lang="en" id="certificate_code_not_valid">Gift certificate code is not valid</item>
+        <item lang="en" id="warning_gift_cert_deny">The following gift certificates have been deleted or cancelled by administrator and have been removed from your cart: [codes]. Please contact the store administrator or try another one.</item>
+        <item lang="en" id="text_gift_cert_cannot_delete">Gift certificate [code] cannot be deleted because it is used in order(s) [ids].</item>
+        <item lang="en" id="gift_cert_amount_changed">Gift certificate amount has been changed.</item>
+        <item lang="en" id="purchased">Purchased</item>
+        <item lang="en" id="used">Used</item>
+        <item lang="en" id="create_gift_certificate_for_customer">Create Gift Certificate for this customer</item>
+        <item lang="en" id="related_gift_cert">Related gift certificates</item>
+        <item lang="en" id="add_gift_certificate">Add gift certificate</item>
+        <item lang="en" id="gift_certificate_status">Gift certificate status</item>
+        <item lang="en" id="current_amount">Current amount</item>
+        <item lang="en" id="mail">Mail</item>
+        <item lang="en" id="statuses">statuses</item>
+        <item lang="en" id="new_certificate">New certificate</item>
+        <item lang="en" id="editing_certificate">Editing certificate</item>
+        <item lang="en" id="shop_now">Shop now</item>
+        <item lang="en" id="theme_editor.gift_cert">Gift Certificate</item>
+
+        <item lang="bg" id="detailed_info">Подробна информация</item>
+        <item lang="bg" id="history">История</item>
+        <item lang="bg" id="gift_certificate_statuses">Статуси на талоните за подаръци</item>
+        <item lang="bg" id="text_gift_cert_applied">Сертификатът за подарък е приложен</item>
+        <item lang="bg" id="certificate_already_used">Този талон за подарък е вече използван</item>
+        <item lang="bg" id="certificate_code_not_available">Талон за подарък не може да се прилага. Моля свържете се с администратор на магазина.</item>
+        <item lang="bg" id="certificate_code_not_valid">Невалиден код на талон за подарък</item>
+        <item lang="bg" id="text_gift_cert_cannot_delete">Талон за подарък [code] не може да бъде изтрит защото се използва в поръчка(и) [ids].</item>
+        <item lang="bg" id="gift_cert_amount_changed">Стойността на талона за подарък е променена.</item>
+        <item lang="bg" id="purchased">Закупен</item>
+        <item lang="bg" id="used">Използва се</item>
+        <item lang="bg" id="create_gift_certificate_for_customer">Създаване на талон за подарък за този клиент</item>
+        <item lang="bg" id="related_gift_cert">Свързани талони за подаръци</item>
+        <item lang="bg" id="add_gift_certificate">Добави талон за подарък</item>
+        <item lang="bg" id="gift_certificate_status">Статус на талон за подарък</item>
+        <item lang="bg" id="current_amount">Текуща стойност</item>
+        <item lang="bg" id="mail">Поща</item>
+        <item lang="bg" id="statuses">Статуси</item>
+        <item lang="bg" id="new_certificate">Нов сертификат</item>
+        <item lang="bg" id="editing_certificate">Редактиране на талон</item>
+        <item lang="bg" id="shop_now">Към магазина</item>
+
+        <item lang="da" id="detailed_info">Detaljeret information</item>
+        <item lang="da" id="history">historie</item>
+        <item lang="da" id="gift_certificate_statuses">Gavekort status</item>
+        <item lang="da" id="text_gift_cert_applied">Gavekort er blevet anvendt</item>
+        <item lang="da" id="certificate_already_used">Dette gavekort er allerede blevet brugt </item>
+        <item lang="da" id="certificate_code_not_available">Gavekortet kan ikke blive anvendt. Kontakt os for mere information.</item>
+        <item lang="da" id="certificate_code_not_valid">Gavekort koden er ikke gyldig</item>
+        <item lang="da" id="text_gift_cert_cannot_delete">Gavekort [code] kan ikke slettes, da det anvendes i orden (s) [ids].</item>
+        <item lang="da" id="gift_cert_amount_changed">Gavekort beløb er blevet ændret.</item>
+        <item lang="da" id="purchased">købt</item>
+        <item lang="da" id="used">Brugt</item>
+        <item lang="da" id="create_gift_certificate_for_customer">Opret gavekort til kunde</item>
+        <item lang="da" id="related_gift_cert">Related gavekort</item>
+        <item lang="da" id="add_gift_certificate">Tilføj gavekort</item>
+        <item lang="da" id="gift_certificate_status">Gavekort info</item>
+        <item lang="da" id="current_amount">Nuværende beløb</item>
+        <item lang="da" id="statuses">status</item>
+        <item lang="da" id="new_certificate">Nyt certifikat</item>
+        <item lang="da" id="editing_certificate">redigere certificate</item>
+        <item lang="da" id="shop_now">Køb nu</item>
+
+        <item lang="de" id="detailed_info">detaillierte Informationen</item>
+
+        <item lang="el" id="detailed_info">Λεπτομερείς Πληροφορίες</item>
+        <item lang="el" id="history">Ιστορικό</item>
+        <item lang="el" id="gift_certificate_statuses">Κατάσταση δωροεπιταγών</item>
+        <item lang="el" id="text_gift_cert_applied">Η δωροεπιταγή έχει ενεργοποιηθεί</item>
+        <item lang="el" id="certificate_already_used">Η δωροεπιταγή αυτή είναι ήδη σε χρήση</item>
+        <item lang="el" id="certificate_code_not_available">Η δωροεπιταγή δεν μπορεί να εφαρμοστεί. Παρακαλούμε επικοινωνήστε με την διοίκηση του καταστήματος.</item>
+        <item lang="el" id="certificate_code_not_valid">Ο κωδικός της δωροεπιταγής δεν είναι έγκυρος</item>
+        <item lang="el" id="text_gift_cert_cannot_delete">Η δωροεπιταγή [code] δεν μπορεί να διαγραφεί, επειδή χρησιμοποιείται για άλλη παραγγελία [ids].</item>
+        <item lang="el" id="gift_cert_amount_changed">Το ποσό της δωροεπιταγής έχει αλλάξει.</item>
+        <item lang="el" id="purchased">Αγοράστηκε</item>
+        <item lang="el" id="used">Χρησιμοποιημένος</item>
+        <item lang="el" id="create_gift_certificate_for_customer">Δημιουργία Δωροεπιταγής για αυτόν τον πελάτη</item>
+        <item lang="el" id="related_gift_cert">Σχετικές δωροεπιταγές</item>
+        <item lang="el" id="add_gift_certificate">Προσθήκη Δωροεπιταγής</item>
+        <item lang="el" id="gift_certificate_status">Κατάσταση δωροεπιταγής</item>
+        <item lang="el" id="current_amount">Τρέχον ποσό</item>
+        <item lang="el" id="mail">Αλληλογραφία</item>
+        <item lang="el" id="statuses">Καταστάσεις</item>
+        <item lang="el" id="new_certificate">Νέο πιστοποιητικό</item>
+        <item lang="el" id="editing_certificate">Επεξεργασία πιστοποιητικού</item>
+        <item lang="el" id="shop_now">Κατάστημα τώρα</item>
+
+        <item lang="es" id="detailed_info">Información detalle</item>
+        <item lang="es" id="history">Historia</item>
+        <item lang="es" id="gift_certificate_statuses">Estados de certificados de regalo</item>
+        <item lang="es" id="certificate_already_used">El certificado de regalo ya está en uso</item>
+        <item lang="es" id="certificate_code_not_available">El certificado de regalo no puede ser aplicado. Por favor póngase en contacto con la administración de la tienda.</item>
+        <item lang="es" id="certificate_code_not_valid">Código del certificado de regalo no valido</item>
+        <item lang="es" id="purchased">Comprado</item>
+        <item lang="es" id="used">Usado</item>
+        <item lang="es" id="create_gift_certificate_for_customer">Cree certificado de regalo para este cliente</item>
+        <item lang="es" id="related_gift_cert">Certificados de regalo relacionados</item>
+        <item lang="es" id="gift_certificate_status">Estado de certificado de regalo</item>
+        <item lang="es" id="current_amount">Valor actual</item>
+        <item lang="es" id="mail">Correo</item>
+        <item lang="es" id="statuses">Estados</item>
+        <item lang="es" id="shop_now">Compre ahora</item>
+
+        <item lang="fr" id="detailed_info">Informations détaillées</item>
+        <item lang="fr" id="history">Historique</item>
+        <item lang="fr" id="gift_certificate_statuses">Statuts des bons-cadeau</item>
+        <item lang="fr" id="certificate_already_used">Ce bon cadeau a déjà été utilisé.</item>
+        <item lang="fr" id="certificate_code_not_available">Ce bon cadeau ne peut pas être utilisé. Veuillez contacter l'administration du shop.</item>
+        <item lang="fr" id="certificate_code_not_valid">Le code du bon cadeau est invalide.</item>
+        <item lang="fr" id="purchased">Acquis</item>
+        <item lang="fr" id="used">Utilisé</item>
+        <item lang="fr" id="create_gift_certificate_for_customer">Créer un bon-cadeau pour ce client</item>
+        <item lang="fr" id="related_gift_cert">Bon-cadeau associé</item>
+        <item lang="fr" id="add_gift_certificate">Ajouter bon cadeau</item>
+        <item lang="fr" id="gift_certificate_status">Statut du bon-cadeau</item>
+        <item lang="fr" id="current_amount">Montant actuel</item>
+        <item lang="fr" id="mail">Messagerie</item>
+        <item lang="fr" id="statuses">statuts</item>
+        <item lang="fr" id="new_certificate">Nouveau bon</item>
+        <item lang="fr" id="editing_certificate">Édition des bons</item>
+        <item lang="fr" id="shop_now">Acheter maintenant</item>
+
+        <item lang="it" id="detailed_info">Informazioni dettagliate</item>
+        <item lang="it" id="history">Storia</item>
+        <item lang="it" id="gift_certificate_statuses">Stato certificati regalo</item>
+        <item lang="it" id="text_gift_cert_applied">Buono regalo è stato applicato\n</item>
+        <item lang="it" id="certificate_already_used">Il certificato regalo è già in uso</item>
+        <item lang="it" id="certificate_code_not_available">Il certificato regalo non può essere applicato. Contattaci.</item>
+        <item lang="it" id="certificate_code_not_valid">Codice certificato regalo non valido</item>
+        <item lang="it" id="gift_certificate_added_to_cart">Il certificato regalo è stato aggiunto al tuo carrello della spesa.</item>
+        <item lang="it" id="text_gift_cert_cannot_delete">Il buono regalo [code] non può essere eliminato perché è utilizzato per[ids].</item>
+        <item lang="it" id="gift_cert_amount_changed">La quantità del certificato regalo è stata cambiata.</item>
+        <item lang="it" id="purchased">Acquistato</item>
+        <item lang="it" id="used">Usato</item>
+        <item lang="it" id="create_gift_certificate_for_customer">Crea un buono regalo per questo cliente</item>
+        <item lang="it" id="related_gift_cert">Buoni regalo correlati</item>
+        <item lang="it" id="add_gift_certificate">Aggiungi certificato regalo</item>
+        <item lang="it" id="gift_certificate_status">Stato certificato regalo</item>
+        <item lang="it" id="current_amount">Valore corrente</item>
+        <item lang="it" id="statuses">Stati</item>
+        <item lang="it" id="new_certificate">Nuovo certificato</item>
+        <item lang="it" id="editing_certificate">Modifica certificato</item>
+        <item lang="it" id="shop_now">Compra ora</item>
+
+        <item lang="nl" id="detailed_info">Gedetailleerde info</item>
+
+        <item lang="no" id="detailed_info">Detaljert informasjon</item>
+        <item lang="no" id="history">Historie</item>
+        <item lang="no" id="gift_certificate_statuses">Gavekort statuser</item>
+        <item lang="no" id="text_gift_cert_applied">Gavekort har blitt anvendt</item>
+        <item lang="no" id="certificate_already_used">Dette gavekortet er allerede i bruk</item>
+        <item lang="no" id="certificate_code_not_available">Gavekortet kan ikke brukes. Vennligst ta kontakt med butikkadministrasjonen.</item>
+        <item lang="no" id="certificate_code_not_valid">Gavekortkode er ikke gyldig</item>
+        <item lang="no" id="text_gift_cert_cannot_delete">Gavekort [code] kan ikke slettes fordi det er brukt i ordre [ids].</item>
+        <item lang="no" id="gift_cert_amount_changed">Gavekort beløp er endret.</item>
+        <item lang="no" id="purchased">Kjøpt</item>
+        <item lang="no" id="used">Brukt</item>
+        <item lang="no" id="create_gift_certificate_for_customer">Opprett gavekort for denne kunden</item>
+        <item lang="no" id="related_gift_cert">Relaterte gavekort</item>
+        <item lang="no" id="add_gift_certificate">Legg til Gavekort</item>
+        <item lang="no" id="gift_certificate_status">Gavekort status</item>
+        <item lang="no" id="current_amount">Gjeldende beløp</item>
+        <item lang="no" id="mail">Post</item>
+        <item lang="no" id="statuses">statuser</item>
+        <item lang="no" id="new_certificate">Nytt sertifikat</item>
+        <item lang="no" id="editing_certificate">Redigerer sertifikat</item>
+        <item lang="no" id="shop_now">Kjøp nå</item>
+
+        <item lang="ro" id="detailed_info">Informații detailate</item>
+        <item lang="ro" id="history">Istoric</item>
+        <item lang="ro" id="gift_certificate_statuses">Statuturi certificatelor pentru cadou</item>
+        <item lang="ro" id="text_gift_cert_applied">Bonul a fost aplicat</item>
+        <item lang="ro" id="certificate_already_used">Acest certificat cadou este deja în folosință</item>
+        <item lang="ro" id="certificate_code_not_available">Certificatul de cadou nu poate fi aplicat. Vă rugăm să contactați administrația magazinului virtual.</item>
+        <item lang="ro" id="certificate_code_not_valid">Codul certificatului cadou nu este valabil</item>
+        <item lang="ro" id="text_gift_cert_cannot_delete">Bonul [code] nu poate fi șters din moment ce e folosit în comanda(comenzile) [ids].</item>
+        <item lang="ro" id="gift_cert_amount_changed">Suma pentru certificatul de cadou a fost schimbată.</item>
+        <item lang="ro" id="purchased">Achiziționat</item>
+        <item lang="ro" id="used">Utilizat</item>
+        <item lang="ro" id="create_gift_certificate_for_customer">Creați Certificat cadou pentru acest client</item>
+        <item lang="ro" id="related_gift_cert">Bonuri de cadou corelate</item>
+        <item lang="ro" id="add_gift_certificate">Adăugați o primă (cadou)</item>
+        <item lang="ro" id="gift_certificate_status">Statutul certificatului de cadou</item>
+        <item lang="ro" id="current_amount">Suma actuală</item>
+        <item lang="ro" id="mail">E-Mail</item>
+        <item lang="ro" id="statuses">statuturi</item>
+        <item lang="ro" id="new_certificate">Certificat nou</item>
+        <item lang="ro" id="editing_certificate">Editare certificat</item>
+        <item lang="ro" id="shop_now">Magazin actual</item>
+
+        <item lang="ru" id="detailed_info">Подробная информация</item>
+        <item lang="ru" id="history">История</item>
+        <item lang="ru" id="gift_certificate_statuses">Статусы сертификатов</item>
+        <item lang="ru" id="text_gift_cert_applied">Подарочный сертификат был применен</item>
+        <item lang="ru" id="certificate_already_used">Этот подарочный сертификат уже используется</item>
+        <item lang="ru" id="certificate_code_not_available">Данный подарочный сертификат не может быть применен. Пожалуйста, обратитесь к администрации магазина.</item>
+        <item lang="ru" id="certificate_code_not_valid">Код подарочного сертификата недействителен</item>
+        <item lang="ru" id="text_gift_cert_cannot_delete">Подарочный сертификат [code] не может быть удалён, так как используется в заказе (-ах) [ids].</item>
+        <item lang="ru" id="gift_cert_amount_changed">Сумма подарочного сертификата была изменена.</item>
+        <item lang="ru" id="purchased">Купленный</item>
+        <item lang="ru" id="used">Использованный</item>
+        <item lang="ru" id="create_gift_certificate_for_customer">Создать подарочный сертификат для этого покупателя</item>
+        <item lang="ru" id="related_gift_cert">Родственные подарочные сертификаты</item>
+        <item lang="ru" id="add_gift_certificate">Добавить сертификат</item>
+        <item lang="ru" id="gift_certificate_status">Статус подарочного сертификата</item>
+        <item lang="ru" id="current_amount">Текущая сумма</item>
+        <item lang="ru" id="mail">Почтой</item>
+        <item lang="ru" id="statuses">Статусы</item>
+        <item lang="ru" id="new_certificate">Новый сертификат</item>
+        <item lang="ru" id="editing_certificate">Редактирование сертификата</item>
+        <item lang="ru" id="shop_now">Перейти на сайт магазина</item>
+
+        <item lang="sl" id="detailed_info">Podrobne informacije</item>
+        <item lang="sl" id="history">Zgodovina</item>
+        <item lang="sl" id="gift_certificate_statuses">Stanja darilnih bonov</item>
+        <item lang="sl" id="text_gift_cert_applied">Darilni certifikat je bil uporabljen</item>
+        <item lang="sl" id="certificate_already_used">Ta darilni certifikat je že v uporabi</item>
+        <item lang="sl" id="certificate_code_not_available">Darilnega certifikata ni mogoče uporabljati. Obrnite se na skrbnika.</item>
+        <item lang="sl" id="certificate_code_not_valid">Koda darilnega potrdila ni veljavna</item>
+        <item lang="sl" id="text_gift_cert_cannot_delete">Darilnega certifikata [code] ni mogoče izbrisati, ker je uporabljen v naročilu (ih) [ids].</item>
+        <item lang="sl" id="gift_cert_amount_changed">Znesek potrdila darila je bil spremenjen.</item>
+        <item lang="sl" id="purchased">Kupljeno</item>
+        <item lang="sl" id="used">Uporabljajo</item>
+        <item lang="sl" id="create_gift_certificate_for_customer">Ustvari darilni bon za tega kupca</item>
+        <item lang="sl" id="related_gift_cert">Povezani darilni certifikati</item>
+        <item lang="sl" id="add_gift_certificate">Dodaj darilni certifikat</item>
+        <item lang="sl" id="gift_certificate_status">Stanje darilnega bona</item>
+        <item lang="sl" id="current_amount">Trenutni znesek</item>
+        <item lang="sl" id="mail">Pošta</item>
+        <item lang="sl" id="statuses">statusi</item>
+        <item lang="sl" id="new_certificate">Nov certifikat</item>
+        <item lang="sl" id="editing_certificate">Urejanje potrdila</item>
+        <item lang="sl" id="shop_now">Kupi sedaj</item>
+
+        <item lang="zh" id="detailed_info">详细信息</item>
+        <item lang="zh" id="history">历史</item>
+        <item lang="zh" id="gift_certificate_statuses">礼券状态</item>
+        <item lang="zh" id="text_gift_cert_applied">礼卷已申请</item>
+        <item lang="zh" id="certificate_already_used">此礼卷已经使用</item>
+        <item lang="zh" id="certificate_code_not_available">礼卷无法使用.请联系商店管理人员.</item>
+        <item lang="zh" id="certificate_code_not_valid">礼卷代码无效</item>
+        <item lang="zh" id="warning_gift_cert_deny">以下礼券已被删除或取消管理员,并且已从您的购物车删除: [codes]. 您的商店联系管理员或尝试另一个.</item>
+        <item lang="zh" id="text_gift_cert_cannot_delete">礼卷[code]无法删除因已用于订单[ids].</item>
+        <item lang="zh" id="gift_cert_amount_changed">礼券数量已经改变.</item>
+        <item lang="zh" id="purchased">购买的</item>
+        <item lang="zh" id="used">使用的</item>
+        <item lang="zh" id="create_gift_certificate_for_customer">给客户创建礼卷</item>
+        <item lang="zh" id="related_gift_cert">相关礼卷</item>
+        <item lang="zh" id="add_gift_certificate">添加礼券</item>
+        <item lang="zh" id="gift_certificate_status">礼券状态</item>
+        <item lang="zh" id="current_amount">目前金额</item>
+        <item lang="zh" id="mail">邮件</item>
+        <item lang="zh" id="statuses">状态</item>
+        <item lang="zh" id="new_certificate">新礼卷</item>
+        <item lang="zh" id="editing_certificate">编辑证书</item>
+        <item lang="zh" id="shop_now">现在购物</item>
+    </language_variables>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:gift_certificates;</item>
+        <item>DROP TABLE IF EXISTS ?:gift_certificates_log;</item>
+        <item>
+            CREATE TABLE `?:gift_certificates` (
+                `gift_cert_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `company_id` int(11) unsigned NOT NULL default '0',
+                `gift_cert_code` varchar(255) NOT NULL default '',
+                `sender` varchar(64) NOT NULL default '',
+                `recipient` varchar(64) NOT NULL default '',
+                `send_via` char(1) NOT NULL default 'E',
+                `amount` decimal(12,2) NOT NULL default '0.00',
+                `email` varchar(64) NOT NULL default '',
+                `address` varchar(255) NOT NULL default '',
+                `address_2` varchar(255) NOT NULL default '',
+                `city` varchar(255) NOT NULL default '',
+                `state` varchar(32) NOT NULL default '',
+                `country` char(2) NOT NULL default '',
+                `zipcode` varchar(10) NOT NULL default '',
+                `status` char(1) NOT NULL default 'P',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `phone` varchar(32) NOT NULL default '',
+                `order_ids` varchar(255) NOT NULL default '',
+                `template` varchar(128) NOT NULL default '',
+                `message` mediumtext NOT NULL,  `products` text NOT NULL,
+                PRIMARY KEY  (`gift_cert_id`),  KEY `status` (`status`),
+                KEY `timestamp` (`timestamp`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:gift_certificates_log` (
+                `log_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `gift_cert_id` mediumint(8) unsigned NOT NULL default '0',
+                `area` char(1) NOT NULL default 'C',
+                `user_id` mediumint(8) unsigned NOT NULL default '0',
+                `order_id` mediumint(8) unsigned NOT NULL default '0',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `amount` decimal(12,2) NOT NULL default '0.00',
+                `debit` decimal(12,2) NOT NULL default '0.00',
+                `products` text NOT NULL,
+                `debit_products` text NOT NULL,
+                PRIMARY KEY  (`log_id`),
+                KEY `area` (`area`),
+                KEY `user_id` (`user_id`),
+                KEY `order_id` (`order_id`),
+                KEY `timestamp` (`timestamp`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO  ?:privileges (privilege, is_default, section_id) VALUES ('manage_gift_certificates', 'Y', 'addons');</item>
+
+        <item lang="en" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (status, type, description, email_subj, email_header, lang_code) VALUES ('P', 'G', 'Pending', 'has been created.', 'Your gift certificate has been created successfully. Please wait until it is activated.', 'en');</item>
+        <item lang="en" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (status, type, description, email_subj, email_header, lang_code) VALUES ('A', 'G', 'Active', 'has been activated.', 'Your gift certificate has status Active. You can use it now.', 'en');</item>
+        <item lang="en" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (status, type, description, email_subj, email_header, lang_code) VALUES ('C', 'G', 'Disabled', 'has been disabled.', 'Your gift certificate has been disabled. Please contact shop administration.', 'en');</item>
+        <item lang="en" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (status, type, description, email_subj, email_header, lang_code) VALUES ('U', 'G', 'Used', 'has been used.', 'Your gift certificate is spent. Thank you for choosing us.', 'en');</item>
+
+        <item lang="ru" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('P', 'G', 'Рассматриваемый', 'был создан.', 'Ваш подарочный сертификат был создан успешно. Пожалуйста, подождите пока он не будет активирован.', 'ru');</item>
+        <item lang="ru" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('A', 'G', 'Активен', 'был активирован.', '<p>Ваш подарочный сертификат был активирован. Вы можете использовать его.</p>', 'ru');</item>
+        <item lang="ru" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('C', 'G', 'Неактивен', 'неактивен.', 'Ваш подарочный сертификат неактивен. Пожалуйста, свяжитесь с администрацией магазина.', 'ru');</item>
+        <item lang="ru" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('U', 'G', 'Использован', 'был использован.', 'Ваш подарочный сертификат был использован. Спасибо, что выбрали нас.', 'ru');</item>
+
+        <item lang="ro" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('P', 'G', 'În așteptare', 'a fost creat.', 'Certificatul dvs. de cadou a fost creat cu succes. Vă rugăm să așteptați până când va fi activat.', 'ro');</item>
+        <item lang="ro" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('A', 'G', 'Activ', 'a fost activat.', 'Certificatul dvs. de cadou are statutul Activ. Îl puteți utiliza acum.', 'ro');</item>
+        <item lang="ro" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('C', 'G', 'Anulat', 'a fost anulat.', 'Certificatul dvs. de cadou a fost anulat. Vă rugăm contactați administrația magazinului.', 'ro');</item>
+        <item lang="ro" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('U', 'G', 'Utilizat', 'a fost utilizat.', 'Certificatul dvs. de cadou este utilizat. Vă mulțumim că ne-ați ales.', 'ro');</item>
+
+        <item lang="es" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('P', 'G', 'Pendiente', 'ha sido creado.', 'Su certificado de regalo ha sido creado con éxito. Por favor espere hasta que sea activado.', 'es');</item>
+        <item lang="es" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('A', 'G', 'Activo', 'ha sido activado.', 'Su certificado de regalo está activo. Usted puede usarlo ahora.', 'es');</item>
+        <item lang="es" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('C', 'G', 'Cancelado', 'has been cancelled.', 'Su certificado de regalo ha sido cancelado. Por favor contacte con la administración de la tienda.', 'es');</item>
+        <item lang="es" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('U', 'G', 'Usado', 'ha sido usado.', 'Su certificado de regalo ha sido utilizado. Gracias por elegirnos.', 'es');</item>
+
+        <item lang="zh" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('P', 'G', '待定的', '已创建.', '<p>您的礼卷已成功创建.请等待它被启用.</p>', 'zh');</item>
+        <item lang="zh" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('A', 'G', '已启用', '已启用.', '<p>您的礼卷状态已启用.您现在可以使用.</p>', 'zh');</item>
+        <item lang="zh" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('C', 'G', '已取消', '已取消.', '<p>您的礼卷已取消.请联系商店管理员.</p>', 'zh');</item>
+        <item lang="zh" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('U', 'G', '已使用', '已使用.', '<p>您的礼卷已失效. 感谢您选择我们.</p>', 'zh');</item>
+
+        <item lang="el" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('P', 'G', 'Εκκρεμής', 'δημιουργήθηκε.', 'Η δωροεπιταγή σας δημιουργήθηκε με επιτυχία. Παρακαλούμε περιμένετε μέχρι να ενεργοποιηθεί.', 'el');</item>
+        <item lang="el" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('A', 'G', 'Ενεργή', 'ενεργοποιήθηκε.', 'Η δωροεπιταγή σας είναι ενεργή. Μπορείτε να την χρησιμοποιήσετε τώρα.', 'el');</item>
+        <item lang="el" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('C', 'G', 'Ακύρωση', 'Ακυρώθηκε.', 'Η δωροεπιταγή σας ακυρώθηκε. Παρακαλούμε επικοινωνήστε με τον διαχειριστή του καταστήματος.', 'el');</item>
+        <item lang="el" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('U', 'G', 'Χρήση', 'χρησιμοποιήθηκε', 'Η δωροεπιταγή σας χρησιμοποιήθηκε. Ευχαριστούμε που μας επιλέξατε.', 'el');</item>
+
+        <item lang="bg" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('P', 'G', 'В процес на обработка', 'е създаден.', '<p>Вашият талон за подарък е създаден успешно. Моля, изчакайте да бъде активиран.</p>', 'bg');</item>
+        <item lang="bg" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('A', 'G', 'Активен', 'е активен.', '<p>Вашият талон за подарък е в статус активен и можете да го използвате.</p>', 'bg');</item>
+        <item lang="bg" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('C', 'G', 'Анулиран', 'е анулиран.', '<p>Вашият талон за подарък е анулиран. За повече информация се свържете с администратор на сайта.</p>', 'bg');</item>
+        <item lang="bg" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('U', 'G', 'Използван', 'и използван.', '<p>Вашият талон за подарък е използван. Благодарим Ви, че изпрахте нас!</p>', 'bg');</item>
+
+        <item lang="da" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('P', 'G', 'Afventende', 'er blevet oprettet.', 'Dit gavekort er blevet oprettet. Vent venligst, indtil det er aktiveret.', 'da');</item>
+        <item lang="da" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('A', 'G', 'Aktiv', 'Er blevet aktiveret', 'Gavekortet har status som Aktiv. Du kan bruge det nu.', 'da');</item>
+        <item lang="da" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('C', 'G', 'Annulleret', 'Er blevet annulleret', 'Dit gavekort er blevet annulleret. Kontakt venligst butikkens administration.', 'da');</item>
+        <item lang="da" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('U', 'G', 'Brugt', 'Er blevet brugt', 'Gavekortet er brugt. Tak fordi du valgte os.', 'da');</item>
+
+        <item lang="sl" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('P', 'G', 'Na čakanju', 'je na čakanju', 'Vaš darilni bon je bil uspešno ustvarjen. Prosimo, počakajte, da se aktivira.', 'sl');</item>
+        <item lang="sl" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('A', 'G', 'Aktivno', 'je bilo aktivirano.', 'Vaš darilni bon ima status Aktiven. Sedaj ga lahko uporabite.', 'sl');</item>
+        <item lang="sl" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('C', 'G', 'Preklicano', 'je bilo preklicano.', 'Vaš darilni bon je bil preklican. Prosimo, kontaktirajte administratorja.', 'sl');</item>
+        <item lang="sl" table="status_descriptions" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:status_descriptions (`status`, `type`, `description`, `email_subj`, `email_header`, `lang_code`) VALUES ('U', 'G', 'Uporabljen', 'je bil uporabljen', 'Vaš darilni bon je porabljen. Hvala, ker ste nas izbrali.', 'sl');</item>
+
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'manage_gift_certificates'</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:status_descriptions WHERE type = 'G'</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:gift_certificates;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:gift_certificates_log;</item>
+    </queries>
+
+    <functions>
+        <item for="install">fn_gift_certificates_install</item>
+        <item for="uninstall">fn_gift_certificates_install</item>
+    </functions>
+</addon>

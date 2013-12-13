@@ -1,0 +1,855 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>social_buttons</id>
+    <version>1.0</version>
+    <default_language>en</default_language>
+    <name>Social buttons</name>
+    <description>Social media and e-mail share buttons (Twitter, Facebook, etc.)</description>
+    <priority>100</priority>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="ru">Социальные кнопки</item>
+        <item for="description" lang="ru">Добавляет кнопки популярных соц. сервисов (Twitter, Facebook и т.д.)</item>
+    </translations>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="twitter">
+                <name>Twitter</name>
+                <translations>
+                    <item lang="ru">Twitter</item>
+                </translations>
+                <items>
+                    <item id="twitter_header">
+                        <type>header</type>
+                        <name>Twitter settings</name>
+                        <translations>
+                            <item lang="ru">Настройки Twitter</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="twitter_enable">
+                        <type>checkbox</type>
+                        <name>Show Twitter button</name>
+                        <translations>
+                            <item lang="ru">Показывать кнопку Twitter</item>
+                        </translations>
+                    </item>
+                    <item id="twitter_via">
+                        <type>input</type>
+                        <name>Via</name>
+                        <tooltip>User name to attribute the Tweet to (i.e. 'via @username')</tooltip>
+                        <translations>
+                            <item lang="ru">Via</item>
+                            <item lang="ru" for="tooltip">Имя пользователя, которое будет упомянуто в сообщениях (via @username)</item>
+                        </translations>
+                    </item>
+                    <item id="twitter_size">
+                        <type>selectbox</type>
+                        <name>Button size</name>
+                        <default_value>medium</default_value>
+                        <variants>
+                            <item id="medium">
+                                <name>Medium</name>
+                                <translations>
+                                    <item lang="ru">Средняя</item>
+                                </translations>                                                         
+                            </item>
+                            <item id="large">
+                               <name>Large</name>
+                               <translations>
+                                   <item lang="ru">Большая</item>
+                               </translations>                                                         
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Размер кнопки</item>
+                        </translations>
+                    </item>
+                    <item id="twitter_display_count">
+                        <type>selectbox</type>
+                        <name>Display count</name>
+                        <default_value>horizontal</default_value>
+                        <variants>
+                            <item id="none">
+                                <name>None</name>
+                                <translations>
+                                    <item lang="ru">Не отображать</item>
+                                </translations>
+                            </item>
+                            <item id="horizontal">
+                                <name>Horizontal</name>
+                                <translations>
+                                    <item lang="ru">Горизонтально</item>
+                                </translations>
+                            </item>
+                            <item id="vertical">
+                                <name>vertical</name>
+                                <translations>
+                                    <item lang="ru">Вертикально</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Показывать счетчик</item>
+                        </translations>
+                    </item>
+                    <item id="twitter_display_on">
+                        <type>multiple checkboxes</type>
+                        <name>Display on</name>
+                        <translations>
+                            <item lang="ru">Отображать</item>
+                        </translations>
+                        <variants>
+                                <item id="products">
+                                    <name>Product details pages</name>
+                                    <translations>
+                                        <item lang="ru">На страницах товаров</item>
+                                    </translations>
+                                </item>
+                                <item id="pages">
+                                    <name>Pages</name>
+                                    <translations>
+                                        <item lang="ru">На контентных страницах</item>
+                                    </translations>
+                                </item>
+                        </variants>
+                    </item>
+                </items>
+            </section>
+            <section id="facebook">
+                <name>Facebook</name>
+                <translations>
+                    <item lang="ru">Facebook</item>
+                </translations>
+                <items>
+                    <item id="facebook_header">
+                        <type>header</type>
+                        <name>Facebook settings</name>
+                        <translations>
+                            <item lang="ru">Настройки Facebook</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_enable">
+                       <type>checkbox</type>
+                       <name>Show Facebook button</name>
+                       <translations>
+                           <item lang="ru">Показывать кнопку Facebook</item>
+                       </translations>
+                    </item>
+                    <item id="facebook_app_id">
+                        <type>input</type>
+                        <name>Facebook app ID</name>
+                        <tooltip>Specify any Facebook app ID, otherwise the button will not be shown</tooltip>
+                        <translations>
+                            <item lang="ru">ID приложения Facebook</item>
+                            <item lang="ru" for="tooltip">Введите ID любого приложения Facebook, иначе кнопка не будет отображаться</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_href">
+                        <type>input</type>
+                        <name>The URL of the page to like</name>
+                        <tooltip>Leave empty to use an actual page URL</tooltip>
+                        <translations>
+                            <item lang="ru">URL страницы, которая будет упомянута в сообщении</item>
+                            <item lang="ru" for="tooltip">Оставьте пустым, чтобы использовать URL страницы, на которой размещена кнопка</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_send">
+                       <type>checkbox</type>
+                       <name>Include a Send button with the Like button</name>
+                       <default_value>Y</default_value>
+                       <translations>
+                            <item lang="ru">Отображать кнопку Отправить вместе с кнопкой Мне нравится</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_width">
+                        <type>input</type>
+                        <name>Width of the Like button (px)</name>
+                        <default_value>450</default_value>
+                        <translations>
+                            <item lang="ru">Ширина кнопки Мне нравится (в пикселях)</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_layout">
+                        <type>selectbox</type>
+                        <name>Button layout</name>
+                        <default_value>button_count</default_value>
+                        <variants>
+                            <item id="standard">
+                                <name>Standard</name>
+                                <translations>
+                                    <item lang="ru">Стандартный</item>
+                                </translations>
+                            </item>
+                            <item id="button_count">
+                                <name>With count</name>
+                                <translations>
+                                    <item lang="ru">Со счетчиком</item>
+                                </translations>
+                            </item>
+                            <item id="box_count">
+                                <name>With large count</name>
+                                <translations>
+                                    <item lang="ru">С большим счетчиком</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Стиль кнопки</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_show_faces">
+                        <type>checkbox</type>
+                        <name>Display profile photos</name>
+                        <default_value>N</default_value>
+                        <tooltip>Enable to display profile photos below the button (standard layout only)</tooltip>
+                        <translations>
+                            <item lang="ru">Отображать фото пользователей</item>
+                            <item lang="ru" for="tooltip">Включите, чтобы отображать фото пользователей под кнопкой (только при стандартном стиле кнопки)</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_action">
+                        <type>selectbox</type>
+                        <name>Button verb</name>
+                        <default_value>like</default_value>
+                        <variants>
+                            <item id="like">
+                                <name>Like</name>
+                                <translations>
+                                    <item lang="ru">Мне нравится</item>
+                                </translations>
+                            </item>
+                            <item id="recommend">
+                                <name>Recommend</name>
+                                <translations>
+                                    <item lang="ru">Рекомендовать</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Надпись на кнопке</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_lang">
+                        <type>selectbox</type>
+                        <name>Language</name>
+                        <default_value>en_US</default_value>
+                        <variants>
+                            <item id="af_ZA">
+                                <name>Afrikaans</name>
+                            </item>
+                            <item id="ar_AR">
+                                <name>Arabic</name>
+                            </item>
+                            <item id="az_AZ">
+                                <name>Azerbaijani</name>
+                            </item>
+                            <item id="be_BY">
+                                <name>Belarusian</name>
+                            </item>
+                            <item id="bg_BG">
+                                <name>Bulgarian</name>
+                            </item>
+                            <item id="bn_IN">
+                                <name>Bengali</name>
+                            </item>
+                            <item id="bs_BA">
+                                <name>Bosnian</name>
+                            </item>
+                            <item id="ca_ES">
+                                <name>Catalan</name>
+                            </item>
+                            <item id="cs_CZ">
+                                <name>Czech</name>
+                            </item>
+                            <item id="cy_GB">
+                                <name>Welsh</name>
+                            </item>
+                            <item id="da_DK">
+                                <name>Danish</name>
+                            </item>
+                            <item id="de_DE">
+                                <name>German</name>
+                            </item>
+                            <item id="el_GR">
+                                <name>Greek</name>
+                            </item>
+                            <item id="en_GB">
+                                <name>English (UK)</name>
+                            </item>
+                            <item id="en_PI">
+                                <name>English (Pirate)</name>
+                            </item>
+                            <item id="en_UD">
+                                <name>English (Upside Down)</name>
+                            </item>
+                            <item id="en_US">
+                                <name>English (US)</name>
+                            </item>
+                            <item id="eo_EO">
+                                <name>Esperanto</name>
+                            </item>
+                            <item id="es_ES">
+                                <name>Spanish (Spain)</name>
+                            </item>
+                            <item id="es_LA">
+                                <name>Spanish</name>
+                            </item>
+                            <item id="et_EE">
+                                <name>Estonian</name>
+                            </item>
+                            <item id="eu_ES">
+                                <name>Basque</name>
+                            </item>
+                            <item id="fa_IR">
+                                <name>Persian</name>
+                            </item>
+                            <item id="fb_LT">
+                                <name>Leet Speak</name>
+                            </item>
+                            <item id="fi_FI">
+                                <name>Finnish</name>
+                            </item>
+                            <item id="fo_FO">
+                                <name>Faroese</name>
+                            </item>
+                            <item id="fr_CA">
+                                <name>French (Canada)</name>
+                            </item>
+                            <item id="fr_FR">
+                                <name>French (France)</name>
+                            </item>
+                            <item id="fy_NL">
+                                <name>Frisian</name>
+                            </item>
+                            <item id="ga_IE">
+                                <name>Irish</name>
+                            </item>
+                            <item id="gl_ES">
+                                <name>Galician</name>
+                            </item>
+                            <item id="he_IL">
+                                <name>Hebrew</name>
+                            </item>
+                            <item id="hi_IN">
+                                <name>Hindi</name>
+                            </item>
+                            <item id="hr_HR">
+                                <name>Croatian</name>
+                            </item>
+                            <item id="hu_HU">
+                                <name>Hungarian</name>
+                            </item>
+                            <item id="hy_AM">
+                                <name>Armenian</name>
+                            </item>
+                            <item id="id_ID">
+                                <name>Indonesian</name>
+                            </item>
+                            <item id="is_IS">
+                                <name>Icelandic</name>
+                            </item>
+                            <item id="it_IT">
+                                <name>Italian</name>
+                            </item>
+                            <item id="ja_JP">
+                                <name>Japanese</name>
+                            </item>
+                            <item id="ka_GE">
+                                <name>Georgian</name>
+                            </item>
+                            <item id="km_KH">
+                                <name>Khmer</name>
+                            </item>
+                            <item id="ko_KR">
+                                <name>Korean</name>
+                            </item>
+                            <item id="ku_TR">
+                                <name>Kurdish</name>
+                            </item>
+                            <item id="la_VA">
+                                <name>Latin</name>
+                            </item>
+                            <item id="lt_LT">
+                                <name>Lithuanian</name>
+                            </item>
+                            <item id="lv_LV">
+                                <name>Latvian</name>
+                            </item>
+                            <item id="mk_MK">
+                                <name>Macedonian</name>
+                            </item>
+                            <item id="ml_IN">
+                                <name>Malayalam</name>
+                            </item>
+                            <item id="ms_MY">
+                                <name>Malay</name>
+                            </item>
+                            <item id="nb_NO">
+                                <name>Norwegian (bokmal)</name>
+                            </item>
+                            <item id="ne_NP">
+                                <name>Nepali</name>
+                            </item>
+                            <item id="nl_NL">
+                                <name>Dutch</name>
+                            </item>
+                            <item id="nn_NO">
+                                <name>Norwegian (nynorsk)</name>
+                            </item>
+                            <item id="pa_IN">
+                                <name>Punjabi</name>
+                            </item>
+                            <item id="pl_PL">
+                                <name>Polish</name>
+                            </item>
+                            <item id="ps_AF">
+                                <name>Pashto</name>
+                            </item>
+                            <item id="pt_BR">
+                                <name>Portuguese (Brazil)</name>
+                            </item>
+                            <item id="pt_PT">
+                                <name>Portuguese (Portugal)</name>
+                            </item>
+                            <item id="ro_RO">
+                                <name>Romanian</name>
+                            </item>
+                            <item id="ru_RU">
+                                <name>Russian</name>
+                            </item>
+                            <item id="sk_SK">
+                                <name>Slovak</name>
+                            </item>
+                            <item id="sl_SI">
+                                <name>Slovenian</name>
+                            </item>
+                            <item id="sq_AL">
+                                <name>Albanian</name>
+                            </item>
+                            <item id="sr_RS">
+                                <name>Serbian</name>
+                            </item>
+                            <item id="sv_SE">
+                                <name>Swedish</name>
+                            </item>
+                            <item id="sw_KE">
+                                <name>Swahili</name>
+                            </item>
+                            <item id="ta_IN">
+                                <name>Tamil</name>
+                            </item>
+                            <item id="te_IN">
+                                <name>Telugu</name>
+                            </item>
+                            <item id="th_TH">
+                                <name>Thai</name>
+                            </item>
+                            <item id="tl_PH">
+                                <name>Filipino</name>
+                            </item>
+                            <item id="tr_TR">
+                                <name>Turkish</name>
+                            </item>
+                            <item id="uk_UA">
+                                <name>Ukrainian</name>
+                            </item>
+                            <item id="vi_VN">
+                                <name>Vietnamese</name>
+                            </item>
+                            <item id="zh_CN">
+                                <name>Simplified Chinese (China)</name>
+                            </item>
+                            <item id="zh_HK">
+                                <name>Traditional Chinese (Hong Kong)</name>
+                            </item>
+                            <item id="zh_TW">
+                                <name>Traditional Chinese (Taiwan)</name>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Язык</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_action_font">
+                        <type>selectbox</type>
+                        <name>Button font</name>
+                        <default_value>arial</default_value>
+                        <variants>
+                            <item id="arial">
+                                <name>Arial</name>
+                            </item>
+                            <item id="lucida grande">
+                                <name>Lucida grande</name>
+                            </item>
+                            <item id="segoe ui">
+                                <name>Segoe ui</name>
+                            </item>
+                            <item id="tahoma">
+                                <name>Tahoma</name>
+                            </item>
+                            <item id="trebuchet ms">
+                                <name>Trebuchet ms</name>
+                            </item>
+                            <item id="verdana">
+                                <name>Verdana</name>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Шрифт на кнопке</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_colorscheme">
+                        <type>selectbox</type>
+                        <name>Color scheme</name>
+                        <default_value>light</default_value>
+                        <variants>
+                            <item id="light">
+                                <name>Light</name>
+                                <translations>
+                                    <item lang="ru">Светлая</item>
+                                </translations>
+                            </item>
+                            <item id="dark">
+                                <name>Dark</name>
+                                <translations>
+                                    <item lang="ru">Темная</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Цветовая схема</item>
+                        </translations>
+                    </item>
+                    <item id="facebook_display_on">
+                        <type>multiple checkboxes</type>
+                        <name>Display on</name>
+                        <translations>
+                            <item lang="ru">Отображать</item>
+                        </translations>
+                        <variants>
+                            <item id="products">
+                                <name>Product details pages</name>
+                                <translations>
+                                    <item lang="ru">На страницах товаров</item>
+                                </translations>
+                            </item>
+                            <item id="pages">
+                                <name>Pages</name>
+                                <translations>
+                                    <item lang="ru">На контентных страницах</item>
+                                </translations>
+                            </item>
+                        </variants>
+                    </item>
+                </items>
+            </section>
+            <section id="vkontakte">
+                <name>Vkontakte</name>
+                <translations>
+                    <item lang="ru">Вконтакте</item>
+                </translations>
+                <items>
+                    <item id="vkontakte_header">
+                        <type>header</type>
+                        <name>Vkontakte settings</name>
+                        <translations>
+                            <item lang="ru">Настройки Вконтакте</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="vkontakte_enable">
+                        <type>checkbox</type>
+                        <name>Show Vkontakte button</name>
+                        <translations>
+                            <item lang="ru">Отображать кнопку Вконтакте</item>
+                        </translations>
+                    </item>
+                    <item id="vkontakte_appid">
+                        <type>input</type>
+                        <name>Vkontakte app ID</name>
+                        <translations>
+                            <item lang="ru">ID вашего приложения Вконтакте</item>
+                        </translations>
+                    </item>
+                    <item id="vkontakte_button_style">
+                        <type>selectbox</type>
+                        <name>Button layout</name>
+                        <default_value>mini</default_value>
+                        <variants>
+                            <item id="full">
+                                <name>Button with a text counter</name>
+                                <translations>
+                                    <item lang="ru">Кнопка с текстовым счетчиком</item>
+                                </translations>
+                            </item>
+                            <item id="button">
+                               <name>Button with a little counter</name>
+                               <translations>
+                                   <item lang="ru">Кнопка с миниатюрным счетчиком</item>
+                               </translations>
+                            </item>
+                            <item id="mini">
+                               <name>Mini button</name>
+                               <translations>
+                                   <item lang="ru">Миниатюрная кнопка</item>
+                               </translations>
+                            </item>
+                            <item id="Vertical">
+                               <name>Mini button, counter on top</name>
+                               <translations>
+                                   <item lang="ru">Миниатюрная кнопка, счетчик сверху</item>
+                               </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Стиль кнопки</item>
+                        </translations>
+                    </item>
+                    <item id="vkontakte_height">
+                        <type>input</type>
+                        <name>Button height (px)</name>
+                        <default_value>22</default_value>
+                        <translations>
+                            <item lang="ru">Высота кнопки (в пикселях)</item>
+                        </translations>
+                    </item>
+                    <item id="vkontakte_width">
+                        <type>input</type>
+                        <name>Button width (px)</name>
+                        <default_value>350</default_value>
+                        <tooltip>Only for the button with text counter</tooltip>
+                        <translations>
+                            <item lang="ru">Ширина кнопки (в пикселях)</item>
+                            <item lang="ru" for="tooltip">Только для кнопки с текстовым счетчиком</item>
+                        </translations>
+                    </item>
+                    <item id="vkontakte_buttons_name">
+                        <type>selectbox</type>
+                        <name>Button name</name>
+                        <default_value>like</default_value>
+                        <variants>
+                            <item id="like">
+                                <name>Like</name>
+                                <translations>
+                                    <item lang="ru">Мне нравится</item>
+                                </translations>
+                            </item>
+                            <item id="interesting">
+                               <name>It's interesting</name>
+                               <translations>
+                                   <item lang="ru">Это интересно</item>
+                               </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Название кнопки</item>
+                        </translations>
+                    </item>
+                    <item id="vkontakte_display_on">
+                        <type>multiple checkboxes</type>
+                        <name>Display on</name>
+                        <translations>
+                            <item lang="ru">Отображать</item>
+                        </translations>
+                        <variants>
+                                <item id="products">
+                                    <name>Product details pages</name>
+                                    <translations>
+                                        <item lang="ru">На страницах товаров</item>
+                                    </translations>
+                                </item>
+                                <item id="pages">
+                                    <name>Pages</name>
+                                    <translations>
+                                        <item lang="ru">На контентных страницах</item>
+                                    </translations>
+                                </item>
+                        </variants>
+                    </item>
+                </items>
+            </section>
+
+
+            <section id="email">
+                <name>E-mail</name>
+                <translations>
+                    <item lang="ru">Эл. почта</item>
+                </translations>
+                <items>
+                    <item id="email_header">
+                        <type>header</type>
+                        <name>E-mail settings</name>
+                        <translations>
+                            <item lang="ru">Настройки эл. почты</item>
+                        </translations>
+                        <variants/>
+                    </item>
+                    <item id="email_enable">
+                        <type>checkbox</type>
+                        <name>Show E-mail button</name>
+                        <translations>
+                            <item lang="ru">Отображать кнопку эл. почты</item>
+                        </translations>
+                    </item>
+                    <item id="email_display_on">
+                        <type>multiple checkboxes</type>
+                        <name>Display on</name>
+                        <translations>
+                            <item lang="ru">Отображать</item>
+                        </translations>
+                        <variants>
+                                <item id="products">
+                                    <name>Product details pages</name>
+                                    <translations>
+                                        <item lang="ru">На страницах товаров</item>
+                                    </translations>
+                                </item>
+                                <item id="pages">
+                                    <name>Pages</name>
+                                    <translations>
+                                        <item lang="ru">На контентных страницах</item>
+                                    </translations>
+                                </item>
+                        </variants>
+                    </item>
+                </items>
+            </section>
+
+
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="en" id="facebook">Facebook</item>
+        <item lang="en" id="facebook_obj_type">Facebook object type</item>
+        <item lang="en" id="fb_activities">Activities</item>
+        <item lang="en" id="fb_businesses">Businesses</item>
+        <item lang="en" id="fb_groups">Groups</item>
+        <item lang="en" id="fb_organizations">Organizations</item>
+        <item lang="en" id="fb_people">People</item>
+        <item lang="en" id="fb_places">Places</item>
+        <item lang="en" id="fb_products_entertainment">Products and Entertainment</item>
+        <item lang="en" id="fb_websites">Websites</item>
+
+        <item lang="en" id="error_no_recipient_address">Please enter your friends e-mail address to proceed</item>
+        <item lang="en" id="recommendation_from">Recommendation from</item>
+        <item lang="en" id="text_recommendation_notes">Your friend has recommended this page to you. Please follow the link:</item>
+        <item lang="en" id="your_email">Your e-mail</item>
+        <item lang="en" id="name_of_friend">Name of your friend</item>
+        <item lang="en" id="email_of_friend">E-mail of your friend</item>
+        <item lang="en" id="share_via_email">Share via E-Mail</item>
+        <item lang="en" id="sb_share">Share</item>
+
+        <item lang="bg" id="error_no_recipient_address">Моля, въведете е-мейл адрес на приятеля си за да продължите.</item>
+        <item lang="bg" id="recommendation_from">Препоръка</item>
+        <item lang="bg" id="text_recommendation_notes">Ваш приятел е препоръчал тази страница за вас. Моля, следвайте линка:</item>
+        <item lang="bg" id="your_email">Вашият е-мейл</item>
+        <item lang="bg" id="name_of_friend">Име на приятел</item>
+        <item lang="bg" id="email_of_friend">Е-мейл на приятел</item>
+
+        <item lang="da" id="error_no_recipient_address">Indtast din vens e-mail-adresse for at fortsætte.</item>
+        <item lang="da" id="recommendation_from">Anbefalet af </item>
+        <item lang="da" id="text_recommendation_notes">Din ven har anbefalet denne side til dig. Følg linket:</item>
+        <item lang="da" id="your_email">Din e-mail</item>
+        <item lang="da" id="name_of_friend">Navn på din ven</item>
+        <item lang="da" id="email_of_friend">E-mail på dine venner</item>
+
+        <item lang="de" id="error_no_recipient_address">Bitte geben Sie die E-Mail-Adresse Ihres Freundes ein um fortzufahren.</item>
+        <item lang="de" id="recommendation_from">Empfehlung von</item>
+        <item lang="de" id="text_recommendation_notes">Ihr Freund hat Ihnen diese Seite empfohlen. Folgen Sie diesen Link:</item>
+        <item lang="de" id="your_email">Ihre E-Mail</item>
+        <item lang="de" id="name_of_friend">Name des Freundes</item>
+        <item lang="de" id="email_of_friend">E-Mail Ihres Freundes</item>
+
+        <item lang="el" id="error_no_recipient_address">Σας παρακαλούμε πληκτρολογείστε την διεύθυνση e-mail του Φίλου σας για να συνεχίσετε!</item>
+        <item lang="el" id="recommendation_from">Προτείνεται από</item>
+        <item lang="el" id="text_recommendation_notes">Ο Φίλος σας πρότεινε αυτήν την σελίδα για σας. Σας παρακαλούμε ακολουθήστε τον παρακάτω σύνδεσμο:</item>
+        <item lang="el" id="your_email">Το E-mail σας</item>
+        <item lang="el" id="name_of_friend">Το Όνομα του Φίλου σας</item>
+        <item lang="el" id="email_of_friend">Το E-mail του Φίλου σας</item>
+
+        <item lang="es" id="error_no_recipient_address">Por favor ponga el e-mail de su amigo y proceda.</item>
+        <item lang="es" id="recommendation_from">Recomendado por</item>
+        <item lang="es" id="text_recommendation_notes">Un amigo tuyo te ha recomendado que visites una pagina. Por favor pincha en el enlace para ir:</item>
+        <item lang="es" id="your_email">Tu E-mail</item>
+        <item lang="es" id="name_of_friend">Nombre de tu amigo</item>
+        <item lang="es" id="email_of_friend">E-mail a un amigo</item>
+
+        <item lang="fr" id="error_no_recipient_address">Veuiller saisir l\'adresse email de votre ami pour continuer.</item>
+        <item lang="fr" id="recommendation_from">Recommandation de</item>
+        <item lang="fr" id="text_recommendation_notes">Votre ami vous a recommandé cette page. Veuillez suivre le lien svp :</item>
+        <item lang="fr" id="your_email">Votre email</item>
+        <item lang="fr" id="name_of_friend">Nom de votre ami</item>
+        <item lang="fr" id="email_of_friend">Email de votre ami</item>
+
+        <item lang="it" id="error_no_recipient_address">Inserire l\'indirizzo email del tuo amico per continuare.</item>
+        <item lang="it" id="recommendation_from">Raccomandato da</item>
+        <item lang="it" id="text_recommendation_notes">Ti e stata segnalata questa pagina. Per visitarla segui il link:</item>
+        <item lang="it" id="your_email">Il tuo indirizzo email</item>
+        <item lang="it" id="name_of_friend">Nome del tuo amico</item>
+        <item lang="it" id="email_of_friend">Email del tuo amico</item>
+
+        <item lang="nl" id="error_no_recipient_address">Vul het e-mail adres van uw vriend in om door te gaan.</item>
+        <item lang="nl" id="recommendation_from">Aanbeveling van\n</item>
+        <item lang="nl" id="text_recommendation_notes">Je vriend vindt de volgende pagina een aanrader! Klik hiervoor op de volgende link:</item>
+        <item lang="nl" id="your_email">Uw e-mail</item>
+        <item lang="nl" id="name_of_friend">Naam van vriend</item>
+        <item lang="nl" id="email_of_friend">E-mail van uw vriend</item>
+
+        <item lang="no" id="error_no_recipient_address">Vennligst skriv inn din venns e-postadresse for å fortsette.</item>
+        <item lang="no" id="recommendation_from">Anbefaling fra</item>
+        <item lang="no" id="text_recommendation_notes">Din venn har anbefalt denne siden til deg. Vennligst følg linken:</item>
+        <item lang="no" id="your_email">Din e-post</item>
+        <item lang="no" id="name_of_friend">Navn på din venn</item>
+        <item lang="no" id="email_of_friend">E-post til din venn</item>
+
+        <item lang="ro" id="error_no_recipient_address">Vă rugăm să introduceți adresa de e-mail a prietenului dvs. pentru a continua.</item>
+        <item lang="ro" id="recommendation_from">Recomandare de la</item>
+        <item lang="ro" id="text_recommendation_notes">Prietenul dvs. v-a recomandat această pagină. Vă rugăm să urmați următorul link:</item>
+        <item lang="ro" id="your_email">E-mail-ul dvs.</item>
+        <item lang="ro" id="name_of_friend">Numele prietenului dvs.</item>
+        <item lang="ro" id="email_of_friend">E-mail-ul prietenului dvs.</item>
+
+        <item lang="ru" id="facebook_obj_type">Тип объекта Facebook</item>
+        <item lang="ru" id="facebook">Facebook</item>
+        <item lang="ru" id="error_no_recipient_address">Чтобы продолжить, пожалуйста, введите e-mail вашего друга.</item>
+        <item lang="ru" id="recommendation_from">Рекомендация от</item>
+        <item lang="ru" id="text_recommendation_notes">Ваш друг порекомендовал Вам просмотреть эту страницу. Пожалуйста, следуйте по ссылке:</item>
+        <item lang="ru" id="your_email">Ваш e-mail</item>
+        <item lang="ru" id="name_of_friend">Имя вашего друга</item>
+        <item lang="ru" id="email_of_friend">E-mail вашего друга</item>
+        <item lang="ru" id="share_via_email">Отправить по эл. почте</item>
+        <item lang="ru" id="sb_share">Поделиться</item>
+
+        <item lang="sl" id="error_no_recipient_address">Za nadaljevanje vnesite elektronsko pošto vašega prijatelja.</item>
+        <item lang="sl" id="recommendation_from">Priporočen s strani</item>
+        <item lang="sl" id="text_recommendation_notes">Vaš prijatelj vam je priporočil to stran. Prosimo sledite povezavi:</item>
+        <item lang="sl" id="your_email">Naslov vaše elektronske pošte</item>
+        <item lang="sl" id="name_of_friend">Ime vašega prijatelja</item>
+        <item lang="sl" id="email_of_friend">Elektronska pošta vašega prijatelja</item>
+
+        <item lang="zh" id="error_no_recipient_address">请输入您朋友的电子邮件地址然后继续.</item>
+        <item lang="zh" id="recommendation_from">建议从</item>
+        <item lang="zh" id="text_recommendation_notes">您的朋友向您推荐此页.请按照以下链接:</item>
+        <item lang="zh" id="your_email">您的邮件</item>
+        <item lang="zh" id="name_of_friend">您朋友的名字</item>
+        <item lang="zh" id="email_of_friend">您朋友的电子邮件</item>
+    </language_variables>
+    <queries>
+        <item for="install">
+            ALTER TABLE `?:products` ADD `facebook_obj_type` VARCHAR(64) NOT NULL;
+        </item>
+        <item for="install">
+            ALTER TABLE `?:pages` ADD `facebook_obj_type` VARCHAR(64) NOT NULL;
+        </item>
+        <item for="uninstall">
+            ALTER TABLE `?:products` DROP `facebook_obj_type`;
+        </item>
+        <item for="uninstall">
+            ALTER TABLE `?:pages` DROP `facebook_obj_type`;
+        </item>
+    </queries>
+    <functions>
+    </functions>
+</addon>

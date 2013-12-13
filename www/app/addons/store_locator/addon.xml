@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>store_locator</id>
+    <name>Store locator</name>
+    <description>Lets you place local stores on map and inform customers about their nearest stores</description>
+    <version>2.0</version>
+    <priority>1200</priority>
+    <position>10</position>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="fr">Emplacement(s) de magasin(s)</item>
+        <item for="name" lang="da">Storelocator</item>
+        <item for="name" lang="el">Εντοπισμός καταστήματος</item>
+        <item for="name" lang="ro">Localizare magazin</item>
+        <item for="name" lang="ru">Поиск ближайших магазинов</item>
+        <item for="name" lang="sl">Lokator trgovine</item>
+        <item for="name" lang="zh">商店定位</item>
+        <item for="description" lang="ru">Позволяет отмечать магазины на карте и сообщать покупателям о ближайших к ним магазинах</item>
+        <item for="description" lang="zh">您可以在地图上定位当地的商店并让客户知晓其最近的商店</item>
+    </translations>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="provider">
+                        <name>Map provider</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Провайдер</item>
+                        </translations>
+                    </item>
+                    <item id="map_provider">
+                        <name>Map</name>
+                        <type>selectbox</type>
+                        <variants>
+                            <item id="google">
+                                <name>Google</name>
+                            </item>
+                        </variants>
+                        <default_value>google</default_value>
+                    </item>
+                    <item id="settings">
+                        <name>Settings</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Настройки</item>
+                        </translations>
+                    </item>
+                    <item id="store_locator_settings">
+                        <name/>
+                        <type>template</type>
+                        <default_value>map_provider_settings.tpl</default_value>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item>DROP TABLE IF EXISTS `?:store_locations`;</item>
+        <item>DROP TABLE IF EXISTS `?:store_location_descriptions`;</item>
+        <item>
+            CREATE TABLE `?:store_locations` (
+                `store_location_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `company_id` int(11) unsigned NOT NULL default '0',
+                `position` smallint(5) NOT NULL default '0',
+                `country` char(2) NOT NULL default '',
+                `latitude` double NOT NULL default '0',
+                `longitude` double NOT NULL default '0',
+                `localization` varchar(255) NOT NULL default '',
+                `status` char(1) NOT NULL default 'A',
+                PRIMARY KEY  (`store_location_id`),
+                KEY `status` (`status`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:store_location_descriptions` (
+                `store_location_id` mediumint(8) unsigned NOT NULL default '0',
+                `lang_code` char(2) NOT NULL default '',
+                `name` varchar(80) NOT NULL default '',
+                `description` varchar(255) NOT NULL default '',
+                `city` varchar(60) NOT NULL default '',
+                PRIMARY KEY  (`store_location_id`,`lang_code`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:store_locations`;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:store_location_descriptions`;</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="get_api_key">Obtaining an API Key</item>
+        <item lang="ru" id="get_api_key">Получение ключа API</item>
+        <item lang="en" id="block_store_locator">Store locator</item>
+        <item lang="ru" id="block_store_locator">Поиск ближайших магазинов</item>
+        <item lang="en" id="block_store_locator_description">Store locator block</item>
+        <item lang="ru" id="block_store_locator_description">Блок поиска ближайших магазинов</item>
+        <item lang="zh" id="block_store_locator">商店定位</item>
+        <item lang="zh" id="block_store_locator_description">商店定位块</item>
+        <item lang="en" id="text_address_not_found">Address not found</item>
+        <item lang="en" id="select_coordinates">Select coordinates</item>
+        <item lang="en" id="set">Set</item>
+        <item lang="en" id="editing_store_location">Editing store location</item>
+        <item lang="en" id="new_store_location">New store location</item>
+        <item lang="en" id="add_store_location">Add store location</item>
+        <item lang="en" id="coordinates">Coordinates</item>
+        <item lang="en" id="latitude_short">lat</item>
+        <item lang="en" id="longitude_short">long</item>
+        <item lang="en" id="all_stores">All stores</item>
+        <item lang="en" id="api_key">API key</item>
+        <item lang="en" id="zoom">Map zoom</item>
+        <item lang="en" id="map_type_control">MapType control</item>
+        <item lang="en" id="zoom_control">Zoom control</item>
+        <item lang="en" id="scale_control">Scale control</item>
+
+        <item lang="bg" id="text_address_not_found">Адреса не е намерен</item>
+        <item lang="bg" id="select_coordinates">Изберете координати</item>
+        <item lang="bg" id="set">Постави</item>
+        <item lang="bg" id="editing_store_location">Редактиране местоположение на магазина</item>
+        <item lang="bg" id="new_store_location">Ново местоположение на магазина</item>
+        <item lang="bg" id="add_store_location">Добави локация</item>
+        <item lang="bg" id="coordinates">Координати</item>
+        <item lang="bg" id="latitude_short">Ширина</item>
+        <item lang="bg" id="longitude_short">Дължина</item>
+
+        <item lang="da" id="text_address_not_found">Adresse ikke fundet</item>
+        <item lang="da" id="select_coordinates">Vælg koordinater</item>
+        <item lang="da" id="editing_store_location">redigere store location</item>
+        <item lang="da" id="new_store_location">Ny butik loc</item>
+        <item lang="da" id="add_store_location">tilføj butik lokation</item>
+        <item lang="da" id="coordinates">koordinere</item>
+        <item lang="da" id="longitude_short">lang</item>
+
+        <item lang="de" id="set">Einpassen</item>
+
+        <item lang="el" id="text_address_not_found">Η διεύθυνση δεν βρέθηκε</item>
+        <item lang="el" id="select_coordinates">Επιλογή συντεταγμένες</item>
+        <item lang="el" id="set">Σειρά  </item>
+        <item lang="el" id="editing_store_location">Επεξεργασία τοποθεσίας καταστήματος</item>
+        <item lang="el" id="new_store_location">Νέα θέση καταστήματος</item>
+        <item lang="el" id="add_store_location">Προσθήκη τοποθεσίας καταστήματος</item>
+        <item lang="el" id="coordinates">Συντεταγμένες</item>
+        <item lang="el" id="longitude_short">μάκρος</item>
+
+        <item lang="es" id="set">Ajustar</item>
+
+        <item lang="fr" id="select_coordinates">Sélectionnez les coordonnées</item>
+        <item lang="fr" id="set">Confirmer</item>
+        <item lang="fr" id="editing_store_location">Édition d'un emplacement magasin</item>
+        <item lang="fr" id="new_store_location">Nouvel emplacement magasin</item>
+        <item lang="fr" id="add_store_location">Ajouter un emplacement</item>
+        <item lang="fr" id="coordinates">Coordonnées</item>
+
+        <item lang="it" id="text_address_not_found">Indirizzo non trovato</item>
+        <item lang="it" id="select_coordinates">Seleziona coordinate</item>
+        <item lang="it" id="set">Imposta</item>
+        <item lang="it" id="editing_store_location">Modifica negozio</item>
+        <item lang="it" id="new_store_location">Nuovo negozio</item>
+        <item lang="it" id="add_store_location">Aggiungi negozio</item>
+        <item lang="it" id="coordinates">Coordinate</item>
+        <item lang="it" id="latitude_short">Lat</item>
+        <item lang="it" id="longitude_short">Lunghezza</item>
+
+        <item lang="nl" id="set">Stel in</item>
+
+        <item lang="no" id="text_address_not_found">Adresse ikke funnet</item>
+        <item lang="no" id="select_coordinates">Velg koordinater</item>
+        <item lang="no" id="set">Sett</item>
+        <item lang="no" id="editing_store_location">Redigerer butikkbeliggenhet</item>
+        <item lang="no" id="new_store_location">Ny butikkbeliggenhet</item>
+        <item lang="no" id="add_store_location">Legg til butikkbeliggenhet</item>
+        <item lang="no" id="coordinates">Koordinater</item>
+        <item lang="no" id="latitude_short">breddegr.</item>
+        <item lang="no" id="longitude_short">lgd.gr.</item>
+
+        <item lang="ro" id="text_address_not_found">Adresa nu a fost găsită</item>
+        <item lang="ro" id="select_coordinates">Selectează coordonate</item>
+        <item lang="ro" id="set">Setați</item>
+        <item lang="ro" id="editing_store_location">Editare locația magazinului</item>
+        <item lang="ro" id="new_store_location">Locație nouă a magazinului</item>
+        <item lang="ro" id="add_store_location">Adăugați locația magazinului</item>
+        <item lang="ro" id="coordinates">Coordonatele</item>
+
+        <item lang="ru" id="text_address_not_found">Адрес не найден</item>
+        <item lang="ru" id="select_coordinates">Выбрать координаты</item>
+        <item lang="ru" id="set">Установить</item>
+        <item lang="ru" id="editing_store_location">Редактирование местоположения магазина</item>
+        <item lang="ru" id="new_store_location">Новое местоположение магазина</item>
+        <item lang="ru" id="add_store_location">Добавить местоположение магазина</item>
+        <item lang="ru" id="coordinates">Координаты</item>
+        <item lang="ru" id="latitude_short">Широта</item>
+        <item lang="ru" id="longitude_short">Долгота</item>
+        <item lang="ru" id="all_stores">Все магазины</item>
+        <item lang="ru" id="api_key">Ключ API</item>
+        <item lang="ru" id="zoom">Масштаб</item>
+        <item lang="ru" id="map_type_control">Элемент управления типом карты</item>
+        <item lang="ru" id="zoom_control">Элемент управления масштабированием</item>
+        <item lang="ru" id="scale_control">Элемент управления масштабом</item>
+
+        <item lang="sl" id="text_address_not_found">Naslova ni bilo mogoče najti</item>
+        <item lang="sl" id="select_coordinates">Izberite koordinate</item>
+        <item lang="sl" id="set">Nastavljeno</item>
+        <item lang="sl" id="editing_store_location">Urejanje lokacije shranjevanja</item>
+        <item lang="sl" id="new_store_location">Nova lokacija trgovine</item>
+        <item lang="sl" id="add_store_location">Dodaj shranjevanje lokacije</item>
+        <item lang="sl" id="coordinates">Koordinate</item>
+        <item lang="sl" id="latitude_short">zem.šir.</item>
+        <item lang="sl" id="longitude_short">zem.dolž.</item>
+
+        <item lang="zh" id="text_address_not_found">没有找到地址</item>
+        <item lang="zh" id="select_coordinates">选择坐标</item>
+        <item lang="zh" id="editing_store_location">编辑商店位置</item>
+        <item lang="zh" id="new_store_location">商店新的位置</item>
+        <item lang="zh" id="add_store_location">添加商店位置</item>
+        <item lang="zh" id="coordinates">坐标</item>
+        <item lang="zh" id="latitude_short">纬度</item>
+        <item lang="zh" id="longitude_short">太长</item>
+    </language_variables>
+</addon>

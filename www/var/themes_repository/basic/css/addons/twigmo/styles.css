@@ -1,0 +1,82 @@
+.mobile-avail-notice {
+    width: 100%;
+    /*min-height: 120px;*/
+    margin: auto;
+    background: #dbf1ff;
+    min-width: 10px !important;
+    /*float: left;*/
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-avail-notice a,
+.mobile-avail-notice a, 
+.mobile-avail-notice a:visited, 
+.mobile-avail-notice a:active {
+    display: inline-block;
+    float: left;
+    /*width: 30%;*/
+    height: 80px;
+    line-height: 80px;
+    background: #36b8f4;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin: 10px 0 10px 20px;
+    padding: 0 1% 0 1%;
+    color: #fff;
+    font-size: 34px;
+    font-weight: bold;
+    overflow: hidden;
+    /*text-overflow: ellipsis;*/
+    text-align: center;
+    font: bold 34px/80px Arial !important;
+}
+
+.mobile-avail-notice img {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -15px;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.mobile-avail-notice div.buttons-container {
+    position: relative;
+    /*top: 8px;*/
+    white-space: nowrap;
+}
+
+.mobile-avail-notice div.buttons-container span.mobile-store-link {
+    margin: 0 0 0 20px;
+    display: inline-block;
+    margin: 0 0 0 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 40%;
+}
+
+.mobile-avail-notice div.buttons-container span.app-download-link {
+    margin: 0 0 0 16px;
+    display: inline-block;
+    margin: 0 0 0 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 40%;
+}
+
+.mobile-avail-notice span span {
+    background: #36b8f4 !important;
+    border-radius: 10px;
+    height: 100px;
+}
+
+span.mobile-store-link a, span.app-download-link a {
+    position: relative;
+    top: 18px;
+    color: white;
+    font: 30pt Arial;
+    text-transform: none !important;
+    background: transparent;
+}

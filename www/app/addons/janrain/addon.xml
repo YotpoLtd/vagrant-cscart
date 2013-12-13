@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>janrain</id>
+    <name>Janrain</name>
+    <description>Adds the Social Login feature; allows customers use Facebook, Twitter, etc. to log in on the store</description>
+    <version>1.0</version>
+    <priority>4200</priority>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <compatibility>
+        <conflicts>loginza,hybrid_auth</conflicts>
+    </compatibility>
+    <dependencies/>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="general_info">
+                        <name>General info</name>
+                        <type>info</type>
+                        <handler>fn_janrain_generate_info</handler>
+                        <translations>
+                            <item lang="ru">Общая информация</item>
+                            <item lang="zh">常规信息</item>
+                        </translations>
+                    </item>
+                    <item id="apikey">
+                        <name>API Key</name>
+                        <type>input</type>
+                        <translations>
+                            <item lang="ru">API ключ</item>
+                            <item lang="zh">API 钥匙</item>
+                        </translations>
+                    </item>
+                    <item id="appdomain">
+                        <name>Application Domain</name>
+                        <type>input</type>
+                        <translations>
+                            <item lang="ru">Область приложения</item>
+                            <item lang="zh">应用域名</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="zh" id="janrain_general_info"><![CDATA[
+            <p>获取这些值并配置社交登录 <a href="http://janrain.com" target="_blank">janrain.com</a></p>
+        ]]></item>
+        <item lang="zh" id="janrain_social_login">社交登录</item>
+        <item lang="zh" id="janrain_need_update_profile">"密码" 区域和其它部分强制区域暂时为空. 请更新您的资料.</item>
+        <item lang="zh" id="janrain_cant_create_profile"><![CDATA[
+不幸的是,我们无法创建客户并登录到商店由于以下原因之一:<br />
+- 您早前用一些其他的OpenID提供商登录到我们的商店时使用了相同的电子邮件.<br />
+- 您已使用您的邮件地址在我们的商店中注册了.<br />
+请联系店主解决这个问题.
+]]></item>
+
+        <item lang="en" id="janrain_general_info"><![CDATA[
+            <p>Get these values and configure social login at <a href="http://janrain.com" target="_blank">janrain.com</a></p>
+        ]]></item>
+        <item lang="en" id="janrain_social_login">Social login</item>
+        <item lang="en" id="janrain_need_update_profile">The "Password" field and some other mandatory fields are empty at the moment. Please update your profile.</item>
+        <item lang="en" id="janrain_cant_create_profile"><![CDATA[
+Unfortunately, we failed to create a customer and log in to the store due to one of the following reasons:<br />
+- You logged in to our store earlier using some other OpenID provider in which the same email is used.<br />
+- You have already registered in our store using your email.<br />
+Please contact the store owner to resolve the problems.
+]]></item>
+        <item lang="ru" id="janrain_cant_create_profile"><![CDATA[
+К сожалению, не удалось создать пользователя и авторизоваться в магазине по одной из следующих причин:<br />
+- Вы ранее авторизовались в магазине, используя другой сервис OpenID, в котором используется тот же email адрес.<br />
+- Вы уже зарегистрированы в нашем магазине с использованием этого email адреса.<br />
+Пожалуйста, свяжитесь с владельцем магазина для разрешения данной проблемы.
+        ]]></item>
+        <item lang="ru" id="janrain_general_info"><![CDATA[
+            <p>Используйте эти данные и настройте учетную запись на <a href="http://janrain.com" target="_blank">janrain.com</a></p>
+
+        ]]></item>
+        <item lang="ru" id="janrain_need_update_profile">Поле "Пароль" и некоторые другие обязательные для заполнения поля пустые. Пожалуйста, обновите Ваш профиль.</item>
+        <item lang="ru" id="social_login">Авторизация через социальную сеть</item>
+        <item lang="ru" id="janrain_social_login">Авторизация через социальную сеть с помощью Janrain</item>
+        <item lang="it" id="janrain_need_update_profile">Il campo "Password" e altri campi obbligatori sono vuoti al momento. Ti preghiamo di aggiornare il tuo profilo.</item>
+        <item lang="it" id="janrain_cant_create_profile"><![CDATA[Sfortunatamente, non siamo riusciti a creare un log in cliente nel negozio a causa di una delle seguenti ragioni:<br />\n- Ti sei loggato nel nostro negozio in precedenza, usando qualche OpenID provider in cui è stata utilizzata la stessa email.<br />\n- Ti sei già registrato nel nostro negozio usando la tua email.<br />\nTi preghiamo di contattare il proprietario del negozio e risolvere i problemi.]]></item>
+        <item lang="it" id="janrain_general_info"><![CDATA[          <p>Prendi questi valori e configura il social login a <a href="http://janrain.com" target="_blank">janrain.com</a></p>\n       ]]></item>
+    </language_variables>
+    <queries>
+        <item>ALTER TABLE `?:users` ADD `janrain_identifier` varchar(32) NOT NULL default ''</item>
+        <item for="uninstall">ALTER TABLE  `?:users` DROP `janrain_identifier`</item>
+    </queries>
+    <translations>
+        <item for="description" lang="ru">Добавляет возможность авторизации в магазине через социальные сети (Facebook, Twitter, и т.д.)</item>
+        <item for="description" lang="zh">添加社会登录功能; 允许客户使用 Facebook、Twitter 等登录到商店中</item>
+    </translations>
+</addon>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>catalog_mode</id>
+    <name>Catalog mode</name>
+    <description>Allows you to use the store as a product catalog</description>
+    <version>1.0</version>
+    <priority>4200</priority>
+    <position>0</position>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <compatibility>
+        <conflicts>buy_together,gift_certificates,product_configurator</conflicts>
+    </compatibility>
+    <language_variables>
+        <item lang="en" id="catalog_mode">Catalog Mode</item>
+        <item lang="en" id="text_catalog_mode_zero_price_action_notice">In order that the "Buy now" button could be displayed on the product details page, please set "Zero price action" as "Allow customers to add the product to cart".</item>
+        <item lang="ru" id="catalog_mode">Режим каталога</item>
+        <item lang="ru" id="text_catalog_mode_zero_price_action_notice">Чтобы на детальной странице товара отображалсь кнопка "Купить сейчас", пожалуйста установите значение поля "Действие при нулевой цене" в "Разрешить добавить товар в корзину".</item>
+        
+        <item lang="zh" id="catalog_mode">目录模式</item>
+        <item lang="zh" id="text_catalog_mode_zero_price_action_notice">为了使"现在购买"按钮可以显示在产品详情页面,请设置"零价格操作"作为"允许客户将商品加到购物车".</item>
+        <item lang="en" id="buy_now_url">Buy Now URL</item>
+
+        <item lang="bg" id="buy_now_url">Купи сега URL</item>
+
+        <item lang="el" id="buy_now_url">URL Αγοράστε Τώρα</item>
+
+        <item lang="it" id="buy_now_url">URL compra ora</item>
+
+        <item lang="no" id="buy_now_url">Kjøp nå URL</item>
+
+        <item lang="ru" id="buy_now_url">Ссылка для покупки</item>
+
+        <item lang="zh" id="buy_now_url">现在购买 URL</item>
+    </language_variables>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="main_store_mode">
+                        <name>Store operation mode</name>
+                        <type>radiogroup</type>
+                        <default_value>catalog</default_value>
+                        <variants>
+                            <item id="catalog">
+                                <name>Catalog</name>
+                                <translations>
+                                    <item lang="ru">Каталог</item>
+                                    <item lang="zh">目录</item>
+                                </translations>
+                            </item>
+                            <item id="store">
+                                <name>Store</name>
+                                <translations>
+                                    <item lang="ru">Магазин</item>
+                                    <item lang="zh">商店</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Режим работы магазина</item>
+                            <item lang="zh">商店操作模式</item>
+                        </translations>
+                    </item>
+                    <item id="add_to_cart_empty_buy_now_url">
+                        <name>Allow purchasing products with empty Buy Now URL</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                        <variants/>
+                        <translations>
+                            <item lang="ru">Позволять покупать товары с пустым полем "Купить, перейдя по ссылке"</item>
+                            <item lang="zh">允许购买产品缺少现在购买URL</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item>ALTER TABLE `?:products` ADD `buy_now_url` varchar(255) NOT NULL</item>
+        <item for="uninstall">ALTER TABLE  `?:products` DROP `buy_now_url`</item>
+    </queries>
+    <translations>
+        <item for="name" lang="ru">Режим каталога</item>
+        <item for="description" lang="ru">Позволяет использовать магазин как каталог товаров</item>
+        
+        <item for="name" lang="zh">目录模式</item>
+        <item for="description" lang="zh">允许您把商店作为一个产品目录使用</item>
+    </translations>
+</addon>

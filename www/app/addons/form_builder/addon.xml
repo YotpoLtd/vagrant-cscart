@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>form_builder</id>
+    <name>Form builder</name>
+    <description>Lets you create custom forms (e.g. Contact us or Apply for partnership)</description>
+    <version>1.0</version>
+    <priority>2400</priority>
+    <position>0</position>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="fr">Générateur de formulaires</item>
+        <item for="name" lang="el">Form builder</item>
+        <item for="name" lang="ro">Constructorul de formulare</item>
+        <item for="name" lang="ru">Конструктор форм</item>
+        <item for="name" lang="sl">Izdelava obrazcev</item>
+        <item for="name" lang="zh">表单生成器</item>
+        <item for="description" lang="ru">Позволяет создавать настраиваемые формы (например, "Связаться с нами")</item>
+        <item for="description" lang="zh">允许您自定义表单(如. 联系我们或是申请合作)</item>
+    </translations>
+    <queries>
+        <item for="demo" type='file'>database/demo.sql</item>
+        <item for="demo" type='file' editions="ULTIMATE">database/demo_ultimate.sql</item>
+        <item for="demo" type='file' table="form_descriptions" lang="en" >database/demo_en.sql</item>
+        <item for="demo" type='file' table="page_descriptions" lang="en" >database/demo_pages_en.sql</item>
+        <item for="demo" type='file' table="form_descriptions" lang="ru" >database/demo_ru.sql</item>
+        <item for="demo" type='file' table="page_descriptions" lang="ru" >database/demo_pages_ru.sql</item>
+        <item>DROP TABLE IF EXISTS ?:form_descriptions;</item>
+        <item>DROP TABLE IF EXISTS ?:form_options;</item>
+        <item>
+            CREATE TABLE `?:form_descriptions` (
+                `object_id` mediumint(8) unsigned NOT NULL default '0',
+                `description` text NOT NULL default '',
+                `lang_code` char(2) NOT NULL default '',
+                PRIMARY KEY  (`object_id`,`lang_code`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:form_options` (
+                `element_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `page_id` mediumint(8) unsigned NOT NULL default '0',
+                `parent_id` mediumint(8) unsigned NOT NULL default '0',
+                `element_type` char(1) NOT NULL default 'I',
+                `value` varchar(255) NOT NULL default '',
+                `position` smallint(5) unsigned NOT NULL default '0',
+                `required` char(1) NOT NULL default 'N',
+                `status` char(1) NOT NULL default 'A',
+                PRIMARY KEY  (`element_id`),  KEY `page_id` (`page_id`,`status`),  KEY `position` (`position`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:form_descriptions;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:form_options;</item>
+    </queries>
+    <functions>
+        <item for="uninstall">fn_form_builder_remove_pages</item>
+    </functions>
+    <language_variables>
+        <item lang="en" id="form_builder">Form builder</item>
+        <item lang="en" id="form_submit_text">Form submit text</item>
+        <item lang="en" id="email_to">E-mail to</item>
+        <item lang="en" id="form_is_secure">Form is secure (SSL)</item>
+        <item lang="en" id="add_form">Add form</item>
+        <item lang="en" id="base">Base</item>
+        <item lang="en" id="multiple_checkboxes">Multiple checkboxes</item>
+        <item lang="en" id="multiple_selectbox">Multiple selectbox</item>
+        <item lang="en" id="header">Header</item>
+        <item lang="en" id="separator">Separator</item>
+        <item lang="en" id="special">Special</item>
+        <item lang="en" id="countries_list">Countries list</item>
+        <item lang="en" id="states_list">States list</item>
+
+        <item lang="bg" id="form_builder">Форм билдър</item>
+        <item lang="bg" id="form_submit_text">Текст</item>
+        <item lang="bg" id="email_to">E-mail до</item>
+        <item lang="bg" id="form_is_secure">Формата е подсигурена с (SSL)</item>
+        <item lang="bg" id="add_form">Добави форма</item>
+        <item lang="bg" id="base">Основен</item>
+        <item lang="bg" id="multiple_checkboxes">множество отметки</item>
+        <item lang="bg" id="multiple_selectbox">Мулти секектбокс</item>
+        <item lang="bg" id="header">Хедър</item>
+        <item lang="bg" id="separator">Сепаратор</item>
+        <item lang="bg" id="special">Специален</item>
+        <item lang="bg" id="countries_list">Списък страни</item>
+        <item lang="bg" id="states_list">Списък Щати</item>
+        <item lang="bg" id="referer">Реферал</item>
+
+        <item lang="da" id="form_builder">Form bygger</item>
+        <item lang="da" id="form_submit_text">Form indsende tekst</item>
+        <item lang="da" id="email_to">E-mail til</item>
+        <item lang="da" id="form_is_secure">Form er sikker (SSL)</item>
+        <item lang="da" id="add_form">Tilføj form</item>
+        <item lang="da" id="base">basis</item>
+        <item lang="da" id="multiple_checkboxes">Flere afkrydsningsfelt</item>
+        <item lang="da" id="multiple_selectbox">Flere selectbox</item>
+        <item lang="da" id="separator">separator</item>
+        <item lang="da" id="special">Speciel</item>
+        <item lang="da" id="countries_list">lande liste</item>
+        <item lang="da" id="states_list">Stat liste</item>
+
+        <item lang="de" id="form_builder">Formular-Builder</item>
+        <item lang="de" id="form_submit_text">Text der Formularbestatigung</item>
+        <item lang="de" id="email_to">E-Mail an</item>
+        <item lang="de" id="base">Standard</item>
+        <item lang="de" id="multiple_checkboxes">mehrere Checkboxen</item>
+        <item lang="de" id="multiple_selectbox">mehrere Wahlboxen</item>
+        <item lang="de" id="separator">Trennvorrichtung</item>
+        <item lang="de" id="countries_list">Landerliste</item>
+        <item lang="de" id="states_list">Liste Bundeslander</item>
+
+        <item lang="el" id="form_builder">Κατασκευή φόρμας</item>
+        <item lang="el" id="form_submit_text">Κείμενο υποβολής φόρμας</item>
+        <item lang="el" id="email_to">E-mail προς</item>
+        <item lang="el" id="form_is_secure">Η φόρμα είναι ασφαλής (SSL)</item>
+        <item lang="el" id="add_form">Προσθήκη φόρμας</item>
+        <item lang="el" id="base">Βάση</item>
+        <item lang="el" id="multiple_checkboxes">Πολλαπλά τετραγωνάκι</item>
+        <item lang="el" id="multiple_selectbox">Πολλαπλό τετραγωνάκι</item>
+        <item lang="el" id="header">Κεφαλίδα</item>
+        <item lang="el" id="separator">Διαχωριστής</item>
+        <item lang="el" id="special">Ειδικός</item>
+        <item lang="el" id="countries_list">Λίστα χωρών</item>
+        <item lang="el" id="states_list">Μέλη λίστας</item>
+        <item lang="el" id="referer">Επανασχεδιασμός</item>
+
+        <item lang="es" id="form_builder">Creador de formularios</item>
+        <item lang="es" id="email_to">E-mail a</item>
+        <item lang="es" id="multiple_checkboxes">Casillas múltiples</item>
+        <item lang="es" id="multiple_selectbox">Múltiples casillas de selección</item>
+        <item lang="es" id="header">Cabecera</item>
+        <item lang="es" id="separator">Separador</item>
+        <item lang="es" id="special">Especial</item>
+        <item lang="es" id="countries_list">Lista de países</item>
+        <item lang="es" id="states_list">Lista de estados.</item>
+
+        <item lang="fr" id="form_builder">Générateur de formulaires</item>
+        <item lang="fr" id="form_submit_text">Texte de soumission de formulaire</item>
+        <item lang="fr" id="email_to">Email à</item>
+        <item lang="fr" id="form_is_secure">Le formulaire est sécurisé (SSL)</item>
+        <item lang="fr" id="add_form">Ajouter un formulaire</item>
+        <item lang="fr" id="multiple_checkboxes">Cases multiple à cocher</item>
+        <item lang="fr" id="multiple_selectbox">Listes de sélection multiple</item>
+        <item lang="fr" id="header">Entête</item>
+        <item lang="fr" id="separator">Séparateur</item>
+        <item lang="fr" id="countries_list">Liste des pays</item>
+        <item lang="fr" id="states_list">Liste des départements</item>
+
+        <item lang="it" id="form_builder">Costruttore form</item>
+        <item lang="it" id="form_submit_text">Testo di submit</item>
+        <item lang="it" id="email_to">E-mail a</item>
+        <item lang="it" id="form_is_secure">Form sicuro (SSL)</item>
+        <item lang="it" id="add_form">Aggiungi form</item>
+        <item lang="it" id="multiple_checkboxes">Casella di controllo multiple</item>
+        <item lang="it" id="multiple_selectbox">Combobox multiple</item>
+        <item lang="it" id="header">Titolo</item>
+        <item lang="it" id="separator">Separatore</item>
+        <item lang="it" id="special">Speciale</item>
+        <item lang="it" id="countries_list">Lista nazioni</item>
+        <item lang="it" id="states_list">Lista province/stati</item>
+        <item lang="it" id="referer">Referente</item>
+
+        <item lang="nl" id="form_builder">Formulierengenerator</item>
+        <item lang="nl" id="form_submit_text">Formulier bevestigingstekst</item>
+        <item lang="nl" id="email_to">E-mail aan</item>
+        <item lang="nl" id="base">Basis</item>
+        <item lang="nl" id="multiple_checkboxes">Meerkeuze-checkboxen</item>
+        <item lang="nl" id="multiple_selectbox">Meerkeuze-selectbox</item>
+        <item lang="nl" id="header">Kop</item>
+        <item lang="nl" id="separator">Verdeelteken</item>
+        <item lang="nl" id="special">Speciaal</item>
+        <item lang="nl" id="countries_list">Landenlijst</item>
+        <item lang="nl" id="states_list">Provincielijst</item>
+
+        <item lang="no" id="form_builder">Skjemabygger</item>
+        <item lang="no" id="form_submit_text">Skjematekst for innsending</item>
+        <item lang="no" id="email_to">E-post til</item>
+        <item lang="no" id="form_is_secure">Skjema er sikker (SSL)</item>
+        <item lang="no" id="add_form">Legg til skjema</item>
+        <item lang="no" id="base">Basis</item>
+        <item lang="no" id="multiple_checkboxes">Flere avkrysningsruter</item>
+        <item lang="no" id="multiple_selectbox">Flere valgbokser</item>
+        <item lang="no" id="header">Topptekst</item>
+        <item lang="no" id="special">Spesiell</item>
+        <item lang="no" id="countries_list">Liste over land</item>
+        <item lang="no" id="states_list">Liste over stater</item>
+        <item lang="no" id="referer">Henviser</item>
+
+        <item lang="ro" id="form_builder">Constructorul de formulare</item>
+        <item lang="ro" id="form_submit_text">Textul de trimite din formular</item>
+        <item lang="ro" id="email_to">E-mail către</item>
+        <item lang="ro" id="form_is_secure">Formularul este securizat (SSL)</item>
+        <item lang="ro" id="add_form">Adăugați un formular</item>
+        <item lang="ro" id="base">Bază</item>
+        <item lang="ro" id="multiple_checkboxes">Căsuțe de bifare multiple</item>
+        <item lang="ro" id="multiple_selectbox">Căsuțe de selectare multiple</item>
+        <item lang="ro" id="header">Antet</item>
+        <item lang="ro" id="countries_list">Listă țări</item>
+        <item lang="ro" id="states_list">Lista de state</item>
+
+        <item lang="ru" id="form_builder">Контактные формы</item>
+        <item lang="ru" id="form_submit_text">Текст после отправки формы</item>
+        <item lang="ru" id="email_to">E-mail</item>
+        <item lang="ru" id="form_is_secure">Форма защищена (SSL)</item>
+        <item lang="ru" id="add_form">Добавить форму</item>
+        <item lang="ru" id="base">Основные</item>
+        <item lang="ru" id="multiple_checkboxes">Группа чекбоксов</item>
+        <item lang="ru" id="multiple_selectbox">Список со множественным выбором</item>
+        <item lang="ru" id="header">Заголовок</item>
+        <item lang="ru" id="separator">Разделитель</item>
+        <item lang="ru" id="special">Специальные</item>
+        <item lang="ru" id="countries_list">Список стран</item>
+        <item lang="ru" id="states_list">Список областей</item>
+        <item lang="ru" id="referer">Ссылка</item>
+
+        <item lang="sl" id="form_builder">Izgradnja obrazcev</item>
+        <item lang="sl" id="form_submit_text">Vpiši besedilo v obrazec</item>
+        <item lang="sl" id="email_to">Pošlji elektronsko pošto</item>
+        <item lang="sl" id="form_is_secure">Obrazec je varen (SSL)</item>
+        <item lang="sl" id="add_form">Dodaj obliko</item>
+        <item lang="sl" id="base">Osnova</item>
+        <item lang="sl" id="multiple_checkboxes">Več pritrdilnih polj</item>
+        <item lang="sl" id="multiple_selectbox">Več izbirnih polj</item>
+        <item lang="sl" id="header">Glava</item>
+        <item lang="sl" id="separator">Ločnica</item>
+        <item lang="sl" id="special">Posebno</item>
+        <item lang="sl" id="countries_list">Seznam držav</item>
+        <item lang="sl" id="states_list">Seznam dežel</item>
+
+        <item lang="zh" id="form_builder">表单生成</item>
+        <item lang="zh" id="form_submit_text">表单提交文本</item>
+        <item lang="zh" id="email_to">发邮件给</item>
+        <item lang="zh" id="form_is_secure">表单加密(SSL)</item>
+        <item lang="zh" id="add_form">添加表单</item>
+        <item lang="zh" id="base">基于</item>
+        <item lang="zh" id="multiple_checkboxes">多个复选框</item>
+        <item lang="zh" id="multiple_selectbox">多个选择框</item>
+        <item lang="zh" id="header">标头</item>
+        <item lang="zh" id="separator">分隔符</item>
+        <item lang="zh" id="special">特殊的</item>
+        <item lang="zh" id="countries_list">国家列表</item>
+        <item lang="zh" id="states_list">州/省份列表 </item>
+        <item lang="zh" id="referer">提交者</item>
+    </language_variables>
+</addon>

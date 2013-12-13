@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>hybrid_auth</id>
+    <name>Hybrid Auth</name>
+    <description>Adds the Social Login feature; allows customers use Facebook, Twitter, etc. to log in on the store</description>
+    <version>1.0</version>
+    <priority>4200</priority>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <compatibility>
+        <conflicts>loginza,janrain</conflicts>
+    </compatibility>
+    <dependencies/>
+
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <!--OpenID-->
+                    <item id="header_openid">
+                        <name>OpenID</name>
+                        <type>header</type>
+                    </item>
+                    <item id="openid_status">
+                        <name>Enable OpenID</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+
+                    <!--Yahoo-->
+                    <item id="header_yahoo">
+                        <name>Yahoo</name>
+                        <type>header</type>
+                    </item>
+                    <item id="yahoo_status">
+                        <name>Enable Yahoo</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="yahoo_key">
+                        <name>Yahoo ID</name>
+                        <type>input</type>
+                    </item>
+                    <item id="yahoo_secret">
+                        <name>Yahoo Secret key</name>
+                        <type>input</type>
+                    </item>
+
+                    <!--AOL-->
+                    <!--<item id="header_aol">
+                        <name>AOL</name>
+                        <type>header</type>
+                    </item>
+                    <item id="aol_status">
+                        <name>Enable AOL</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>-->
+
+                    <!--Google-->
+                    <item id="header_google">
+                        <name>Google</name>
+                        <type>header</type>
+                    </item>
+                    <item id="google_status">
+                        <name>Enable Google</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="google_id">
+                        <name>Google ID</name>
+                        <type>input</type>
+                    </item>
+                    <item id="google_secret">
+                        <name>Google Secret key</name>
+                        <type>input</type>
+                    </item>
+                    <item id="google_callback_url">
+                        <name>Google callback url</name>
+                        <type>info</type>
+                        <handler>fn_hybrid_auth_google_callback_url</handler>
+                    </item>
+
+                    <!--Facebook-->
+                    <item id="header_facebook">
+                        <name>Facebook</name>
+                        <type>header</type>
+                    </item>
+                    <item id="facebook_status">
+                        <name>Enable Facebook</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="facebook_id">
+                        <name>Facebook ID</name>
+                        <type>input</type>
+                    </item>
+                    <item id="facebook_secret">
+                        <name>Facebook Secret key</name>
+                        <type>input</type>
+                    </item>
+
+                    <!--Twitter-->
+                    <item id="header_twitter">
+                        <name>Twitter</name>
+                        <type>header</type>
+                    </item>
+                    <item id="twitter_status">
+                        <name>Enable Twitter</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="twitter_key">
+                        <name>Twitter API key</name>
+                        <type>input</type>
+                    </item>
+                    <item id="twitter_secret">
+                        <name>Twitter Secret key</name>
+                        <type>input</type>
+                    </item>
+
+                    <!--Windows Live-->
+                    <!--<item id="header_live">
+                        <name>Live</name>
+                        <type>header</type>
+                    </item>
+                    <item id="live_status">
+                        <name>Enable Live</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="live_id">
+                        <name>Live ID</name>
+                        <type>input</type>
+                    </item>
+                    <item id="live_secret">
+                        <name>Live Secret key</name>
+                        <type>input</type>
+                    </item>-->
+
+                    <!--MySpace-->
+                    <item id="header_myspace">
+                        <name>MySpace</name>
+                        <type>header</type>
+                    </item>
+                    <item id="myspace_status">
+                        <name>Enable MySpace</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="myspace_key">
+                        <name>MySpace API key</name>
+                        <type>input</type>
+                    </item>
+                    <item id="myspace_secret">
+                        <name>MySpace Secret key</name>
+                        <type>input</type>
+                    </item>
+
+                    <!--LinkedIn-->
+                    <item id="header_linkedin">
+                        <name>LinkedIn</name>
+                        <type>header</type>
+                    </item>
+                    <item id="linkedin_status">
+                        <name>Enable LinkedIn</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="linkedin_key">
+                        <name>LinkedIn API key</name>
+                        <type>input</type>
+                    </item>
+                    <item id="linkedin_secret">
+                        <name>LinkedIn Secret key</name>
+                        <type>input</type>
+                    </item>
+
+                    <!--Foursquare-->
+                    <!--<item id="header_foursquare">
+                        <name>Foursquare</name>
+                        <type>header</type>
+                    </item>
+                    <item id="foursquare_status">
+                        <name>Enable Foursquare</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                    </item>
+                    <item id="foursquare_key">
+                        <name>Foursquare API key</name>
+                        <type>input</type>
+                    </item>
+                    <item id="foursquare_secret">
+                        <name>Foursquare Secret key</name>
+                        <type>input</type>
+                    </item>-->
+                </items>
+            </section>
+        </sections>
+    </settings>
+
+    <language_variables>
+        <item lang="en" id="hybrid_auth_need_update_profile">The "Password" field and some other mandatory fields are empty at the moment. Please update your profile.</item>
+        <item lang="en" id="hybrid_auth_social_login">Or sign-in with another identity provider</item>
+
+        <item lang="en" id="hybrid_auth_unspecified_error">Unspecified error</item>
+        <item lang="en" id="hybrid_auth_configuration_error">Hybriauth configuration error</item>
+        <item lang="en" id="hybrid_auth_provider_error_configuration">Provider not properly configured</item>
+        <item lang="en" id="hybrid_auth_wrong_provider">Unknown or disabled provider</item>
+        <item lang="en" id="hybrid_auth_missing_credentials">Missing provider application credentials</item>
+        <item lang="en" id="hybrid_auth_failed_auth">Authentication failed. The user has canceled the authentication or the provider refused the connection</item>
+        <item lang="en" id="hybrid_auth_connecting_provider"><![CDATA[Contacting <b>[provider]</b>. Please wait...]]></item>
+        <item lang="en" id="hybrid_auth_cant_create_profile"><![CDATA[Unfortunately, we failed to create a customer and log in to the store due to one of the following reasons:<br />- You logged in to our store earlier using some other OpenID provider in which the same email is used.<br />- You have already registered in our store using your email.<br />Please contact the store owner to resolve the problems.]]></item>
+        <item lang="en" id="google_callback_url">Google callback URL</item>
+    </language_variables>
+
+    <queries>
+        <item>ALTER TABLE `?:users` ADD `identifier` varchar(128) NOT NULL default ''</item>
+        <item for="uninstall">ALTER TABLE  `?:users` DROP `identifier`</item>
+    </queries>
+
+    <translations>
+        <item for="description" lang="RU">Добавляет возможность авторизации в магазине через социальные сети (Facebook, Twitter, и т.д.)</item>
+    </translations>
+</addon>

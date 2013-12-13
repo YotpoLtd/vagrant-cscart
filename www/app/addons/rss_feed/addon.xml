@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>rss_feed</id>
+    <name>RSS feed</name>
+    <description>Generates RSS feeds for products, news and pages</description>
+    <version>1.0</version>
+    <priority>490</priority>
+    <position>0</position>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <settings>
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="managing_editor">
+                        <name>Content editor</name>
+                        <type>input</type>
+                        <default_value/>
+                        <tooltip>Enter the content editor's email and real name, e.g. john@example.com (John Doe)</tooltip>
+                        <translations>
+                            <item lang="ru">Редактор содержимого</item>
+                            <item lang="ru" for="tooltip">Введите адрес электронной почты и имя пользователя, который управляет контентом, к примеру john@example.com (John Doe)</item>
+                            <item lang="zh">内容编辑</item>
+                            <item lang="zh" for="tooltip">输入内容编辑器的电子邮件和真实的名字,例如 john@example.com (John Doe)</item>
+                        </translations>
+                    </item>
+                    <item id="display_rss_feed_in_category">
+                        <name>Show RSS feed for each category</name>
+                        <type>checkbox</type>
+                        <default_value>N</default_value>
+                        <tooltip>RSS icon near category title.</tooltip>
+                        <translations>
+                            <item lang="ru">Показывать RSS ленту для каждой категории</item>
+                            <item lang="ru" for="tooltip">Иконка RSS напротив названия каждой категории.</item>
+                            <item lang="zh">在每个目录中显示RSS订阅</item>
+                            <item lang="zh" for="tooltip">RSS图标靠近目录标题.</item>
+                        </translations>
+                    </item>
+                    <item id="category_max_products_items">
+                        <name>Max product number per category</name>
+                        <type>input</type>
+                        <default_value>5</default_value>
+                        <translations>
+                            <item lang="ru">Максимальное кол-во товаров в категории</item>
+                            <item lang="zh">每个目录最多产品数</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <language_variables>
+        <item lang="en" id="rss_feed">RSS feed</item>
+        <item lang="en" id="rss_feed_last_added">Last added</item>
+        <item lang="en" id="rss_feed_last_added_updated">Last added and updated</item>
+        <item lang="en" id="rss_feed_type">Feed type</item>
+        <item lang="en" id="feed_title">Feed title</item>
+        <item lang="en" id="feed_description">Feed description</item>
+        <item lang="en" id="rss_sort_by">Sort items by</item>
+        <item lang="en" id="rss_display_sku">Display SKU</item>
+        <item lang="en" id="rss_display_image">Display image</item>
+        <item lang="en" id="rss_display_price">Display gross price</item>
+        <item lang="en" id="rss_display_original_price">Display net price</item>
+        <item lang="en" id="rss_display_add_to_cart">Display add to cart button</item>
+        <item lang="en" id="rss_created">Created</item>
+        <item lang="en" id="rss_updated">Updated</item>
+        <item lang="en" id="block_rss_feed">RSS feed</item>
+        <item lang="en" id="block_rss_feed_description">RSS feed subscription icon</item>
+        <item lang="ru" id="block_rss_feed">RSS лента</item>
+        <item lang="ru" id="block_rss_feed_description">Иконка подписки для RSS ленты</item>
+        <item lang="ru" id="feed_description">Описание источника данных</item>
+        <item lang="ru" id="feed_title">Заголовок источника данных</item>
+        <item lang="ru" id="rss_created">Создан</item>
+        <item lang="ru" id="rss_display_add_to_cart">Отображать кнопку "Добавить в корзину"</item>
+        <item lang="ru" id="rss_display_image">Показывать изображение</item>
+        <item lang="ru" id="rss_display_original_price">Показывать ценну нетто</item>
+        <item lang="ru" id="rss_display_price">Показывать валовую цену</item>
+        <item lang="ru" id="rss_display_sku">Показывать код товара</item>
+        <item lang="ru" id="rss_feed">RSS Лента</item>
+        <item lang="ru" id="rss_feed_last_added">Последние добавленные</item>
+        <item lang="ru" id="rss_feed_last_added_updated">Последние добавленные и обновленные</item>
+        <item lang="ru" id="rss_feed_type">Тип RSS ленты</item>
+        <item lang="ru" id="rss_sort_by">Сортировать элементы по</item>
+        <item lang="ru" id="rss_updated">Обновлен</item>
+        
+        <item lang="zh" id="rss_feed">RSS订阅</item>
+        <item lang="zh" id="rss_feed_last_added">最后添加</item>
+        <item lang="zh" id="rss_feed_last_added_updated">最后添加与更新的</item>
+        <item lang="zh" id="rss_feed_type">订阅类型</item>
+        <item lang="zh" id="feed_title">订阅标题</item>
+        <item lang="zh" id="feed_description">订阅描述</item>
+        <item lang="zh" id="rss_sort_by">项目排序</item>
+        <item lang="zh" id="rss_display_sku">显示SKU</item>
+        <item lang="zh" id="rss_display_image">显示图片</item>
+        <item lang="zh" id="rss_display_price">显示毛价</item>
+        <item lang="zh" id="rss_display_original_price">显示网络价格</item>
+        <item lang="zh" id="rss_display_add_to_cart">显示添加购物车按钮</item>
+        <item lang="zh" id="rss_created">创建</item>
+        <item lang="zh" id="rss_updated">更新</item>
+        <item lang="zh" id="block_rss_feed">RSS订阅</item>
+        <item lang="zh" id="block_rss_feed_description">RSS订阅图标</item>
+    </language_variables>
+    <translations>
+        <item for="name" lang="ru">RSS Лента</item>
+        <item for="description" lang="ru">Генерирует RSS ленту для товаров, страниц и новостей</item>
+        
+        <item for="name" lang="zh">RSS订阅</item>
+        <item for="description" lang="zh">为产品,新闻和页面生成RSS订阅</item>
+    </translations>
+</addon>

@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<addon scheme='2.0' edition_type="ROOT,ULT:VENDOR">
+    <id>suppliers</id>
+    <version>1.0</version>
+    <default_language>en</default_language>
+    <name>Suppliers</name>
+    <description>Adds supplier assignment support to products</description>
+    <priority>100</priority>
+    <status>active</status>
+
+    <translations>
+        <item for="name" lang="ru">Поставщики</item>
+        <item for="description" lang="ru">Позволяет назначать поставщиков товарам</item>
+    </translations>
+
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="section1">
+                <name>General</name>
+                <items>
+                    <item id="display_supplier">
+                        <type>checkbox</type>
+                        <name>Display product supplier company</name>
+                        <default_value>Y</default_value>
+                    </item>
+                    <item id="display_shipping_methods_separately">
+                        <type>checkbox</type>
+                        <name>Display shipping methods to each supplier separately</name>
+                        <default_value>Y</default_value>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+
+    <queries>
+        <item for="install">
+            CREATE TABLE `?:suppliers` (
+                `supplier_id` mediumint(8) UNSIGNED NOT NULL auto_increment,
+                `company_id` int(11) unsigned NOT NULL,
+                `name` varchar(255),
+                `address` varchar(255) NOT NULL,
+                `city` varchar(64) NOT NULL,
+                `state` varchar(32) NOT NULL,
+                `country` char(2) NOT NULL,
+                `zipcode` varchar(16) NOT NULL,
+                `email` varchar(128) NOT NULL,
+                `phone` varchar(32) NOT NULL,
+                `fax` varchar(32) NOT NULL,
+                `url` varchar(128) NOT NULL,
+                `timestamp` int(11) unsigned NOT NULL DEFAULT '0',
+                `status` char(1) NOT NULL default 'A',
+                PRIMARY KEY  (`supplier_id`),
+                KEY `company` (`company_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=UTF8
+        </item>
+        <item for="install">
+            CREATE TABLE `?:supplier_links` (
+                `supplier_id` mediumint(8) UNSIGNED NOT NULL,
+                `object_id` int(11) UNSIGNED NOT NULL,
+                `object_type` char(1),
+                PRIMARY KEY  (`supplier_id`, `object_id`, `object_type`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=UTF8
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:suppliers`</item>
+        <item for="uninstall">DROP TABLE IF EXISTS `?:supplier_links`</item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_suppliers', 'Y', 'addons')</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege = 'manage_suppliers'</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="search_by_supllier">Search by supplier</item>
+        <item lang="en" id="supllier">Supplier</item>
+        <item lang="en" id="view_supplier_products">View supplier products</item>
+        <item lang="en" id="supplier_email_header">The following products have been purchased in our store and need to be shipped.</item>
+        <item lang="en" id="suppliers_menu_description">List of supplier accounts registered in the store.</item>
+        <item lang="en" id="dear_sirs">Dear Sirs</item>
+        <item lang="en" id="add_supplier">Add supplier</item>
+        <item lang="en" id="available_for_supplier">Available for supplier</item>
+        <item lang="en" id="editing_supplier">Editing supplier</item>
+        <item lang="en" id="supplier_deleted">Supplier has been deleted successfully.</item>
+        <item lang="en" id="privileges.manage_suppliers">Manage suppliers</item>
+
+        <item lang="bg" id="dear_sirs">Уважаеми господа</item>
+        <item lang="bg" id="add_supplier">Добави доставчик</item>
+        <item lang="bg" id="available_for_supplier">Наличен за доставчик</item>
+        <item lang="bg" id="editing_supplier">Редактиране на доставчик</item>
+        <item lang="bg" id="suppliers_menu_description">Сортиран списък доставчици регистрирани в магазина.</item>
+        <item lang="bg" id="supplier_email_header">Следните продукти са били закупени в магазина и трябва да бъдат транспортирани.</item>
+
+        <item lang="da" id="dear_sirs">Kære hr.</item>
+        <item lang="da" id="add_supplier">Tilføj leverandør</item>
+        <item lang="da" id="supplier_email_header">Følgende produkter er blevet købt i vores butik og skal sendes.</item>
+
+        <item lang="el" id="dear_sirs">Αξιότιμοι Κύριοι</item>
+        <item lang="el" id="add_supplier">Προσθήκη προμηθευτή</item>
+        <item lang="el" id="available_for_supplier">Διαθέσιμο για τον προμηθευτή</item>
+        <item lang="el" id="editing_supplier">Επεξεργασία προμηθευτή</item>
+        <item lang="el" id="supplier_email_header">Τα παρακάτω προϊόντα έχουν αγοραστεί στο κατάστημά μας και πρέπει να αποσταλούν.</item>
+
+        <item lang="es" id="dear_sirs">Estimados Señores</item>
+        <item lang="es" id="supplier_email_header">Los siguientes productos han sido comprados en nuestra tienda y tienen que ser enviados.</item>
+
+        <item lang="fr" id="dear_sirs">Messieurs</item>
+        <item lang="fr" id="supplier_email_header">Les produits suivants ont été achetés dans notre magasin et doivent être expédiées.</item>
+
+        <item lang="it" id="dear_sirs">Cari signori</item>
+        <item lang="it" id="supplier_email_header">I seguenti prodotti sono stati acquistati nel nostro negozio e hanno bisogno di essere spediti.\n</item>
+        <item lang="it" id="add_supplier">Aggiungi fornitore</item>
+        <item lang="it" id="available_for_supplier">Disponibile per fornitore</item>
+        <item lang="it" id="editing_supplier">Modifica fornitore</item>
+        <item lang="it" id="suppliers_menu_description">Lista ordinata di fornitori registrati nel negozio.\n</item>
+
+        <item lang="no" id="dear_sirs">Kjære hr.</item>
+        <item lang="no" id="add_supplier">Legg til Leverandør</item>
+        <item lang="no" id="available_for_supplier">Tilgjengelig for leverandør</item>
+        <item lang="no" id="editing_supplier">Redigerer leverandør</item>
+        <item lang="no" id="supplier_email_header">Følgende produkter er kjøpt i butikken vår og må sendes.</item>
+
+        <item lang="ro" id="dear_sirs">Bună ziua</item>
+        <item lang="ro" id="add_supplier">Adăugați furnizor</item>
+        <item lang="ro" id="supplier_email_header">Următoarele produse au fost achizioționate în magazinul dvs. și trebuie să fie expediate.</item>
+
+        <item lang="ru" id="dear_sirs">Уважаемые господа</item>
+        <item lang="ru" id="add_supplier">Добавить поставщика</item>
+        <item lang="ru" id="available_for_supplier">Доступен для поставщика</item>
+        <item lang="ru" id="editing_supplier">Редактирование поставщика</item>
+        <item lang="ru" id="supplier_deleted">Поставщик был успешно удален.</item>
+        <item lang="ru" id="suppliers_menu_description">Список зарегистрированных поставщиков.</item>
+        <item lang="ru" id="supplier_email_header">Перечисленные ниже ваши товары были куплены в нашем магазине. Требуется их доставить покупателю.</item>
+
+        <item lang="sl" id="dear_sirs">Dragi gospod</item>
+        <item lang="sl" id="supplier_email_header">Naslednji izdelki so bili kupljeni v našem skladišču in morajo biti dobavljeni.</item>
+
+        <item lang="zh" id="dear_sirs">亲爱的先生</item>
+        <item lang="zh" id="supplier_email_header">以下产品在我们的商店中已购买并需要派送.</item>
+        <item lang="zh" id="add_supplier">添加供应商</item>
+        <item lang="zh" id="available_for_supplier">现有的供应商</item>
+        <item lang="zh" id="editing_supplier">编辑供应商</item>
+        <item lang="zh" id="suppliers_menu_description">注册在商店中的供应商帐户的排序列表.</item>
+    </language_variables>
+</addon>

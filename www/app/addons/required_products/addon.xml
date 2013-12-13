@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>required_products</id>
+    <name>Required products</name>
+    <description>Makes it possible to specify products required for purchase</description>
+    <version>1.0</version>
+    <priority>3900</priority>
+    <position>0</position>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="fr">Produits requis</item>
+        <item for="name" lang="da">Nødvendige produkter</item>
+        <item for="name" lang="el">Απαιτούμεν προϊόντα</item>
+        <item for="name" lang="ro">Produse necesare</item>
+        <item for="name" lang="ru">Обязательные товары</item>
+        <item for="name" lang="sl">Zahtevani izdelki</item>
+        <item for="name" lang="zh">产品需求</item>
+        <item for="description" lang="ru">Позволяет определять товары, которые необходимо купить для приобретения данного</item>
+        <item for="description" lang="zh">可以指定所需购买的产品</item>
+    </translations>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:product_required_products;</item>
+        <item>
+            CREATE TABLE `?:product_required_products` (
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                `required_id` mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`product_id`,`required_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:product_required_products;</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="required_products">Required products</item>
+        <item lang="en" id="required_products_added">The following required product(s) were added to your cart</item>
+        <item lang="en" id="required_products_out_of_stock">This product cannot be added to your cart, because following required product(s) are out of stock:</item>
+
+        <item lang="bg" id="required_products">Необходими продукти</item>
+        <item lang="bg" id="required_products_added">Следните задължителни продукт (и) бяха добавени към вашата количка</item>
+        <item lang="bg" id="required_products_out_of_stock">Този продукт не може да бъде добавен във вашата количка, защото следните задължителни продукт (и) не са налични:</item>
+
+        <item lang="da" id="required_products">Nødvendige produkter</item>
+        <item lang="da" id="required_products_added">Desuden kræves følgende produkt (er) er blevet tilføjet til din indkøbsvogn:</item>
+        <item lang="da" id="required_products_out_of_stock">Dette produkt kan ikke føjes til din indkøbsvogn, fordi følgende obligatoriske produkt(er) ikke er på lager:</item>
+
+        <item lang="el" id="required_products">Απαιτούμενα προϊόντα</item>
+        <item lang="el" id="required_products_added">Το παρακάτω απαιτούμενο προϊόν(τα) προστέθηκαν στο καλάθι σας</item>
+        <item lang="el" id="required_products_out_of_stock">Αυτό το προϊόν δεν μπορεί να προστεθεί στο καλάθι σας, γιατί το ακόλουθο απαιτούμενο προϊόν(τα) έχουν εξαντληθεί:</item>
+
+        <item lang="fr" id="required_products">Produits requis</item>
+
+        <item lang="it" id="required_products">Prodotti obbligatori</item>
+        <item lang="it" id="required_products_added">Il seguente prodotto richiesto è stato aggiunto al carrello</item>
+        <item lang="it" id="required_products_out_of_stock">Questo prodotto non può essere aggiunto al carrello, perché a seguito della richiesta il prodotto è terminato:</item>
+
+        <item lang="no" id="required_products">Påkrevde produkter</item>
+        <item lang="no" id="required_products_added">Følgende påkrevde produkt(er) ble lagt i handlevognen</item>
+        <item lang="no" id="required_products_out_of_stock">Dette produktet kan ikke legges i handlevognen fordi følgende påkrevde produkt(er) er utsolgt fra lager:</item>
+
+        <item lang="ro" id="required_products">Produse necesare</item>
+        <item lang="ro" id="required_products_added">Adițional, următoarele produs(e) necesar(e) au fost adăugațe în coșul dvs. :</item>
+        <item lang="ro" id="required_products_out_of_stock">Produsul nu poate fi adăugat în coșul dvs, pentru că următoarele produse necesare nu mai sunt pe stoc:</item>
+
+        <item lang="ru" id="required_products">Обязательные товары</item>
+        <item lang="ru" id="required_products_added">Кроме того, следующие обязательные товары были добавлены в вашу корзину:</item>
+        <item lang="ru" id="required_products_out_of_stock">Этот товар не может быть добавлен в корзину, так как следующих обязательных товаров нет в наличии:</item>
+
+        <item lang="sl" id="required_products">Zahtevani izdelki</item>
+        <item lang="sl" id="required_products_added">Zahtevani izdelek (-i) so bili dodani v košarico:</item>
+        <item lang="sl" id="required_products_out_of_stock">Ta izdelek ne more biti dodan v vaš voziček, ker izdelka (-ov), ni na zalogi:</item>
+
+        <item lang="zh" id="required_products">需求产品</item>
+        <item lang="zh" id="required_products_added">以下需求产品已添加到购物车中</item>
+        <item lang="zh" id="required_products_out_of_stock">此产品无法添加到您的购物车,因为以下需求产品没有库存:</item>
+    </language_variables>
+</addon>

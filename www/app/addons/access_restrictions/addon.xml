@@ -1,0 +1,565 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>access_restrictions</id>
+    <name>Access restrictions</name>
+    <description>Lets you limit storefront and administrator area access to certain IP-addresses with different options</description>
+    <version>1.0</version>
+    <priority>2700</priority>
+    <position>200</position>
+    <dependencies/>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <translations>
+        <item for="name" lang="es">Restricciones de acceso</item>
+        <item for="name" lang="fr">Restrictions d'accès</item>
+        <item for="name" lang="da">adgangsbegrænsninger</item>
+        <item for="name" lang="el">Περιορισμοί πρόσβασης</item>
+        <item for="name" lang="it">Restrizione accessi</item>
+        <item for="name" lang="ro">Restricții acces</item>
+        <item for="name" lang="ru">Ограничение доступа</item>
+        <item for="name" lang="sl">Omejitev dostopa</item>
+        <item for="name" lang="zh">访问限制</item>
+        <item for="description" lang="ru">Позволяет ограничить доступ к витрине магазина и администраторской части с разных IP-адресов с применением различных настроек</item>
+        <item for="description" lang="zh">允许您限制某些IP地址用不同的选项访问店面和管理员区域</item>
+    </translations>
+    <settings edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="elm_administrator_area_settings">
+                        <name>Administrator area settings</name>
+                        <type>header</type>
+                        <handler/>
+                        <translations>
+                            <item lang="es">Opciones de Área de Administración</item>
+                            <item lang="fr">Administrator area settings</item>
+                            <item lang="da">Administration panel indstillinger</item>
+                            <item lang="el">Ρυθμίσεις του πίνακα επιλογών διαχειριστή</item>
+                            <item lang="ro">Setări Panou de administrare</item>
+                            <item lang="ru">Настройки администраторской части</item>
+                            <item lang="sl">Nastavitve upravnega panela</item>
+                            <item lang="zh">管理区域设置</item>
+                        </translations>
+                    </item>
+                    <item id="admin_reverse_ip_access">
+                        <name>Allow login to the admin area from specified IPs only</name>
+                        <type>checkbox</type>
+                        <default_value/>
+                        <translations>
+                            <item lang="es">Permitir el acceso al área de administración sólo de las IPS especificadas</item>
+                            <item lang="fr">Allow login to the admin area from specified IPs only</item>
+                            <item lang="el">Είσοδος στον πίνακα επιλογών του διαχειρηστή από τις προκαθορισμένες διευθύνσεις IP μόνο</item>
+                            <item lang="ro">Autentificare la panoul de administrare doar de la IP-urile specificate</item>
+                            <item lang="ru">Позволять входить в администраторскую часть только с определённых IP-адресов</item>
+                            <item lang="sl">Prijava v admin panel samo iz določenih IP-jev</item>
+                            <item lang="zh">仅允许指定的IPs登录管理区域</item>
+                        </translations>
+                    </item>
+                    <item id="unsuccessful_attempts_login">
+                        <name>Block IP after a number of unsuccessful attempts</name>
+                        <type>checkbox</type>
+                        <default_value/>
+                        <translations>
+                            <item lang="es">Bloquee IP después de varias tentativas fracasadas</item>
+                            <item lang="el">Αποκλεισμός IP μετά από μια σειρά αποτυχημένων προσπαθειών</item>
+                            <item lang="ro">Blochează IP-ul după nu anumit număr de autentificări nereușite</item>
+                            <item lang="ru">Блокировать IP после определенного кол-ва неудачных попыток входа</item>
+                            <item lang="sl">Blokiranje IP-ja po več neuspešnih poskusih</item>
+                            <item lang="zh">在几次失败尝试后封锁IP地址</item>
+                        </translations>
+                    </item>
+                    <item id="number_unsuccessful_attempts">
+                        <name>Number of unsuccessful attempts</name>
+                        <type>input</type>
+                        <default_value>5</default_value>
+                        <translations>
+                            <item lang="es">Número de tentativas fracasadas</item>
+                            <item lang="da">Antal mislykkede forsøg</item>
+                            <item lang="el">Αριθμός ανεπιτυχών προσπαθειών</item>
+                            <item lang="ro">Numărul de încercări nereușite</item>
+                            <item lang="ru">Кол-во неудачных попыток входа</item>
+                            <item lang="sl">Število neuspešnih poskusih</item>
+                            <item lang="zh">失败尝试次数</item>
+                        </translations>
+                    </item>
+                    <item id="login_intervals">
+                        <name>Time between unsuccessful login attempts (seconds)</name>
+                        <type>input</type>
+                        <default_value>60</default_value>
+                        <translations>
+                            <item lang="es">Tiempo entre tentativas de entrada al sistema fracasadas (segundos)</item>
+                            <item lang="el">Χρόνος μεταξύ ανεπιτυχών προσπάθειών σύνδεσης (δευτερόλεπτα)</item>
+                            <item lang="ro">Timpul dintre încercările de autentificare nereușite (secunde)</item>
+                            <item lang="ru">Время между неудачными попытками входа (секунды)</item>
+                            <item lang="sl">Čas med neuspelimi poskusi prijave (v sekundah)</item>
+                            <item lang="zh">登录失败尝试时间间隔(秒)</item>
+                        </translations>
+                    </item>
+                    <item id="time_block">
+                        <name>Time for which the IP should be blocked (hours)</name>
+                        <type>input</type>
+                        <default_value>24</default_value>
+                        <translations>
+                            <item lang="es">El tiempo durante el cual la IP debería ser bloqueada (horas)</item>
+                            <item lang="fr">Time for which the IP should be blocked (hours)</item>
+                            <item lang="el">Διάστημα για το οποίο IP θα πρέπει να αποκλειστεί (σε ώρες)</item>
+                            <item lang="ro">Timpul pentru care un IP să fie blochat (ore)</item>
+                            <item lang="ru">Время, на которое блокируется IP (часы)</item>
+                            <item lang="sl">Čas za katerega se blokira IP (ur)</item>
+                            <item lang="zh">某IP必须封锁的时间(小时)</item>
+                        </translations>
+                    </item>
+                    <item id="elm_customer_and_affiliate_area_settings">
+                        <name>Customer and Affiliate area settings</name>
+                        <type>header</type>
+                        <handler/>
+                        <translations>
+                            <item lang="es">Opciones de área de clientes y afiliados</item>
+                            <item lang="fr">Customer and Affiliate area settings</item>
+                            <item lang="da">Kunde indstillinger</item>
+                            <item lang="el">Ρυθμίσεις πελάτη</item>
+                            <item lang="ro">Setări Client</item>
+                            <item lang="ru">Настройки витрины магазина и партнёрской части</item>
+                            <item lang="sl">Strankine nastavitve</item>
+                            <item lang="zh">客户和联盟区域设置</item>
+                        </translations>
+                    </item>
+                    <item id="unsuccessful_attempts_login_customer">
+                        <name>Block IP after a number of unsuccessful attempts</name>
+                        <type>checkbox</type>
+                        <default_value/>
+                        <translations>
+                            <item lang="es">Bloquee IP después de varias tentativas fracasadas</item>
+                            <item lang="el">Αποκλεισμός της IP μετά από μια σειρά αποτυχημένων προσπαθειών</item>
+                            <item lang="ro">Blochează IP-ul după o serie de autentificări nereușite</item>
+                            <item lang="ru">Блокировать IP после определенного кол-ва неудачных попыток входа</item>
+                            <item lang="sl">Blokiranje IP-ja po več neuspešnih poskusih</item>
+                            <item lang="zh">在几次失败尝试后封锁IP地址</item>
+                        </translations>
+                    </item>
+                    <item id="number_unsuccessful_attempts_customer">
+                        <name>Number of unsuccessful attempts</name>
+                        <type>input</type>
+                        <default_value>5</default_value>
+                        <translations>
+                            <item lang="es">Número de tentativas fracasadas</item>
+                            <item lang="da">Antal mislykkede forsøg</item>
+                            <item lang="el">Αριθμός ανεπιτυχών προσπαθειών</item>
+                            <item lang="ro">Numărul de încercări nereușite</item>
+                            <item lang="ru">Кол-во неудачных попыток входа</item>
+                            <item lang="sl">Število neuspešnih poskusov</item>
+                            <item lang="zh">失败尝试次数</item>
+                        </translations>
+                    </item>
+                    <item id="login_intervals_customer">
+                        <name>Time between unsuccessful login attempts (seconds)</name>
+                        <type>input</type>
+                        <default_value>60</default_value>
+                        <translations>
+                            <item lang="es">Tiempo entre tentativas de entrada al sistema fracasadas (segundos)</item>
+                            <item lang="el">Χρόνος μεταξύ ανεπιτυχών προσπάθειών σύνδεσης (δευτερόλεπτα)</item>
+                            <item lang="ro">Timpul dintre încercările de autentificare nereușite (secunde)</item>
+                            <item lang="ru">Время между неудачными попытками входа (секунды)</item>
+                            <item lang="sl">Čas med neuspelimi poskusi prijave (v sekundah)</item>
+                            <item lang="zh">登录失败尝试时间间隔(秒)</item>
+                        </translations>
+                    </item>
+                    <item id="time_block_customer">
+                        <name>Time for which the IP should be blocked (hours)</name>
+                        <type>input</type>
+                        <default_value>24</default_value>
+                        <translations>
+                            <item lang="es">El tiempo durante el cual la IP debería ser bloqueada (horas)</item>
+                            <item lang="fr">Time for which the IP should be blocked (hours)</item>
+                            <item lang="el">Διάστημα για το οποίο IP θα πρέπει να αποκλειστεί (σε ώρες)</item>
+                            <item lang="ro">Timpul pentru care un IP să fie blochat (ore)</item>
+                            <item lang="ru">Время, на которое блокируется IP (часы)</item>
+                            <item lang="sl">Čas za katerega se blokira IP (ur)</item>
+                            <item lang="zh">某IP必须封锁的时间(小时)</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item>DROP TABLE IF EXISTS ?:access_restriction_block;</item>
+        <item>DROP TABLE IF EXISTS ?:access_restriction;</item>
+        <item>DROP TABLE IF EXISTS ?:access_restriction_reason_descriptions;</item>
+        <item>
+            CREATE TABLE `?:access_restriction_block` (
+                `ip` int(11) unsigned NOT NULL default '0',
+                `tries` smallint(5) unsigned NOT NULL default '0',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `expires` int(11) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`ip`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <!--
+        /********************
+        *
+        * field "type" in
+        * ipr - IP range for customer area
+        * ips - Specific IP address for customer area
+        * ipb - Blocked ip after number of faisled logins (customer and partner area)
+        * aar - Admin area IPs range
+        * aas - Admin area specific IPs
+        * aab - Blocked ip after number of failed logins (admin area)
+        * cc - Credit card numbers
+        * es - E-Mail addresses
+        * ed - E-Mail domain
+        * d - Domains
+        *
+        */
+        -->
+        <item>
+            CREATE TABLE `?:access_restriction` (
+                `item_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `value` varchar(66) NOT NULL default '',
+                `ip_from` int(11) unsigned NOT NULL default '0',
+                `ip_to` int(11) unsigned NOT NULL default '0',
+                `type` char(3) NOT NULL default '',
+                `status` char(1) NOT NULL default 'A',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `expires` int(11) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`item_id`),  KEY `type` (`type`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE `?:access_restriction_reason_descriptions` (
+                `item_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `type` char(3) NOT NULL default '',
+                `reason` mediumtext NOT NULL,
+                `lang_code` char(2) NOT NULL default '',
+                PRIMARY KEY  (`item_id`,`type`,`lang_code`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_access_restrictions', 'Y', 'addons');</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'manage_access_restrictions'</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:access_restriction_block;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:access_restriction;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:access_restriction_reason_descriptions;</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="add_ips">Add IPs</item>
+        <item lang="en" id="new_ips">New IPs</item>
+        <item lang="en" id="add_domains">Add domains</item>
+        <item lang="en" id="new_domains">New domains</item>
+        <item lang="en" id="add_emails">Add e-mail addresses</item>
+        <item lang="en" id="new_emails">New e-mail addresses</item>
+        <item lang="en" id="new_credit_card">New credit card</item>
+        <item lang="en" id="add_credit_card">Add credit card</item>
+        <item lang="en" id="privileges.manage_access_restrictions">Manage access restrictions</item>
+
+        <item lang="bg" id="add_ips">Добави нов IPs</item>
+        <item lang="bg" id="add_domains">Добави домейн</item>
+        <item lang="bg" id="new_emails">Добави Email</item>
+
+        <item lang="da" id="add_ips">Tilføj nye IP-adresser</item>
+        <item lang="da" id="add_domains">Tilføj nye domæner</item>
+        <item lang="da" id="new_emails">Tilføj ny e-mail</item>
+
+        <item lang="el" id="add_ips">Προσθήκη νέας IP</item>
+        <item lang="el" id="add_domains">Προσθήκη νέου ονόματος χώρου</item>
+        <item lang="el" id="new_emails">Προσθήκη νέας διεύθυνσης e-mail</item>
+
+        <item lang="es" id="add_ips">Añadir nuevas IPs</item>
+        <item lang="es" id="add_domains">Añadir nuevo dominio</item>
+        <item lang="es" id="new_emails">Añadir nuevas direcciones de E-mail</item>
+
+        <item lang="fr" id="add_ips">Ajouter des nouvelles adresses IP</item>
+        <item lang="fr" id="add_domains">Ajouter des nouveaux domaines</item>
+        <item lang="fr" id="new_emails">Ajouter des nouvelles adresses emails</item>
+
+        <item lang="no" id="add_ips">Legg til nye IP'er</item>
+        <item lang="no" id="add_domains">Legg til nye domener</item>
+        <item lang="no" id="new_emails">Legg til nye e-postadresser</item>
+
+        <item lang="ro" id="add_ips">Adăugați IP-uri noi</item>
+        <item lang="ro" id="add_domains">Adăugați noi domenii</item>
+        <item lang="ro" id="new_emails">Adăugați adrese de e-mail noi</item>
+
+        <item lang="ru" id="add_ips">Добавить новые IP адреса</item>
+        <item lang="ru" id="add_domains">Добавить новые домены</item>
+        <item lang="ru" id="add_emails">Добавить новый e-mail адрес</item>
+        <item lang="ru" id="new_emails">Новый e-mail адрес</item>
+        <item lang="ru" id="new_credit_card">Новая кредитная карта</item>
+        <item lang="ru" id="add_credit_card">Добавить кредитную карту</item>
+        <item lang="ru" id="privileges.manage_access_restrictions">Управление ограничением доступа</item>
+
+        <item lang="sl" id="add_ips">Dodaj nove IP-je</item>
+        <item lang="sl" id="add_domains">Dodajte nove domene</item>
+        <item lang="sl" id="new_emails">Dodaj nove E-poštne naslove</item>
+        
+        <item lang="zh" id="add_ips">添加IPs</item>
+        <item lang="zh" id="new_ips">新的IPs</item>
+        <item lang="zh" id="add_domains">添加域名</item>
+        <item lang="zh" id="new_domains">新的域名</item>
+        <item lang="zh" id="add_emails">添加邮件地址</item>
+        <item lang="zh" id="new_emails">新的邮件地址</item>
+        <item lang="en" id="domain">Domain</item>
+        <item lang="en" id="warning_of_ip_adding"><![CDATA[The entered IP address <b>[entered_ip]</b> forbids access to the administration panel from your computer (your IP is <b>[your_ip]</b>).]]></item>
+        <item lang="en" id="text_cc_number_is_blocked"><![CDATA[The credit card number <b>[cc_number]</b> is blocked by the administrator. Please contact the store administrator or try another one.]]></item>
+        <item lang="en" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> is not a valid ip address.]]></item>
+        <item lang="en" id="text_not_valid_domain"><![CDATA[<b>[domain]</b> is not a valid domain name.]]></item>
+        <item lang="en" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> is not a valid credit card number.]]></item>
+        <item lang="en" id="text_email_is_blocked"><![CDATA[The e-mail address <b>[email]</b> is blocked by the administrator. Please contact the store administrator or try another one.]]></item>
+        <item lang="en" id="text_ips_denied">You are not allowed to access this area</item>
+        <item lang="en" id="text_ip_blocked_failed_login">The IP was blocked after [number] unsuccessful logins</item>
+        <item lang="en" id="text_ip_is_blocked">Your IP address is blocked.</item>
+        <item lang="en" id="store_admin">Store administrator</item>
+        <item lang="en" id="your_ip_added"><![CDATA[Your IP address <b>[ip]</b> has been added to the access restrictions table.]]></item>
+        <item lang="en" id="your_ip_enabled"><![CDATA[Your IP address <b>[ip]</b> has been enabled in the access restrictions table.]]></item>
+        <item lang="en" id="your_ip_removed"><![CDATA[Your IP address <b>[ip]</b> has been removed from the access restrictions table.]]></item>
+        <item lang="en" id="ip_from">IP from</item>
+        <item lang="en" id="ip_to">IP to</item>
+        <item lang="en" id="text_access_notice"><![CDATA[You can use the wildcards for the "Domain", "E-mail" and "Credit Card" tabs: <br /><b>*</b> - can represent any number of characters, including zero<br /><b>?</b> - can represent any single character.]]></item>
+        <item lang="en" id="ips">IPs</item>
+        <item lang="en" id="make_permanent">Make permanent</item>
+        <item lang="en" id="credit_card_number">Credit card number</item>
+        <item lang="en" id="store_access">Store access</item>
+
+        <item lang="bg" id="domain">Домейн</item>
+        <item lang="bg" id="warning_of_ip_adding"><![CDATA[Въвели сте IP адрес <b> [entered_ip] </ b>, който забранява достъп до администраторския панел на вашия компютър (вашия IP адрес <b> [your_ip] </ b>).]]></item>
+        <item lang="bg" id="text_cc_number_is_blocked"><![CDATA[Кредитна карта номер <b>[cc_number]</b> е блокирана от администратор. Моля, свържете се с администратор или опитайте отново.]]></item>
+        <item lang="bg" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> не е валиден ip адрес.]]></item>
+        <item lang="bg" id="text_not_valid_domain"><![CDATA[<b>[domain]</b> не е валидно домейн име.]]></item>
+        <item lang="bg" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> не е валиден номер на кредитна карта.]]></item>
+        <item lang="bg" id="text_email_is_blocked"><![CDATA[E-mail адресът <b>[email]</b> е блокиран от администратор. Моля, свържете се с администратор или опитайте с друг.]]></item>
+        <item lang="bg" id="text_ips_denied">Вие нямате право на достъп до тази област</item>
+        <item lang="bg" id="text_ip_blocked_failed_login">IP адресът е блокиран след [number] неуспешни опита</item>
+        <item lang="bg" id="text_ip_is_blocked">Вашият IP адрес е блокиран.</item>
+        <item lang="bg" id="store_admin">Администратор на магазина</item>
+        <item lang="bg" id="your_ip_added"><![CDATA[Вашият IP адрес <b>[ip]</b> е добавен към таблицата за ограничения на достъпа.]]></item>
+        <item lang="bg" id="your_ip_enabled"><![CDATA[Вашият IP адрес <b>[ip]</b> е активиран в таблицата за ограничения на достъпа.]]></item>
+        <item lang="bg" id="your_ip_removed"><![CDATA[Вашият адрес <b> [IP] </b> е била отстранена от таблицата за ограничения на достъпа.]]></item>
+        <item lang="bg" id="ip_from">IP от</item>
+        <item lang="bg" id="ip_to">IP до</item>
+        <item lang="bg" id="text_access_notice"><![CDATA[Можете да използвате заместващи символи за разделите  "Домейн", "Електронна поща" и "Кредитна карта": <br> <b> * </b> - всички, включително нула <br> <b></b> - може да представлява всеки един символ.]]></item>
+        <item lang="bg" id="make_permanent">Направи постоянно</item>
+        <item lang="bg" id="credit_card_number">Номер на кредитна карта</item>
+        <item lang="bg" id="store_access">Достъп</item>
+
+        <item lang="da" id="domain">Domæne</item>
+        <item lang="da" id="warning_of_ip_adding"><![CDATA[De indtastede IP-adresse <b> [entered_ip] </ b> forbyder adgang til administrations panelet fra din computer (din IP er <b> [your_ip] </ b>).]]></item>
+        <item lang="da" id="text_cc_number_is_blocked"><![CDATA[Kreditkortnummer <b>[cc_number]</ b> er blokeret af administratoren. Bedes du kontakte butikken eller prøve en anden.]]></item>
+        <item lang="da" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> er ikke en gyldig ip adresse.]]></item>
+        <item lang="da" id="text_not_valid_domain"><![CDATA[<b>[domain]</b> er ikke et gyldigt domænenavn.\n]]></item>
+        <item lang="da" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> er ikke et gyldigt kreditkortnummer.]]></item>
+        <item lang="da" id="text_email_is_blocked"><![CDATA[Den e-mail-adresse <b>[email]</ b> er blokeret af administratoren. Vi beklager ulejligheden, du kan altid kontakte os for mere information]]></item>
+        <item lang="da" id="text_ips_denied">Du har ikke tilladelse til at få adgang til dette område</item>
+        <item lang="da" id="text_ip_blocked_failed_login">Undersøgelsesperioden blev blokeret efter [number] mislykkede login-forsøg</item>
+        <item lang="da" id="text_ip_is_blocked">Din IP adresse er blokkede.</item>
+        <item lang="da" id="store_admin">Butik administrator</item>
+        <item lang="da" id="your_ip_added"><![CDATA[Din IP-adresse <b> [ip] </ b> er blevet tilføjet til adgangsbegrænsninger bordet.]]></item>
+        <item lang="da" id="your_ip_enabled"><![CDATA[Din IP-adresse <b> [ip] </ b> har været aktiveret i adgangsbegrænsninger bordet.]]></item>
+        <item lang="da" id="your_ip_removed"><![CDATA[Din IP-adresse <b> [ip] </ b> er blevet fjernet fra adgangsbegrænsninger bordet.]]></item>
+        <item lang="da" id="ip_from">IP fra</item>
+        <item lang="da" id="ip_to">IP til</item>
+        <item lang="da" id="text_access_notice"><![CDATA[Du kan bruge jokertegn til "Domain", "E-mail" og "kreditkort" faner: <br /> <b> * </ b> - kan repræsentere et vilkårligt antal tegn, inklusive nul <br /> < b>? </ b> - kan repræsentere et enkelt tegn.]]></item>
+        <item lang="da" id="ips">IP'er</item>
+        <item lang="da" id="make_permanent">Foretage permanente</item>
+        <item lang="da" id="credit_card_number">Kredit kort nummer</item>
+        <item lang="da" id="store_access">Butik adgang</item>
+
+        <item lang="el" id="domain">Τομέας</item>
+        <item lang="el" id="warning_of_ip_adding"><![CDATA[H διεύθυνση IP που εισήχθη <b>[entered_ip]</b>  (your IP is <b>[your_ip]</b>)απαγορεύει την πρόσβαση στον πίνακα διαχείρισης από τον υπολογιστή σας.]]></item>
+        <item lang="el" id="text_cc_number_is_blocked"><![CDATA[Ο αριθμός της πιστωτικής κάρτας <b>[cc_number]</b> έχει αποκλειστεί από το διαχειριστή. Παρακαλούμε επικοινωνήστε με τον διαχειρηστή του καταστήματος ή δοκιμάστε μια άλλη.]]></item>
+        <item lang="el" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> δεν είναι έγκυρη ip διεύθυνση]]></item>
+        <item lang="el" id="text_not_valid_domain"><![CDATA[<b>[domain]</b>δεν είναι έγκυρο domain όνομα.]]></item>
+        <item lang="el" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> δεν είναι έγκυρος αριθμός πιστωτικής κάρτας.]]></item>
+        <item lang="el" id="text_email_is_blocked"><![CDATA[Η διεύθυνση e-mail <b> [email] </ b> έχει αποκλειστεί από το διαχειριστή. Παρακαλούμε επικοινωνήστε με τον  διαχειριστή του κατάστημα ή δοκιμάστε έναν άλλο.]]></item>
+        <item lang="el" id="text_ips_denied">Δεν επιτρέπεται η πρόσβαση σε αυτόν τον τομέα</item>
+        <item lang="el" id="text_ip_blocked_failed_login">Η IP αποκλείστηκε μετά από [number] αποτυχημένες συνδέσεις</item>
+        <item lang="el" id="text_ip_is_blocked">Η διεύθυνση IP σας είναι αποκλεισμένη.</item>
+        <item lang="el" id="store_admin">Διαχειριστής καταστήματος</item>
+        <item lang="el" id="your_ip_added"><![CDATA[ Η διεύθυνση της IP σας<b>[ip]</b> έχει προστεθεί από τον πίνακα πρόσβασης περιορισμών.]]></item>
+        <item lang="el" id="your_ip_enabled"><![CDATA[Η διεύθυνση της IP σας<b>[ip]</b>έχει αφαιρεθεί από τον πίνακα πρόσβασης περιορισμών.]]></item>
+        <item lang="el" id="your_ip_removed"><![CDATA[Η διεύθυνση της IP σας <b>[ip]</b> έχει αφαιρεθεί από τον πίνακα πρόσβασης περιορισμών.]]></item>
+        <item lang="el" id="ip_from">IP από</item>
+        <item lang="el" id="ip_to">IP σε</item>
+        <item lang="el" id="text_access_notice"><![CDATA[You can use the wildcards for the "Domain", "E-mail" and "Credit Card" tabs: <br /><b>*</b> - can represent any number of characters, including zero<br /><b></b> - can represent any single character.]]></item>
+        <item lang="el" id="ips">Ips</item>
+        <item lang="el" id="make_permanent">Καθιστώ  μόνιμο</item>
+        <item lang="el" id="credit_card_number">Αριθμός πιστωτικής κάρτας</item>
+        <item lang="el" id="store_access">Πρόσβαση στο κατάστημα</item>
+
+        <item lang="es" id="domain">Dominio</item>
+        <item lang="es" id="warning_of_ip_adding"><![CDATA[Usted ha escrito la dirección IP <b>[entered_ip]</b> que prohíbe el acceso al backend (administración) desde su ordenador (su IP es <b>[your_ip]</b>).]]></item>
+        <item lang="es" id="text_cc_number_is_blocked"><![CDATA[El número de tarjeta de crédito <b>[cc_number]</b> está bloqueado por el administrador. Por favor póngase en contacto con el administrador de la tienda o intente con otro.]]></item>
+        <item lang="es" id="text_not_valid_ip"><![CDATA[La <b>[ip]</b> no es una dirección IP válida.]]></item>
+        <item lang="es" id="text_not_valid_domain"><![CDATA[El <b>[domain]</b> no es un nombre de dominio válido,]]></item>
+        <item lang="es" id="text_not_valid_cc_number"><![CDATA[El <b>[cc_number]</b> no es un número de tarjeta de crédito válido.]]></item>
+        <item lang="es" id="text_email_is_blocked"><![CDATA[La dirección de E-mail <b>[email]</b>ha sido bloqueada por el administrador.  Por favor póngase en contacto con el administrador de la tienda o intente con otra.]]></item>
+        <item lang="es" id="text_ips_denied">Usted no tiene permitido el acceso a este area</item>
+        <item lang="es" id="text_ip_blocked_failed_login">La IP  ha sido bloqueada después de [number] conexiones fracasadas</item>
+        <item lang="es" id="text_ip_is_blocked">Su dirección IP está bloqueada.</item>
+        <item lang="es" id="store_admin">Aministrador de la tienda</item>
+        <item lang="es" id="your_ip_added"><![CDATA[Su dirección IP <b>[ip]</b> ha sido añadida a la lista de restricciones de acceso.]]></item>
+        <item lang="es" id="your_ip_enabled"><![CDATA[Su dirección IP <b>[ip]</b> ha sido activada en la lista de restricciones de acceso.]]></item>
+        <item lang="es" id="your_ip_removed"><![CDATA[Su dirección IP <b>[ip]</b> ha sido eliminada de la lista de restricciones de acceso.]]></item>
+        <item lang="es" id="ip_from">IP de</item>
+        <item lang="es" id="ip_to">IP a</item>
+        <item lang="es" id="text_access_notice"><![CDATA[Usted puede usar los comodines para el "Dominio", "E-Mail" y "Tarjeta de Crédito": <br /><b>*</b> - puede representar cualquier cantidad de caracteres, incluido cero<br /><b>?</b> - puede representar cualquier carácter simple.]]></item>
+        <item lang="es" id="make_permanent">Hacer permanente</item>
+        <item lang="es" id="credit_card_number">Número de tarjeta de crédito</item>
+
+        <item lang="fr" id="domain">Domaine</item>
+        <item lang="fr" id="warning_of_ip_adding"><![CDATA[You have entered the IP address <b>[entered_ip]</b> which fobids access to the back-end from your computer (your IP is <b>[your_ip]</b>).]]></item>
+        <item lang="fr" id="text_cc_number_is_blocked"><![CDATA[Le numéro de carte de crédit <b>[cc_number]</b> est bloqué par l'administrateur. Veuillez prendre contact avec l'administrateur de la boutique en ligne ou essayer un autre numéro.]]></item>
+        <item lang="fr" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> n'est pas une adresse IP valide.]]></item>
+        <item lang="fr" id="text_not_valid_domain"><![CDATA[<b>[domain]</b> n'est pas un nom de domaine valide.]]></item>
+        <item lang="fr" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> n'est pas un numéro de carte de crédit valide.]]></item>
+        <item lang="fr" id="text_email_is_blocked"><![CDATA[L'adresse email <b>[email]</b> est bloqué par l'administrateur. Veuillez contacter l'administrateur de la boutique en ligne ou essayer avec une autre adresse.]]></item>
+        <item lang="fr" id="text_ips_denied">Vous n'êtes pas autorisé à accéder à cette zone.</item>
+        <item lang="fr" id="text_ip_blocked_failed_login">Votre IP a été bloqué après [number] erreurs de connexions.</item>
+        <item lang="fr" id="text_ip_is_blocked">Votre adresse IP a été bloquée.</item>
+        <item lang="fr" id="store_admin">Store administrateur</item>
+        <item lang="fr" id="your_ip_added"><![CDATA[Votre adresse ip <b>[ip]</b> a été ajouté au tableau des accès restreint]]></item>
+        <item lang="fr" id="your_ip_enabled"><![CDATA[Votre adresse ip <b>[ip]</b> a été activé sur le tableau des accès restreint.]]></item>
+        <item lang="fr" id="your_ip_removed"><![CDATA[Votre adresse ip <b>[ip]</b> a été enlevé du tableau des accès restreint.]]></item>
+        <item lang="fr" id="ip_from">IP de</item>
+        <item lang="fr" id="ip_to">IP à</item>
+        <item lang="fr" id="text_access_notice"><![CDATA[Vous pouvez utiliser les caractères pour le "Domaine", "E-mail" et "carte de crédit" onglets: <br /> <b> * </ b> - peut représenter n'importe quel nombre de caractères, y compris zéro <br /> < b> ?</ b> - peut représenter un seul caractère.]]></item>
+        <item lang="fr" id="make_permanent">Rendre permanent</item>
+        <item lang="fr" id="credit_card_number">Numéro de carte de crédit</item>
+        <item lang="fr" id="store_access">Restrictions d'accès</item>
+
+        <item lang="it" id="domain">Dominio</item>
+        <item lang="it" id="warning_of_ip_adding"><![CDATA[L'indirizzo IP inserito <b>[entered_ip]</b> vieta l'accesso al pannello di amministrazione dal computer (il tuo IP è <b>[your_ip]</b>).]]></item>
+        <item lang="it" id="text_cc_number_is_blocked"><![CDATA[Il numero della carta di credito <b>[cc_number]</b>è bloccato dall'amministratore. Contattare l'amministratore o provare un altro numero]]></item>
+        <item lang="it" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> Non è un valido indirizzo IP]]></item>
+        <item lang="it" id="text_not_valid_domain"><![CDATA[<b>[domain]</b> Non è un nome di dominio valido]]></item>
+        <item lang="it" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> Non è un numero di carta valido]]></item>
+        <item lang="it" id="text_email_is_blocked"><![CDATA[L'email <b>[email]</b> è bloccata dall'amministratore. Perfavore contatta l'amministratore del negozio o prova un altra email]]></item>
+        <item lang="it" id="text_ips_denied">Non sei abilitato ad accedere a quest'area</item>
+        <item lang="it" id="text_ip_blocked_failed_login">L'IP è stato bloccato dopo [numero] accessi non riusciti\n</item>
+        <item lang="it" id="text_ip_is_blocked">Il tuo indirizzo IP è bloccato</item>
+        <item lang="it" id="store_admin">Amministrazione negozio</item>
+        <item lang="it" id="your_ip_added">Il tuo IP è stato aggiunto</item>
+        <item lang="it" id="your_ip_enabled">Il tuo IP è stato abilitato</item>
+        <item lang="it" id="your_ip_removed">Il tuo IP è stato rimosso</item>
+        <item lang="it" id="ip_from">IP da</item>
+        <item lang="it" id="ip_to">IP a</item>
+        <item lang="it" id="text_access_notice"><![CDATA[È possibile utilizzare i caratteri jolly per il "dominio", "E-mail" e "Carta di credito" schede: <br /><b>*</b> - può rappresentare qualsiasi numero di caratteri\n, compreso lo zero<br /><b>?</b> - può rappresentare ogni singolo carattere]]></item>
+        <item lang="it" id="make_permanent">Rendere permanente</item>
+        <item lang="it" id="credit_card_number">Numero di carta</item>
+        <item lang="it" id="new_domains">Nuovi domini</item>
+        <item lang="it" id="add_domains">Aggiungi domini</item>
+        <item lang="it" id="new_emails">Nuovo indirizzo email</item>
+        <item lang="it" id="add_emails">Aggiungi indirizzi e-mail</item>
+        <item lang="it" id="new_ips">IPs nuovi</item>
+        <item lang="it" id="add_ips">Aggiungi IP</item>
+        <item lang="it" id="store_access">Accesso allo store</item>
+
+        <item lang="no" id="domain">Domene</item>
+        <item lang="no" id="warning_of_ip_adding"><![CDATA[Den angitte IP-adressen <b>[entered_ip]</b> forbyr tilgang til administrasjonspanelet fra denne datamaskinen (din IP er <b>[your_ip]</b>).]]></item>
+        <item lang="no" id="text_cc_number_is_blocked"><![CDATA[Kredittkortnummer <b>[cc_number]</b> er blokkert av administrator. Vennligst ta kontakt med butikken eller prøve et annet kort.]]></item>
+        <item lang="no" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> er ikke en gyldig IP-adresse.]]></item>
+        <item lang="no" id="text_not_valid_domain"><![CDATA[<b>[domain]</b> er ikke et gyldig domenenavn.]]></item>
+        <item lang="no" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> er ikke et gyldig kredittkortnummer.]]></item>
+        <item lang="no" id="text_email_is_blocked"><![CDATA[E-postadressen <b>[email]</b> er blokkert av administrator. Vennligst ta kontakt med butikken eller prøv annen e-postadresse.]]></item>
+        <item lang="no" id="text_ips_denied">Du har ikke tilgang til dette området</item>
+        <item lang="no" id="text_ip_blocked_failed_login">IP-adressen ble blokkert etter [number] mislykkede pålogginger</item>
+        <item lang="no" id="text_ip_is_blocked">Din IP-adresse er blokkert.</item>
+        <item lang="no" id="store_admin">Butikkadministrator</item>
+        <item lang="no" id="your_ip_added"><![CDATA[Din IP-adresse<b>[ip]</b> har blitt lagt til tabellen med tilgangsbegrensninger.]]></item>
+        <item lang="no" id="your_ip_enabled"><![CDATA[Din IP-adresse<b>[ip]</b> har blitt aktivert i tabellen med tilgangsbegrensninger.]]></item>
+        <item lang="no" id="your_ip_removed"><![CDATA[Din IP-adresse <b>[ip]</b> har blitt fjernet fra tabellen med tilgangsbegrensninger.]]></item>
+        <item lang="no" id="ip_from">IP fra</item>
+        <item lang="no" id="ip_to">IP til</item>
+        <item lang="no" id="text_access_notice"><![CDATA[Du kan bruke jokertegn for "Domene", "E-post" og "Kredittkort" faner: <br /><b>*</b> - kan representere hvilket som helt antall tegn, inkludert null<br /><b>?</b> - kan representere et hvilkens som helst enkelt tegn.]]></item>
+        <item lang="no" id="ips">IP-adresser</item>
+        <item lang="no" id="make_permanent">Gjør permanent</item>
+        <item lang="no" id="credit_card_number">Kredittkortnummer</item>
+        <item lang="no" id="store_access">Butikktilgang</item>
+
+        <item lang="ro" id="domain">Domeniu</item>
+        <item lang="ro" id="warning_of_ip_adding"><![CDATA[Adresa IP introduseă <b>[entered_ip]</b> interzice accesul către panoul de administrare (IP-ul dvs. este <b>[your_ip]</b>).]]></item>
+        <item lang="ro" id="text_cc_number_is_blocked"><![CDATA[Numărul cardului de credit <b>[cc_number]</b> este blocat de către administrator. Vă rugăm contactați administratorul site-ului și încercați altul.]]></item>
+        <item lang="ro" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> nu este o adresă IP validă.]]></item>
+        <item lang="ro" id="text_not_valid_domain"><![CDATA[<b>[domain]</b> nu este un domeniu valid.]]></item>
+        <item lang="ro" id="text_not_valid_cc_number"><![CDATA[Numărul de cardului de credit <b>[cc_number]</b> nu este valid.]]></item>
+        <item lang="ro" id="text_email_is_blocked"><![CDATA[Adresa de e-mail <b>[email]</b> este blocată de către administrator. Vă rugăm contactați administratorul magazinului și încercați alta.]]></item>
+        <item lang="ro" id="text_ips_denied">Nu vă este permis accesul în această zonă</item>
+        <item lang="ro" id="text_ip_blocked_failed_login">IP-ul a fost blocat după [number] încercări nereușite</item>
+        <item lang="ro" id="text_ip_is_blocked">Adresa IP a dvs. este blocată.</item>
+        <item lang="ro" id="store_admin">Administratorul magazinului</item>
+        <item lang="ro" id="your_ip_added"><![CDATA[IP-ul dvs. ,<b>[ip]</b> a fost adăugați la tabelul cu restricții.]]></item>
+        <item lang="ro" id="your_ip_enabled"><![CDATA[IP-ul dvs. , <b>[ip]</b> a fost activat în tabelul cu restricționarea accesului.]]></item>
+        <item lang="ro" id="your_ip_removed"><![CDATA[IP-ul dvs. , <b>[ip]</b> a fost șters din tabelul cu restricționarea accesului.]]></item>
+        <item lang="ro" id="ip_from">IP de la</item>
+        <item lang="ro" id="ip_to">IP către</item>
+        <item lang="ro" id="text_access_notice"><![CDATA[Puteți folosi wildcard-uri pentru "Domeniu", "E-mail" și "Card de credit" : <br /><b>*</b> - poate reprezenta orice număr de caractere, inclusiv zero<br /><b>?</b> - poate reprezenta orice alt caracter unic.]]></item>
+        <item lang="ro" id="ips">IP-uri</item>
+        <item lang="ro" id="make_permanent">Marcați ca permanent</item>
+        <item lang="ro" id="credit_card_number">Numărul cardului de credit</item>
+        <item lang="ro" id="store_access">Acces magazin</item>
+
+        <item lang="ru" id="domain">Домен</item>
+        <item lang="ru" id="warning_of_ip_adding"><![CDATA[Вы ввели IP адрес <b>[entered_ip]</b>, который запрещает доступ к администраторской панели с вашего компьютера (ваш IP адрес <b>[your_ip]</b>).]]></item>
+        <item lang="ru" id="text_cc_number_is_blocked"><![CDATA[Номер кредитной карты <b>[cc_number]</b> заблокирован администратором. Пожалуйста, свяжитесь с администрацией магазина или воспользуйтесь другой картой.]]></item>
+        <item lang="ru" id="text_not_valid_ip"><![CDATA[<b>[ip]</b> - недействительный IP адрес.]]></item>
+        <item lang="ru" id="text_not_valid_domain"><![CDATA[<b>[domain]</b> - недействительное имя домена.]]></item>
+        <item lang="ru" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> - недействительный номер кредитной карты.]]></item>
+        <item lang="ru" id="text_email_is_blocked"><![CDATA[E-mail <b>[email]</b> заблокирован администратором. Пожалуйста, свяжитесь с администрацией магазина или попробуйте другой адрес.]]></item>
+        <item lang="ru" id="text_ips_denied">У вас нет доступа в эту часть</item>
+        <item lang="ru" id="text_ip_blocked_failed_login">IP был заблокирован после [number] неудачных попыток авторизироваться.</item>
+        <item lang="ru" id="text_ip_is_blocked">Ваш IP адрес заблокирован.</item>
+        <item lang="ru" id="store_admin">Администратор магазина</item>
+        <item lang="ru" id="your_ip_added"><![CDATA[Ваш IP адрес <b>[ip]</b> был добавлен в таблицу ограничения доступа.]]></item>
+        <item lang="ru" id="your_ip_enabled"><![CDATA[Ваш IP адрес <b>[ip]</b> был активирован в таблице ограничения доступа.]]></item>
+        <item lang="ru" id="your_ip_removed"><![CDATA[Ваш IP адрес <b>[ip]</b> был удален из таблицы ограничения доступа.]]></item>
+        <item lang="ru" id="ip_from">с IP</item>
+        <item lang="ru" id="ip_to">до IP</item>
+        <item lang="ru" id="text_access_notice"><![CDATA[Вы можете использовать подстановочные символы для закладок "Домен", "E-Mail", "Кредитная карта": <br /><b>*</b> - любое количество символов, включая ноль<br /><b>?</b> - любой одиночный символ]]></item>
+        <item lang="ru" id="ips">IP</item>
+        <item lang="ru" id="make_permanent">Сделать постоянным</item>
+        <item lang="ru" id="credit_card_number">Номер кредитной карты</item>
+        <item lang="ru" id="store_access">Ограничения доступа</item>
+
+        <item lang="sl" id="domain">Domena</item>
+        <item lang="sl" id="warning_of_ip_adding"><![CDATA[Vnesli ste IP naslov <b>[entered_ip]</b>, ki omogoča dostop do skrbniških strani iz vašega računalnika (vaš IP je <b>[your_ip]</b>).]]></item>
+        <item lang="sl" id="text_cc_number_is_blocked"><![CDATA[Številko kreditne kartice  <b>[cc_number]</b> je skrbnik blokiral. Obrnite se na skrbnika ali poskusite drugo.]]></item>
+        <item lang="sl" id="text_not_valid_ip"><![CDATA[ <b>[ip]</b> ni veljaven naslov IP.]]></item>
+        <item lang="sl" id="text_not_valid_domain"><![CDATA[ <b>[domain]</b> ni veljavno ime domene.]]></item>
+        <item lang="sl" id="text_not_valid_cc_number"><![CDATA[ <b>[cc_number]</b> ni veljavna številka kreditne kartice.]]></item>
+        <item lang="sl" id="text_email_is_blocked"><![CDATA[E-poštni naslov <b> [email] </ b> je skrbnik blokiral. Obrnite se na skrbnika ali shranjevanje poskusite še enkrat.]]></item>
+        <item lang="sl" id="text_ips_denied">Nimate dovoljenja za dostop do tega območja</item>
+        <item lang="sl" id="text_ip_blocked_failed_login">IP je bil blokiran po [number] neuspešnih prijavah</item>
+        <item lang="sl" id="text_ip_is_blocked">Vaš IP naslov je blokiran.</item>
+        <item lang="sl" id="store_admin">Trgovina skrbnika</item>
+        <item lang="sl" id="your_ip_added"><![CDATA[Vaš IP naslov <b>[ip]</b> je bil dodan v tabelo omejitve dostopa.]]></item>
+        <item lang="sl" id="your_ip_enabled"><![CDATA[Vaš IP naslov <b>[ip]</b> ima omogočen dostop  v tabelo omejitve dostopa.]]></item>
+        <item lang="sl" id="your_ip_removed"><![CDATA[Vaš IP naslov <b>[ip]</b> je bil odstranjen iz tabele omejitve dostopa.]]></item>
+        <item lang="sl" id="ip_from">IP iz</item>
+        <item lang="sl" id="ip_to">IP do</item>
+        <item lang="sl" id="text_access_notice"><![CDATA[Lahko uporabljate nadomestne znake za zavihke "Domena", "E-pošta" in "Kreditna kartica":  <br /><b>*</b> - je lahko poljubno število znakov, vključno z ničlo <br /><b>?</b> - ne predstavlja nobene posamezne znaka.]]></item>
+        <item lang="sl" id="ips">IP-ji</item>
+        <item lang="sl" id="make_permanent">Naredi trajno</item>
+        <item lang="sl" id="credit_card_number">Številka kreditne kartice</item>
+        <item lang="sl" id="store_access">Shranjeni dostopi</item>
+
+        <item lang="zh" id="domain">域名</item>
+        <item lang="zh" id="warning_of_ip_adding"><![CDATA[输入的 IP 地址 <b>[entered_ip]</b>禁止从您的计算机访问到管理面板，(您的IP是 <b>[your_ip]</b>).]]></item>
+        <item lang="zh" id="text_cc_number_is_blocked"><![CDATA[此信用卡号码<b>[cc_number]</b>被管理员封锁. 请联系商店管理员或尝试另外一张.]]></item>
+        <item lang="zh" id="text_not_valid_ip"><![CDATA[<b>[ip]</b>不是一个有效的ip地址.]]></item>
+        <item lang="zh" id="text_not_valid_domain"><![CDATA[<b>[domain]</b>不是一个有效的域名.]]></item>
+        <item lang="zh" id="text_not_valid_cc_number"><![CDATA[<b>[cc_number]</b> 不是一个有效的信用卡号码.]]></item>
+        <item lang="zh" id="text_email_is_blocked"><![CDATA[此电子邮件<b>[email]</b>已被管理员封锁.请联系站点管理员或试另外一个.]]></item>
+        <item lang="zh" id="text_ips_denied">您不允许进入这一区域</item>
+        <item lang="zh" id="text_ip_blocked_failed_login">在[number]登录失败后IP地址会被封锁</item>
+        <item lang="zh" id="text_ip_is_blocked">您的IP地址被封锁.</item>
+        <item lang="zh" id="store_admin">站点管理员</item>
+        <item lang="zh" id="your_ip_added"><![CDATA[您的IP地址<b>[ip]</b>已被添加到访问限制表.]]></item>
+        <item lang="zh" id="your_ip_enabled"><![CDATA[您的IP地址<b>[ip]</b>已启用访问限制.]]></item>
+        <item lang="zh" id="your_ip_removed"><![CDATA[您的IP地址<b>[ip]</b>已从访问限制表已被删除.]]></item>
+        <item lang="zh" id="ip_from">IP来自</item>
+        <item lang="zh" id="ip_to">IP指向</item>
+        <item lang="zh" id="text_access_notice"><![CDATA[您可对此"地址域"使用通配符, "电子邮件"和"信用卡"选项: <br><b>*</b> - 可表示任意数量的字符,包含零<br><b>?</b> - 可以表示任何单个字符.]]></item>
+        <item lang="zh" id="ips">IP地址</item>
+        <item lang="zh" id="make_permanent">永久地</item>
+        <item lang="zh" id="credit_card_number">信用卡号码</item>
+        <item lang="zh" id="store_access">商店访问</item>
+    </language_variables>
+</addon>
