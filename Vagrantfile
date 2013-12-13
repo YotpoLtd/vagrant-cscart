@@ -42,13 +42,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   #
-  config.vm.provider :virtualbox do |virtualbox|
-    ## Don't boot with headless mode
-    #vb.gui = true
-    virtualbox.customize ["modifyvm", :id, "--name", "ansible-ubuntu-php"]
-    virtualbox.customize ["modifyvm", :id, "--memory", "512"]
-    # use host OS for dns lookup
-    virtualbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  
+  # Performance mods can be bad for certain configurations may need to comment out
+  config.vm.provider "virtualbox" do |vb|
+    # Virtualbox Name
+    vb.customize ["modifyvm", :id, "--name", "Cs-Cart-VM", "--ostype", "Ubuntu_64"]
+    # Memory
+    vb.customize ["modifyvm", :id, "--memory", "4092"]
+	#CPU up to 4 cores and ioapic
+	vb.customize ["modifyvm", :id, "--ioapic", "on"]
+	vb.customize ["modifyvm", :id, "--cpus", "4"]
+	vb.customize ["modifyvm", :id, "--pae", "on"]
+    # Chipset (Supposedly better CPU performance)
+    vb.customize [ "modifyvm", :id, "--chipset", "ich9" ]
+    # NIC 1 (Better TCP over NAT performance, at least on Windows)
+	vb.customize ["modifyvm", :id, "--nic1", "nat", "--nictype1", "virtio"] 
+	vb.customize ["modifyvm", :id, "--natsettings1", "9000,1024,1024,1024,1024"]  
+	# SSD Settings
+    vb.customize ["storagectl", :id, "--name", "SATA Controller", "--controller", "IntelAHCI", "--portcount", "1", "--hostiocache", "on"]
+    vb.customize ["storageattach", :id, "--storagectl", "SATA Controller", "--port", "0", "--device", "0", "--nonrotational", "on"]
   end
 
   # config.vm.provider :vmware_fusion do |vmware|
