@@ -6,3 +6,4 @@
     - apache
     - mysql
     - php
+    - sendmail
