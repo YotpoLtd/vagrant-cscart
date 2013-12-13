@@ -1,0 +1,15 @@
+* text eol=lf
+
+# Definitively text files 
+*.txt text
+*.c text
+*.h text
+*.ru text
+*.rb text
+*.yml text
+
+# Prevent images/data from being changed by git
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.data binary
