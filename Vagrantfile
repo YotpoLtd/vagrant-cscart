@@ -37,8 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   config.vm.synced_folder './provisioning', '/vagrant/provisioning',
     owner: 'www-data',
-    group: 'www-data',
-    mount_options: ["dmode=777,fmode=777"]
+    group: 'www-data'
   config.vm.synced_folder "./www", "/var/www",
     owner: 'www-data',
     group: 'www-data'
@@ -52,19 +51,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Virtualbox Name
     vb.customize ["modifyvm", :id, "--name", "Cs-Cart-VM", "--ostype", "Ubuntu_64"]
     # Memory
-    vb.customize ["modifyvm", :id, "--memory", "4092"]
-	#CPU up to 4 cores and ioapic
-	vb.customize ["modifyvm", :id, "--ioapic", "on"]
-	vb.customize ["modifyvm", :id, "--cpus", "4"]
-	vb.customize ["modifyvm", :id, "--pae", "on"]
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
     # Chipset (Supposedly better CPU performance)
     vb.customize [ "modifyvm", :id, "--chipset", "ich9" ]
-    # NIC 1 (Better TCP over NAT performance, at least on Windows)
-	vb.customize ["modifyvm", :id, "--nic1", "nat", "--nictype1", "virtio"] 
-	vb.customize ["modifyvm", :id, "--natsettings1", "9000,1024,1024,1024,1024"]  
-	# SSD Settings
-    vb.customize ["storagectl", :id, "--name", "SATA Controller", "--controller", "IntelAHCI", "--portcount", "1", "--hostiocache", "on"]
-    vb.customize ["storageattach", :id, "--storagectl", "SATA Controller", "--port", "0", "--device", "0", "--nonrotational", "on"]
   end
 
   # config.vm.provider :vmware_fusion do |vmware|
@@ -77,9 +66,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, :path => "provisioning/setup_ansible.sh"
   config.vm.provision :shell, :path => "ansible_provisioning.sh"
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/lamp.yml"
-    ansible.verbose = "extra"
-  end
+  #config.vm.provision "ansible" do |ansible|
+  #  ansible.playbook = "provisioning/lamp.yml"
+  #  ansible.verbose = "extra"
+  #end
 
 end

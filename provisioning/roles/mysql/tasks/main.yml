@@ -2,4 +2,5 @@
   apt: name="{{ item }}" state=present
   with_items:
     - mysql-server
-    - mysql_db: name=cscart state=present
+    - python-mysqldb
+- mysql_db: name=cscart state=present

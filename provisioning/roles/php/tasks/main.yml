@@ -52,7 +52,7 @@
   command: /usr/sbin/a2enmod rewrite
 
 - name: setup adminer
-  get_url: url=http://www.adminer.org/latest.php dest=/var/www/adminer.php
+  get_url: url=http://www.adminer.org/latest.php dest=/var/www/html/adminer.php
 
 - name: ensure Apache service is restarted
   service: name=apache2 state=reloaded
