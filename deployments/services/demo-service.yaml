@@ -1,0 +1,32 @@
+yotpo:
+  deploymentName: demo-service
+  namespace: default
+  chartName: yotpo/microservice
+  chartPath: http://chartmuseum.k8s.yotpodev.com/
+  chartVersion: 0.1.72
+  slackChannel: "#dev-alerts"
+  projectName: kubernetes-demo
+  productLine: infra
+  team: raccoons
+
+replicaCount: 1
+
+image:
+  registry: 402837048690.dkr.ecr.us-east-1.amazonaws.com
+  repository: nginx
+  tag: uat
+
+batch: false
+
+ports:
+  - name: http
+    containerPort: 80
+
+extraEnv: 
+  EXPLICIT_KEY_1: value
+  EXPLICIT_KEY_2: value
+configMaps: ["demo-config"]
+
+resources:
+  cpu: 100m
+  memory: 64Mi

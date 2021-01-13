@@ -1,0 +1,21 @@
+yotpo:
+  deploymentName: demo-config-map
+  namespace: default
+  chartName: yotpo/serviceConfigMaps
+  chartPath: http://chartmuseum.k8s.yotpodev.com/
+  chartVersion: 0.1.0
+
+clusters:
+  production:
+    - name: demo-config
+      data:
+        SECRET_FROM_VAULT: "vault:PATH/TO/SECRET#KEY_NAME"
+        KEY1: "VALUE"
+        KEY2: "VALUE"
+  staging:
+    - name: demo-config
+      data:
+        SECRET_FROM_VAULT: "vault:PATH/TO/SECRET#KEY_NAME"
+        KEY1: "VALUE"
+        KEY2: "VALUE"
+
