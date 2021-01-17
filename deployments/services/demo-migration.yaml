@@ -1,0 +1,35 @@
+yotpo:
+  deploymentName: demo-migrate
+  namespace: default
+  chartName: yotpo/microservice
+  chartPath: http://chartmuseum.k8s.yotpodev.com/
+  chartVersion: 0.1.72
+  slackChannel: "#dev-alerts"
+  projectName: kubernetes-demo
+  productLine: infra
+  team: raccoons
+
+runPodOnce: true
+
+image:
+  registry: 402837048690.dkr.ecr.us-east-1.amazonaws.com
+  repository: retailers-syndication
+  tag: master
+
+# Ruby example:
+# command: ["rake"]
+# args: ["db:create", "db:migrate"]
+
+# java example:
+# args: ["schema", "migrate"]
+
+extraEnv: 
+  EXPLICIT_KEY_1: value
+  EXPLICIT_KEY_2: value
+
+configMaps: ["demo-config"]
+
+resources:
+  cpu: 1000m
+  memory: 1200Mi
+
