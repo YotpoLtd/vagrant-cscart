@@ -3,7 +3,7 @@ yotpo:
   namespace: default
   chartName: yotpo/microservice
   chartPath: http://chartmuseum.k8s.yotpodev.com/
-  chartVersion: 0.1.72
+  chartVersion: 0.1.73
   slackChannel: "#dev-alerts"
   projectName: kubernetes-demo
   productLine: infra
