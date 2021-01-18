@@ -30,6 +30,6 @@ extraEnv:
 configMaps: ["demo-config"]
 
 resources:
-  cpu: 1000m
-  memory: 1200Mi
+  cpu: 100m
+  memory: 120Mi
 
